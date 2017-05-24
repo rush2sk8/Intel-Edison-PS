@@ -3,7 +3,7 @@
 'use strict';
 
 //holds sockets to each connected clients
-var connections = []
+var connections = [];
 var fs = require('fs');
 
 var incoming_data = [];
@@ -42,7 +42,7 @@ Client.prototype.run = function () {
 ;
 
 this.client.on('close', function () {
-    console.log(this.ip + ' closed')
+    console.log(this.ip + ' closed');
 });
 
 this.client.on('error', function () {

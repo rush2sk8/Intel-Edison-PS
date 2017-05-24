@@ -23,8 +23,8 @@
         "name": "EdisonClient.xdk"
       },
       "EdisonClient.xdke": {
-        "previousModTime": 1495657769529,
-        "modified": 1495657769529,
+        "previousModTime": 1495658084467,
+        "modified": 1495658084467,
         "seen": true,
         "name": "EdisonClient.xdke"
       },
@@ -65,10 +65,6 @@
         "name": "xdk/project-info.json"
       }
     },
-    "boardFileStatus": {
-      "main.js": {
-        "previousModTime": 1495657810536
-      }
-    }
+    "boardFileStatus": {}
   }
 }
