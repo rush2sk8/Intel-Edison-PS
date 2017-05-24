@@ -1,0 +1,74 @@
+{
+  "project": {
+    "projectSettingsVersion": "3.0.0",
+    "currentBuildConfiguration": null,
+    "projectFiles": {},
+    "projectDirectories": {}
+  },
+  "editorTab": {
+    "currentEditorMode": 0
+  },
+  "iot-tab": {
+    "fileStatus": {
+      ".gitignore": {
+        "previousModTime": 1495655317802,
+        "modified": 1495655317802,
+        "seen": true,
+        "name": ".gitignore"
+      },
+      "EdisonServer.xdk": {
+        "previousModTime": 1495655319547,
+        "modified": 1495655319547,
+        "seen": true,
+        "name": "EdisonServer.xdk"
+      },
+      "EdisonServer.xdke": {
+        "previousModTime": 1495657721168,
+        "modified": 1495657721168,
+        "seen": true,
+        "name": "EdisonServer.xdke"
+      },
+      "icon.png": {
+        "previousModTime": 1495655317802,
+        "modified": 1495655317802,
+        "seen": true,
+        "name": "icon.png"
+      },
+      "LICENSE.md": {
+        "previousModTime": 1495655317803,
+        "modified": 1495655317803,
+        "seen": true,
+        "name": "LICENSE.md"
+      },
+      "main.js": {
+        "previousModTime": 1495657744689,
+        "modified": 1495657744689,
+        "seen": true,
+        "name": "main.js"
+      },
+      "package.json": {
+        "previousModTime": 1495655317808,
+        "modified": 1495655317808,
+        "seen": true,
+        "name": "package.json"
+      },
+      "README.md": {
+        "previousModTime": 1495655317807,
+        "modified": 1495655317807,
+        "seen": true,
+        "name": "README.md"
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1495655319479,
+        "modified": 1495655319479,
+        "seen": true,
+        "name": "xdk/project-info.json"
+      }
+    },
+    "boardFileStatus": {
+      "main.js": {
+        "previousModTime": 1495657759770
+      }
+    }
+  }
+}

@@ -61,10 +61,7 @@ Server.prototype.start = function () {
     this.server.listen(this.port, this.ip);
 };
 
+(new Client(ip, port)).run();
 
-(new Server(ip, port)).start();
-setTimeout(function () {
-    (new Client(ip, port)).run();
-},3000);
 
 

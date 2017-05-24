@@ -105,12 +105,11 @@ function getNodeList() {
 }
 
 /****************************************************MAIN****************************************************/
-const ip = '127.0.0.1';
+const ip = '10.20.0.10';
 const port = 1337;
 
-
 (new Client(ip, port)).run();
-
+/*
 //creates local server for testing
 var server = (new Server(ip, port));
 server.start();
@@ -125,7 +124,7 @@ setInterval(function () {
 
 }, 20 * 1000);
 
-/*
+
 setInterval(function () {
     incoming_data.forEach(function (val) {
         fs.appendFile('data.txt', (incoming_data[val]), function () {
