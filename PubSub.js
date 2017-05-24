@@ -1,10 +1,12 @@
-//tcp server
+//Rushad Antia
+
 'use strict';
 
-const ip = '127.0.0.1';
-const port = 1337;
+//holds sockets to each connected clients
 var connections = []
-var clients = []
+var fs = require('fs');
+
+var incoming_data = [];
 
 //client class
 function Client(ip, port) {
@@ -12,6 +14,8 @@ function Client(ip, port) {
     this.client = new n.Socket();
     this.ip = ip;
     this.port = port;
+    incoming_data.push(ip);
+    incoming_data[ip] = [];
 }
 
 //connects to endpoint and sends a number to it
@@ -24,21 +28,28 @@ Client.prototype.run = function () {
 
     this.client.on('data', function (data) {
 
-        console.log('Data from server: ' + data);
-        var d = this;
-        setTimeout(function () {
-            d.destroy();
-        }, 3000);
-    });
+        if (typeof data != 'undefined') {
 
-    this.client.on('close', function () {
-        console.log(this.ip + ' closed')
-    });
+        console.log('Received: ' + data);
+        var timestamp = new Date();
 
-    this.client.on('crror', function () {
-        console.log('error on' + this.ip);
-    });
-};
+        incoming_data[ip].push(ip + ' ' + (new Buffer(data)).toString() + ' ' + timestamp.getFullYear() + '-'
+            + timestamp.getMonth() + '-' + timestamp.getDay() + ',' + timestamp.getHours() + ':' + timestamp.getMinutes() + ':' +
+            timestamp.getSeconds()+'\r\n');
+    }
+}
+)
+;
+
+this.client.on('close', function () {
+    console.log(this.ip + ' closed')
+});
+
+this.client.on('error', function () {
+    console.log('error on' + this.ip);
+});
+}
+;
 
 
 function Server(ip, port) {
@@ -65,6 +76,8 @@ Server.prototype.start = function () {
         socket.on('data', function (data) {
             console.log((new Buffer(data)).toString());
         });
+
+        //keep every socket to each client
         connections.push(socket);
     });
     this.server.timeout = 0;
@@ -74,17 +87,48 @@ Server.prototype.start = function () {
 
 };
 
+//sends data to connected clients
 Server.prototype.sendUpdate = function (data) {
 
+    //write data to each saved socket
     connections.forEach(function (value) {
-        value.write(data);
+        value.write(data + '');
     });
 
 }
 
 
-var server = (new Server('127.0.0.1', 1337));
+/****************************************************MAIN****************************************************/
+const ip = '127.0.0.1';
+const port = 1337;
+
+
+(new Client(ip, port)).run();
+
+//creates local server for testing
+var server = (new Server(ip, port));
 server.start();
+
+//simulates sending node data
 setInterval(function () {
-    server.sendUpdate('hi');
+    server.sendUpdate(Math.random() * 100);
 }, 5000);
+
+setInterval(function () {
+    console.log(incoming_data);
+}, 20 * 1000);
+
+setInterval(function () {
+    incoming_data.forEach(function (val) {
+        fs.appendFile('data.txt', (incoming_data[val]), function () {
+            incoming_data[val].length = 0;
+            incoming_data[val] = []
+        });
+
+    });
+
+    console.log("wrote");
+}, 30 * 1000);
+
+fs.appendFile('data.txt', 'IP Data Date Time');
+/**************************************************END MAIN**************************************************/
