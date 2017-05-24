@@ -1,0 +1,17 @@
+Use net package like so 
+
+
+var net = require('net');
+
+var server = net.createServer(function(socket) {
+	socket.write('Echo server\r\n');
+	socket.pipe(socket);
+});
+
+server.listen(1337, '127.0.0.1');
+
+make every node a server by constantly listning for connections by using non-blocking
+eventemitter
+
+we can use toobusy https://hacks.mozilla.org/2013/01/building-a-node-js-server-that-wont-melt-a-node-js-holiday-season-part-5/
+to see if the node is too busy to accept data
