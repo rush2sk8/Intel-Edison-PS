@@ -1,8 +1,10 @@
 //tcp server
+'use strict';
 
 const ip = '127.0.0.1';
 const port = 1337;
-
+var connections = []
+var clients = []
 
 //client class
 function Client(ip, port) {
@@ -30,11 +32,11 @@ Client.prototype.run = function () {
     });
 
     this.client.on('close', function () {
-        console.log('local closed')
+        console.log(this.ip + ' closed')
     });
 
     this.client.on('crror', function () {
-       console.log('error on client');
+        console.log('error on' + this.ip);
     });
 };
 
@@ -50,22 +52,39 @@ Server.prototype.start = function () {
     var net = require('net');
 
     this.server = net.createServer(function (socket) {
-        socket.write('Server: ' + 60 + '\r\n');
-        socket.pipe(socket);
-        socket.on('error', function () {});
 
+        //write server ip to client
+        socket.write(this.ip + '');
+        socket.pipe(socket);
+
+        //ignore random errors
+        socket.on('error', function () {
+        });
+
+        //get data
         socket.on('data', function (data) {
             console.log((new Buffer(data)).toString());
         });
+        connections.push(socket);
     });
     this.server.timeout = 0;
+
+    //listen for incoming connections
     this.server.listen(this.port, this.ip);
+
 };
 
+Server.prototype.sendUpdate = function (data) {
 
-(new Server(ip, port)).start();
-setTimeout(function () {
-    (new Client(ip, port)).run();
-},3000);
+    connections.forEach(function (value) {
+        value.write(data);
+    });
+
+}
 
 
+var server = (new Server('127.0.0.1', 1337));
+server.start();
+setInterval(function () {
+    server.sendUpdate('hi');
+}, 5000);

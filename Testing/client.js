@@ -11,9 +11,7 @@ client.connect(1337, '127.0.0.1', function(){
 client.on('data', function(data){
 	
 	console.log('Data from server: ' + data);
-	setTimeout(function(){
-		client.destroy();
-	}, 3000);
+
  
 });
 client.on('close', function(){
