@@ -28,27 +28,24 @@ Client.prototype.run = function () {
 
     this.client.on('data', function (data) {
 
-        if (typeof data != 'undefined') {
+            if (typeof data != 'undefined') {
 
-       
-      
-       var rate = parseFloat((new Buffer(data)).toString());
-        clearInterval(intervalIDLed);
-         intervalIDLed = setInterval(writeLed, rate);
-    }
-}
-)
-;
 
-this.client.on('close', function () {
-    console.log(this.ip + ' closed');
-});
+                var rate = parseFloat((new Buffer(data)).toString());
+                clearInterval(intervalIDLed);
+                intervalIDLed = setInterval(writeLed, rate);
+            }
+        }
+    );
 
-this.client.on('error', function () {
-    console.log('error on' + this.ip);
-});
-}
-;
+    this.client.on('close', function () {
+        console.log(this.ip + ' closed');
+    });
+
+    this.client.on('error', function () {
+        console.log('error on' + this.ip);
+    });
+};
 
 
 function Server(ip, port) {
@@ -119,25 +116,23 @@ var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT);  // set the direction of the pin to OUPUT
 
 
-var BlinkNormalMs = 1000.0/5.0;
-var BlinkAlertMs = 1000.0/50.0;
+var BlinkNormalMs = 1000.0 / 5.0;
+var BlinkAlertMs = 1000.0 / 50.0;
 
-var analogIn ;
+var analogIn;
 var lightThreshold = 0.8;
 var lightSensorState = 1;  // 1 = above threshold, 0 = below
 
 // global variable for pin state
 var ledState = 0;
-function writeLed() 
-{
+function writeLed() {
     // toggle state of led
-    ledState = (ledPin.read()?0:1);
+    ledState = (ledPin.read() ? 0 : 1);
     // set led value
     ledPin.write(ledState);
 }
 
-intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
- 
+intervalIDLed = setInterval(writeLed, BlinkNormalMs);  // start the periodic read
 
 
 /**************************************************END MAIN**************************************************/
