@@ -1,13 +1,13 @@
 //Rushad Antia
 
-'use strict';
+"use strict";
 
 //holds sockets to each connected clients
 var connections = [];
 var fs = require('fs');
 
 var incoming_data = [];
-
+var intervalIDLed;
 //client class
 function Client(ip, port) {
     var n = require('net');
@@ -30,12 +30,11 @@ Client.prototype.run = function () {
 
         if (typeof data != 'undefined') {
 
-        console.log('Received: ' + data);
-        var timestamp = new Date();
-
-        incoming_data[ip].push(ip + ' ' + (new Buffer(data)).toString() + ' ' + timestamp.getFullYear() + '-'
-            + timestamp.getMonth() + '-' + timestamp.getDay() + ',' + timestamp.getHours() + ':' + timestamp.getMinutes() + ':' +
-            timestamp.getSeconds()+'\r\n');
+       
+      
+       var rate = parseFloat((new Buffer(data)).toString());
+        clearInterval(intervalIDLed);
+         intervalIDLed = setInterval(writeLed, rate);
     }
 }
 )
@@ -95,7 +94,7 @@ Server.prototype.sendUpdate = function (data) {
         value.write(data + '');
     });
 
-}
+};
 
 function getNodeList() {
     connections.forEach(function (sock) {
@@ -105,42 +104,40 @@ function getNodeList() {
 }
 
 /****************************************************MAIN****************************************************/
-const ip = '10.20.0.10';
+const ip = '10.20.0.11';
 const port = 1337;
 
 (new Client(ip, port)).run();
-/*
-//creates local server for testing
-var server = (new Server(ip, port));
-server.start();
-
-//simulates sending node data
-setInterval(function () {
-    server.sendUpdate(Math.random() * 100);
-}, 5000);
-
-setInterval(function () {
-    console.log(incoming_data);
-
-}, 20 * 1000);
 
 
-setInterval(function () {
-    incoming_data.forEach(function (val) {
-        fs.appendFile('data.txt', (incoming_data[val]), function () {
-            incoming_data[val].length = 0;
-            incoming_data[val] = []
-        });
+// MRAA, as per usual
+var mraa = require('mraa');
 
-    });
 
-    console.log("wrote");
-}, 30 * 1000);
+// Set up a digital output on MRAA pin 20 (GP12)
+var ledPin = new mraa.Gpio(20); // create an object for pin 20
+ledPin.dir(mraa.DIR_OUT);  // set the direction of the pin to OUPUT
 
-fs.appendFile('data.txt', 'IP Data Date Time\r\n\r\n');
 
-setTimeout(function () {
-    getNodeList();
-},10*1000);
-*/
+var BlinkNormalMs = 1000.0/5.0;
+var BlinkAlertMs = 1000.0/50.0;
+
+var analogIn ;
+var lightThreshold = 0.8;
+var lightSensorState = 1;  // 1 = above threshold, 0 = below
+
+// global variable for pin state
+var ledState = 0;
+function writeLed() 
+{
+    // toggle state of led
+    ledState = (ledPin.read()?0:1);
+    // set led value
+    ledPin.write(ledState);
+}
+
+intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
+
+
+
 /**************************************************END MAIN**************************************************/

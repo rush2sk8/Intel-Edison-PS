@@ -23,8 +23,8 @@
         "name": "EdisonClient.xdk"
       },
       "EdisonClient.xdke": {
-        "previousModTime": 1495658084467,
-        "modified": 1495658084467,
+        "previousModTime": 1495808245736,
+        "modified": 1495808245736,
         "seen": true,
         "name": "EdisonClient.xdke"
       },
@@ -41,8 +41,8 @@
         "name": "LICENSE.md"
       },
       "main.js": {
-        "previousModTime": 1495657806682,
-        "modified": 1495657806682,
+        "previousModTime": 1495729113972,
+        "modified": 1495729113972,
         "seen": true,
         "name": "main.js"
       },
@@ -65,6 +65,25 @@
         "name": "xdk/project-info.json"
       }
     },
-    "boardFileStatus": {}
+    "boardFileStatus": {
+      "icon.png": {
+        "previousModTime": 1495808262142
+      },
+      "LICENSE.md": {
+        "previousModTime": 1495808262142
+      },
+      "main.js": {
+        "previousModTime": 1495808262142
+      },
+      "package.json": {
+        "previousModTime": 1495808262142
+      },
+      "README.md": {
+        "previousModTime": 1495808262142
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1495808262142
+      }
+    }
   }
 }
