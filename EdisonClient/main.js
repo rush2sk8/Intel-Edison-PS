@@ -137,7 +137,7 @@ function writeLed()
 }
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
-
+ 
 
 
 /**************************************************END MAIN**************************************************/

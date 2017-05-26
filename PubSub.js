@@ -9,11 +9,12 @@ var fs = require('fs');
 var incoming_data = [];
 
 //client class
-function Client(ip, port) {
+function Client(ip, port, func) {
     var n = require('net');
     this.client = new n.Socket();
     this.ip = ip;
     this.port = port;
+    this.func = func;
     incoming_data.push(ip);
     incoming_data[ip] = [];
 }
@@ -26,28 +27,15 @@ Client.prototype.run = function () {
         this.write('' + Math.random());
     });
 
-    this.client.on('data', function (data) {
+    this.client.on('data', this.func);
 
-        if (typeof data != 'undefined') {
+    this.client.on('close', function () {
+        console.log(this.ip + ' closed')
+    });
 
-        console.log('Received: ' + data);
-        var timestamp = new Date();
-
-        incoming_data[ip].push(ip + ' ' + (new Buffer(data)).toString() + ' ' + timestamp.getFullYear() + '-'
-            + timestamp.getMonth() + '-' + timestamp.getDay() + ',' + timestamp.getHours() + ':' + timestamp.getMinutes() + ':' +
-            timestamp.getSeconds()+'\r\n');
-    }
-}
-)
-;
-
-this.client.on('close', function () {
-    console.log(this.ip + ' closed')
-});
-
-this.client.on('error', function () {
-    console.log('error on' + this.ip);
-});
+    this.client.on('error', function () {
+        console.log('error on' + this.ip);
+    });
 }
 ;
 
@@ -109,7 +97,20 @@ const ip = '127.0.0.1';
 const port = 1337;
 
 
-(new Client(ip, port)).run();
+var func = function (data) {
+
+    if (typeof data != 'undefined') {
+
+        console.log('Received: ' + data);
+        var timestamp = new Date();
+
+        incoming_data[ip].push(ip + ' ' + (new Buffer(data)).toString() + ' ' + timestamp.getFullYear() + '-'
+            + timestamp.getMonth() + '-' + timestamp.getDay() + ',' + timestamp.getHours() + ':' + timestamp.getMinutes() + ':' +
+            timestamp.getSeconds() + '\r\n');
+    }
+};
+
+(new Client(ip, port,func)).run();
 
 //creates local server for testing
 var server = (new Server(ip, port));
@@ -125,23 +126,24 @@ setInterval(function () {
 
 }, 20 * 1000);
 
+
 /*
-setInterval(function () {
-    incoming_data.forEach(function (val) {
-        fs.appendFile('data.txt', (incoming_data[val]), function () {
-            incoming_data[val].length = 0;
-            incoming_data[val] = []
-        });
+ setInterval(function () {
+ incoming_data.forEach(function (val) {
+ fs.appendFile('data.txt', (incoming_data[val]), function () {
+ incoming_data[val].length = 0;
+ incoming_data[val] = []
+ });
 
-    });
+ });
 
-    console.log("wrote");
-}, 30 * 1000);
+ console.log("wrote");
+ }, 30 * 1000);
 
-fs.appendFile('data.txt', 'IP Data Date Time\r\n\r\n');
+ fs.appendFile('data.txt', 'IP Data Date Time\r\n\r\n');
 
-setTimeout(function () {
-    getNodeList();
-},10*1000);
-*/
+ setTimeout(function () {
+ getNodeList();
+ },10*1000);
+ */
 /**************************************************END MAIN**************************************************/
