@@ -37,9 +37,7 @@ Client.prototype.run = function () {
             + timestamp.getMonth() + '-' + timestamp.getDay() + ',' + timestamp.getHours() + ':' + timestamp.getMinutes() + ':' +
             timestamp.getSeconds()+'\r\n');
     }
-}
-)
-;
+});
 
 this.client.on('close', function () {
     console.log(this.ip + ' closed')
@@ -48,15 +46,14 @@ this.client.on('close', function () {
 this.client.on('error', function () {
     console.log('error on' + this.ip);
 });
-}
-;
+};
 
 function Server(ip, port) {
     this.ip = ip;
     this.port = port;
     this.server;
-
 }
+
 //starts listening for connections
 Server.prototype.start = function () {
     var net = require('net');
@@ -225,6 +222,4 @@ function writeLed()
 intervalIDLightSensor = setInterval(readLightSensor, 500) ;  // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
  
-
-
 /**************************************************END MAIN**************************************************/
