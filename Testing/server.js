@@ -6,13 +6,14 @@ var fs = require('fs');
 
 
 //client class
-function Client(ip, port) {
+function Client(ip, port, dataHandler) {
     var n = require('net');
     this.client = new n.Socket();
-
+    this.connHN = '';
     this.ip = ip;
     this.port = port;
     this.log = []
+    this.dh = dataHandler;
 }
 
 //connects to endpoint and sends a number to it
@@ -23,27 +24,31 @@ Client.prototype.run = function () {
 
     });
 
-    this.client.on('data', function (data) {
+
+    this.client.on('data', this.dh);
+    /*function (data) {
 
         if (data !== undefined) {
 
             console.log('Received: ' + data);
 
         }
-    });
+    });*/
 
-
+    //handles when the connection closes
     this.client.on('close', function () {
         console.log(this.ip + ' closed')
     });
 
+    //handles errors
     this.client.on('error', function () {
         console.log('error on' + this.ip);
     });
 
-
 };
 
+
+//server class
 function Server(ip, port) {
     this.ip = ip;
     this.port = port;
@@ -56,16 +61,15 @@ function Server(ip, port) {
 //starts listening for connections
 Server.prototype.start = function () {
     var net = require('net');
+    var that = this;
 
     this.server = net.createServer(function (socket) {
 
         //write server ip to client
-        socket.write(this.ip + '');
-        socket.pipe(socket);
+        socket.write(that.ip + '');
 
         //ignore random errors
-        socket.on('error', function () {
-        });
+        socket.on('error', function () {});
 
         //get data
         socket.on('data', function (data) {
@@ -86,9 +90,7 @@ Server.prototype.start = function () {
 
 //sends data to connected clients
 Server.prototype.sendUpdate = function (data) {
-    var s = this.seqnum;
-    const h = this.hostname;
-    const l = this.log;
+    var that = this;
 
     //write data to each saved socket
     connections.forEach(function (value) {
@@ -99,23 +101,23 @@ Server.prototype.sendUpdate = function (data) {
             const start = process.hrtime();
 
             //write data to end device
-            value.write(s + ':' + data + '');
+            value.write(that.seqnum + ':' + data + '');
 
             //calculate tx time
             const timetaken = process.hrtime(start);
 
             //data to stringify
             const logData = {
-                'txnode id': h,
+                'txnode id': that.hostname,
                 'sensorid': value.address().address,
-                'seqnum': s,
+                'seqnum': that.seqnum,
                 'tx event time': timetaken
             };
 
             console.log(logData);
 
             //store that data in an array
-            l.push(JSON.stringify(logData));
+            that.log.push(JSON.stringify(logData));
         }
         //if its dead then remove it so we dont keep transmitting to a closed connection
         else{
@@ -130,10 +132,12 @@ Server.prototype.sendUpdate = function (data) {
     this.seqnum++;
 };
 
+//gets the data log
 Server.prototype.getLog = function () {
     return this.log;
 };
 
+//removes data element from the log
 Server.prototype.deleteFromLog = function (toRemove) {
     const i = this.log.indexOf(toRemove);
     if (i != -1) {
@@ -141,6 +145,16 @@ Server.prototype.deleteFromLog = function (toRemove) {
     }
 };
 
+Server.prototype.writeLogToFile = function (filename) {
+    var that = this;
+    this.log.forEach(function (data) {
+        fs.appendFile(filename, data+'\r\n', function () {
+            that.deleteFromLog(data);
+        })
+    });
+};
+
+//returns list of connected devices
 function getNodeList() {
     connections.forEach(function (sock) {
         console.log(connections);
@@ -159,13 +173,7 @@ setInterval(function () {
 }, 1000);
 
 setInterval(function () {
-    var d = server.getLog();
-    d.forEach(function (p) {
-        fs.appendFile('data.txt', p + '\r\n', function () {
-            server.deleteFromLog(p);
-        });
-    })
-
+  server.writeLogToFile('txlog.txt');
 }, 5000);
 
 

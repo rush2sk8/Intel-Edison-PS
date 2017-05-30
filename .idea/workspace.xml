@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Testing/data.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/client.js" afterPath="$PROJECT_DIR$/Testing/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/data.txt" afterPath="$PROJECT_DIR$/Testing/data.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/server.js" afterPath="$PROJECT_DIR$/Testing/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -24,11 +24,15 @@
             <file leaf-file-name="client.js" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/Testing/client.js">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="204">
-                    <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+                  <state relative-caret-position="412">
+                    <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
                     <folding>
-                      <element signature="e#1050#1659#0" expanded="false" />
-                      <element signature="e#2760#2784#0" expanded="false" />
+                      <element signature="e#610#720#0" expanded="false" />
+                      <element signature="n#!!block;n#Server#0" expanded="false" />
+                      <element signature="e#1235#1836#0" expanded="false" />
+                      <element signature="e#1919#3038#0" expanded="false" />
+                      <element signature="e#3099#3123#0" expanded="false" />
+                      <element signature="e#3215#3316#0" expanded="false" />
                       <element signature="n#!!block;n#getNodeList#0" expanded="false" />
                     </folding>
                   </state>
@@ -46,13 +50,14 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+            <state relative-caret-position="1741">
+              <caret line="175" column="30" lean-forward="false" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
               <folding>
+                <element signature="e#529#651#0" expanded="false" />
                 <element signature="n#!!block;n#Server#0" expanded="false" />
-                <element signature="e#1010#1619#0" expanded="false" />
-                <element signature="e#2875#2899#0" expanded="false" />
-                <element signature="e#2955#3056#0" expanded="false" />
+                <element signature="e#1166#1758#0" expanded="false" />
+                <element signature="e#3016#3040#0" expanded="false" />
+                <element signature="e#3132#3233#0" expanded="false" />
                 <element signature="n#!!block;n#getNodeList#0" expanded="false" />
               </folding>
             </state>
@@ -77,8 +82,8 @@
         <option value="$PROJECT_DIR$/EdisonServer/main.js" />
         <option value="$PROJECT_DIR$/PubSub.js" />
         <option value="$PROJECT_DIR$/EdisonClient/main.js" />
-        <option value="$PROJECT_DIR$/Testing/client.js" />
         <option value="$PROJECT_DIR$/Testing/server.js" />
+        <option value="$PROJECT_DIR$/Testing/client.js" />
       </list>
     </option>
   </component>
@@ -89,6 +94,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+    <option name="x" value="1280" />
     <option name="width" value="1280" />
     <option name="height" value="1400" />
   </component>
@@ -225,15 +231,15 @@
       <workItem from="1495635803425" duration="15104000" />
       <workItem from="1495808735084" duration="1110000" />
       <workItem from="1495821129956" duration="1189000" />
-      <workItem from="1496158839275" duration="6563000" />
+      <workItem from="1496158839275" duration="9069000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23966000" />
+    <option name="totallyTimeSpent" value="26472000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
+    <frame x="1280" y="0" width="1280" height="1400" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -404,27 +410,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/client.js">
+    <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="21" lean-forward="false" selection-start-line="12" selection-start-column="21" selection-end-line="12" selection-end-column="21" />
+        <state relative-caret-position="1741">
+          <caret line="175" column="30" lean-forward="false" selection-start-line="175" selection-start-column="30" selection-end-line="175" selection-end-column="30" />
           <folding>
-            <element signature="e#1050#1659#0" expanded="false" />
-            <element signature="e#2760#2784#0" expanded="false" />
+            <element signature="e#529#651#0" expanded="false" />
+            <element signature="n#!!block;n#Server#0" expanded="false" />
+            <element signature="e#1166#1758#0" expanded="false" />
+            <element signature="e#3016#3040#0" expanded="false" />
+            <element signature="e#3132#3233#0" expanded="false" />
             <element signature="n#!!block;n#getNodeList#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/server.js">
+    <entry file="file://$PROJECT_DIR$/Testing/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state relative-caret-position="412">
+          <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
           <folding>
+            <element signature="e#610#720#0" expanded="false" />
             <element signature="n#!!block;n#Server#0" expanded="false" />
-            <element signature="e#1010#1619#0" expanded="false" />
-            <element signature="e#2875#2899#0" expanded="false" />
-            <element signature="e#2955#3056#0" expanded="false" />
+            <element signature="e#1235#1836#0" expanded="false" />
+            <element signature="e#1919#3038#0" expanded="false" />
+            <element signature="e#3099#3123#0" expanded="false" />
+            <element signature="e#3215#3316#0" expanded="false" />
             <element signature="n#!!block;n#getNodeList#0" expanded="false" />
           </folding>
         </state>
