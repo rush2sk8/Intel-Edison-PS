@@ -11,7 +11,6 @@ function Client(ip, port) {
     this.client = new n.Socket();
     this.ip = ip;
     this.port = port;
-    incoming_data.push(ip);
     incoming_data[ip] = [];
 }
 

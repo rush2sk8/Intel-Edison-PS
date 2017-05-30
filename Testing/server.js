@@ -3,16 +3,16 @@
 //holds sockets to each connected clients
 var connections = []
 var fs = require('fs');
-var incoming_data = [];
+
 
 //client class
 function Client(ip, port) {
     var n = require('net');
     this.client = new n.Socket();
+
     this.ip = ip;
     this.port = port;
-    incoming_data.push(ip);
-    incoming_data[ip] = [];
+    this.log = []
 }
 
 //connects to endpoint and sends a number to it
@@ -25,7 +25,7 @@ Client.prototype.run = function () {
 
     this.client.on('data', function (data) {
 
-        if (typeof data != 'undefined') {
+        if (data !== undefined) {
 
             console.log('Received: ' + data);
 
@@ -89,7 +89,6 @@ Server.prototype.sendUpdate = function (data) {
     var s = this.seqnum;
     const h = this.hostname;
     const l = this.log;
-    console.log(s);
 
     //write data to each saved socket
     connections.forEach(function (value) {
@@ -99,8 +98,13 @@ Server.prototype.sendUpdate = function (data) {
 
             const start = process.hrtime();
 
+            //write data to end device
             value.write(s + ':' + data + '');
+
+            //calculate tx time
             const timetaken = process.hrtime(start);
+
+            //data to stringify
             const logData = {
                 'txnode id': h,
                 'sensorid': value.address().address,
@@ -109,6 +113,8 @@ Server.prototype.sendUpdate = function (data) {
             };
 
             console.log(logData);
+
+            //store that data in an array
             l.push(JSON.stringify(logData));
         }
         //if its dead then remove it so we dont keep transmitting to a closed connection
@@ -120,6 +126,7 @@ Server.prototype.sendUpdate = function (data) {
         }
     });
 
+    //increment packet number
     this.seqnum++;
 };
 
