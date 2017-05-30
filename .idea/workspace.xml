@@ -2,9 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonClient/EdisonClient.xdke" afterPath="$PROJECT_DIR$/EdisonClient/EdisonClient.xdke" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonClient/main.js" afterPath="$PROJECT_DIR$/EdisonClient/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonServer/EdisonServer.xdke" afterPath="$PROJECT_DIR$/EdisonServer/EdisonServer.xdke" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonServer/main.js" afterPath="$PROJECT_DIR$/EdisonServer/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub.js" afterPath="$PROJECT_DIR$/PubSub.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/client.js" afterPath="$PROJECT_DIR$/Testing/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/server.js" afterPath="$PROJECT_DIR$/Testing/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -46,14 +49,11 @@
       <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PubSub.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+            <state relative-caret-position="459">
+              <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
               <folding>
                 <element signature="n#!!block;n#Client#0" expanded="false" />
-                <element signature="e#529#1664#0" expanded="false" />
                 <element signature="e#1303#1413#0" expanded="false" />
-                <element signature="e#1707#1731#0" expanded="false" />
-                <element signature="e#1787#1888#0" expanded="false" />
                 <element signature="e#1944#2125#0" expanded="false" />
                 <element signature="n#!!block;n#Server#0" expanded="false" />
                 <element signature="e#2342#2943#0" expanded="false" />
@@ -251,12 +251,12 @@
       <workItem from="1495635803425" duration="15104000" />
       <workItem from="1495808735084" duration="1110000" />
       <workItem from="1495821129956" duration="1189000" />
-      <workItem from="1496158839275" duration="13525000" />
+      <workItem from="1496158839275" duration="15364000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30928000" />
+    <option name="totallyTimeSpent" value="32767000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
@@ -314,7 +314,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="5" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -341,10 +341,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#529#1664#0" expanded="false" />
             <element signature="e#1303#1413#0" expanded="false" />
-            <element signature="e#1707#1731#0" expanded="false" />
-            <element signature="e#1787#1888#0" expanded="false" />
             <element signature="e#1944#2125#0" expanded="false" />
             <element signature="n#!!block;n#Server#0" expanded="false" />
             <element signature="e#2342#2943#0" expanded="false" />
@@ -379,10 +376,7 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#529#1664#0" expanded="false" />
             <element signature="e#1303#1413#0" expanded="false" />
-            <element signature="e#1707#1731#0" expanded="false" />
-            <element signature="e#1787#1888#0" expanded="false" />
             <element signature="e#1944#2125#0" expanded="false" />
             <element signature="n#!!block;n#Server#0" expanded="false" />
             <element signature="e#2342#2943#0" expanded="false" />
@@ -493,14 +487,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="16" lean-forward="false" selection-start-line="0" selection-start-column="16" selection-end-line="0" selection-end-column="16" />
+        <state relative-caret-position="459">
+          <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
           <folding>
             <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#529#1664#0" expanded="false" />
             <element signature="e#1303#1413#0" expanded="false" />
-            <element signature="e#1707#1731#0" expanded="false" />
-            <element signature="e#1787#1888#0" expanded="false" />
             <element signature="e#1944#2125#0" expanded="false" />
             <element signature="n#!!block;n#Server#0" expanded="false" />
             <element signature="e#2342#2943#0" expanded="false" />
