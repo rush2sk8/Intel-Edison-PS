@@ -23,7 +23,7 @@ Client.prototype.run = function () {
 
     this.client.connect(this.port, this.ip, function () {
 
-        this.write('' + Math.random());
+        
     });
 
     this.client.on('data', function (data) {
@@ -57,6 +57,7 @@ function Server(ip, port) {
     this.server;
 
 }
+
 //starts listening for connections
 Server.prototype.start = function () {
     var net = require('net');
