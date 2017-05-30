@@ -28,9 +28,20 @@ Client.prototype.run = function () {
 
     this.client.on('data', function (data) {
 
+<<<<<<< HEAD
             if (typeof data != 'undefined') {
+=======
+        if (typeof data != 'undefined') {
+
+        var rate = parseFloat((new Buffer(data)).toString());
+        clearInterval(intervalIDLed);
+        intervalIDLed = setInterval(writeLed, rate);
+    }
+});
+>>>>>>> origin/master
 
 
+<<<<<<< HEAD
                 var rate = parseFloat((new Buffer(data)).toString());
                 clearInterval(intervalIDLed);
                 intervalIDLed = setInterval(writeLed, rate);
@@ -45,6 +56,11 @@ Client.prototype.run = function () {
     this.client.on('error', function () {
         console.log('error on' + this.ip);
     });
+=======
+this.client.on('error', function () {
+    console.log('error on' + this.ip);
+});
+>>>>>>> origin/master
 };
 
 
@@ -52,8 +68,8 @@ function Server(ip, port) {
     this.ip = ip;
     this.port = port;
     this.server;
-
 }
+
 //starts listening for connections
 Server.prototype.start = function () {
     var net = require('net');
