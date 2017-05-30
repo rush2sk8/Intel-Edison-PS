@@ -1,9 +1,10 @@
 'use strict';
+//TODO JSDOC add push button to affect all the other
 
 //holds sockets to each connected clients
 var connections = []
 var fs = require('fs');
-
+const hostname = require('os').hostname();
 
 //client class
 function Client(ip, port, dataHandler) {
@@ -18,22 +19,41 @@ function Client(ip, port, dataHandler) {
 
 //connects to endpoint and sends a number to it
 Client.prototype.run = function () {
-
+    var that = this;
     this.client.connect(this.port, this.ip, function () {
-
 
     });
 
 
-    this.client.on('data', this.dh);
+    this.client.on('data', function (data) {
+        const stringData = (new Buffer(data)).toString();
+        const dataArray = stringData.split(':');
+
+        //if non formatted data or hostname data is received dont log it
+        if (dataArray.length > 1) {
+            const logData = {
+                'rxnode id': hostname,
+                'rxnode ip': ip,
+                'rxtime': (new Date()),
+                'seqnum': dataArray[0],
+                'data': dataArray[1]
+            };
+
+            that.log.push(JSON.stringify(logData));
+            console.log(logData);
+
+            if (that.dh !== undefined)
+                that.dh(stringData);
+        }
+    });
     /*function (data) {
 
-        if (data !== undefined) {
+     if (data !== undefined) {
 
-            console.log('Received: ' + data);
+     console.log('Received: ' + data);
 
-        }
-    });*/
+     }
+     });*/
 
     //handles when the connection closes
     this.client.on('close', function () {
@@ -47,13 +67,31 @@ Client.prototype.run = function () {
 
 };
 
+Client.prototype.getRXLog = function () {
+    return this.log;
+};
+
+Client.prototype.deleteFromLog = function (toRemove) {
+    const i = this.log.indexOf(toRemove);
+    if (i != -1) {
+        this.log.splice(i, 1);
+    }
+}
+
+Client.prototype.writeLogToFile = function (filename) {
+    var that = this;
+    this.log.forEach(function (data) {
+        fs.appendFile(filename, data + '\r\n', function () {
+            that.deleteFromLog(data);
+        })
+    });
+};
 
 //server class
 function Server(ip, port) {
     this.ip = ip;
     this.port = port;
     this.server;
-    this.hostname = require('os').hostname();
     this.seqnum = 0;
     this.log = []
 }
@@ -69,7 +107,8 @@ Server.prototype.start = function () {
         socket.write(that.ip + '');
 
         //ignore random errors
-        socket.on('error', function () {});
+        socket.on('error', function () {
+        });
 
         //get data
         socket.on('data', function (data) {
@@ -108,7 +147,7 @@ Server.prototype.sendUpdate = function (data) {
 
             //data to stringify
             const logData = {
-                'txnode id': that.hostname,
+                'txnode id': hostname,
                 'sensorid': value.address().address,
                 'seqnum': that.seqnum,
                 'tx event time': timetaken
@@ -120,10 +159,10 @@ Server.prototype.sendUpdate = function (data) {
             that.log.push(JSON.stringify(logData));
         }
         //if its dead then remove it so we dont keep transmitting to a closed connection
-        else{
-           const i = connections.indexOf(value);
-           if(i != -1)
-               connections.splice(i, 1);
+        else {
+            const i = connections.indexOf(value);
+            if (i != -1)
+                connections.splice(i, 1);
 
         }
     });
@@ -133,7 +172,7 @@ Server.prototype.sendUpdate = function (data) {
 };
 
 //gets the data log
-Server.prototype.getLog = function () {
+Server.prototype.getTXLog = function () {
     return this.log;
 };
 
@@ -148,7 +187,7 @@ Server.prototype.deleteFromLog = function (toRemove) {
 Server.prototype.writeLogToFile = function (filename) {
     var that = this;
     this.log.forEach(function (data) {
-        fs.appendFile(filename, data+'\r\n', function () {
+        fs.appendFile(filename, data + '\r\n', function () {
             that.deleteFromLog(data);
         })
     });
@@ -161,7 +200,6 @@ function getNodeList() {
     });
 }
 
-
 const ip = '127.0.0.1';
 const port = 1337;
 
@@ -173,7 +211,7 @@ setInterval(function () {
 }, 1000);
 
 setInterval(function () {
-  server.writeLogToFile('txlog.txt');
+    server.writeLogToFile('tx.log');
 }, 5000);
 
 
