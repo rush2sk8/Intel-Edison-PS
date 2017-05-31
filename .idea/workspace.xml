@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonClient/EdisonClient.xdke" afterPath="$PROJECT_DIR$/EdisonClient/EdisonClient.xdke" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonClient/main.js" afterPath="$PROJECT_DIR$/EdisonClient/main.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonServer/EdisonServer.xdke" afterPath="$PROJECT_DIR$/EdisonServer/EdisonServer.xdke" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EdisonServer/main.js" afterPath="$PROJECT_DIR$/EdisonServer/main.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub.js" afterPath="$PROJECT_DIR$/PubSub.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/client.js" afterPath="$PROJECT_DIR$/Testing/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/server.js" afterPath="$PROJECT_DIR$/Testing/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -25,22 +22,14 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+            <state relative-caret-position="1756">
+              <caret line="262" column="24" lean-forward="false" selection-start-line="262" selection-start-column="24" selection-end-line="262" selection-end-column="24" />
               <folding>
-                <element signature="n#!!block;n#Client#0" expanded="false" />
-                <element signature="e#510#1645#0" expanded="false" />
-                <element signature="e#1284#1394#0" expanded="false" />
-                <element signature="e#1688#1712#0" expanded="false" />
-                <element signature="e#1768#1869#0" expanded="false" />
-                <element signature="e#1925#2106#0" expanded="false" />
-                <element signature="n#!!block;n#Server#0" expanded="false" />
-                <element signature="e#2323#2924#0" expanded="false" />
-                <element signature="e#3007#4121#0" expanded="false" />
-                <element signature="e#4184#4208#0" expanded="false" />
-                <element signature="e#4300#4401#0" expanded="false" />
-                <element signature="e#4458#4639#0" expanded="false" />
-                <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+                <element signature="n#!!doc;n#Client#0" expanded="false" />
+                <element signature="e#703#959#0" expanded="false" />
+                <element signature="e#1023#1102#0" expanded="false" />
+                <element signature="e#1153#1240#0" expanded="false" />
+                <element signature="e#1284#2171#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -49,19 +38,14 @@
       <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PubSub.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+            <state relative-caret-position="-324">
+              <caret line="79" column="41" lean-forward="false" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
               <folding>
-                <element signature="n#!!block;n#Client#0" expanded="false" />
-                <element signature="e#1303#1413#0" expanded="false" />
-                <element signature="e#1944#2125#0" expanded="false" />
-                <element signature="n#!!block;n#Server#0" expanded="false" />
-                <element signature="e#2342#2943#0" expanded="false" />
-                <element signature="e#3026#4140#0" expanded="false" />
-                <element signature="e#4203#4227#0" expanded="false" />
-                <element signature="e#4319#4420#0" expanded="false" />
-                <element signature="e#4477#4658#0" expanded="false" />
-                <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+                <element signature="n#!!doc;n#Client#0" expanded="false" />
+                <element signature="e#703#959#0" expanded="false" />
+                <element signature="e#1023#1102#0" expanded="false" />
+                <element signature="e#1153#1240#0" expanded="false" />
+                <element signature="e#1284#2171#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -70,16 +54,14 @@
       <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Testing/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1049">
-              <caret line="209" column="25" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="209" selection-end-column="25" />
+            <state relative-caret-position="1229">
+              <caret line="266" column="0" lean-forward="false" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
               <folding>
-                <element signature="e#1284#1394#0" expanded="false" />
-                <element signature="e#2323#2924#0" expanded="false" />
-                <element signature="e#3007#4121#0" expanded="false" />
-                <element signature="e#4184#4208#0" expanded="false" />
-                <element signature="e#4300#4401#0" expanded="false" />
-                <element signature="e#4458#4639#0" expanded="false" />
-                <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+                <element signature="n#!!doc;n#Client#0" expanded="false" />
+                <element signature="e#703#959#0" expanded="false" />
+                <element signature="e#1023#1102#0" expanded="false" />
+                <element signature="e#1153#1240#0" expanded="false" />
+                <element signature="e#1284#2171#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -92,6 +74,7 @@
       <find>recie</find>
       <find>Rec</find>
       <find>seqnum</find>
+      <find>connections</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -118,9 +101,25 @@
     <option name="width" value="1280" />
     <option name="height" value="1400" />
   </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>AngularJS</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -133,30 +132,15 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Intel-Edison-PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Intel-Edison-PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="HbShouldOpenHtmlAsHb" value="" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -241,6 +225,9 @@
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="" />
@@ -252,11 +239,12 @@
       <workItem from="1495808735084" duration="1110000" />
       <workItem from="1495821129956" duration="1189000" />
       <workItem from="1496158839275" duration="15364000" />
+      <workItem from="1496236014949" duration="4374000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32767000" />
+    <option name="totallyTimeSpent" value="37141000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
@@ -265,12 +253,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997677" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997677" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -319,6 +307,48 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Testing/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PubSub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+          <folding>
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1955">
+          <caret line="209" column="25" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="209" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/EdisonClient/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -340,16 +370,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#1303#1413#0" expanded="false" />
-            <element signature="e#1944#2125#0" expanded="false" />
-            <element signature="n#!!block;n#Server#0" expanded="false" />
-            <element signature="e#2342#2943#0" expanded="false" />
-            <element signature="e#3026#4140#0" expanded="false" />
-            <element signature="e#4203#4227#0" expanded="false" />
-            <element signature="e#4319#4420#0" expanded="false" />
-            <element signature="e#4477#4658#0" expanded="false" />
-            <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -375,16 +400,11 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#1303#1413#0" expanded="false" />
-            <element signature="e#1944#2125#0" expanded="false" />
-            <element signature="n#!!block;n#Server#0" expanded="false" />
-            <element signature="e#2342#2943#0" expanded="false" />
-            <element signature="e#3026#4140#0" expanded="false" />
-            <element signature="e#4203#4227#0" expanded="false" />
-            <element signature="e#4319#4420#0" expanded="false" />
-            <element signature="e#4477#4658#0" expanded="false" />
-            <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -449,57 +469,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1049">
-          <caret line="209" column="25" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="209" selection-end-column="25" />
+        <state relative-caret-position="1229">
+          <caret line="266" column="0" lean-forward="false" selection-start-line="266" selection-start-column="0" selection-end-line="266" selection-end-column="0" />
           <folding>
-            <element signature="e#1284#1394#0" expanded="false" />
-            <element signature="e#2323#2924#0" expanded="false" />
-            <element signature="e#3007#4121#0" expanded="false" />
-            <element signature="e#4184#4208#0" expanded="false" />
-            <element signature="e#4300#4401#0" expanded="false" />
-            <element signature="e#4458#4639#0" expanded="false" />
-            <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+        <state relative-caret-position="1756">
+          <caret line="262" column="24" lean-forward="false" selection-start-line="262" selection-start-column="24" selection-end-line="262" selection-end-column="24" />
           <folding>
-            <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#510#1645#0" expanded="false" />
-            <element signature="e#1284#1394#0" expanded="false" />
-            <element signature="e#1688#1712#0" expanded="false" />
-            <element signature="e#1768#1869#0" expanded="false" />
-            <element signature="e#1925#2106#0" expanded="false" />
-            <element signature="n#!!block;n#Server#0" expanded="false" />
-            <element signature="e#2323#2924#0" expanded="false" />
-            <element signature="e#3007#4121#0" expanded="false" />
-            <element signature="e#4184#4208#0" expanded="false" />
-            <element signature="e#4300#4401#0" expanded="false" />
-            <element signature="e#4458#4639#0" expanded="false" />
-            <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+        <state relative-caret-position="-324">
+          <caret line="79" column="41" lean-forward="false" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
           <folding>
-            <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#1303#1413#0" expanded="false" />
-            <element signature="e#1944#2125#0" expanded="false" />
-            <element signature="n#!!block;n#Server#0" expanded="false" />
-            <element signature="e#2342#2943#0" expanded="false" />
-            <element signature="e#3026#4140#0" expanded="false" />
-            <element signature="e#4203#4227#0" expanded="false" />
-            <element signature="e#4319#4420#0" expanded="false" />
-            <element signature="e#4477#4658#0" expanded="false" />
-            <element signature="n#!!block;n#getNodeList#0" expanded="false" />
+            <element signature="n#!!doc;n#Client#0" expanded="false" />
+            <element signature="e#703#959#0" expanded="false" />
+            <element signature="e#1023#1102#0" expanded="false" />
+            <element signature="e#1153#1240#0" expanded="false" />
+            <element signature="e#1284#2171#0" expanded="false" />
           </folding>
         </state>
       </provider>
