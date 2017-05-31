@@ -17,8 +17,8 @@
         "name": ".gitignore"
       },
       "Client.js": {
-        "previousModTime": 1496262484495,
-        "modified": 1496262484495,
+        "previousModTime": 1496262721121,
+        "modified": 1496262721121,
         "seen": true,
         "name": "Client.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1496262498628,
-        "modified": 1496262498628,
+        "previousModTime": 1496262772880,
+        "modified": 1496262772880,
         "seen": true,
         "name": "PubSub.xdke"
       },
