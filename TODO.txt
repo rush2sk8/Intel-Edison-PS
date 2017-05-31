@@ -1,0 +1,4 @@
+add push button
+add automatic reconnect
+add max array sizecheck so they dont crash
+add commands that each node can send other nodes

@@ -63,11 +63,13 @@ Client.prototype.run = function () {
         //converts TCP stream data to a string
         const stringData = (new Buffer(data)).toString();
 
+        console.log('recieved: '+ stringData);
+        
         //splits the data at the :
         const dataArray = stringData.split(':');
 
         //if non formatted data or hostname data is received dont log it
-        if (dataArray.length > 1) {
+        if (dataArray.length == 2) {
             const logData = {
                 'rxnode id': hostname,
                 'rxnode ip': ip,
@@ -79,12 +81,14 @@ Client.prototype.run = function () {
             //push the data to out log
             that.log.push(JSON.stringify(logData));
 
-            //log the data to the screen
-            console.log(logData);
-
             //if the user defined a handler function send the string data to the function
             if (that.dh !== undefined)
                 that.dh(stringData);
+        }
+        //otherwise its a command
+        else{
+        
+            console.log('recieved: '+ stringData);
         }
     });
 
@@ -198,7 +202,7 @@ Server.prototype.start = function () {
     this.server = net.createServer(function (socket) {
 
         //write server hostname to client
-        socket.write(hostname + ':');
+        socket.write(hostname);
 
         //ignore random errors
         socket.on('error', function () {
@@ -210,7 +214,7 @@ Server.prototype.start = function () {
         });
 
         //keep every socket to each client
-        connections.push(socket);
+        that.connections.push(socket);
     });
 
     //
@@ -238,7 +242,7 @@ Server.prototype.sendUpdate = function (data) {
     var that = this;
 
     //write data to each saved socket
-    connections.forEach(function (value) {
+    this.connections.forEach(function (value) {
 
         //check if the socket is still alive
         if (value.address().address !== undefined) {
@@ -341,6 +345,7 @@ Server.prototype.writeLogToFile = function (filename) {
         })
     });
 };
+
 
 
 /****************************************************MAIN****************************************************/

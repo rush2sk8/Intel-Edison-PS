@@ -1,0 +1,107 @@
+{
+  "project": {
+    "projectSettingsVersion": "3.0.0",
+    "currentBuildConfiguration": null,
+    "projectFiles": {},
+    "projectDirectories": {}
+  },
+  "editorTab": {
+    "currentEditorMode": 0
+  },
+  "iot-tab": {
+    "fileStatus": {
+      ".gitignore": {
+        "previousModTime": 1496246140429,
+        "modified": 1496246140429,
+        "seen": true,
+        "name": ".gitignore"
+      },
+      "client.js": {
+        "previousModTime": 1496246281086,
+        "modified": 1496246281086,
+        "seen": true,
+        "name": "client.js"
+      },
+      "icon.png": {
+        "previousModTime": 1496246140429,
+        "modified": 1496246140429,
+        "seen": true,
+        "name": "icon.png"
+      },
+      "LICENSE.md": {
+        "previousModTime": 1496246140430,
+        "modified": 1496246140430,
+        "seen": true,
+        "name": "LICENSE.md"
+      },
+      "package.json": {
+        "previousModTime": 1496246140430,
+        "modified": 1496246140430,
+        "seen": true,
+        "name": "package.json"
+      },
+      "PubSub.js": {
+        "previousModTime": 1496246339073,
+        "modified": 1496246339073,
+        "seen": true,
+        "name": "PubSub.js"
+      },
+      "PubSub.xdk": {
+        "previousModTime": 1496246140570,
+        "modified": 1496246140570,
+        "seen": true,
+        "name": "PubSub.xdk"
+      },
+      "PubSub.xdke": {
+        "previousModTime": 1496246471960,
+        "modified": 1496246471960,
+        "seen": true,
+        "name": "PubSub.xdke"
+      },
+      "README.md": {
+        "previousModTime": 1496246140430,
+        "modified": 1496246140430,
+        "seen": true,
+        "name": "README.md"
+      },
+      "server.js": {
+        "previousModTime": 1496246325600,
+        "modified": 1496246325600,
+        "seen": true,
+        "name": "server.js"
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1496246140524,
+        "modified": 1496246140524,
+        "seen": true,
+        "name": "xdk/project-info.json"
+      }
+    },
+    "boardFileStatus": {
+      "client.js": {
+        "previousModTime": 1496246479199
+      },
+      "icon.png": {
+        "previousModTime": 1496246479199
+      },
+      "LICENSE.md": {
+        "previousModTime": 1496246479199
+      },
+      "package.json": {
+        "previousModTime": 1496246479199
+      },
+      "PubSub.js": {
+        "previousModTime": 1496246479199
+      },
+      "README.md": {
+        "previousModTime": 1496246479199
+      },
+      "server.js": {
+        "previousModTime": 1496246479199
+      },
+      "xdk/project-info.json": {
+        "previousModTime": 1496246479199
+      }
+    }
+  }
+}

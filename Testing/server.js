@@ -1,7 +1,3 @@
-/**Rushad Antia**/
-'use strict';
-//TODO JSDOC add push button to affect all the other
-
 
 var fs = require('fs');
 const hostname = require('os').hostname();
@@ -13,6 +9,17 @@ const hostname = require('os').hostname();
  * @param {function} dataHandler - a function that the client will send data to should be in format function(data){} where data is a {string}
  * @constructor
  * @class
+ * @example
+ *
+ * //handles the data that the client receives from the server
+ * var dh = function(data){
+ *
+ *      //prints received data to the screen
+ *      console.log(data);
+ * };
+ *
+ * //creates a client that will connect to a server running on the localhost
+ * var client = new Client('127.0.0.1', 1337, dh);
  */
 function Client(ip, port, dataHandler) {
     var n = require('net');
@@ -30,6 +37,9 @@ function Client(ip, port, dataHandler) {
  * It also logs all recieved data before sending it to the data handler
  * if it was set by the user.
  * @memberOf Client
+ * @example
+ * var client = new Client('127.0.0.1', 1337, function(){});
+ * client.run();
  */
 Client.prototype.run = function () {
     var that = this;
@@ -90,10 +100,18 @@ Client.prototype.run = function () {
     });
 
 };
+
 /**
  * Will return the array contaning all of the logged data
- * @returns {Array}
+ * @returns {Array} all of the rx data
  * @memberOf Client
+ * @example
+ * var client = new Client('127.0.0.1', 1337, function(){});
+ * client.run();
+ *
+ * //gets the received data log
+ * var log = client.getRXLog();
+ * console.log(log);
  */
 Client.prototype.getRXLog = function () {
     return this.log;
@@ -101,7 +119,16 @@ Client.prototype.getRXLog = function () {
 
 /**
  * Deletes an entry from the log
- * @param toRemove
+ * @param {string} toRemove - entry to remove
+ * @memberOf Client
+ * @example
+ * var client = new Client('127.0.0.1', 1337,function(){});
+ * client.start();
+ * ...
+ * var log = client.getRXLog();
+ *
+ * //deletes the first element from the log
+ * client.deleteFromLog(log[0]);
  */
 Client.prototype.deleteFromLog = function (toRemove) {
     const i = this.log.indexOf(toRemove);
@@ -111,9 +138,18 @@ Client.prototype.deleteFromLog = function (toRemove) {
 }
 
 /**
- * Writes the entire log to a file specified by @param {filename} then clear the log
+ * Writes the entire log to a file specified by "filename" then clear the log
  * Note this will append the data to that file
- * @param filename
+ * @param {string} filename  - name of the file you want to append to. if it doesnt exist it will be created
+ * @memberOf Client
+ * @example
+ * var client = new Client('127.0.0.1', 1337, function(){});
+ * client.run();
+ *
+ * //writes data called rx.log every 5 seconds
+ * setInterval(function () {
+     client.writeLogToFile('rx.log');
+ * }, 5000);
  */
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
@@ -131,29 +167,30 @@ Client.prototype.writeLogToFile = function (filename) {
  * @param {int} timeout - The number of milliseconds of inactivity before a socket is presumed to have timed out. 0 will disable the timeout behavior
  * @constructor
  * @class
+ * @example
+ * var server = new Server('127.0.0.1', 1337, 0);
  */
-function Server(ip, port,timeout) {
+function Server(ip, port, timeout) {
     this.ip = ip;
     this.port = port;
     this.server;
     this.seqnum = 0;
     this.log = []
-    this.timeout  = timeout
+    this.timeout = timeout
     this.connections = []
 }
 
 /**
- * Create a server at the specified ip and port and listen for connections
+ * Starts a server at the specified ip and port and listen for connections
  * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337, 0);
+ * server.start();
  */
 Server.prototype.start = function () {
     var net = require('net');
     var that = this;
 
-    /**
-     * Opens a server on the ip and port
-     * @memberOf Server.prototype
-     */
     this.server = net.createServer(function (socket) {
 
         //write server hostname to client
@@ -182,8 +219,16 @@ Server.prototype.start = function () {
 
 /**
  * Sends the data to all of the connected clients
- * @param data
- * @memberOf Server.prototype
+ * @param {Object} data  - data to send to all the devices
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337, 0);
+ * server.start();
+ *
+ * //sends random data to connected clients every 5 seconds
+ * setInterval(function(){
+ *      server.sendUpdate(Math.random());
+ * },5000);
  */
 Server.prototype.sendUpdate = function (data) {
     var that = this;
@@ -232,8 +277,15 @@ Server.prototype.sendUpdate = function (data) {
 
 /**
  * Returns the sent data log from the server
- * @returns {Array}
- * @memberOf Server.prototype
+ * @returns {Array} - Array of all the log data
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337,0);
+ * server.start();
+ * ...
+ * //gets the data logged by the server
+ * var log = server.getTXLog();
+ * console.log(log);
  */
 Server.prototype.getTXLog = function () {
     return this.log;
@@ -241,8 +293,17 @@ Server.prototype.getTXLog = function () {
 
 /**
  * Removes data element from the server log
- * @param toRemove
- * @memberOf Server.prototype
+ * @param {String} toRemove - Element to remove
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337,0);
+ * server.start();
+ * ...
+ * var log = server.getTXLog();
+ *
+ * //deletes the first element from the log
+ * server.deleteFromLog(log[0]);
+ *
  */
 Server.prototype.deleteFromLog = function (toRemove) {
     const i = this.log.indexOf(toRemove);
@@ -253,8 +314,20 @@ Server.prototype.deleteFromLog = function (toRemove) {
 
 /**
  * Writes the server log data to a file
- * @param filename
- * @memberOf  Server.prototype
+ * @param {string} filename - name of the file to write to
+ * @memberOf  Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337,0);
+ * server.start();
+ *
+ * setInterval(function () {
+ *      server.sendUpdate(Math.random());
+ *}, 1000);
+ *
+ * //will write data to a file called 'tx.log' every 5 seconds
+ * setInterval(function () {
+ *      server.writeLogToFile('tx.log');
+ *}, 5000);
  */
 Server.prototype.writeLogToFile = function (filename) {
     var that = this;
