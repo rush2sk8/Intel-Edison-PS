@@ -47,7 +47,9 @@ Client.prototype.run = function () {
      * connects to the endpoint
      * @memberOf Client.prototpye
      * */
-    this.client.connect(this.port, this.ip);
+    this.client.connect(this.port, this.ip, function(){
+        that.client.write('hn');
+    });
 
     /**
      *  Callback when data is received
@@ -58,21 +60,23 @@ Client.prototype.run = function () {
         //converts TCP stream data to a string
         const stringData = (new Buffer(data)).toString();
 
-        console.log('recieved: ' + stringData);
-
         //splits the data at the :
         const dataArray = stringData.split(':');
 
         //if non formatted data or hostname data is received dont log it
         if (dataArray.length == 2) {
-            const logData = {
+            
+            var logData = {
                 'rxnode id': hostname,
                 'rxnode ip': that.ip,
+                'tx node id': that.connHN,
                 'rxtime': (new Date()),
                 'seqnum': dataArray[0],
                 'data': dataArray[1]
             };
-
+            
+            console.log(logData);
+            
             //push the data to out log
             that.log.push(JSON.stringify(logData));
 
@@ -82,8 +86,12 @@ Client.prototype.run = function () {
         }
         //otherwise its a command
         else {
-
-            console.log('command: ' + stringData);
+            var command = stringData.split('-');
+            
+            if(command[0] == 'hn'){
+                that.connHN = command[1];
+            }
+          
         }
     });
 

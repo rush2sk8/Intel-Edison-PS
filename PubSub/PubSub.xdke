@@ -17,8 +17,8 @@
         "name": ".gitignore"
       },
       "Client.js": {
-        "previousModTime": 1496257394452,
-        "modified": 1496257394452,
+        "previousModTime": 1496262484495,
+        "modified": 1496262484495,
         "seen": true,
         "name": "Client.js"
       },
@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1496260015081,
-        "modified": 1496260015081,
+        "previousModTime": 1496262314303,
+        "modified": 1496262314303,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1496260174500,
-        "modified": 1496260174500,
+        "previousModTime": 1496262498628,
+        "modified": 1496262498628,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -65,8 +65,8 @@
         "name": "README.md"
       },
       "Server.js": {
-        "previousModTime": 1496260133689,
-        "modified": 1496260133689,
+        "previousModTime": 1496261804727,
+        "modified": 1496261804727,
         "seen": true,
         "name": "Server.js"
       },
@@ -77,13 +77,6 @@
         "name": "xdk/project-info.json"
       }
     },
-    "boardFileStatus": {
-      "PubSub.js": {
-        "previousModTime": 1496260178427
-      },
-      "Server.js": {
-        "previousModTime": 1496260178427
-      }
-    }
+    "boardFileStatus": {}
   }
 }

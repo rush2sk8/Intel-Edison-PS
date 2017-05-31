@@ -1,4 +1,4 @@
-/****************************************************CLIENT MAIN***************************************************
+/****************************************************CLIENT MAIN***************************************************/
 const ip = '10.20.0.11';
 const port = 1337;
 var intervalIDLed ;
@@ -40,12 +40,9 @@ function writeLed() {
 }
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs);  // start the periodic read
+/************************************************CLIENT END MAIN**************************************************/
 
-
-
-*************************************************CLIENT END MAIN**************************************************/
-
-/****************************************************SERVER MAIN***************************************************/
+/****************************************************SERVER MAIN**************************************************
 const ip = '10.20.0.11'; 
 const port = 1337;
 
@@ -168,5 +165,4 @@ function writeLed()
 // setup perdiodic activity for light sensor reading
 intervalIDLightSensor = setInterval(readLightSensor, 500) ;  // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
- 
-/**************************************************SERVER END MAIN**************************************************/
+**************************************************SERVER END MAIN**************************************************/

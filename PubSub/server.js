@@ -40,7 +40,11 @@ Server.prototype.start = function () {
 
         //get data if any is recieved from the client TODO allow client to request hostname and other data from server
         socket.on('data', function (data) {
-            console.log((new Buffer(data)).toString());
+            var stringData = new Buffer(data).toString();
+
+            if(stringData == 'hn'){
+                socket.write('hn-'+hostname);
+            }
         });
 
         //keep every socket to each client
