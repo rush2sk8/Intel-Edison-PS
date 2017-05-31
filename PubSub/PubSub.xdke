@@ -17,8 +17,8 @@
         "name": ".gitignore"
       },
       "client.js": {
-        "previousModTime": 1496246281086,
-        "modified": 1496246281086,
+        "previousModTime": 1496253960737,
+        "modified": 1496253960737,
         "seen": true,
         "name": "client.js"
       },
@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1496246339073,
-        "modified": 1496246339073,
+        "previousModTime": 1496253943875,
+        "modified": 1496253943875,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1496246471960,
-        "modified": 1496246471960,
+        "previousModTime": 1496255524223,
+        "modified": 1496255524223,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -65,8 +65,8 @@
         "name": "README.md"
       },
       "server.js": {
-        "previousModTime": 1496246325600,
-        "modified": 1496246325600,
+        "previousModTime": 1496254185177,
+        "modified": 1496254185177,
         "seen": true,
         "name": "server.js"
       },
@@ -75,33 +75,14 @@
         "modified": 1496246140524,
         "seen": true,
         "name": "xdk/project-info.json"
+      },
+      "test.js": {
+        "previousModTime": 1496250489511,
+        "modified": 1496250489511,
+        "seen": true,
+        "name": "test.js"
       }
     },
-    "boardFileStatus": {
-      "client.js": {
-        "previousModTime": 1496246479199
-      },
-      "icon.png": {
-        "previousModTime": 1496246479199
-      },
-      "LICENSE.md": {
-        "previousModTime": 1496246479199
-      },
-      "package.json": {
-        "previousModTime": 1496246479199
-      },
-      "PubSub.js": {
-        "previousModTime": 1496246479199
-      },
-      "README.md": {
-        "previousModTime": 1496246479199
-      },
-      "server.js": {
-        "previousModTime": 1496246479199
-      },
-      "xdk/project-info.json": {
-        "previousModTime": 1496246479199
-      }
-    }
+    "boardFileStatus": {}
   }
 }

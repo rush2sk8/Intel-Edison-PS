@@ -88,7 +88,7 @@ Client.prototype.run = function () {
         //otherwise its a command
         else{
         
-            console.log('recieved: '+ stringData);
+            console.log('command: '+ stringData);
         }
     });
 
@@ -201,9 +201,10 @@ Server.prototype.start = function () {
 
     this.server = net.createServer(function (socket) {
 
-        //write server hostname to client
-        socket.write(hostname);
-
+        socket.on('connect', function(){
+           socket.write(hostname); 
+        });
+        
         //ignore random errors
         socket.on('error', function () {
         });
@@ -264,8 +265,6 @@ Server.prototype.sendUpdate = function (data) {
                 'tx event time': timetaken
             };
 
-            //print the data
-            console.log(logData);
 
             //store that data in an array
             that.log.push(JSON.stringify(logData));
@@ -345,3 +344,6 @@ Server.prototype.writeLogToFile = function (filename) {
         })
     });
 };
+
+module.exports = Server;
+module.exports = Client;

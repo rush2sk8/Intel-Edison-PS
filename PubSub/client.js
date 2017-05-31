@@ -9,6 +9,7 @@ var dh = function(data){
     
 };
 
+var Client = require('./PubSub.js');
 var client = new Client(ip, port,dh);
 client.run();
 

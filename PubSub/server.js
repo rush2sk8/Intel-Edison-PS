@@ -2,8 +2,11 @@
 const ip = '10.20.0.11';
 const port = 1337;
 
+var Server = require('./PubSub.js');
+
 //creates local server for testing
-var server = (new Server(ip, port,0));
+var server = new Server(ip, port,0);
+
 server.start();
 
 // MRAA, as per usual
