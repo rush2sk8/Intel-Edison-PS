@@ -4,9 +4,9 @@
     "creationData": {
       "projectTypeName": "com.intel.xdk.projecttype.iotapp",
       "src": "iotapp/iotapp-template-blank-iot/sample.zip",
-      "projectGuid": "98f0952e-98c6-4085-a8a0-06a36b4401a8",
-      "lastModifiedDate": 1496246140526,
-      "creationDate": 1496246140450
+      "projectGuid": "54556124-edde-445d-b361-e2162ff2d77b",
+      "lastModifiedDate": 1496258290439,
+      "creationDate": 1496258290351
     },
     "sourceDirectory": "",
     "cordovaPluginsDirectory": "plugins",

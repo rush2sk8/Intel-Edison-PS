@@ -11,78 +11,79 @@
   "iot-tab": {
     "fileStatus": {
       ".gitignore": {
-        "previousModTime": 1496246140429,
-        "modified": 1496246140429,
+        "previousModTime": 1496258290325,
+        "modified": 1496258290325,
         "seen": true,
         "name": ".gitignore"
       },
-      "client.js": {
-        "previousModTime": 1496253960737,
-        "modified": 1496253960737,
+      "Client.js": {
+        "previousModTime": 1496257394452,
+        "modified": 1496257394452,
         "seen": true,
-        "name": "client.js"
+        "name": "Client.js"
       },
       "icon.png": {
-        "previousModTime": 1496246140429,
-        "modified": 1496246140429,
+        "previousModTime": 1496258290326,
+        "modified": 1496258290326,
         "seen": true,
         "name": "icon.png"
       },
       "LICENSE.md": {
-        "previousModTime": 1496246140430,
-        "modified": 1496246140430,
+        "previousModTime": 1496258290326,
+        "modified": 1496258290326,
         "seen": true,
         "name": "LICENSE.md"
       },
       "package.json": {
-        "previousModTime": 1496246140430,
-        "modified": 1496246140430,
+        "previousModTime": 1496259161484,
+        "modified": 1496259161484,
         "seen": true,
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1496253943875,
-        "modified": 1496253943875,
+        "previousModTime": 1496260015081,
+        "modified": 1496260015081,
         "seen": true,
         "name": "PubSub.js"
       },
       "PubSub.xdk": {
-        "previousModTime": 1496246140570,
-        "modified": 1496246140570,
+        "previousModTime": 1496258290483,
+        "modified": 1496258290483,
         "seen": true,
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1496255524223,
-        "modified": 1496255524223,
+        "previousModTime": 1496260174500,
+        "modified": 1496260174500,
         "seen": true,
         "name": "PubSub.xdke"
       },
       "README.md": {
-        "previousModTime": 1496246140430,
-        "modified": 1496246140430,
+        "previousModTime": 1496258290326,
+        "modified": 1496258290326,
         "seen": true,
         "name": "README.md"
       },
-      "server.js": {
-        "previousModTime": 1496254185177,
-        "modified": 1496254185177,
+      "Server.js": {
+        "previousModTime": 1496260133689,
+        "modified": 1496260133689,
         "seen": true,
-        "name": "server.js"
+        "name": "Server.js"
       },
       "xdk/project-info.json": {
-        "previousModTime": 1496246140524,
-        "modified": 1496246140524,
+        "previousModTime": 1496258290436,
+        "modified": 1496258290436,
         "seen": true,
         "name": "xdk/project-info.json"
-      },
-      "test.js": {
-        "previousModTime": 1496250489511,
-        "modified": 1496250489511,
-        "seen": true,
-        "name": "test.js"
       }
     },
-    "boardFileStatus": {}
+    "boardFileStatus": {
+      "PubSub.js": {
+        "previousModTime": 1496260178427
+      },
+      "Server.js": {
+        "previousModTime": 1496260178427
+      }
+    }
   }
 }

@@ -1,126 +1,177 @@
-/****************************************************MAIN****************************************************/
-const ip = '10.20.0.11';
-const port = 1337;
+var fs = require('fs');
+const hostname = require('os').hostname();
 
-var Server = require('./PubSub.js');
-
-//creates local server for testing
-var server = new Server(ip, port,0);
-
-server.start();
-
-// MRAA, as per usual
-var mraa = require('mraa');
-
-// TI ADS1015 on ADC Block (http://www.ti.com.cn/cn/lit/ds/symlink/ads1015.pdf)
-var adc = new mraa.I2c(1);
-adc.address(0x48);
-
-// Read from ADC and return voltage
-adc.readADC = function(channel) {
-
-    // The ADC Block can't have more than 4 channels
-    if (channel <= 0) {
-        channel = 0;
-    }
-    if (channel >= 3) {
-        channel = 3;
-    }
-
-    // We will use constant settings for the config register
-    var config = 0;                 // Bits     Description
-    config |= 1 << 15;              // [15]     Begin a single conversion
-    config |= 1 << 14;              // [14]     Non-differential ADC
-    config |= channel << 12;        // [13:12]  Choose a channel
-    config |= 1 << 9;               // [11:9]   +/-4.096V range
-    config |= 1 << 8;               // [8]      Power-down, single-shot mode
-    config |= 4 << 5;               // [7:5]    1600 samples per second
-    config &= ~(1 << 4);            // [4]      Traditional comparator
-    config &= ~(1 << 3);            // [3]      Active low comparator polarity
-    config &= ~(1 << 2);            // [2]      Non-latching comparator
-    config |= 3;                    // [1:0]    Disable comparator
-
-    // Write config settings to ADC to start reading
-    this.writeWordFlip(0x01, config);
-
-    // Wait for conversion to complete
-    while (!(this.readWordFlip(0x01) & 0x8000)) {
-    }
-
-    // Read value from conversion register and shift by 4 bits
-    var voltage = (adc.readWordFlip(0x00) >> 4);
-
-    // Find voltage, which is 2mV per incement
-    voltage = 0.002 * voltage;
-
-    return voltage
-};
-
-// The ADS1015 accepts LSB first, so we flip the bytes
-adc.writeWordFlip = function(reg, data) {
-    var buf = ((data & 0xff) << 8) | ((data & 0xff00) >> 8);
-    return this.writeWordReg(reg, buf);
-};
-
-// The ADS1015 gives us LSB first, so we flip the bytes
-adc.readWordFlip = function(reg) {
-    var buf = adc.readWordReg(reg);
-    return ((buf & 0xff) << 8) | ((buf & 0xff00) >> 8);
-};
-
-// Set up a digital output on MRAA pin 20 (GP12)
-var ledPin = new mraa.Gpio(20); // create an object for pin 20
-ledPin.dir(mraa.DIR_OUT);  // set the direction of the pin to OUPUT
-
-// setup interval holders
-var intervalIDLightSensor;
-var intervalIDLed;
-
-// now we are going to read the analog input at a periodic interval
-// connect a jumper wire to the sampled analog input and touch it to
-// a +1.8V, +3.3V, +5V or GND input to change the value read by the analog input
-
-var BlinkNormalMs = 1000.0/5.0;
-var BlinkAlertMs = 1000.0/50.0;
-
-var analogIn ;
-var lightThreshold = 0.8;
-var lightSensorState = 1;  // 1 = above threshold, 0 = below
-
-var readLightSensor = function() {
-   
-    var v1 = adc.readADC(1);
-   
-    if ((!lightSensorState) && (v1>lightThreshold)){
-       
-        lightSensorState = 1;
-        clearInterval(intervalIDLed);
-        intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
-        server.sendUpdate(BlinkNormalMs);
-    }
-    else if ((lightSensorState) && (v1<lightThreshold)){
-        
-        lightSensorState = 0;
-        clearInterval(intervalIDLed);
-        intervalIDLed = setInterval(writeLed, BlinkAlertMs) ;  // start the periodic read
-        server.sendUpdate(BlinkAlertMs);
-    }
-
-};
-
-// global variable for pin state
-var ledState = 0;
-function writeLed() 
-{
-    // toggle state of led
-    ledState = (ledPin.read()?0:1);
-    // set led value
-    ledPin.write(ledState);
+/**
+ * Creates a server instance. The server is used to accept multiple incoming connections and to send data to those connections
+ * @param {string} - ip ip address of server
+ * @param {int} port - port to connect to
+ * @param {int} timeout - The number of milliseconds of inactivity before a socket is presumed to have timed out. 0 will disable the timeout behavior
+ * @constructor
+ * @class
+ * @example
+ * var server = new Server('127.0.0.1', 1337, 0);
+ */
+function Server(ip, port, timeout) {
+    this.ip = ip;
+    this.port = port;
+    this.server;
+    this.seqnum = 0;
+    this.log = []
+    this.timeout = timeout
+    this.connections = []
 }
 
-// setup perdiodic activity for light sensor reading
-intervalIDLightSensor = setInterval(readLightSensor, 500) ;  // start the periodic read
-intervalIDLed = setInterval(writeLed, BlinkNormalMs) ;  // start the periodic read
- 
+/**
+ * Starts a server at the specified ip and port and listen for connections
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337, 0);
+ * server.start();
+ */
+Server.prototype.start = function () {
+    var net = require('net');
+    var that = this;
 
-/**************************************************END MAIN**************************************************/
+    this.server = net.createServer(function (socket) {
+
+        //ignore random errors
+        socket.on('error', function () {
+        });
+
+        //get data if any is recieved from the client TODO allow client to request hostname and other data from server
+        socket.on('data', function (data) {
+            console.log((new Buffer(data)).toString());
+        });
+
+        //keep every socket to each client
+        that.connections.push(socket);
+    });
+
+    //
+    this.server.timeout = this.timeout;
+
+    //listen for incoming connections
+    this.server.listen(this.port, this.ip);
+
+};
+
+/**
+ * Sends the data to all of the connected clients
+ * @param {Object} data  - data to send to all the devices
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337, 0);
+ * server.start();
+ *
+ * //sends random data to connected clients every 5 seconds
+ * setInterval(function(){
+ *      server.sendUpdate(Math.random());
+ * },5000);
+ */
+Server.prototype.sendUpdate = function (data) {
+    var that = this;
+
+    //write data to each saved socket
+    this.connections.forEach(function (value) {
+
+        //check if the socket is still alive
+        if (value.address().address !== undefined) {
+
+            //start the tx timer
+            const start = process.hrtime();
+
+            //write data to end device
+            value.write(that.seqnum + ':' + data + '');
+
+            //calculate tx time
+            const timetaken = process.hrtime(start);
+
+            //data to stringify
+            const logData = {
+                'txnode id': hostname,
+                'sensorid': value.address().address,
+                'seqnum': that.seqnum,
+                'tx event time': timetaken
+            };
+
+
+            //store that data in an array
+            that.log.push(JSON.stringify(logData));
+        }
+        //if its dead then remove it so we dont keep transmitting to a closed connection
+        else {
+            const i = that.connections.indexOf(value);
+            if (i != -1)
+                that.connections.splice(i, 1);
+
+        }
+    });
+
+    //increment packet number
+    this.seqnum++;
+};
+
+/**
+ * Returns the sent data log from the server
+ * @returns {Array} - Array of all the log data
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337,0);
+ * server.start();
+ * ...
+ * //gets the data logged by the server
+ * var log = server.getTXLog();
+ * console.log(log);
+ */
+Server.prototype.getTXLog = function () {
+    return this.log;
+};
+
+/**
+ * Removes data element from the server log
+ * @param {String} toRemove - Element to remove
+ * @memberOf Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337,0);
+ * server.start();
+ * ...
+ * var log = server.getTXLog();
+ *
+ * //deletes the first element from the log
+ * server.deleteFromLog(log[0]);
+ *
+ */
+Server.prototype.deleteFromLog = function (toRemove) {
+    const i = this.log.indexOf(toRemove);
+    if (i != -1) {
+        this.log.splice(i, 1);
+    }
+};
+
+/**
+ * Writes the server log data to a file
+ * @param {string} filename - name of the file to write to
+ * @memberOf  Server
+ * @example
+ * var server = new Server('127.0.0.1', 1337,0);
+ * server.start();
+ *
+ * setInterval(function () {
+ *      server.sendUpdate(Math.random());
+ *}, 1000);
+ *
+ * //will write data to a file called 'tx.log' every 5 seconds
+ * setInterval(function () {
+ *      server.writeLogToFile('tx.log');
+ *}, 5000);
+ */
+Server.prototype.writeLogToFile = function (filename) {
+    var that = this;
+    this.log.forEach(function (data) {
+        fs.appendFile(filename, data + '\r\n', function () {
+            that.deleteFromLog(data);
+        })
+    });
+};
+
+module.exports = Server;
