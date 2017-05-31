@@ -186,7 +186,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line137">line 137</a>
+        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line177">line 177</a>
     </li></ul></dd>
     
 
@@ -209,6 +209,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var server = new Server('127.0.0.1', 1337, 0);</code></pre>
 
 
 
@@ -225,72 +230,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Members</h3>
-
-        
-            
-<h4 class="name" id="server"><span class="type-signature"></span>server<span class="type-signature"></span></h4>
-
-
-
-
-<div class="description">
-    Opens a server on the ip and port
-</div>
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line158">line 158</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-        
     
 
     
@@ -349,13 +288,18 @@
 
             <td class="type">
             
+                
+<span class="param-type">String</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">Element to remove</td>
         </tr>
 
     
@@ -396,7 +340,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line248">line 248</a>
+        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line312">line 312</a>
     </li></ul></dd>
     
 
@@ -419,6 +363,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var server = new Server('127.0.0.1', 1337,0);server.start();...var log = server.getTXLog();//deletes the first element from the logserver.deleteFromLog(log[0]);</code></pre>
 
 
 
@@ -478,7 +427,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line239">line 239</a>
+        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line294">line 294</a>
     </li></ul></dd>
     
 
@@ -504,6 +453,10 @@
 <h5>Returns:</h5>
 
         
+<div class="param-desc">
+    - Array of all the log data
+</div>
+
 
 
 <dl>
@@ -519,6 +472,11 @@
 </dl>
 
     
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var server = new Server('127.0.0.1', 1337,0);server.start();...//gets the data logged by the servervar log = server.getTXLog();console.log(log);</code></pre>
 
 
 
@@ -575,6 +533,11 @@
 
             <td class="type">
             
+                
+<span class="param-type">Object</span>
+
+
+            
             </td>
 
             
@@ -622,7 +585,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line189">line 189</a>
+        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line237">line 237</a>
     </li></ul></dd>
     
 
@@ -647,6 +610,11 @@
 
 
 
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var server = new Server('127.0.0.1', 1337, 0);server.start();//sends random data to connected clients every 5 secondssetInterval(function(){     server.sendUpdate(Math.random());},5000);</code></pre>
+
+
 
         
             
@@ -660,7 +628,7 @@
 
 
 <div class="description">
-    Create a server at the specified ip and port and listen for connections
+    Starts a server at the specified ip and port and listen for connections
 </div>
 
 
@@ -704,7 +672,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line151">line 151</a>
+        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line194">line 194</a>
     </li></ul></dd>
     
 
@@ -727,6 +695,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var server = new Server('127.0.0.1', 1337, 0);server.start();</code></pre>
 
 
 
@@ -783,13 +756,18 @@
 
             <td class="type">
             
+                
+<span class="param-type">string</span>
+
+
+            
             </td>
 
             
 
             
 
-            <td class="description last"></td>
+            <td class="description last">name of the file to write to</td>
         </tr>
 
     
@@ -830,7 +808,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line260">line 260</a>
+        <a href="PubSub.js.html">PubSub.js</a>, <a href="PubSub.js.html#line336">line 336</a>
     </li></ul></dd>
     
 
@@ -853,6 +831,11 @@
 
 
 
+
+
+    <h5>Example</h5>
+    
+    <pre class="prettyprint"><code>var server = new Server('127.0.0.1', 1337,0);server.start();setInterval(function () {     server.sendUpdate(Math.random());}, 1000);//will write data to a file called 'tx.log' every 5 secondssetInterval(function () {     server.writeLogToFile('tx.log');}, 5000);</code></pre>
 
 
 
@@ -878,7 +861,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed May 31 2017 10:10:04 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed May 31 2017 11:00:39 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
