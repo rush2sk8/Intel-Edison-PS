@@ -5,7 +5,7 @@
 
 - [ ] add max array sizecheck so they dont crash
 
-- [ ] add commands that each node can send other nodes
+- [X] add commands that each node can send other nodes
 
 
 ## Here are a list of capabilities (TODO's) from Rick:
