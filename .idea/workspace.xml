@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Testing/rx.log" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/Testing/tx.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.js" afterPath="$PROJECT_DIR$/PubSub/PubSub.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.xdke" afterPath="$PROJECT_DIR$/PubSub/PubSub.xdke" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/client.js" afterPath="$PROJECT_DIR$/PubSub/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/server.js" afterPath="$PROJECT_DIR$/PubSub/server.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/client.js" afterPath="$PROJECT_DIR$/Testing/client.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/server.js" afterPath="$PROJECT_DIR$/Testing/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,82 +16,13 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testing/server.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="n#!!doc;n#Server#0" expanded="false" />
-                <element signature="e#1090#1137#0" expanded="false" />
-                <element signature="e#1211#1222#0" expanded="false" />
-                <element signature="e#1684#2045#0" expanded="false" />
-                <element signature="e#2092#3215#0" expanded="false" />
-                <element signature="e#2200#3161#0" expanded="false" />
-                <element signature="e#2299#2918#0" expanded="false" />
-                <element signature="e#2622#2811#0" expanded="false" />
-                <element signature="e#3021#3155#0" expanded="false" />
-                <element signature="e#3218#3518#0" expanded="false" />
-                <element signature="e#3559#3583#0" expanded="false" />
-                <element signature="e#3586#3907#0" expanded="false" />
-                <element signature="e#3961#4062#0" expanded="false" />
-                <element signature="e#4022#4060#0" expanded="false" />
-                <element signature="e#4065#4506#0" expanded="false" />
-                <element signature="e#4561#4742#0" expanded="false" />
-                <element signature="e#4621#4738#0" expanded="false" />
-                <element signature="e#4682#4731#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Testing/client.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
-              <folding>
-                <element signature="n#!!doc;n#Client#0" expanded="false" />
-                <element signature="n#!!block;n#Client#0" expanded="false" />
-                <element signature="e#934#1280#0" expanded="false" />
-                <element signature="e#1344#1423#0" expanded="false" />
-                <element signature="e#1474#1561#0" expanded="false" />
-                <element signature="e#2590#2684#0" expanded="false" />
-                <element signature="e#2725#2773#0" expanded="false" />
-                <element signature="e#2781#2980#0" expanded="false" />
-                <element signature="e#3021#3073#0" expanded="false" />
-                <element signature="e#3081#3383#0" expanded="false" />
-                <element signature="e#3424#3448#0" expanded="false" />
-                <element signature="e#3821#3922#0" expanded="false" />
-                <element signature="e#3882#3920#0" expanded="false" />
-                <element signature="e#3924#4405#0" expanded="false" />
-                <element signature="e#4460#4641#0" expanded="false" />
-                <element signature="e#4520#4637#0" expanded="false" />
-                <element signature="e#4581#4630#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Testing/PubSub.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#18#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -123,6 +46,12 @@
         <option value="$PROJECT_DIR$/Testing/server.js" />
         <option value="$PROJECT_DIR$/Testing/client.js" />
         <option value="$PROJECT_DIR$/Testing/PubSub.js" />
+        <option value="$PROJECT_DIR$/Testing/Edison.html" />
+        <option value="$PROJECT_DIR$/Testing/install_dependencies.bat" />
+        <option value="$PROJECT_DIR$/Testing/layout.jade" />
+        <option value="$PROJECT_DIR$/Testing/index.jade" />
+        <option value="$PROJECT_DIR$/Testing/MasterNode.js" />
+        <option value="$PROJECT_DIR$/Testing/Master Node/MasterNode.js" />
       </list>
     </option>
   </component>
@@ -152,9 +81,11 @@
       </profile-state>
     </entry>
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -167,24 +98,7 @@
       <manualOrder />
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Intel-Edison-PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Intel-Edison-PS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -192,7 +106,7 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
-    <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -292,15 +206,15 @@
       <workItem from="1495821129956" duration="1189000" />
       <workItem from="1496158839275" duration="15364000" />
       <workItem from="1496236014949" duration="10604000" />
+      <workItem from="1496324149004" duration="3665000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43371000" />
+    <option name="totallyTimeSpent" value="47036000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="1400" extended-state="1" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -363,26 +277,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/PubSub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
           <folding>
-            <element signature="n#!!doc;n#Server#0" expanded="false" />
-            <element signature="e#1090#1137#0" expanded="false" />
-            <element signature="e#1211#1222#0" expanded="false" />
-            <element signature="e#1684#2045#0" expanded="false" />
-            <element signature="e#2092#3215#0" expanded="false" />
-            <element signature="e#2200#3161#0" expanded="false" />
-            <element signature="e#2299#2918#0" expanded="false" />
-            <element signature="e#2622#2811#0" expanded="false" />
-            <element signature="e#3021#3155#0" expanded="false" />
-            <element signature="e#3218#3518#0" expanded="false" />
-            <element signature="e#3559#3583#0" expanded="false" />
-            <element signature="e#3586#3907#0" expanded="false" />
-            <element signature="e#3961#4062#0" expanded="false" />
-            <element signature="e#4022#4060#0" expanded="false" />
-            <element signature="e#4065#4506#0" expanded="false" />
-            <element signature="e#4561#4742#0" expanded="false" />
-            <element signature="e#4621#4738#0" expanded="false" />
-            <element signature="e#4682#4731#0" expanded="false" />
+            <element signature="e#0#18#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -390,12 +311,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="35" column="38" lean-forward="true" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-            <element signature="e#1431#1510#0" expanded="false" />
-            <element signature="e#1561#1648#0" expanded="false" />
-            <element signature="e#9618#9728#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -403,83 +318,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1955">
           <caret line="209" column="25" lean-forward="true" selection-start-line="208" selection-start-column="0" selection-end-line="209" selection-end-column="25" />
-          <folding>
-            <element signature="n#!!doc;n#Client#0" expanded="false" />
-            <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#934#1280#0" expanded="false" />
-            <element signature="e#1344#1423#0" expanded="false" />
-            <element signature="e#1474#1561#0" expanded="false" />
-            <element signature="e#2590#2684#0" expanded="false" />
-            <element signature="e#2725#2773#0" expanded="false" />
-            <element signature="e#2781#2980#0" expanded="false" />
-            <element signature="e#3021#3073#0" expanded="false" />
-            <element signature="e#3081#3383#0" expanded="false" />
-            <element signature="e#3424#3448#0" expanded="false" />
-            <element signature="e#3821#3922#0" expanded="false" />
-            <element signature="e#3882#3920#0" expanded="false" />
-            <element signature="e#3924#4405#0" expanded="false" />
-            <element signature="e#4460#4641#0" expanded="false" />
-            <element signature="e#4520#4637#0" expanded="false" />
-            <element signature="e#4581#4630#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EdisonClient/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EdisonServer/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="17" lean-forward="true" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/EdisonClient/main.js" />
+    <entry file="file://$PROJECT_DIR$/EdisonServer/main.js" />
     <entry file="file://$PROJECT_DIR$/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-            <element signature="e#1431#1510#0" expanded="false" />
-            <element signature="e#1561#1648#0" expanded="false" />
-            <element signature="e#9618#9728#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EdisonClient/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2414">
-          <caret line="142" column="110" lean-forward="false" selection-start-line="142" selection-start-column="110" selection-end-line="142" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EdisonServer/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="54" column="17" lean-forward="true" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/EdisonClient/main.js" />
+    <entry file="file://$PROJECT_DIR$/EdisonServer/main.js" />
     <entry file="file://$PROJECT_DIR$/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#18#0" expanded="false" />
-            <element signature="e#1431#1510#0" expanded="false" />
-            <element signature="e#1561#1648#0" expanded="false" />
-            <element signature="e#9618#9728#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -525,94 +382,103 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EdisonServer/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="54" column="17" lean-forward="false" selection-start-line="54" selection-start-column="17" selection-end-line="54" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EdisonClient/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="47" column="1" lean-forward="false" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/EdisonServer/main.js" />
+    <entry file="file://$PROJECT_DIR$/EdisonClient/main.js" />
     <entry file="file://$PROJECT_DIR$/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1065">
           <caret line="350" column="0" lean-forward="false" selection-start-line="350" selection-start-column="0" selection-end-line="350" selection-end-column="110" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="42" lean-forward="false" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/install_dependencies.bat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" lean-forward="false" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/Edison.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="7" lean-forward="true" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/index.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/MasterNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/PubSub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="35" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="28" selection-end-column="13" />
           <folding>
             <element signature="e#0#18#0" expanded="false" />
-            <element signature="e#1431#1510#0" expanded="false" />
-            <element signature="e#1561#1648#0" expanded="false" />
-            <element signature="e#9618#9728#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="68" column="29" lean-forward="true" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
-          <folding>
-            <element signature="n#!!doc;n#Client#0" expanded="false" />
-            <element signature="n#!!block;n#Client#0" expanded="false" />
-            <element signature="e#934#1280#0" expanded="false" />
-            <element signature="e#1344#1423#0" expanded="false" />
-            <element signature="e#1474#1561#0" expanded="false" />
-            <element signature="e#2590#2684#0" expanded="false" />
-            <element signature="e#2725#2773#0" expanded="false" />
-            <element signature="e#2781#2980#0" expanded="false" />
-            <element signature="e#3021#3073#0" expanded="false" />
-            <element signature="e#3081#3383#0" expanded="false" />
-            <element signature="e#3424#3448#0" expanded="false" />
-            <element signature="e#3821#3922#0" expanded="false" />
-            <element signature="e#3882#3920#0" expanded="false" />
-            <element signature="e#3924#4405#0" expanded="false" />
-            <element signature="e#4460#4641#0" expanded="false" />
-            <element signature="e#4520#4637#0" expanded="false" />
-            <element signature="e#4581#4630#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="68" column="29" lean-forward="false" selection-start-line="68" selection-start-column="29" selection-end-line="68" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
+        <state relative-caret-position="0">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc;n#Server#0" expanded="false" />
-            <element signature="e#1090#1137#0" expanded="false" />
-            <element signature="e#1211#1222#0" expanded="false" />
-            <element signature="e#1684#2045#0" expanded="false" />
-            <element signature="e#2092#3215#0" expanded="false" />
-            <element signature="e#2200#3161#0" expanded="false" />
-            <element signature="e#2299#2918#0" expanded="false" />
-            <element signature="e#2622#2811#0" expanded="false" />
-            <element signature="e#3021#3155#0" expanded="false" />
-            <element signature="e#3218#3518#0" expanded="false" />
-            <element signature="e#3559#3583#0" expanded="false" />
-            <element signature="e#3586#3907#0" expanded="false" />
-            <element signature="e#3961#4062#0" expanded="false" />
-            <element signature="e#4022#4060#0" expanded="false" />
-            <element signature="e#4065#4506#0" expanded="false" />
-            <element signature="e#4561#4742#0" expanded="false" />
-            <element signature="e#4621#4738#0" expanded="false" />
-            <element signature="e#4682#4731#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/PubSub.js">
+    <entry file="file://$PROJECT_DIR$/Testing/Master Node/index.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="36" lean-forward="true" selection-start-line="26" selection-start-column="36" selection-end-line="26" selection-end-column="36" />
+        <state relative-caret-position="221">
+          <caret line="13" column="13" lean-forward="true" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/Master Node/layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/Master Node/MasterNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="e#0#18#0" expanded="false" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
