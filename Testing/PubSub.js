@@ -1,6 +1,6 @@
 /**Rushad Antia**/
 'use strict';
-//TODO JSDOC add push button to affect all the other
+//TODO add push button to affect all the other
 
 
 /****************************************************MAIN****************************************************/
