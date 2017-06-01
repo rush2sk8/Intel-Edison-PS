@@ -1,6 +1,6 @@
 
 var fs = require('fs');
-const hostname = require('os').hostname();
+const hostname = require('os').hostname(); 
 
 /**
  * Creates a server instance. The server is used to accept multiple incoming connections and to send data to those connections
