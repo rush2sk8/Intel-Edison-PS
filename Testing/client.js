@@ -1,7 +1,7 @@
 
 var fs = require('fs');
 const hostname = require('os').hostname();
-
+ 
 /**
  * creates a client object which will make a connection to an endpoint
  * @param {string} - ip ip address of server
