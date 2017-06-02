@@ -17,7 +17,7 @@
 
 - [ ] Add the ability to reboot all nodes in the network by command from a PC
 
-- [ ] Add ability to inject a repeating psuedo-random pattern of 1's and 0's from a file as events that are transmitted to other nodes.  That is, each 1 and 0 is an independent event.  Each event should be separated by a configurable amount of time between 10 and 1000 milliseconds.
+- [ ] Add abilty to inject a repeating psuedo-random pattern of 1's and 0's from a file as events that are transmitted to other nodes.  That is, each 1 and 0 is an independent event.  Each event should be separated by a configurable amount of time between 10 and 1000 milliseconds.
 
 - [ ] Cleanup code so that it is more re-entrant and re-usable.  
 
