@@ -16,9 +16,9 @@ function Server(ip, port, timeout) {
     this.port = port;
     this.server;
     this.seqnum = 0;
-    this.log = []
-    this.timeout = timeout
-    this.connections = []
+    this.log = [];
+    this.timeout = timeout;
+    this.connections = [];
 }
 
 /**
@@ -35,16 +35,16 @@ Server.prototype.start = function () {
     this.server = net.createServer(function (socket) {
 
         //ignore random errors
-        socket.on('error', function () {
-        });
+        socket.on('error', function () {});
 
         //get data if any is recieved from the client TODO allow client to request hostname and other data from server
         socket.on('data', function (data) {
             var stringData = new Buffer(data).toString();
 
-            if(stringData == 'hn'){
-                socket.write('hn-'+hostname);
+            if (stringData == 'hn') {
+                socket.write('hn-' + hostname);
             }
+
         });
 
         //keep every socket to each client
@@ -177,5 +177,27 @@ Server.prototype.writeLogToFile = function (filename) {
         })
     });
 };
+
+/*
+Server.prototype.getConnectedClientHostNames = function () {
+    var that = this;
+
+
+    that.connections.forEach(function (conn) {
+
+        if (conn.address().address !== undefined) {
+            conn.write('ghn');
+        }
+        //if its dead then remove it so we dont keep transmitting to a closed connection
+        else {
+            const i = that.connections.indexOf(conn);
+            if (i != -1)
+                that.connections.splice(i, 1);
+        }
+
+    });
+
+    return this.hns;
+};*/
 
 module.exports = Server;

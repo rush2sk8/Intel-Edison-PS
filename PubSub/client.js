@@ -92,6 +92,9 @@ Client.prototype.run = function () {
             if(command[0] == 'hn'){
                 that.connHN = command[1];
             }
+            else if (command[0] == 'gni'){
+                that.client.write('ghn-'+hostname+'-'+that.ip);
+            }
           
         }
     });

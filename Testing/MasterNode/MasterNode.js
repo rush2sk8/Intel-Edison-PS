@@ -1,10 +1,10 @@
 var sensors = [];
-sensors.push(['edison02','10.20.0.11']);
-sensors.push(['edison03', '10.20.0.12']);
-console.log(sensors);
-var express = require('express'),
-    app = express(),
-    http = require('http');
+
+var conns = [];
+var express = require('express');
+var app = express();
+var http = require('http');
+var net = require('net');
 
 app.use(express.static(__dirname + '/'));
 
@@ -50,3 +50,44 @@ app.get('/', function (req, res) {
 app.listen(3000, function () {
     console.log('Website running at localhost:3000');
 });
+
+
+var server = net.createServer(function (socket) {
+
+    socket.on('data', function (data) {
+        var stringData = new Buffer(data).toString();
+        var command = stringData.split('-');
+
+        if(command[0] == 'ghn')
+            sensors.push([command[1],command[2]])
+
+
+    });
+
+   conns.push(socket);
+});
+
+server.listen(21039, '10.20.0.15');
+
+function discoverNodes() {
+
+    sensors.length = 0;
+
+    conns.forEach(function (con) {
+
+        //check if the socket is still alive
+        if (con.address().address !== undefined) {
+            con.write('gni-');
+        }
+        else {
+            const i = conns.indexOf(con);
+            if (i != -1)
+                conns.splice(i, 1);
+
+        }
+    });
+
+}
+discoverNodes();
+
+setInterval(discoverNodes, 30*1000);

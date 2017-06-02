@@ -41,6 +41,11 @@ function writeLed() {
 }
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs);  // start the periodic read
+
+
+
+var masterClient = new Client('10.20.0.3', 1337);
+masterClient.run();
 /************************************************CLIENT END MAIN**************************************************/
 
 /****************************************************SERVER MAIN**************************************************
