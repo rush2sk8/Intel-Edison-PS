@@ -68,7 +68,7 @@ Client.prototype.run = function () {
             
             var logData = {
                 'rxnode id': hostname,
-                'rxnode ip': require('os').networkInterfaces['eth0']['0']['address'],
+                'rxnode ip': 'ADD THIS',/*require('os').networkInterfaces['eth0']['0']['address'],*/
                 'tx node id': that.connHN,
                 'tx node ip': that.ip,
                 'rxtime': (new Date()),

@@ -44,7 +44,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs);  // start the periodic rea
 
 
 
-var masterClient = new Client('10.20.0.3', 1337);
+var masterClient = new Client('0.0.0.0', 8555);
 masterClient.run();
 /************************************************CLIENT END MAIN**************************************************/
 

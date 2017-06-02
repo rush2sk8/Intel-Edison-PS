@@ -63,11 +63,14 @@ var server = net.createServer(function (socket) {
 
 
     });
+	
+	socket.on('error', function(){});
 
    conns.push(socket);
 });
 
-server.listen(21039, '10.20.0.15');
+var port = process.env.PORT || 3000;
+server.listen(port, '10.20.0.64');
 
 function discoverNodes() {
 
