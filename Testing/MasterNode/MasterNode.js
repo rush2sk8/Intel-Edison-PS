@@ -69,8 +69,8 @@ var server = net.createServer(function (socket) {
    conns.push(socket);
 });
 
-var port = process.env.PORT || 3000;
-server.listen(port, '10.20.0.64');
+
+server.listen(9999, '10.20.0.128');
 
 function discoverNodes() {
 

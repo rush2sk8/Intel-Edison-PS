@@ -104,6 +104,9 @@ Client.prototype.run = function () {
      **/
     this.client.on('close', function () {
         console.log(this.ip + ' closed')
+        
+        
+        that.run();
     });
 
     /**Called when an error like a refused connection, broken pipe, broken socket, etc has occured
@@ -112,6 +115,7 @@ Client.prototype.run = function () {
      * */
     this.client.on('error', function () {
         console.log('error on: ' + this.ip);
+        that.run();
     });
 
 };
