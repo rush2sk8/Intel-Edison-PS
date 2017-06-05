@@ -23,7 +23,7 @@ function Server(ip, port, timeout) {
 
 /**
  * Starts a server at the specified ip and port and listen for connections
- * @memberOf Server
+ * @memberOf Server 
  * @example
  * var server = new Server('127.0.0.1', 1337, 0);
  * server.start();
@@ -56,7 +56,7 @@ Server.prototype.start = function () {
 
     //listen for incoming connections
     this.server.listen(this.port, this.ip);
-
+    console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
 /**

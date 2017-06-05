@@ -1,6 +1,7 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
 
+
 /**
  * creates a client object which will make a connection to an endpoint
  * @param {string} - ip ip address of server
@@ -25,6 +26,7 @@ function Client(ip, port, dataHandler) {
     this.client = new n.Socket();
     this.connHN = '';
     this.ip = ip;
+    this.myIP = getIPAddress();
     this.port = port;
     this.log = []
     this.dh = dataHandler;
@@ -47,8 +49,10 @@ Client.prototype.run = function () {
      * connects to the endpoint
      * @memberOf Client.prototpye
      * */
-    this.client.connect(this.port, this.ip, function(){
+    this.client.connect(this.port, this.ip, function () {
+        console.log('connected to: ' + that.ip + ' !')
         that.client.write('hn');
+
     });
 
     /**
@@ -65,19 +69,19 @@ Client.prototype.run = function () {
 
         //if non formatted data or hostname data is received dont log it
         if (dataArray.length == 2) {
-            
+
             var logData = {
                 'rxnode id': hostname,
-                'rxnode ip': 'ADD THIS',/*require('os').networkInterfaces['eth0']['0']['address'],*/
+                'rxnode ip': that.myIP,
                 'tx node id': that.connHN,
                 'tx node ip': that.ip,
                 'rxtime': (new Date()),
                 'seqnum': dataArray[0],
                 'data': dataArray[1]
             };
-            
+
             console.log(logData);
-            
+
             //push the data to out log
             that.log.push(JSON.stringify(logData));
 
@@ -88,14 +92,13 @@ Client.prototype.run = function () {
         //otherwise its a command
         else {
             var command = stringData.split('-');
-            
-            if(command[0] == 'hn'){
+
+            if (command[0] == 'hn') {
                 that.connHN = command[1];
+            } else if (command[0] == 'gni') {
+                that.client.write('ghn-' + hostname + '-' + that.myIP);
             }
-            else if (command[0] == 'gni'){
-                that.client.write('ghn-'+hostname+'-'+that.ip);
-            }
-          
+
         }
     });
 
@@ -103,10 +106,18 @@ Client.prototype.run = function () {
      *  @memberOf Client.prototpye
      **/
     this.client.on('close', function () {
-        console.log(this.ip + ' closed')
-        
-        
-        that.run();
+        console.log(that.ip + ' closed')
+        that.client.destroy();
+        that.client.unref();
+
+        setTimeout(function () {
+            that.client.connect(this.port, this.ip, function () {
+                that.client.write('hn');
+            });
+
+        }, 5000);
+
+
     });
 
     /**Called when an error like a refused connection, broken pipe, broken socket, etc has occured
@@ -114,13 +125,22 @@ Client.prototype.run = function () {
      * @memberOf Client.prototpye
      * */
     this.client.on('error', function () {
-        console.log('error on: ' + this.ip);
-        that.run();
+        console.log('error on: ' + that.ip);
+        /* that.client.destroy();
+         that.client.unref();
+
+         setTimeout(function () {
+             that.client.connect(this.port, this.ip, function () {
+                 that.client.write('hn');
+             });
+
+         }, 5000);*/
+
     });
 
 };
 
-/**
+/** 
  * Will return the array contaning all of the logged data
  * @returns {Array} all of the rx data
  * @memberOf Client
@@ -168,7 +188,7 @@ Client.prototype.deleteFromLog = function (toRemove) {
  * //writes data called rx.log every 5 seconds
  * setInterval(function () {
      client.writeLogToFile('rx.log');
- * }, 5000);
+ * }, 5000); 
  */
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
@@ -178,6 +198,22 @@ Client.prototype.writeLogToFile = function (filename) {
         })
     });
 };
+
+
+function getIPAddress() {
+    var interfaces = require('os').networkInterfaces();
+    for (var devName in interfaces) {
+        var iface = interfaces[devName];
+
+        for (var i = 0; i < iface.length; i++) {
+            var alias = iface[i];
+            if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal)
+                return alias.address;
+        }
+    }
+
+    return '0.0.0.0';
+}
 
 module.exports = Client;
 

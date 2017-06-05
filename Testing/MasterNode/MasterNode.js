@@ -43,8 +43,12 @@ app.get('/', function (req, res) {
         '</footer>' +
         '</body>' +
         ' </html>';
-
-    res.send(html);
+	discoverNodes();
+	
+	res.send(html);
+		
+   
+	
 });
 
 app.listen(3000, function () {
@@ -61,6 +65,7 @@ var server = net.createServer(function (socket) {
         if(command[0] == 'ghn')
             sensors.push([command[1],command[2]])
 
+		console.log(stringData);
 
     });
 	
@@ -93,4 +98,3 @@ function discoverNodes() {
 }
 discoverNodes();
 
-setInterval(discoverNodes, 30*1000);
