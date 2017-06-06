@@ -9,12 +9,21 @@ var server = net.createServer(function (socket) {
         var command = stringData.split('-');
 
         if (command[0] == 'nn') {
-            sensors.push(new SensorNode(command[1], command[2], command[3]));
+            var sn = new SensorNode(command[1], command[2], command[3]);
+
+            if (hasNode(sn) === false) {
+                sensors.push(sn);
+                conns.forEach(function (s) {
+                    if (s !== socket)
+                        s.write('nl-' + sn.getString());
+                })
+            }
+
+
             sendNodeListToDevice(socket);
         }
 
-        console.log(stringData);
-
+        console.log(sensors);
     });
 
     socket.on('error', function () {
@@ -24,12 +33,28 @@ var server = net.createServer(function (socket) {
 
 });
 
+function hasNode(tosee) {
 
-server.listen(9999, '10.20.0.128');
+    for (var i = 0; i < sensors.length; i++) {
 
+        if (sensors[i].getString() == tosee.getString())
+            return true;
+
+    }
+    return false;
+}
 
 function sendNodeListToDevice(socket) {
 
+    var ipofsocket = socket.remoteAddress;
+
+    sensors.forEach(function (sensor) {
+
+        if (sensor.ip !== ipofsocket) {
+            socket.write('nl-' + sensor.getString())
+        }
+
+    });
 
 }
 
@@ -38,3 +63,10 @@ function SensorNode(hostname, ip, sensors) {
     this.ip = ip;
     this.sensors = sensors;
 }
+
+SensorNode.prototype.getString = function () {
+    return this.hostname + '-' + this.ip + '-' + this.sensors;
+};
+
+
+server.listen(9999, '10.20.0.128');

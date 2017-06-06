@@ -1,4 +1,4 @@
-/****************************************************CLIENT MAIN***************************************************/
+/****************************************************CLIENT MAIN***************************************************
 const ip = '10.20.0.11';
 const port = 1337;
 var intervalIDLed;
@@ -46,7 +46,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
 
-/************************************************CLIENT END MAIN**************************************************/
+************************************************CLIENT END MAIN**************************************************/
 
 /****************************************************SERVER MAIN**************************************************
 const ip = '10.20.0.11';
@@ -133,12 +133,12 @@ var intervalIDLed;
 var BlinkNormalMs = 1000.0 / 5.0;
 var BlinkAlertMs = 1000.0 / 50.0;
 
-var analogIn;
+var analogIn; 
 var lightThreshold = 0.8;
 var lightSensorState = 1; // 1 = above threshold, 0 = below
 
 var readLightSensor = function () {
-
+ 
     var v1 = adc.readADC(1);
 
     if ((!lightSensorState) && (v1 > lightThreshold)) {
@@ -165,7 +165,7 @@ function writeLed() {
     ledState = (ledPin.read() ? 0 : 1);
     // set led value
     ledPin.write(ledState);
-}
+} 
 
 // setup perdiodic activity for light sensor reading
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
@@ -174,3 +174,6 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
 **************************************************SERVER END MAIN**************************************************/
+var MasterNodeConnection = require('./MasterNodeConnection.js')
+var master = new MasterNodeConnection('10.20.0.128', 9999, 'light', '');
+master.startAutomaticDiscovery();

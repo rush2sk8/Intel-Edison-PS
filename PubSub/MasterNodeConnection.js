@@ -23,17 +23,18 @@ function MasterNodeConnection(ip, port, mysensors, want) {
 MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     var that = this;
     this.server = new Server(this.myIP, 1337, 0);
-    server.start();
+    this.server.start();
 
     var clientConnToMN = new net.Socket();
 
-    clientConnToMN.connect(this.ip, this.socket, function () {
 
+    clientConnToMN.connect(this.port, this.ip, function () {
+        console.log('connected to: ' + that.ip + ' !');
         this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors);
     });
 
     clientConnToMN.on('data', function (data) {
-        console.log(data);
+        console.log(new Buffer(data).toString());
     });
 
     clientConnToMN.on('close', function () {
@@ -72,3 +73,5 @@ function getIPAddress() {
 
     return '0.0.0.0';
 }
+
+module.exports = MasterNodeConnection;

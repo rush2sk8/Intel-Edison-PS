@@ -31,8 +31,8 @@ function Client(ip, port, dataHandler) {
     this.log = []
     this.dh = dataHandler;
 }
-
-/**
+ 
+/**   
  * This function will start a connection to the endpoint given the
  * ip and port that the client object was initialized with.
  * It also logs all recieved data before sending it to the data handler
@@ -50,7 +50,7 @@ Client.prototype.run = function () {
      * @memberOf Client.prototpye
      * */
     this.client.connect(this.port, this.ip, function () {
-        console.log('connected to: ' + that.ip + ' !')
+        console.log('connected to: ' + that.ip + ' !');
     });
 
     /**
