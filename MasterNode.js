@@ -61,7 +61,6 @@ function hasNode(tosee) {
 
         if (sensors[i].getString() == tosee.getString())
             return true;
-
     }
     return false;
 }
@@ -75,14 +74,12 @@ function sendNodeListToDevice(socket) {
     //gets the new node ip
     var ipofsocket = socket.remoteAddress;
 
-
     sensors.forEach(function (sensor) {
 
         //writes the connected sensor information to the new nodes
         if (sensor.ip !== ipofsocket)
             socket.write('nl-' + sensor.getString())
     });
-
 }
 
 /**
