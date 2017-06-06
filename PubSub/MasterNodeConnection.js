@@ -1,13 +1,16 @@
 var Client = require('./Client.js');
 var Server = require('./Server.js');
 var net = require('net');
+var subscribers = [];
+
+//TODO actually add the connections
 
 /**
  *
  * @param ip -- ip address of the master node
  * @param port -- port of the master node
  * @param mysensors -- list of sensors that i have delimited my a colon ex- 'light:smoke:co2'
- * @param want -- list of sensors i want delimited by
+ * @param want -- list of sensors i want delimited by a colon
  * @constructor
  */
 function MasterNodeConnection(ip, port, mysensors, want) {
@@ -20,45 +23,48 @@ function MasterNodeConnection(ip, port, mysensors, want) {
     this.server;
 }
 
+/**
+ * Starts the discorvery and connection service
+ */
 MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     var that = this;
     this.server = new Server(this.myIP, 1337, 0);
     this.server.start();
 
+    //master connection
     var clientConnToMN = new net.Socket();
 
-
+    //connect to master node endpoint
     clientConnToMN.connect(this.port, this.ip, function () {
         console.log('connected to: ' + that.ip + ' !');
         this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors);
     });
 
+    //TODO add connections
     clientConnToMN.on('data', function (data) {
         console.log(new Buffer(data).toString());
     });
 
+    //TODO add automatic reconnect
     clientConnToMN.on('close', function () {
         console.log(that.ip + ' closed')
-        that.client.destroy();
-        that.client.unref();
-
-        setTimeout(function () {
-            that.client.connect(this.port, this.ip, function () {
-                that.client.write('hn');
-            });
-
-        }, 5000);
-
-
     });
 
 };
 
+/**
+ * Push data to all the subscribed connections
+ * @param data
+ */
 MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
     this.server.sendUpdate(data);
 };
 
 
+/**
+ * Helper function that returns the ip of THIS device
+ * @returns {String}
+ */
 function getIPAddress() {
     var interfaces = require('os').networkInterfaces();
     for (var devName in interfaces) {
@@ -74,4 +80,5 @@ function getIPAddress() {
     return '0.0.0.0';
 }
 
+//NodeJS thing so that i can make this a class
 module.exports = MasterNodeConnection;

@@ -107,5 +107,6 @@ SensorNode.prototype.getString = function () {
     return this.hostname + '-' + this.ip + '-' + this.sensors;
 };
 
+
 //start listening for connections
 server.listen(9999, '10.20.0.128');
