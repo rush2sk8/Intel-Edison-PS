@@ -51,8 +51,6 @@ Client.prototype.run = function () {
      * */
     this.client.connect(this.port, this.ip, function () {
         console.log('connected to: ' + that.ip + ' !')
-        that.client.write('hn');
-
     });
 
     /**
@@ -85,9 +83,6 @@ Client.prototype.run = function () {
             //push the data to out log
             that.log.push(JSON.stringify(logData));
 
-            //if the user defined a handler function send the string data to the function
-            if (that.dh !== undefined)
-                that.dh(stringData);
         }
         //otherwise its a command
         else {
@@ -96,10 +91,13 @@ Client.prototype.run = function () {
             if (command[0] == 'hn') {
                 that.connHN = command[1];
             } else if (command[0] == 'gni') {
-                that.client.write('ghn-' + hostname + '-' + that.myIP);
+                that.client.write('ghn-' + hostname + '-' + that.myIP); //deprecated
             }
 
         }
+        //if the user defined a handler function send the string data to the function
+        if (that.dh !== undefined)
+            that.dh(stringData);
     });
 
     /** Called when the socket has successfully closed
@@ -130,9 +128,9 @@ Client.prototype.run = function () {
          that.client.unref();
 
          setTimeout(function () {
-             that.client.connect(this.port, this.ip, function () {
-                 that.client.write('hn');
-             });
+         that.client.connect(this.port, this.ip, function () {
+         that.client.write('hn');
+         });
 
          }, 5000);*/
 
@@ -140,7 +138,7 @@ Client.prototype.run = function () {
 
 };
 
-/** 
+/**
  * Will return the array contaning all of the logged data
  * @returns {Array} all of the rx data
  * @memberOf Client
@@ -188,7 +186,7 @@ Client.prototype.deleteFromLog = function (toRemove) {
  * //writes data called rx.log every 5 seconds
  * setInterval(function () {
      client.writeLogToFile('rx.log');
- * }, 5000); 
+ * }, 5000);
  */
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
@@ -199,6 +197,10 @@ Client.prototype.writeLogToFile = function (filename) {
     });
 };
 
+
+Client.prototype.getClientSocket = function () {
+    return this.client;
+}
 
 function getIPAddress() {
     var interfaces = require('os').networkInterfaces();

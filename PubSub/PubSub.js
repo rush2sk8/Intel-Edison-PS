@@ -11,8 +11,8 @@ var dh = function (data) {
 
 var Client = require('./Client.js');
 
-var client = new Client(ip, port, dh);
-client.run();
+//var client = new Client(ip, port, dh);
+//client.run();
 
 
 // MRAA, as per usual

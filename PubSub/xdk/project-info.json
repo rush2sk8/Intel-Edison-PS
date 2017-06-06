@@ -4,6 +4,6 @@
     "xdkVersion": "3977",
     "projectGuid": "54556124-edde-445d-b361-e2162ff2d77b",
     "projectTypeName": "com.intel.xdk.projecttype.iotapp",
-    "src": "iotapp/iotapp-template-blank-iot/sample.zip",
+    "src": "iotapp/iotapp-template-blank-iot/sample.zip"
 
 }
