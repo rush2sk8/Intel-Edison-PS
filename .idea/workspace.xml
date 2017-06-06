@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Testing/MasterNode/MasterNode.js" afterPath="$PROJECT_DIR$/Testing/MasterNode/MasterNode.js" />
-    </list>
+    <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -30,32 +27,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1365">
               <caret line="178" column="23" lean-forward="false" selection-start-line="178" selection-start-column="23" selection-end-line="178" selection-end-column="23" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Testing/MasterNode/MasterNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-              <folding>
-                <element signature="e#168#1344#0" expanded="false" />
-                <element signature="n#!!doc;n#hasNode#0" expanded="false" />
-                <element signature="n#!!block;n#hasNode#0" expanded="false" />
-                <element signature="n#!!doc;n#sendNodeListToDevice#0" expanded="false" />
-                <element signature="n#!!block;n#sendNodeListToDevice#0" expanded="false" />
-                <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
-                <element signature="n#!!block;n#SensorNode#0" expanded="false" />
-                <element signature="e#2283#2363#0" expanded="false" />
-                <element signature="e#2409#2475#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -304,12 +281,12 @@
       <workItem from="1496336618712" duration="7436000" />
       <workItem from="1496410832308" duration="3619000" />
       <workItem from="1496757574430" duration="3795000" />
-      <workItem from="1496764388871" duration="13761000" />
+      <workItem from="1496764388871" duration="14002000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77757000" />
+    <option name="totallyTimeSpent" value="77998000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="0" width="1280" height="1400" extended-state="0" />
@@ -377,17 +354,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="493">
           <caret line="70" column="9" lean-forward="true" selection-start-line="70" selection-start-column="9" selection-end-line="71" selection-end-column="0" />
-          <folding>
-            <element signature="e#168#1344#0" expanded="false" />
-            <element signature="n#!!doc;n#hasNode#0" expanded="false" />
-            <element signature="n#!!block;n#hasNode#0" expanded="false" />
-            <element signature="n#!!doc;n#sendNodeListToDevice#0" expanded="false" />
-            <element signature="n#!!block;n#sendNodeListToDevice#0" expanded="false" />
-            <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
-            <element signature="n#!!block;n#SensorNode#0" expanded="false" />
-            <element signature="e#2283#2363#0" expanded="false" />
-            <element signature="e#2409#2475#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -438,17 +405,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#168#1344#0" expanded="false" />
-            <element signature="n#!!doc;n#hasNode#0" expanded="false" />
-            <element signature="n#!!block;n#hasNode#0" expanded="false" />
-            <element signature="n#!!doc;n#sendNodeListToDevice#0" expanded="false" />
-            <element signature="n#!!block;n#sendNodeListToDevice#0" expanded="false" />
-            <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
-            <element signature="n#!!block;n#SensorNode#0" expanded="false" />
-            <element signature="e#2283#2363#0" expanded="false" />
-            <element signature="e#2409#2475#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -645,29 +602,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/MasterNode/MasterNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
           <caret line="178" column="23" lean-forward="false" selection-start-line="178" selection-start-column="23" selection-end-line="178" selection-end-column="23" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/MasterNode/MasterNode.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
-          <folding>
-            <element signature="e#168#1344#0" expanded="false" />
-            <element signature="n#!!doc;n#hasNode#0" expanded="false" />
-            <element signature="n#!!block;n#hasNode#0" expanded="false" />
-            <element signature="n#!!doc;n#sendNodeListToDevice#0" expanded="false" />
-            <element signature="n#!!block;n#sendNodeListToDevice#0" expanded="false" />
-            <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
-            <element signature="n#!!block;n#SensorNode#0" expanded="false" />
-            <element signature="e#2283#2363#0" expanded="false" />
-            <element signature="e#2409#2475#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
