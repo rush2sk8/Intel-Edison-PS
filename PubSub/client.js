@@ -31,7 +31,7 @@ function Client(ip, port, dataHandler) {
     this.log = []
     this.dh = dataHandler;
 }
-    
+ 
 /**   
  * This function will start a connection to the endpoint given the
  * ip and port that the client object was initialized with.

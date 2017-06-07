@@ -1,9 +1,7 @@
 var Client = require('./Client.js');
 var Server = require('./Server.js');
 var net = require('net');
-var subscribers = [];
 
-//TODO actually add the connections
 
 /**
  *
@@ -21,6 +19,7 @@ function MasterNodeConnection(ip, port, mysensors, want) {
     this.want = want;
     this.clients = [];
     this.server;
+    this.dh;
 }
 
 /**
@@ -64,10 +63,10 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
                 for (var w = 0; w < wants.length; w++) {
 
                     //if they have something we want 
-                    if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
+                     if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
 
                         //create a new client
-                        var newClient = new Client(command[2], 1337, function (data) {});
+                        var newClient = new Client(command[2], 1337, this.dh);
 
                         //run the client connection
                         newClient.run();
@@ -100,6 +99,9 @@ MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
     this.server.sendUpdate(data);
 };
 
+MasterNodeConnection.prototype.setClientDataHandler = function (func) {
+    this.dh = func;
+};
 
 /**
  * Helper function that returns the ip of THIS device

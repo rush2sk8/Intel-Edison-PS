@@ -53,7 +53,7 @@ Server.prototype.start = function () {
     });
 
     //
-    this.server.timeout = this.timeout;
+    this.server.timeout = this.timeout; 
 
     //listen for incoming connections
     this.server.listen(this.port, this.ip);
@@ -72,7 +72,7 @@ Server.prototype.start = function () {
  * setInterval(function(){
  *      server.sendUpdate(Math.random());
  * },5000);
- */
+ */ 
 Server.prototype.sendUpdate = function (data) {
     var that = this;
 
