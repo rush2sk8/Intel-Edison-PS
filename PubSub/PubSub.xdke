@@ -17,8 +17,8 @@
         "name": ".gitignore"
       },
       "Client.js": {
-        "previousModTime": 1496780919280,
-        "modified": 1496780919280,
+        "previousModTime": 1496862148548,
+        "modified": 1496862148548,
         "seen": true,
         "name": "Client.js"
       },
@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1496781553883,
-        "modified": 1496781553883,
+        "previousModTime": 1496862148548,
+        "modified": 1496862148548,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1496845970868,
-        "modified": 1496845970868,
+        "previousModTime": 1496862145210,
+        "modified": 1496862145210,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -65,8 +65,8 @@
         "name": "README.md"
       },
       "Server.js": {
-        "previousModTime": 1496780919477,
-        "modified": 1496780919477,
+        "previousModTime": 1496862148548,
+        "modified": 1496862148548,
         "seen": true,
         "name": "Server.js"
       },
@@ -77,20 +77,20 @@
         "name": "xdk/project-info.json"
       },
       "client.js": {
-        "previousModTime": 1496780919280,
-        "modified": 1496780919280,
+        "previousModTime": 1496862148548,
+        "modified": 1496862148548,
         "seen": true,
         "name": "client.js"
       },
       "MasterNodeConnection.js": {
-        "previousModTime": 1496845412189,
-        "modified": 1496845412189,
+        "previousModTime": 1496862148548,
+        "modified": 1496862148548,
         "seen": true,
         "name": "MasterNodeConnection.js"
       },
       "server.js": {
-        "previousModTime": 1496780919477,
-        "modified": 1496780919477,
+        "previousModTime": 1496862148548,
+        "modified": 1496862148548,
         "seen": true,
         "name": "server.js"
       },
@@ -295,136 +295,22 @@
     },
     "boardFileStatus": {
       "Client.js": {
-        "previousModTime": 1496846501312
-      },
-      "icon.png": {
-        "previousModTime": 1496846501312
-      },
-      "LICENSE.md": {
-        "previousModTime": 1496846501312
-      },
-      "package.json": {
-        "previousModTime": 1496846501312
+        "previousModTime": 1496862149165
       },
       "PubSub.js": {
-        "previousModTime": 1496846501312
-      },
-      "README.md": {
-        "previousModTime": 1496846501312
+        "previousModTime": 1496862149165
       },
       "Server.js": {
-        "previousModTime": 1496846501312
-      },
-      "xdk/project-info.json": {
-        "previousModTime": 1496846501312
+        "previousModTime": 1496862149165
       },
       "client.js": {
-        "previousModTime": 1496846501312
+        "previousModTime": 1496862149165
       },
       "MasterNodeConnection.js": {
-        "previousModTime": 1496846501312
+        "previousModTime": 1496862149165
       },
       "server.js": {
-        "previousModTime": 1496846501312
-      },
-      "out/Client.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/client.js.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/global.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/index.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/MasterNodeConnection.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/MasterNodeConnection.js.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/Server.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/Server.js.html": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Bold-webfont.eot": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Bold-webfont.svg": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Bold-webfont.woff": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-BoldItalic-webfont.eot": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-BoldItalic-webfont.svg": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-BoldItalic-webfont.woff": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Italic-webfont.eot": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Italic-webfont.svg": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Italic-webfont.woff": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Light-webfont.eot": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Light-webfont.svg": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Light-webfont.woff": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-LightItalic-webfont.eot": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-LightItalic-webfont.svg": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-LightItalic-webfont.woff": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Regular-webfont.eot": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Regular-webfont.svg": {
-        "previousModTime": 1496846501312
-      },
-      "out/fonts/OpenSans-Regular-webfont.woff": {
-        "previousModTime": 1496846501312
-      },
-      "out/scripts/linenumber.js": {
-        "previousModTime": 1496846501312
-      },
-      "out/scripts/prettify/Apache-License-2.0.txt": {
-        "previousModTime": 1496846501312
-      },
-      "out/scripts/prettify/lang-css.js": {
-        "previousModTime": 1496846501312
-      },
-      "out/scripts/prettify/prettify.js": {
-        "previousModTime": 1496846501312
-      },
-      "out/styles/jsdoc-default.css": {
-        "previousModTime": 1496846501312
-      },
-      "out/styles/prettify-jsdoc.css": {
-        "previousModTime": 1496846501312
-      },
-      "out/styles/prettify-tomorrow.css": {
-        "previousModTime": 1496846501312
+        "previousModTime": 1496862149165
       }
     }
   }

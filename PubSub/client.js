@@ -16,7 +16,7 @@ const hostname = require('os').hostname();
  *
  *      //prints received data to the screen
  *      console.log(data);
- * };
+ * };  
  *
  * //creates a client that will connect to a server running on the localhost
  * var client = new Client('127.0.0.1', 1337, dh);
@@ -31,7 +31,7 @@ function Client(ip, port, dataHandler) {
     this.log = []
     this.dh = dataHandler;
 }
- 
+    
 /**   
  * This function will start a connection to the endpoint given the
  * ip and port that the client object was initialized with.

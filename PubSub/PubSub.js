@@ -11,10 +11,10 @@ var dh = function (data) {
 
 var Client = require('./Client.js');
 
-//var client = new Client(ip, port, dh);
-//client.run();
+var client = new Client(ip, port, dh);
+client.run();
 
-
+ 
 // MRAA, as per usual
 var mraa = require('mraa');
 
@@ -133,7 +133,7 @@ var intervalIDLed;
 var BlinkNormalMs = 1000.0 / 5.0;
 var BlinkAlertMs = 1000.0 / 50.0;
 
-var analogIn; 
+var analogIn;
 var lightThreshold = 0.8;
 var lightSensorState = 1; // 1 = above threshold, 0 = below
 
@@ -142,7 +142,7 @@ var readLightSensor = function () {
     var v1 = adc.readADC(1);
 
     if ((!lightSensorState) && (v1 > lightThreshold)) {
-
+ 
         lightSensorState = 1;
         clearInterval(intervalIDLed);
         intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
@@ -154,18 +154,18 @@ var readLightSensor = function () {
         intervalIDLed = setInterval(writeLed, BlinkAlertMs); // start the periodic read
         server.sendUpdate(BlinkAlertMs);
     }
-
-};
-
+ 
+};  
+ 
 // global variable for pin state
 var ledState = 0;
 
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
-    // set led value
+    // set led value 
     ledPin.write(ledState);
-} 
+}
 
 // setup perdiodic activity for light sensor reading
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
@@ -173,10 +173,20 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
-**************************************************SERVER END MAIN**************************************************/
+******************************* *******************SERVER END MAIN**************************************************/
+
 
 
 var MasterNodeConnection = require('./MasterNodeConnection.js')
-var master = new MasterNodeConnection('10.20.0.128', 9999, 'light', '');
+var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', ':');
 master.startAutomaticDiscovery();
- 
+setInterval(function () {
+    master.publishDataToSubscribers(Math.random() + '');
+}, 10000);
+
+
+/*
+var MasterNodeConnection = require('./MasterNodeConnection.js')
+var master = new MasterNodeConnection('10.20.0.128', 9999, ':', 'light:');
+master.startAutomaticDiscovery();
+*/

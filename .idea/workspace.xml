@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/How to setup Intel Nodes.docx" afterPath="$PROJECT_DIR$/How to setup Intel Nodes.docx" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.js" afterPath="$PROJECT_DIR$/PubSub/PubSub.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.xdke" afterPath="$PROJECT_DIR$/PubSub/PubSub.xdke" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/client.js" afterPath="$PROJECT_DIR$/PubSub/client.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/server.js" afterPath="$PROJECT_DIR$/PubSub/server.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,13 +21,58 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MasterNodeConnection.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MasterNodeConnection.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1076">
-              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+            <state relative-caret-position="658">
+              <caret line="61" column="86" lean-forward="false" selection-start-line="61" selection-start-column="86" selection-end-line="61" selection-end-column="86" />
               <folding>
-                <element signature="e#1624#1661#0" expanded="false" />
+                <marker date="1496861656480" expanded="true" signature="785:2479" ph="{...}" />
+                <marker date="1496861656480" expanded="true" signature="1286:2344" ph="{...}" />
+                <marker date="1496861656480" expanded="true" signature="2426:2474" ph="{...}" />
+                <marker date="1496861656480" expanded="false" signature="2482:2551" ph="/** Push data to all the subscribed connections ...*/" />
+                <marker date="1496861656480" expanded="false" signature="2626:2663" ph="{...}" />
+                <marker date="1496861656480" expanded="false" signature="2667:2749" ph="/** Helper function that returns the ip of THIS device ...*/" />
+                <marker date="1496861656480" expanded="false" signature="2774:3166" ph="{...}" />
+                <marker date="1496861656480" expanded="true" signature="2868:3141" ph="{...}" />
+                <marker date="1496861656480" expanded="true" signature="2959:3135" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PubSub/client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="476">
+              <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="80" selection-end-column="33" />
+              <folding>
+                <marker date="1496861209368" expanded="true" signature="970:1319" ph="/** This function will start a connection to the endpoint given the ...*/" />
+                <marker date="1496861209368" expanded="true" signature="1355:3945" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="1383:1462" ph="/** connects to the endpoint ...*/" />
+                <marker date="1496861209368" expanded="true" signature="1519:1582" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="1590:1677" ph="/** Callback when data is received ...*/" />
+                <marker date="1496861209368" expanded="true" signature="1721:2979" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="2023:2484" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="2052:2345" ph="{&quot;rxnode id&quot;: hostname...}" />
+                <marker date="1496861209368" expanded="true" signature="2532:2819" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="2620:2677" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="2987:3081" ph="/** Called when the socket has successfully closed ...*/" />
+                <marker date="1496861209368" expanded="true" signature="3122:3408" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="3257:3392" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="3323:3379" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="3416:3615" ph="/** Called when an error like a refused connection, broken pipe, broken socket, etc has occured ...*/" />
+                <marker date="1496861209368" expanded="true" signature="3656:3940" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="3711:3933" ph="/*...*/" />
+                <marker date="1496861209368" expanded="true" signature="3948:4250" ph="/** Will return the array contaning all of the logged data ...*/" />
+                <marker date="1496861209368" expanded="true" signature="4318:4634" ph="/** Deletes an entry from the log ...*/" />
+                <marker date="1496861209368" expanded="true" signature="4688:4789" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="4749:4787" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="4791:5272" ph="/** Writes the entire log to a file specified by &quot;filename&quot; then clear the log ...*/" />
+                <marker date="1496861209368" expanded="true" signature="5387:5504" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="5612:6004" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="5706:5979" ph="{...}" />
+                <marker date="1496861209368" expanded="true" signature="5797:5973" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -51,12 +97,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="2788">
+              <caret line="180" column="71" lean-forward="false" selection-start-line="180" selection-start-column="71" selection-end-line="180" selection-end-column="71" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,10 +112,25 @@
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PubSub/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+            <state relative-caret-position="753">
+              <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
               <folding>
-                <marker date="1496780919477" expanded="true" signature="789:907" ph="/** Starts a server at the specified ip and port and listen for connections ...*/" />
+                <marker date="1496861743761" expanded="true" signature="1684:1722" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="1725:2086" ph="/** Sends the data to all of the connected clients ...*/" />
+                <marker date="1496861743761" expanded="true" signature="2133:3261" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="2241:3207" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="2340:2959" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="2663:2852" ph="{&quot;txnode id&quot;: hostname...}" />
+                <marker date="1496861743761" expanded="true" signature="3062:3201" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="3264:3564" ph="/** Returns the sent data log from the server ...*/" />
+                <marker date="1496861743761" expanded="true" signature="3605:3629" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="3632:3953" ph="/** Removes data element from the server log ...*/" />
+                <marker date="1496861743761" expanded="true" signature="4007:4108" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="4068:4106" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="4111:4552" ph="/** Writes the server log data to a file ...*/" />
+                <marker date="1496861743761" expanded="true" signature="4607:4788" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="4667:4784" ph="{...}" />
+                <marker date="1496861743761" expanded="true" signature="4728:4777" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -90,10 +153,14 @@
       <find>seqnum</find>
       <find>connections</find>
       <find>listening</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -116,13 +183,14 @@
         <option value="$PROJECT_DIR$/Testing/MasterNode/Edison.html" />
         <option value="$PROJECT_DIR$/Testing/MasterNode/test.html" />
         <option value="$PROJECT_DIR$/Testing/MasterNode/express" />
-        <option value="$PROJECT_DIR$/PubSub/PubSub.js" />
         <option value="$PROJECT_DIR$/PubSub/xdk/project-info.json" />
         <option value="$PROJECT_DIR$/PubSub/client.js" />
         <option value="$PROJECT_DIR$/PubSub/Server.js" />
         <option value="$PROJECT_DIR$/Testing/MasterNode/MasterNode.js" />
         <option value="$PROJECT_DIR$/MasterNode.js" />
         <option value="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
+        <option value="$PROJECT_DIR$/PubSub/server.js" />
+        <option value="$PROJECT_DIR$/PubSub/PubSub.js" />
       </list>
     </option>
   </component>
@@ -289,12 +357,12 @@
       <workItem from="1496410832308" duration="3619000" />
       <workItem from="1496757574430" duration="3795000" />
       <workItem from="1496764388871" duration="14295000" />
-      <workItem from="1496842009193" duration="2465000" />
+      <workItem from="1496842009193" duration="5864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="80756000" />
+    <option name="totallyTimeSpent" value="84155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1207" height="1400" extended-state="0" />
@@ -302,7 +370,7 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997677" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32997677" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -353,7 +421,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -363,7 +431,22 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1496780919477" expanded="true" signature="789:907" ph="/** Starts a server at the specified ip and port and listen for connections ...*/" />
+            <marker date="1496861743761" expanded="true" signature="1684:1722" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="1725:2086" ph="/** Sends the data to all of the connected clients ...*/" />
+            <marker date="1496861743761" expanded="true" signature="2133:3261" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="2241:3207" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="2340:2959" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="2663:2852" ph="{&quot;txnode id&quot;: hostname...}" />
+            <marker date="1496861743761" expanded="true" signature="3062:3201" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="3264:3564" ph="/** Returns the sent data log from the server ...*/" />
+            <marker date="1496861743761" expanded="true" signature="3605:3629" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="3632:3953" ph="/** Removes data element from the server log ...*/" />
+            <marker date="1496861743761" expanded="true" signature="4007:4108" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4068:4106" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4111:4552" ph="/** Writes the server log data to a file ...*/" />
+            <marker date="1496861743761" expanded="true" signature="4607:4788" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4667:4784" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4728:4777" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -372,7 +455,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -459,15 +544,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Testing/MasterNode/MasterNode.js" />
     <entry file="file://$PROJECT_DIR$/PubSub/client.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="1" column="17" lean-forward="false" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="42" />
-          <folding />
+        <state relative-caret-position="476">
+          <caret line="79" column="0" lean-forward="true" selection-start-line="79" selection-start-column="0" selection-end-line="80" selection-end-column="33" />
+          <folding>
+            <marker date="1496861209368" expanded="true" signature="970:1319" ph="/** This function will start a connection to the endpoint given the ...*/" />
+            <marker date="1496861209368" expanded="true" signature="1355:3945" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="1383:1462" ph="/** connects to the endpoint ...*/" />
+            <marker date="1496861209368" expanded="true" signature="1519:1582" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="1590:1677" ph="/** Callback when data is received ...*/" />
+            <marker date="1496861209368" expanded="true" signature="1721:2979" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="2023:2484" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="2052:2345" ph="{&quot;rxnode id&quot;: hostname...}" />
+            <marker date="1496861209368" expanded="true" signature="2532:2819" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="2620:2677" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="2987:3081" ph="/** Called when the socket has successfully closed ...*/" />
+            <marker date="1496861209368" expanded="true" signature="3122:3408" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="3257:3392" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="3323:3379" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="3416:3615" ph="/** Called when an error like a refused connection, broken pipe, broken socket, etc has occured ...*/" />
+            <marker date="1496861209368" expanded="true" signature="3656:3940" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="3711:3933" ph="/*...*/" />
+            <marker date="1496861209368" expanded="true" signature="3948:4250" ph="/** Will return the array contaning all of the logged data ...*/" />
+            <marker date="1496861209368" expanded="true" signature="4318:4634" ph="/** Deletes an entry from the log ...*/" />
+            <marker date="1496861209368" expanded="true" signature="4688:4789" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="4749:4787" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="4791:5272" ph="/** Writes the entire log to a file specified by &quot;filename&quot; then clear the log ...*/" />
+            <marker date="1496861209368" expanded="true" signature="5387:5504" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="5612:6004" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="5706:5979" ph="{...}" />
+            <marker date="1496861209368" expanded="true" signature="5797:5973" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Testing/MasterNode/MasterNode.js" />
+    <entry file="file://$PROJECT_DIR$/PubSub/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="753">
+          <caret line="52" column="34" lean-forward="false" selection-start-line="52" selection-start-column="34" selection-end-line="52" selection-end-column="34" />
+          <folding>
+            <marker date="1496861743761" expanded="true" signature="1684:1722" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="1725:2086" ph="/** Sends the data to all of the connected clients ...*/" />
+            <marker date="1496861743761" expanded="true" signature="2133:3261" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="2241:3207" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="2340:2959" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="2663:2852" ph="{&quot;txnode id&quot;: hostname...}" />
+            <marker date="1496861743761" expanded="true" signature="3062:3201" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="3264:3564" ph="/** Returns the sent data log from the server ...*/" />
+            <marker date="1496861743761" expanded="true" signature="3605:3629" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="3632:3953" ph="/** Removes data element from the server log ...*/" />
+            <marker date="1496861743761" expanded="true" signature="4007:4108" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4068:4106" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4111:4552" ph="/** Writes the server log data to a file ...*/" />
+            <marker date="1496861743761" expanded="true" signature="4607:4788" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4667:4784" ph="{...}" />
+            <marker date="1496861743761" expanded="true" signature="4728:4777" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="61" column="86" lean-forward="false" selection-start-line="61" selection-start-column="86" selection-end-line="61" selection-end-column="86" />
+          <folding>
+            <marker date="1496861656480" expanded="true" signature="785:2479" ph="{...}" />
+            <marker date="1496861656480" expanded="true" signature="1286:2344" ph="{...}" />
+            <marker date="1496861656480" expanded="true" signature="2426:2474" ph="{...}" />
+            <marker date="1496861656480" expanded="false" signature="2482:2551" ph="/** Push data to all the subscribed connections ...*/" />
+            <marker date="1496861656480" expanded="false" signature="2626:2663" ph="{...}" />
+            <marker date="1496861656480" expanded="false" signature="2667:2749" ph="/** Helper function that returns the ip of THIS device ...*/" />
+            <marker date="1496861656480" expanded="false" signature="2774:3166" ph="{...}" />
+            <marker date="1496861656480" expanded="true" signature="2868:3141" ph="{...}" />
+            <marker date="1496861656480" expanded="true" signature="2959:3135" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MasterNode.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="935">
@@ -487,28 +642,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="123" column="0" lean-forward="true" selection-start-line="123" selection-start-column="0" selection-end-line="123" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PubSub/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="58" column="27" lean-forward="false" selection-start-line="58" selection-start-column="27" selection-end-line="58" selection-end-column="27" />
+        <state relative-caret-position="2788">
+          <caret line="180" column="71" lean-forward="false" selection-start-line="180" selection-start-column="71" selection-end-line="180" selection-end-column="71" />
           <folding>
-            <marker date="1496780919477" expanded="true" signature="789:907" ph="/** Starts a server at the specified ip and port and listen for connections ...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1076">
-          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
-          <folding>
-            <element signature="e#1624#1661#0" expanded="false" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

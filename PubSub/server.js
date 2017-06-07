@@ -20,7 +20,7 @@ function Server(ip, port, timeout) {
     this.timeout = timeout;
     this.connections = [];
 }
-  
+
 /**
  * Starts a server at the specified ip and port and listen for  connections
  * @memberOf Server 
@@ -37,18 +37,19 @@ Server.prototype.start = function () {
         //ignore random errors
         socket.on('error', function () {});
 
-        //get data if any is recieved from the client TODO allow client to request hostname and other data from server
+        //get data if any is recieved from the client
         socket.on('data', function (data) {
             var stringData = new Buffer(data).toString();
 
             if (stringData == 'hn') {
                 socket.write('hn-' + hostname);
             }
-
         });
+
 
         //keep every socket to each client
         that.connections.push(socket);
+        console.log('pushed socket')
     });
 
     //
@@ -56,7 +57,7 @@ Server.prototype.start = function () {
 
     //listen for incoming connections
     this.server.listen(this.port, this.ip);
-    console.log('listeningg on: ' + this.ip + ':' + this.port)
+    console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
 /**
@@ -178,26 +179,5 @@ Server.prototype.writeLogToFile = function (filename) {
     });
 };
 
-/*
-Server.prototype.getConnectedClientHostNames = function () {
-    var that = this;
-
-
-    that.connections.forEach(function (conn) {
-
-        if (conn.address().address !== undefined) {
-            conn.write('ghn');
-        }
-        //if its dead then remove it so we dont keep transmitting to a closed connection
-        else {
-            const i = that.connections.indexOf(conn);
-            if (i != -1)
-                that.connections.splice(i, 1);
-        }
-
-    });
-
-    return this.hns;
-};*/
 
 module.exports = Server;

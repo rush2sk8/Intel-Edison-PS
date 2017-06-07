@@ -9,7 +9,7 @@ var subscribers = [];
  *
  * @param ip -- ip address of the master node
  * @param port -- port of the master node
- * @param mysensors -- list of sensors that i have delimited my a colon ex- 'light:smoke:co2'
+ * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
  * @constructor
  */
@@ -40,9 +40,49 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors);
     });
 
-    //TODO add connections
+    //handle the actual pub/sub creation
     clientConnToMN.on('data', function (data) {
-        console.log(new Buffer(data).toString());
+
+        //put data into a string
+        var stringData = (new Buffer(data)).toString();
+
+        //split the command
+        var command = stringData.split('-');
+        console.log('stringData: ' + stringData);
+
+        //if the command is a new node in the network 
+        if (command[0] === 'nl') {
+
+            //see what the sensors the new node has
+            var sensors = command[3].split(':');
+
+            //see what we want
+            var wants = that.want.split(':');
+
+            //check to see if what they have is something they want
+            for (var s = 0; s < sensors.length; s++) {
+                for (var w = 0; w < wants.length; w++) {
+
+                    //if they have something we want 
+                    if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
+
+                        //create a new client
+                        var newClient = new Client(command[2], 1337, function (data) {});
+
+                        //run the client connection
+                        newClient.run();
+
+                        //keep a track of ongoing connections
+                        that.clients.push(newClient);
+
+                        //break out of the loop
+                        w = wants.length + 2;
+                        s = sensors.length + 2;
+                        break;
+                    }
+                }
+            }
+        }
     });
 
     //TODO add automatic reconnect
