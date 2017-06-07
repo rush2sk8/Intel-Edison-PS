@@ -174,6 +174,9 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
 **************************************************SERVER END MAIN**************************************************/
+
+
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 var master = new MasterNodeConnection('10.20.0.128', 9999, 'light', '');
 master.startAutomaticDiscovery();
+ 
