@@ -27,7 +27,7 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
  * Starts the discorvery and connection service
  */
 MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
-    var that = this;
+    const that = this;
     this.server = new Server(this.myIP, 1337, 0);
 
     this.server.start();

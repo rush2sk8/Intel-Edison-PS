@@ -30,7 +30,7 @@
 /*********************************************Node Code*****************************************************/
 var sensors = [];
 var conns = [];
-var net = require('net');
+const net = require('net');
 
 /**
  * Creates the server that brokers the connections
@@ -41,10 +41,10 @@ var server = net.createServer(function (socket) {
     socket.on('data', function (data) {
 
         //reads all incoming data
-        var stringData = new Buffer(data).toString();
+        const stringData = new Buffer(data).toString();
 
         //split it by the delimiter
-        var command = stringData.split('-');
+        const command = stringData.split('-');
 
         //if the command new node is requested
         if (command[0] == 'nn') {
@@ -107,7 +107,7 @@ function hasNode(tosee) {
 function sendNodeListToDevice(socket) {
 
     //gets the new node ip
-    var ipofsocket = socket.remoteAddress;
+    const ipofsocket = socket.remoteAddress;
 
     sensors.forEach(function (sensor) {
 
