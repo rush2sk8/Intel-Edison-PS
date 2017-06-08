@@ -112,8 +112,12 @@ function sendNodeListToDevice(socket) {
     sensors.forEach(function (sensor) {
 
         //writes the connected sensor information to the new nodes
-        if (sensor.ip !== ipofsocket)
-            socket.write('nl-' + sensor.getString()+"\n");
+        if (sensor.ip !== ipofsocket){
+            setImmediate(function () {
+                socket.write('nl-' + sensor.getString() + "\n");
+            });
+        }
+
     });
 }
 

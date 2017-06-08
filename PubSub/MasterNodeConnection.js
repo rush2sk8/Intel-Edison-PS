@@ -3,13 +3,13 @@ var Server = require('./Server.js');
 var net = require('net');
 
 
-/** 
- * 
+/**
+ *
  * @param ip -- ip address of the master node
- * @param port -- port of the master node 
+ * @param port -- port of the master node
  * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
- * @param dh -- clientside data handler 
+ * @param dh -- clientside data handler
  * @constructor
  */
 function MasterNodeConnection(ip, port, mysensors, want, dh) {
@@ -29,6 +29,7 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
 MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     var that = this;
     this.server = new Server(this.myIP, 1337, 0);
+
     this.server.start();
 
     //master connection
@@ -44,7 +45,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     clientConnToMN.on('data', function (data) {
 
         //put data into a string
-        var stringData = (new Buffer(data)).toString();
+        const stringData = (new Buffer(data)).toString();
 
         //split the command
         var command = stringData.split('-');
@@ -56,14 +57,14 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
             //see what the sensors the new node has
             var sensors = command[3].split(':');
 
-            //see what we want
+            //see what we want  
             var wants = that.want.split(':');
 
             //check to see if what they have is something they want
             for (var s = 0; s < sensors.length; s++) {
                 for (var w = 0; w < wants.length; w++) {
 
-                    //if they have something we want 
+                    //if they have something we want
                     if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
 
                         console.log('found something i want\n attempting to connect...')
@@ -83,6 +84,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
                     }
                 }
             }
+
         }
     });
 

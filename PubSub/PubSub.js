@@ -148,14 +148,14 @@ var readLightSensor = function () {
         intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
         server.sendUpdate(BlinkNormalMs);
     } else if ((lightSensorState) && (v1 < lightThreshold)) {
-
+ 
         lightSensorState = 0;
         clearInterval(intervalIDLed);
         intervalIDLed = setInterval(writeLed, BlinkAlertMs); // start the periodic read
         server.sendUpdate(BlinkAlertMs);
     }
 
-};
+}; 
 
 // global variable for pin state
 var ledState = 0;
@@ -178,7 +178,7 @@ mc.run();
 
 //server automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
-var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', ':');
+var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', ':', function () {});
 master.startAutomaticDiscovery();
 
 // MRAA, as per usual 
@@ -308,14 +308,14 @@ var dh = function (data) {
 
 };
 var master = new MasterNodeConnection('10.20.0.128', 9999, ':', 'light:', dh);
-  
+
 master.startAutomaticDiscovery();
 
 // MRAA, as per usual 
 var mraa = require('mraa');
 
 
-// Set up a digital output on MRAA pin 20 (GP12)
+// Set up a digital output on MRAA pin 20 (GP12) 
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
 
