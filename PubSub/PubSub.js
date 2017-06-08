@@ -1,4 +1,4 @@
-/****************************************************CLIENT MAIN***************************************************
+/****************************************************CLIENT MAIN***************************************************/
 const ip = '10.20.0.11';
 const port = 1337;
 var intervalIDLed;
@@ -14,7 +14,7 @@ var Client = require('./Client.js');
 var client = new Client(ip, port, dh);
 client.run();
 
- 
+
 // MRAA, as per usual
 var mraa = require('mraa');
 
@@ -46,7 +46,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
 
-************************************************CLIENT END MAIN**************************************************/
+/************************************************CLIENT END MAIN**************************************************/
 
 /****************************************************SERVER MAIN**************************************************
 const ip = '10.20.0.11';
@@ -57,7 +57,7 @@ var Client = require('./Client.js')
 
 //creates local server for testing
 var server = new Server(ip, port, 0);
-
+ 
 server.start();
 
 // MRAA, as per usual
@@ -138,11 +138,11 @@ var lightThreshold = 0.8;
 var lightSensorState = 1; // 1 = above threshold, 0 = below
 
 var readLightSensor = function () {
- 
+
     var v1 = adc.readADC(1);
 
     if ((!lightSensorState) && (v1 > lightThreshold)) {
- 
+
         lightSensorState = 1;
         clearInterval(intervalIDLed);
         intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
@@ -154,9 +154,9 @@ var readLightSensor = function () {
         intervalIDLed = setInterval(writeLed, BlinkAlertMs); // start the periodic read
         server.sendUpdate(BlinkAlertMs);
     }
- 
-};  
- 
+
+};
+
 // global variable for pin state
 var ledState = 0;
 
@@ -292,13 +292,12 @@ function writeLed() {
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 //server automatic end
-*/
+
 
 
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 var master = new MasterNodeConnection('10.20.0.128', 9999, ':', 'light:');
-
 
 
 var intervalIDLed;
@@ -340,5 +339,5 @@ function writeLed() {
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-
+*/
 //client automatic end

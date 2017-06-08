@@ -1,3 +1,33 @@
+/********************************************Website Code***************************************************/
+const express = require('express');
+const app = express();
+const path = require('path');
+const fs = require('fs');
+
+app.use(express.static(__dirname + '/'));
+
+app.get('/', function (req, res) {
+
+    fs.readFile(__dirname + '/template.html','utf8', function(err, data){
+        console.log(data)
+    });
+
+ res.sendFile(path.join(__dirname + '/index.html'));
+
+});
+
+app.get('/reboot', function (req, res) {
+    res.sendFile(path.join(__dirname + '/reboot.html'));
+
+});
+
+app.get('/back', function (req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+})
+//app.listen(3000);
+//console.log('website at localhost:3000')
+
+/*********************************************Node Code*****************************************************/
 var sensors = [];
 var conns = [];
 var net = require('net');
@@ -104,6 +134,12 @@ SensorNode.prototype.getString = function () {
     return this.hostname + '-' + this.ip + '-' + this.sensors;
 };
 
-
 //start listening for connections
 server.listen(9999, '10.20.0.128');
+
+
+
+
+
+
+
