@@ -1,12 +1,12 @@
-/********************************************Website Code***************************************************/
-const express = require('express');
-const app = express();
-const path = require('path');
-const fs = require('fs');
+/********************************************Website Code***************************************************
+ const express = require('express');
+ const app = express();
+ const path = require('path');
+ const fs = require('fs');
 
-app.use(express.static(__dirname + '/'));
+ app.use(express.static(__dirname + '/'));
 
-app.get('/', function (req, res) {
+ app.get('/', function (req, res) {
 
     fs.readFile(__dirname + '/template.html','utf8', function(err, data){
         console.log(data)
@@ -16,17 +16,17 @@ app.get('/', function (req, res) {
 
 });
 
-app.get('/reboot', function (req, res) {
+ app.get('/reboot', function (req, res) {
     res.sendFile(path.join(__dirname + '/reboot.html'));
 
 });
 
-app.get('/back', function (req, res) {
+ app.get('/back', function (req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 })
-//app.listen(3000);
-//console.log('website at localhost:3000')
-
+ //app.listen(3000);
+ //console.log('website at localhost:3000')
+ */
 /*********************************************Node Code*****************************************************/
 var sensors = [];
 var conns = [];
@@ -36,6 +36,7 @@ var net = require('net');
  * Creates the server that brokers the connections
  */
 var server = net.createServer(function (socket) {
+    socket.setNoDelay(true);
 
     socket.on('data', function (data) {
 
@@ -59,8 +60,12 @@ var server = net.createServer(function (socket) {
                 conns.forEach(function (s) {
 
                     //skip over the same node
-                    if (s !== socket)
-                        s.write('nl-' + sn.getString());
+                    if (s !== socket) {
+                        setImmediate(function () {
+                            s.write('nl-' + sn.getString() + "\n");
+                        });
+
+                    }
                 })
             }
 
@@ -108,7 +113,7 @@ function sendNodeListToDevice(socket) {
 
         //writes the connected sensor information to the new nodes
         if (sensor.ip !== ipofsocket)
-            socket.write('nl-' + sensor.getString())
+            socket.write('nl-' + sensor.getString()+"\n");
     });
 }
 

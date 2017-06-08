@@ -3,15 +3,16 @@ var Server = require('./Server.js');
 var net = require('net');
 
 
-/**
- *
+/** 
+ * 
  * @param ip -- ip address of the master node
- * @param port -- port of the master node
+ * @param port -- port of the master node 
  * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
+ * @param dh -- clientside data handler 
  * @constructor
  */
-function MasterNodeConnection(ip, port, mysensors, want) {
+function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.ip = ip;
     this.port = port;
     this.mySensors = mysensors;
@@ -19,7 +20,7 @@ function MasterNodeConnection(ip, port, mysensors, want) {
     this.want = want;
     this.clients = [];
     this.server;
-    this.dh;
+    this.dh = dh;
 }
 
 /**
@@ -47,7 +48,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
         //split the command
         var command = stringData.split('-');
-        console.log('stringData: ' + stringData);
+        console.log('stringData: *' + stringData + '*');
 
         //if the command is a new node in the network 
         if (command[0] === 'nl') {
@@ -63,10 +64,11 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
                 for (var w = 0; w < wants.length; w++) {
 
                     //if they have something we want 
-                     if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
+                    if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
 
-                        //create a new client
-                        var newClient = new Client(command[2], 1337, this.dh);
+                        console.log('found something i want\n attempting to connect...')
+                            //create a new client
+                        var newClient = new Client(command[2], 1337, that.dh);
 
                         //run the client connection
                         newClient.run();
@@ -99,9 +101,6 @@ MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
     this.server.sendUpdate(data);
 };
 
-MasterNodeConnection.prototype.setClientDataHandler = function (func) {
-    this.dh = func;
-};
 
 /**
  * Helper function that returns the ip of THIS device

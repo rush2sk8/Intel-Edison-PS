@@ -1,4 +1,4 @@
-/****************************************************CLIENT MAIN***************************************************/
+/****************************************************CLIENT MAIN***************************************************
 const ip = '10.20.0.11';
 const port = 1337;
 var intervalIDLed;
@@ -6,7 +6,7 @@ var dh = function (data) {
     var rate = parseFloat(data.split(':')[1]);
     clearInterval(intervalIDLed);
     intervalIDLed = setInterval(writeLed, rate);
-
+ 
 };
 
 var Client = require('./Client.js');
@@ -14,11 +14,11 @@ var Client = require('./Client.js');
 var client = new Client(ip, port, dh);
 client.run();
 
-
+ 
 // MRAA, as per usual
 var mraa = require('mraa');
 
-
+ 
 // Set up a digital output on MRAA pin 20 (GP12)
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
@@ -46,7 +46,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
 
-/************************************************CLIENT END MAIN**************************************************/
+************************************************CLIENT END MAIN**************************************************/
 
 /****************************************************SERVER MAIN**************************************************
 const ip = '10.20.0.11';
@@ -175,13 +175,13 @@ var mc = new Client('10.20.0.128', 9999, function () {});
 mc.run();
 ******************************* *******************SERVER END MAIN**************************************************/
 
-/*
+
 //server automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', ':');
 master.startAutomaticDiscovery();
 
-// MRAA, as per usual
+// MRAA, as per usual 
 var mraa = require('mraa');
 
 // TI ADS1015 on ADC Block (http://www.ti.com.cn/cn/lit/ds/symlink/ads1015.pdf)
@@ -199,7 +199,7 @@ adc.readADC = function (channel) {
         channel = 3;
     }
 
-    // We will use constant settings for the config register
+    // We will use constant settings for the config register 
     var config = 0; // Bits     Description
     config |= 1 << 15; // [15]     Begin a single conversion
     config |= 1 << 14; // [14]     Non-differential ADC
@@ -294,10 +294,10 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 //server automatic end
 
 
-
+/*
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
-var master = new MasterNodeConnection('10.20.0.128', 9999, ':', 'light:');
+
 
 
 var intervalIDLed;
@@ -305,13 +305,13 @@ var dh = function (data) {
     var rate = parseFloat(data.split(':')[1]);
     clearInterval(intervalIDLed);
     intervalIDLed = setInterval(writeLed, rate);
-    console.log(data);
-};
 
-master.setClientDataHandler(dh);
+};
+var master = new MasterNodeConnection('10.20.0.128', 9999, ':', 'light:', dh);
+  
 master.startAutomaticDiscovery();
 
-// MRAA, as per usual
+// MRAA, as per usual 
 var mraa = require('mraa');
 
 
@@ -327,7 +327,7 @@ var analogIn;
 var lightThreshold = 0.8;
 var lightSensorState = 1; // 1 = above threshold, 0 = below
 
-// global variable for pin state
+// global variable for pin state 
 var ledState = 0;
 
 function writeLed() {

@@ -26,18 +26,18 @@ function Server(ip, port, timeout) {
  * @memberOf Server 
  * @example
  * var server = new Server('127.0.0.1', 1337, 0);
- * server.start();
+ * server.start();  
  */
-Server.prototype.start = function () {
+Server.prototype.start = function () {  
     var net = require('net');
     var that = this;
 
     this.server = net.createServer(function (socket) {
 
-        //ignore random errors
+        //ignore random errors 
         socket.on('error', function () {});
 
-        //get data if any is recieved from the client
+        //get data if any is recieved from the client  
         socket.on('data', function (data) {
             var stringData = new Buffer(data).toString();
 
@@ -51,9 +51,9 @@ Server.prototype.start = function () {
         that.connections.push(socket);
         console.log('pushed socket')
     });
-
+  
     //
-    this.server.timeout = this.timeout; 
+    this.server.timeout = this.timeout;
 
     //listen for incoming connections
     this.server.listen(this.port, this.ip);
@@ -72,7 +72,7 @@ Server.prototype.start = function () {
  * setInterval(function(){
  *      server.sendUpdate(Math.random());
  * },5000);
- */ 
+ */
 Server.prototype.sendUpdate = function (data) {
     var that = this;
 
@@ -134,12 +134,12 @@ Server.prototype.getTXLog = function () {
 
 /**
  * Removes data element from the server log
- * @param {String} toRemove - Element to remove
+ * @param {String} toRemove - Element to remove  
  * @memberOf Server
  * @example
  * var server = new Server('127.0.0.1', 1337,0);
- * server.start();
- * ...
+ * server.start(); 
+ * ... 
  * var log = server.getTXLog();
  *
  * //deletes the first element from the log
