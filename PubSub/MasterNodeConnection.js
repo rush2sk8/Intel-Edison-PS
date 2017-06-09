@@ -38,7 +38,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     //connect to master node endpoint
     clientConnToMN.connect(this.port, this.ip, function () {
         console.log('connected to: ' + that.ip + ' !');
-        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors);
+        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors+'-'+that.want);
     });
 
     //handle the actual pub/sub creation
@@ -49,41 +49,19 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
         //split the command
         var command = stringData.split('-');
-        console.log('stringData: *' + stringData + '*');
+        console.log('stringData: ' + stringData + '');
 
         //if the command is a new node in the network 
-        if (command[0] === 'nl') {
+        if (command[0] === 'an') {
 
-            //see what the sensors the new node has
-            var sensors = command[3].split(':');
+            //create a new client
+            var newClient = new Client(command[2], 1337, that.dh);
 
-            //see what we want  
-            var wants = that.want.split(':');
+            //run the client connection
+            newClient.run();
 
-            //check to see if what they have is something they want
-            for (var s = 0; s < sensors.length; s++) {
-                for (var w = 0; w < wants.length; w++) {
-
-                    //if they have something we want
-                    if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
-
-                        console.log('found something i want\n attempting to connect...')
-                            //create a new client
-                        var newClient = new Client(command[2], 1337, that.dh);
-
-                        //run the client connection
-                        newClient.run();
-
-                        //keep a track of ongoing connections
-                        that.clients.push(newClient);
-
-                        //break out of the loop
-                        w = wants.length + 2;
-                        s = sensors.length + 2;
-                        break;
-                    }
-                }
-            }
+            //keep a track of ongoing connections
+            that.clients.push(newClient);
 
         }
     });

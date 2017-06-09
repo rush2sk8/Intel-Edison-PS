@@ -50,7 +50,7 @@ var server = net.createServer(function (socket) {
         if (command[0] == 'nn') {
 
             //create a new sensor node object
-            var sn = new SensorNode(command[1], command[2], command[3]);
+            var sn = new SensorNode(command[1], command[2], command[3], command[4]);
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
@@ -100,26 +100,6 @@ function hasNode(tosee) {
     return false;
 }
 
-/**
- * Sends a list of all the connected devices to the socket
- * @param socket -- the new node
- */
-function sendNodeListToDevice(socket) {
-
-    //gets the new node ip
-    const ipofsocket = socket.remoteAddress;
-
-    sensors.forEach(function (sensor) {
-
-        //writes the connected sensor information to the new nodes
-        if (sensor.ip !== ipofsocket){
-            setImmediate(function () {
-                socket.write('nl-' + sensor.getString() + "\n");
-            });
-        }
-
-    });
-}
 
 /**
  * Sensor node data type
@@ -128,10 +108,11 @@ function sendNodeListToDevice(socket) {
  * @param sensors
  * @constructor
  */
-function SensorNode(hostname, ip, sensors) {
+function SensorNode(hostname, ip, sensors,want) {
     this.hostname = hostname;
     this.ip = ip;
     this.sensors = sensors;
+    this.want = want
 }
 
 /**
