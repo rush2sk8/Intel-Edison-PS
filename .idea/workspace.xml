@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master Node/MasterNode.js" afterPath="$PROJECT_DIR$/Master Node/MasterNode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,26 +13,6 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf>
-            <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="153">
-                    <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
-                    <folding />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
@@ -305,12 +283,12 @@
       <workItem from="1496842009193" duration="5864000" />
       <workItem from="1496929842916" duration="10944000" />
       <workItem from="1497024436633" duration="142000" />
-      <workItem from="1497024650502" duration="3207000" />
+      <workItem from="1497024650502" duration="4569000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="98448000" />
+    <option name="totallyTimeSpent" value="99810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
@@ -491,8 +469,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="52" column="61" lean-forward="true" selection-start-line="52" selection-start-column="61" selection-end-line="52" selection-end-column="61" />
+        <state relative-caret-position="0">
+          <caret line="58" column="16" lean-forward="true" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="16" />
           <folding />
         </state>
       </provider>

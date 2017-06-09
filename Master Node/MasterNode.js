@@ -56,21 +56,12 @@ var server = net.createServer(function (socket) {
             if (hasNode(sn) === false) {
                 sensors.push(sn);
 
-                //since the node is new in the network broadcast the new node to the others in the network
-                conns.forEach(function (s) {
 
-                    //skip over the same node
-                    if (s !== socket) {
-                        setImmediate(function () {
-                            s.write('nl-' + sn.getString() + "\n");
-                        });
 
-                    }
-                })
+
             }
 
-            //send the list of the connected nodes to the new node
-            sendNodeListToDevice(socket);
+
         }
 
         console.log(sensors);
