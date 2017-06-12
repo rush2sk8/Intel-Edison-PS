@@ -29,7 +29,6 @@
  */
 /*********************************************Node Code*****************************************************/
 var sensors = [];
-var conns = [];
 const net = require('net');
 
 /**
@@ -43,6 +42,8 @@ var server = net.createServer(function (socket) {
         //reads all incoming data
         const stringData = new Buffer(data).toString();
 
+        console.log(stringData)
+
         //split it by the delimiter
         const command = stringData.split('-');
 
@@ -50,18 +51,19 @@ var server = net.createServer(function (socket) {
         if (command[0] == 'nn') {
 
             //create a new sensor node object
-            var sn = new SensorNode(command[1], command[2], command[3], command[4]);
+            var sn = new SensorNode(command[1], command[2], command[3], command[4], socket);
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
+
+                sn.getSensorsToSubTo().forEach(function (s) {
+                    socket.write('ct-' + s.getString() + '*');
+                });
+
+                sn.getSensorsToPubTo();
+
                 sensors.push(sn);
-
-
-
-
             }
-
-
         }
 
         console.log(sensors);
@@ -70,9 +72,6 @@ var server = net.createServer(function (socket) {
     //ignore errors
     socket.on('error', function () {
     });
-
-    //hold the socket to the current node
-    conns.push(socket);
 
 });
 
@@ -99,11 +98,12 @@ function hasNode(tosee) {
  * @param sensors
  * @constructor
  */
-function SensorNode(hostname, ip, sensors,want) {
+function SensorNode(hostname, ip, sensors, want, socket) {
     this.hostname = hostname;
     this.ip = ip;
-    this.sensors = sensors;
-    this.want = want
+    this.sensors = want !== undefined ? sensors.split(':') : [];
+    this.want = want !== undefined ? want.split(':') : [];
+    this.socket = socket
 }
 
 /**
@@ -114,6 +114,58 @@ function SensorNode(hostname, ip, sensors,want) {
 SensorNode.prototype.getString = function () {
     return this.hostname + '-' + this.ip + '-' + this.sensors;
 };
+
+/**
+ * Returns array of sensors that have something it wants
+ * @param node
+ * @returns {Array}
+ */
+SensorNode.prototype.getSensorsToSubTo = function () {
+    var toReturn = [];
+    const that = this;
+    sensors.forEach(function (s) {
+
+        for (var w = 0; w < that.want.length; w++) {
+
+            if (s.sensors.indexOf(that.want[w]) > 0) {
+                toReturn.push(s);
+                break;
+            }
+        }
+
+    });
+
+    return toReturn;
+};
+
+
+SensorNode.prototype.getSensorsToPubTo = function () {
+    const that = this;
+
+    sensors.forEach(function (s) {
+
+        for(var i = 0; i < s.want.length; i ++){
+
+            if(that.sensors.indexOf(s.want[i]) > 0){
+                s.socket.write('ct-' + that.getString() + '*');
+                break;
+            }
+        }
+
+    });
+
+};
+
+/**
+ * Equality between sensor nodes
+ * @param node
+ * @returns {boolean}
+ */
+SensorNode.prototype.equals = function (node) {
+    return (this.ip === node.ip) && (this.hostname === node.hostname)
+        && (this.sensors === node.sensors) && (this.want === node.want);
+}
+
 
 //start listening for connections
 server.listen(9999, '10.20.0.128');

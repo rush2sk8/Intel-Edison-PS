@@ -23,12 +23,12 @@ function Server(ip, port, timeout) {
 
 /**
  * Starts a server at the specified ip and port and listen for  connections
- * @memberOf Server 
+ * @memberOf Server
  * @example
  * var server = new Server('127.0.0.1', 1337, 0);
- * server.start();  
+ * server.start();
  */
-Server.prototype.start = function () {  
+Server.prototype.start = function () {
     var net = require('net');
     var that = this;
 
@@ -51,7 +51,7 @@ Server.prototype.start = function () {
         that.connections.push(socket);
         console.log('pushed socket')
     });
-  
+
     //
     this.server.timeout = this.timeout;
 
@@ -77,8 +77,8 @@ Server.prototype.sendUpdate = function (data) {
     var that = this;
 
     //write data to each saved socket
-    this.connections.forEach(function (value) {
-
+    for (var i = 0; i < this.connections.length; i++) {
+        var value = this.connections[i];
         //check if the socket is still alive
         if (value.address().address !== undefined) {
 
@@ -99,20 +99,17 @@ Server.prototype.sendUpdate = function (data) {
                 'tx event time': timetaken
             };
 
-
             //store that data in an array
             that.log.push(JSON.stringify(logData));
         }
         //if its dead then remove it so we dont keep transmitting to a closed connection
         else {
-            const i = that.connections.indexOf(value);
-            if (i != -1)
-                that.connections.splice(i, 1);
+            const x = that.connections.indexOf(value);
+            if (x != -1)
+                that.connections.splice(x, 1);
 
         }
-    });
-
-    //increment packet number
+    }
     this.seqnum++;
 };
 
@@ -134,12 +131,12 @@ Server.prototype.getTXLog = function () {
 
 /**
  * Removes data element from the server log
- * @param {String} toRemove - Element to remove  
+ * @param {String} toRemove - Element to remove
  * @memberOf Server
  * @example
  * var server = new Server('127.0.0.1', 1337,0);
- * server.start(); 
- * ... 
+ * server.start();
+ * ...
  * var log = server.getTXLog();
  *
  * //deletes the first element from the log
@@ -172,11 +169,18 @@ Server.prototype.deleteFromLog = function (toRemove) {
  */
 Server.prototype.writeLogToFile = function (filename) {
     var that = this;
-    this.log.forEach(function (data) {
+    /*this.log.forEach(function (data) {
+     fs.appendFile(filename, data + '\r\n', function () {
+     that.deleteFromLog(data);
+     })
+     });*/
+
+    for (var i = 0; i < this.log.length; i++) {
+        const data = this.log[i];
         fs.appendFile(filename, data + '\r\n', function () {
             that.deleteFromLog(data);
-        })
-    });
+        });
+    }
 };
 
 

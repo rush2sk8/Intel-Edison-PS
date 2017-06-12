@@ -32,13 +32,12 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     this.server.start();
 
-    //master connection
+    //master connection 
     var clientConnToMN = new net.Socket();
 
     //connect to master node endpoint
     clientConnToMN.connect(this.port, this.ip, function () {
-        console.log('connected to: ' + that.ip + ' !');
-        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors+'-'+that.want);
+        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
     });
 
     //handle the actual pub/sub creation
@@ -47,23 +46,27 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         //put data into a string
         const stringData = (new Buffer(data)).toString();
 
-        //split the command
-        var command = stringData.split('-');
-        console.log('stringData: ' + stringData + '');
+        stringData.split('*').forEach(function (node) {
 
-        //if the command is a new node in the network 
-        if (command[0] === 'an') {
+            //split the command
+            var command = node.split('-');
+            console.log('stringData: ' + stringData);
 
-            //create a new client
-            var newClient = new Client(command[2], 1337, that.dh);
+            //if the command is a new node in the network
+            if (command[0] === 'ct') {
 
-            //run the client connection
-            newClient.run();
+                //create a new client
+                var newClient = new Client(command[2], 1337, that.dh);
 
-            //keep a track of ongoing connections
-            that.clients.push(newClient);
+                //run the client connection
+                newClient.run();
 
-        }
+                //keep a track of ongoing connections
+                that.clients.push(newClient);
+
+                console.log('connected to: ' + command[1])
+            }
+        });
     });
 
     //TODO add automatic reconnect

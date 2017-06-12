@@ -6,7 +6,7 @@ var dh = function (data) {
     var rate = parseFloat(data.split(':')[1]);
     clearInterval(intervalIDLed);
     intervalIDLed = setInterval(writeLed, rate);
- 
+
 };
 
 var Client = require('./Client.js');
@@ -14,11 +14,11 @@ var Client = require('./Client.js');
 var client = new Client(ip, port, dh);
 client.run();
 
- 
+
 // MRAA, as per usual
 var mraa = require('mraa');
 
- 
+
 // Set up a digital output on MRAA pin 20 (GP12)
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
@@ -37,10 +37,10 @@ var ledState = 0;
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
-    // set led value
+    // set led value 
     ledPin.write(ledState);
 }
-
+ 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 var mc = new Client('10.20.0.128', 9999, function () {});
@@ -57,7 +57,7 @@ var Client = require('./Client.js')
 
 //creates local server for testing
 var server = new Server(ip, port, 0);
- 
+
 server.start();
 
 // MRAA, as per usual
@@ -148,14 +148,14 @@ var readLightSensor = function () {
         intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
         server.sendUpdate(BlinkNormalMs);
     } else if ((lightSensorState) && (v1 < lightThreshold)) {
- 
+
         lightSensorState = 0;
         clearInterval(intervalIDLed);
         intervalIDLed = setInterval(writeLed, BlinkAlertMs); // start the periodic read
         server.sendUpdate(BlinkAlertMs);
     }
 
-}; 
+};
 
 // global variable for pin state
 var ledState = 0;
@@ -176,10 +176,12 @@ mc.run();
 ******************************* *******************SERVER END MAIN**************************************************/
 
 
+/****************************************************SERVER AUTOMATIC MAIN**************************************************
 //server automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
-var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', ':', function () {});
+var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', '', function () {});
 master.startAutomaticDiscovery();
+
 
 // MRAA, as per usual 
 var mraa = require('mraa');
@@ -278,13 +280,13 @@ var readLightSensor = function () {
 
 };
 
-// global variable for pin state
+// global variable for pin state 
 var ledState = 0;
 
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
-    // set led value 
+    // set led value  
     ledPin.write(ledState);
 }
 
@@ -292,13 +294,11 @@ function writeLed() {
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 //server automatic end
+****************************************************SERVER AUTOMATIC END**************************************************/
 
-
-/*
+/****************************************************CLIENT AUTOMATIC MAIN**************************************************/
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
-
-
 
 var intervalIDLed;
 var dh = function (data) {
@@ -307,7 +307,7 @@ var dh = function (data) {
     intervalIDLed = setInterval(writeLed, rate);
 
 };
-var master = new MasterNodeConnection('10.20.0.128', 9999, ':', 'light:', dh);
+var master = new MasterNodeConnection('10.20.0.128', 9999, '', 'light:', dh);
 
 master.startAutomaticDiscovery();
 
@@ -333,11 +333,10 @@ var ledState = 0;
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
-    // set led value
+    // set led value 
     ledPin.write(ledState);
 }
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-*/
-//client automatic end
+/****************************************************CLIENT AUTOMATIC END**************************************************/

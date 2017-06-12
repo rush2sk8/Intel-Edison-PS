@@ -34,7 +34,7 @@ function Client(ip, port, dataHandler) {
 
 /**     
  * This function will start a connection to the endpoint given the
- * ip and port that the client object was initialized with.
+ * ip and port that the client object was initialized with. 
  * It also logs all recieved data before sending it to the data handler
  * if it was set by the user.
  * @memberOf Client
@@ -192,11 +192,17 @@ Client.prototype.deleteFromLog = function (toRemove) {
  */
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
-    this.log.forEach(function (data) {
+    /*this.log.forEach(function (data) {
         fs.appendFile(filename, data + '\r\n', function () {
             that.deleteFromLog(data);
         })
-    });
+    });*/
+    for (var i = 0; i < this.log.length; i++) {
+        const data = this.log[i];
+        fs.appendFile(filename, data + '\r\n', function () {
+            that.deleteFromLog(data);
+        });
+    }
 };
 
 
