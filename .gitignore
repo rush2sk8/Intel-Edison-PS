@@ -48,3 +48,4 @@ Temporary Items
 
 .idea/*
 Testing/MasterNode/node_modules/*
+*.xml

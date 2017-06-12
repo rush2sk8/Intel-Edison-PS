@@ -2,17 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-=======
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node network.pptx" afterPath="$PROJECT_DIR$/node network.pptx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master Node/MasterNode.js" afterPath="$PROJECT_DIR$/Master Node/MasterNode.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.js" afterPath="$PROJECT_DIR$/PubSub/PubSub.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.xdke" afterPath="$PROJECT_DIR$/PubSub/PubSub.xdke" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/client.js" afterPath="$PROJECT_DIR$/PubSub/client.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/server.js" afterPath="$PROJECT_DIR$/PubSub/server.js" />
->>>>>>> Tim
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -24,59 +20,63 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="595">
+                    <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+                    <folding>
+                      <element signature="n#!!doc;n#hasNode#0" expanded="false" />
+                      <element signature="n#!!block;n#hasNode#0" expanded="false" />
+                      <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
+                      <element signature="n#!!block;n#SensorNode#0" expanded="false" />
+                      <element signature="e#2595#2675#0" expanded="false" />
+                      <element signature="e#2721#2787#0" expanded="false" />
+                      <element signature="e#2790#2889#0" expanded="false" />
+                      <element signature="e#2943#3249#0" expanded="false" />
+                      <element signature="e#3306#3593#0" expanded="false" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MasterNodeConnection.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MasterNodeConnection.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
-<<<<<<< HEAD
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state relative-caret-position="272">
+              <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
               <folding />
-=======
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="694">
-              <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-              <folding>
-                <marker date="1497283271044" expanded="false" signature="1057:1179" ph="{...}" />
-                <marker date="1497283271044" expanded="false" signature="2167:2236" ph="/** Push data to all the subscribed connections ...*/" />
-              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1113">
-              <caret line="150" column="22" lean-forward="false" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
-              <folding>
-                <element signature="n#!!doc;n#hasNode#0" expanded="false" />
-                <element signature="n#!!block;n#hasNode#0" expanded="false" />
-                <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
-                <element signature="e#2624#2704#0" expanded="false" />
-              </folding>
->>>>>>> Tim
-            </state>
-          </provider>
-        </entry>
-      </file>
-<<<<<<< HEAD
-      <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
-              <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-              <folding />
-=======
       <file leaf-file-name="server.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PubSub/server.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="104" column="72" lean-forward="false" selection-start-line="104" selection-start-column="72" selection-end-line="104" selection-end-column="72" />
+            <state relative-caret-position="1144">
+              <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
               <folding>
-                <marker date="1497282993207" expanded="false" signature="4649:4793" ph="/*...*/" />
+                <element signature="e#3622#3646#0" expanded="false" />
+                <marker date="1497288808047" expanded="false" signature="1728:2089" ph="/** Sends the data to all of the connected clients ...*/" />
+                <marker date="1497288808047" expanded="false" signature="2136:3278" ph="{...}" />
+                <marker date="1497288808047" expanded="false" signature="3281:3581" ph="/** Returns the sent data log from the server ...*/" />
+                <marker date="1497288808047" expanded="false" signature="3649:3970" ph="/** Removes data element from the server log ...*/" />
+                <marker date="1497288808047" expanded="false" signature="4024:4125" ph="{...}" />
+                <marker date="1497288808047" expanded="false" signature="4128:4569" ph="/** Writes the server log data to a file ...*/" />
+                <marker date="1497288808047" expanded="false" signature="4624:4848" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -85,11 +85,9 @@
       <file leaf-file-name="client.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PubSub/client.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="412">
-              <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-              <folding>
-                <marker date="1497282953979" expanded="false" signature="5361:5517" ph="/*...*/" />
-              </folding>
+            <state relative-caret-position="391">
+              <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -97,12 +95,12 @@
       <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
+            <state relative-caret-position="2261">
               <caret line="181" column="70" lean-forward="false" selection-start-line="181" selection-start-column="70" selection-end-line="181" selection-end-column="70" />
               <folding>
-                <marker date="1497283270923" expanded="false" signature="0:115" ph="/** CLIENT MAIN ...*/" />
+                <marker date="1497289660489" expanded="true" signature="5347:5471" ph="/** SERVER AUTOMATIC MAIN ...*/" />
+                <marker date="1497289660489" expanded="true" signature="10598:10721" ph="/** CLIENT AUTOMATIC END ...*/" />
               </folding>
->>>>>>> Tim
             </state>
           </provider>
         </entry>
@@ -168,10 +166,10 @@
         <option value="$PROJECT_DIR$/MasterNode.js" />
         <option value="$PROJECT_DIR$/PubSub/reboot.html" />
         <option value="$PROJECT_DIR$/Master Node/reboot.html" />
-        <option value="$PROJECT_DIR$/PubSub/client.js" />
         <option value="$PROJECT_DIR$/PubSub/server.js" />
-        <option value="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
         <option value="$PROJECT_DIR$/Master Node/MasterNode.js" />
+        <option value="$PROJECT_DIR$/PubSub/client.js" />
+        <option value="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
       </list>
     </option>
   </component>
@@ -182,9 +180,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="700" />
-    <option name="y" value="1" />
-    <option name="width" value="754" />
+    <option name="width" value="1280" />
     <option name="height" value="1400" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -341,21 +337,15 @@
       <workItem from="1497024436633" duration="142000" />
       <workItem from="1497024650502" duration="4569000" />
       <workItem from="1497272984020" duration="12045000" />
+      <workItem from="1497286867129" duration="3502000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-<<<<<<< HEAD
-    <option name="totallyTimeSpent" value="88517000" />
+    <option name="totallyTimeSpent" value="115357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
-=======
-    <option name="totallyTimeSpent" value="111855000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="700" y="1" width="754" height="1400" extended-state="0" />
->>>>>>> Tim
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -411,7 +401,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="12" />
+      <option name="time" value="13" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -490,13 +480,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Testing/MasterNode/MasterNode.js" />
-<<<<<<< HEAD
-    <entry file="file://$PROJECT_DIR$/PubSub/server.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="51" column="34" lean-forward="false" selection-start-line="51" selection-start-column="34" selection-end-line="51" selection-end-column="34" />
-          <folding />
-=======
     <entry file="file://$PROJECT_DIR$/index.html" />
     <entry file="file://$PROJECT_DIR$/MasterNode.js" />
     <entry file="file://$PROJECT_DIR$/PubSub/reboot.html" />
@@ -516,87 +499,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
+        <state relative-caret-position="2261">
           <caret line="181" column="70" lean-forward="false" selection-start-line="181" selection-start-column="70" selection-end-line="181" selection-end-column="70" />
           <folding>
-            <marker date="1497283270923" expanded="false" signature="0:115" ph="/** CLIENT MAIN ...*/" />
+            <marker date="1497289660489" expanded="true" signature="5347:5471" ph="/** SERVER AUTOMATIC MAIN ...*/" />
+            <marker date="1497289660489" expanded="true" signature="10598:10721" ph="/** CLIENT AUTOMATIC END ...*/" />
           </folding>
->>>>>>> Tim
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html" />
-    <entry file="file://$PROJECT_DIR$/MasterNode.js" />
-    <entry file="file://$PROJECT_DIR$/PubSub/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="17">
-          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="80" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PubSub/reboot.html" />
-    <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2436">
-          <caret line="300" column="0" lean-forward="false" selection-start-line="300" selection-start-column="0" selection-end-line="300" selection-end-column="0" />
-          <folding />
-=======
-        <state relative-caret-position="412">
-          <caret line="48" column="8" lean-forward="false" selection-start-line="48" selection-start-column="8" selection-end-line="48" selection-end-column="8" />
-          <folding>
-            <marker date="1497282953979" expanded="false" signature="5361:5517" ph="/*...*/" />
-          </folding>
->>>>>>> Tim
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/server.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="412">
-          <caret line="104" column="72" lean-forward="false" selection-start-line="104" selection-start-column="72" selection-end-line="104" selection-end-column="72" />
+        <state relative-caret-position="1144">
+          <caret line="179" column="0" lean-forward="false" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding>
-            <marker date="1497282993207" expanded="false" signature="4649:4793" ph="/*...*/" />
+            <element signature="e#3622#3646#0" expanded="false" />
+            <marker date="1497288808047" expanded="false" signature="1728:2089" ph="/** Sends the data to all of the connected clients ...*/" />
+            <marker date="1497288808047" expanded="false" signature="2136:3278" ph="{...}" />
+            <marker date="1497288808047" expanded="false" signature="3281:3581" ph="/** Returns the sent data log from the server ...*/" />
+            <marker date="1497288808047" expanded="false" signature="3649:3970" ph="/** Removes data element from the server log ...*/" />
+            <marker date="1497288808047" expanded="false" signature="4024:4125" ph="{...}" />
+            <marker date="1497288808047" expanded="false" signature="4128:4569" ph="/** Writes the server log data to a file ...*/" />
+            <marker date="1497288808047" expanded="false" signature="4624:4848" ph="{...}" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="694">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding>
-            <marker date="1497283271044" expanded="false" signature="1057:1179" ph="{...}" />
-            <marker date="1497283271044" expanded="false" signature="2167:2236" ph="/** Push data to all the subscribed connections ...*/" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="30" column="0" lean-forward="false" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
       <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
-        <state relative-caret-position="-187">
-          <caret line="63" column="18" lean-forward="true" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
-          <folding />
-=======
-        <state relative-caret-position="1113">
-          <caret line="150" column="22" lean-forward="false" selection-start-line="150" selection-start-column="22" selection-end-line="150" selection-end-column="22" />
+        <state relative-caret-position="595">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding>
             <element signature="n#!!doc;n#hasNode#0" expanded="false" />
             <element signature="n#!!block;n#hasNode#0" expanded="false" />
             <element signature="n#!!doc;n#SensorNode#0" expanded="false" />
-            <element signature="e#2624#2704#0" expanded="false" />
+            <element signature="n#!!block;n#SensorNode#0" expanded="false" />
+            <element signature="e#2595#2675#0" expanded="false" />
+            <element signature="e#2721#2787#0" expanded="false" />
+            <element signature="e#2790#2889#0" expanded="false" />
+            <element signature="e#2943#3249#0" expanded="false" />
+            <element signature="e#3306#3593#0" expanded="false" />
           </folding>
->>>>>>> Tim
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PubSub/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+          <folding />
         </state>
       </provider>
     </entry>
