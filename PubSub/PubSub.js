@@ -118,7 +118,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 //server automatic end   
 ****************************************************SERVER AUTOMATIC END**************************************************/
 
-/****************************************************CLIENT AUTOMATIC MAIN**************************************************
+/****************************************************CLIENT AUTOMATIC MAIN**************************************************/
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -173,12 +173,7 @@ function writeLed() {
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-****************************************************CLIENT AUTOMATIC END**************************************************/
 
-/****************************************************Test START**************************************************
-//var mraa = require('mraa');
-
-//var rPin = new mraa.Pwm(20);
 var gPin = new mraa.Pwm(14);
 var bPin = new mraa.Pwm(0);
 
@@ -208,8 +203,8 @@ function pwm(pin, val) {
     }
 }
 
-****************************************************Test End**************************************************/
-
+/****************************************************Test End**************************************************/
+/****************************************************Vanilla Start**************************************************
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var intervalIDLed;
@@ -222,13 +217,12 @@ var dh = function (data) {
     intervalIDLed = setInterval(writeLed, rate);
 
 };
-var master = new MasterNodeConnection('10.20.0.128', 9999, '', 'light', dh);
+var master = new MasterNodeConnection('10.20.0.128', 9999, '', 'light:button', dh);
 
 master.startAutomaticDiscovery();
 
 // MRAA, as per usual 
 var mraa = require('mraa');
-
 
 // Set up a digital output on MRAA pin 20 (GP12) 
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
@@ -287,3 +281,4 @@ function pwm(pin, val) {
         pin.write(val);
     }
 }
+****************************************************Vanilla End**************************************************/
