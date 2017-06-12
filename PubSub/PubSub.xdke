@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1497290829906,
-        "modified": 1497290829906,
+        "previousModTime": 1497297093513,
+        "modified": 1497297093513,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1497290998656,
-        "modified": 1497290998656,
+        "previousModTime": 1497296468855,
+        "modified": 1497296468855,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -83,8 +83,8 @@
         "name": "client.js"
       },
       "MasterNodeConnection.js": {
-        "previousModTime": 1497291018036,
-        "modified": 1497291018036,
+        "previousModTime": 1497297002025,
+        "modified": 1497297002025,
         "seen": true,
         "name": "MasterNodeConnection.js"
       },
@@ -93,215 +93,14 @@
         "modified": 1497290829906,
         "seen": true,
         "name": "server.js"
-      },
-      "out/Client.html": {
-        "previousModTime": 1496780919288,
-        "modified": 1496780919288,
-        "seen": true,
-        "name": "out/Client.html"
-      },
-      "out/client.js.html": {
-        "previousModTime": 1496780919320,
-        "modified": 1496780919320,
-        "seen": true,
-        "name": "out/client.js.html"
-      },
-      "out/global.html": {
-        "previousModTime": 1496780919439,
-        "modified": 1496780919439,
-        "seen": true,
-        "name": "out/global.html"
-      },
-      "out/index.html": {
-        "previousModTime": 1496780919443,
-        "modified": 1496780919443,
-        "seen": true,
-        "name": "out/index.html"
-      },
-      "out/MasterNodeConnection.html": {
-        "previousModTime": 1496780919297,
-        "modified": 1496780919297,
-        "seen": true,
-        "name": "out/MasterNodeConnection.html"
-      },
-      "out/MasterNodeConnection.js.html": {
-        "previousModTime": 1496780919303,
-        "modified": 1496780919303,
-        "seen": true,
-        "name": "out/MasterNodeConnection.js.html"
-      },
-      "out/Server.html": {
-        "previousModTime": 1496780919308,
-        "modified": 1496780919308,
-        "seen": true,
-        "name": "out/Server.html"
-      },
-      "out/Server.js.html": {
-        "previousModTime": 1496780919314,
-        "modified": 1496780919314,
-        "seen": true,
-        "name": "out/Server.js.html"
-      },
-      "out/fonts/OpenSans-Bold-webfont.eot": {
-        "previousModTime": 1496780919327,
-        "modified": 1496780919327,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Bold-webfont.eot"
-      },
-      "out/fonts/OpenSans-Bold-webfont.svg": {
-        "previousModTime": 1496780919330,
-        "modified": 1496780919330,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Bold-webfont.svg"
-      },
-      "out/fonts/OpenSans-Bold-webfont.woff": {
-        "previousModTime": 1496780919341,
-        "modified": 1496780919341,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Bold-webfont.woff"
-      },
-      "out/fonts/OpenSans-BoldItalic-webfont.eot": {
-        "previousModTime": 1496780919344,
-        "modified": 1496780919344,
-        "seen": true,
-        "name": "out/fonts/OpenSans-BoldItalic-webfont.eot"
-      },
-      "out/fonts/OpenSans-BoldItalic-webfont.svg": {
-        "previousModTime": 1496780919366,
-        "modified": 1496780919366,
-        "seen": true,
-        "name": "out/fonts/OpenSans-BoldItalic-webfont.svg"
-      },
-      "out/fonts/OpenSans-BoldItalic-webfont.woff": {
-        "previousModTime": 1496780919378,
-        "modified": 1496780919378,
-        "seen": true,
-        "name": "out/fonts/OpenSans-BoldItalic-webfont.woff"
-      },
-      "out/fonts/OpenSans-Italic-webfont.eot": {
-        "previousModTime": 1496780919380,
-        "modified": 1496780919380,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Italic-webfont.eot"
-      },
-      "out/fonts/OpenSans-Italic-webfont.svg": {
-        "previousModTime": 1496780919383,
-        "modified": 1496780919383,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Italic-webfont.svg"
-      },
-      "out/fonts/OpenSans-Italic-webfont.woff": {
-        "previousModTime": 1496780919393,
-        "modified": 1496780919393,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Italic-webfont.woff"
-      },
-      "out/fonts/OpenSans-Light-webfont.eot": {
-        "previousModTime": 1496780919395,
-        "modified": 1496780919395,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Light-webfont.eot"
-      },
-      "out/fonts/OpenSans-Light-webfont.svg": {
-        "previousModTime": 1496780919398,
-        "modified": 1496780919398,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Light-webfont.svg"
-      },
-      "out/fonts/OpenSans-Light-webfont.woff": {
-        "previousModTime": 1496780919407,
-        "modified": 1496780919407,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Light-webfont.woff"
-      },
-      "out/fonts/OpenSans-LightItalic-webfont.eot": {
-        "previousModTime": 1496780919409,
-        "modified": 1496780919409,
-        "seen": true,
-        "name": "out/fonts/OpenSans-LightItalic-webfont.eot"
-      },
-      "out/fonts/OpenSans-LightItalic-webfont.svg": {
-        "previousModTime": 1496780919412,
-        "modified": 1496780919412,
-        "seen": true,
-        "name": "out/fonts/OpenSans-LightItalic-webfont.svg"
-      },
-      "out/fonts/OpenSans-LightItalic-webfont.woff": {
-        "previousModTime": 1496780919422,
-        "modified": 1496780919422,
-        "seen": true,
-        "name": "out/fonts/OpenSans-LightItalic-webfont.woff"
-      },
-      "out/fonts/OpenSans-Regular-webfont.eot": {
-        "previousModTime": 1496780919424,
-        "modified": 1496780919424,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Regular-webfont.eot"
-      },
-      "out/fonts/OpenSans-Regular-webfont.svg": {
-        "previousModTime": 1496780919427,
-        "modified": 1496780919427,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Regular-webfont.svg"
-      },
-      "out/fonts/OpenSans-Regular-webfont.woff": {
-        "previousModTime": 1496780919437,
-        "modified": 1496780919437,
-        "seen": true,
-        "name": "out/fonts/OpenSans-Regular-webfont.woff"
-      },
-      "out/scripts/linenumber.js": {
-        "previousModTime": 1496780919447,
-        "modified": 1496780919447,
-        "seen": true,
-        "name": "out/scripts/linenumber.js"
-      },
-      "out/scripts/prettify/Apache-License-2.0.txt": {
-        "previousModTime": 1496780919450,
-        "modified": 1496780919450,
-        "seen": true,
-        "name": "out/scripts/prettify/Apache-License-2.0.txt"
-      },
-      "out/scripts/prettify/lang-css.js": {
-        "previousModTime": 1496780919454,
-        "modified": 1496780919454,
-        "seen": true,
-        "name": "out/scripts/prettify/lang-css.js"
-      },
-      "out/scripts/prettify/prettify.js": {
-        "previousModTime": 1496780919457,
-        "modified": 1496780919457,
-        "seen": true,
-        "name": "out/scripts/prettify/prettify.js"
-      },
-      "out/styles/jsdoc-default.css": {
-        "previousModTime": 1496780919465,
-        "modified": 1496780919465,
-        "seen": true,
-        "name": "out/styles/jsdoc-default.css"
-      },
-      "out/styles/prettify-jsdoc.css": {
-        "previousModTime": 1496780919469,
-        "modified": 1496780919469,
-        "seen": true,
-        "name": "out/styles/prettify-jsdoc.css"
-      },
-      "out/styles/prettify-tomorrow.css": {
-        "previousModTime": 1496780919472,
-        "modified": 1496780919472,
-        "seen": true,
-        "name": "out/styles/prettify-tomorrow.css"
       }
     },
     "boardFileStatus": {
-      "Client.js": {
-        "previousModTime": 1497291018453
-      },
-      "client.js": {
-        "previousModTime": 1497291018453
+      "PubSub.js": {
+        "previousModTime": 1497297097285
       },
       "MasterNodeConnection.js": {
-        "previousModTime": 1497291018453
+        "previousModTime": 1497297097285
       }
     }
   }

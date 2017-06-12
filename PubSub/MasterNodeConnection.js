@@ -39,7 +39,6 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
     });
 
-
     //handle the actual pub/sub creation
     clientConnToMN.on('data', function (data) {
 
@@ -66,6 +65,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
                 console.log('connected to: ' + command[1]);
             } else if (command[0] == 'ping') {
+                
                 //ping in 2017
                 clientConnToMN.write('pong');
             }

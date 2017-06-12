@@ -86,7 +86,7 @@ function hasNode(tosee) {
 
         if (sensors[i].equals(tosee))
             return true;
-        
+
     }
     return false;
 }

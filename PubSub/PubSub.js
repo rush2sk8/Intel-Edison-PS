@@ -307,14 +307,14 @@ var dh = function (data) {
     intervalIDLed = setInterval(writeLed, rate);
 
 };
-var master = new MasterNodeConnection('10.20.0.128', 9999, '', 'light:', dh);
- 
+var master = new MasterNodeConnection('10.20.0.128', 9999, 'button:', 'light:', dh);
+
 master.startAutomaticDiscovery();
 
 // MRAA, as per usual 
 var mraa = require('mraa');
 
-  
+
 // Set up a digital output on MRAA pin 20 (GP12) 
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
@@ -330,13 +330,60 @@ var lightSensorState = 1; // 1 = above threshold, 0 = below
 // global variable for pin state 
 var ledState = 0;
 
+var but = 0;
+
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
     // set led value 
     ledPin.write(ledState);
+    var val = buttonPin.read();
+
+
+    if (val == but) {
+        // pwm(rPin, (Math.random() * 255) / 255);
+        pwm(gPin, (Math.random() * 255) / 255);
+        pwm(bPin, (Math.random() * 255) / 255);
+        but = val == 0 ? 1 : 0;
+    }
+
 }
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 /****************************************************CLIENT AUTOMATIC END**************************************************/
+
+/****************************************************Test START**************************************************/
+//var mraa = require('mraa');
+
+//var rPin = new mraa.Pwm(20);
+var gPin = new mraa.Pwm(14);
+var bPin = new mraa.Pwm(0);
+
+// Enable PWM
+//rPin.enable(true);
+gPin.enable(true);
+bPin.enable(true);
+
+//pwm(rPin, 0.0);
+pwm(gPin, 0.0);
+pwm(bPin, 0.0);
+
+// Set up a digital input/output on MRAA pin 36 (GP14)
+var buttonPin = new mraa.Gpio(36);
+
+// Set that pin as a digital input (read)
+buttonPin.dir(mraa.DIR_IN);
+
+
+function pwm(pin, val) {
+    if (val === 0.0) {
+        pin.write(0.0);
+        pin.enable(false);
+    } else {
+        pin.enable(true);
+        pin.write(val);
+    }
+}
+
+/****************************************************Test End**************************************************/
