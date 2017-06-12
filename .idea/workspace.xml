@@ -2,41 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/Client.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/MasterNodeConnection.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/MasterNodeConnection.js.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/Server.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/Server.js.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/client.js.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Bold-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Bold-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Bold-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-BoldItalic-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-BoldItalic-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-BoldItalic-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Italic-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Italic-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Italic-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Light-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Light-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Light-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-LightItalic-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-LightItalic-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-LightItalic-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Regular-webfont.eot" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Regular-webfont.svg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/fonts/OpenSans-Regular-webfont.woff" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/global.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/scripts/linenumber.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/scripts/prettify/Apache-License-2.0.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/scripts/prettify/lang-css.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/scripts/prettify/prettify.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/styles/jsdoc-default.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/styles/prettify-jsdoc.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/out/styles/prettify-tomorrow.css" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master Node/MasterNode.js" afterPath="$PROJECT_DIR$/Master Node/MasterNode.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.js" afterPath="$PROJECT_DIR$/PubSub/PubSub.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.xdke" afterPath="$PROJECT_DIR$/PubSub/PubSub.xdke" />
     </list>
@@ -120,21 +85,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PubSub.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="736">
-              <caret line="363" column="20" lean-forward="true" selection-start-line="363" selection-start-column="20" selection-end-line="363" selection-end-column="20" />
-              <folding />
+            <state relative-caret-position="855">
+              <caret line="278" column="20" lean-forward="true" selection-start-line="278" selection-start-column="20" selection-end-line="278" selection-end-column="20" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="634">
-              <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+            <state relative-caret-position="714">
+              <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
               <folding>
                 <element signature="n#!!doc;n#hasNode#0" expanded="false" />
                 <element signature="n#!!block;n#hasNode#0" expanded="false" />
@@ -143,7 +110,6 @@
                 <element signature="e#2617#2697#0" expanded="false" />
                 <element signature="e#2743#2809#0" expanded="false" />
                 <element signature="e#2812#2911#0" expanded="false" />
-                <element signature="e#2965#3271#0" expanded="false" />
                 <element signature="e#3328#3618#0" expanded="false" />
                 <element signature="e#3621#3698#0" expanded="false" />
               </folding>
@@ -383,15 +349,15 @@
       <workItem from="1497024436633" duration="142000" />
       <workItem from="1497024650502" duration="4569000" />
       <workItem from="1497272984020" duration="12045000" />
-      <workItem from="1497286867129" duration="7413000" />
+      <workItem from="1497286867129" duration="8442000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119268000" />
+    <option name="totallyTimeSpent" value="120297000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="1400" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -604,10 +570,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="278" column="20" lean-forward="true" selection-start-line="278" selection-start-column="20" selection-end-line="278" selection-end-column="20" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="82" column="24" lean-forward="false" selection-start-line="82" selection-start-column="24" selection-end-line="82" selection-end-column="24" />
+        <state relative-caret-position="714">
+          <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
           <folding>
             <element signature="n#!!doc;n#hasNode#0" expanded="false" />
             <element signature="n#!!block;n#hasNode#0" expanded="false" />
@@ -616,18 +592,9 @@
             <element signature="e#2617#2697#0" expanded="false" />
             <element signature="e#2743#2809#0" expanded="false" />
             <element signature="e#2812#2911#0" expanded="false" />
-            <element signature="e#2965#3271#0" expanded="false" />
             <element signature="e#3328#3618#0" expanded="false" />
             <element signature="e#3621#3698#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="736">
-          <caret line="363" column="20" lean-forward="true" selection-start-line="363" selection-start-column="20" selection-end-line="363" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>

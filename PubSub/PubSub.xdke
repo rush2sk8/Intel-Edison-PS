@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1497297093513,
-        "modified": 1497297093513,
+        "previousModTime": 1497299383967,
+        "modified": 1497299383967,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1497296468855,
-        "modified": 1497296468855,
+        "previousModTime": 1497299214785,
+        "modified": 1497299214785,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -97,10 +97,7 @@
     },
     "boardFileStatus": {
       "PubSub.js": {
-        "previousModTime": 1497297097285
-      },
-      "MasterNodeConnection.js": {
-        "previousModTime": 1497297097285
+        "previousModTime": 1497299385665
       }
     }
   }
