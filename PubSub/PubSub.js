@@ -185,7 +185,7 @@ master.startAutomaticDiscovery();
 
 // MRAA, as per usual 
 var mraa = require('mraa');
-
+ 
 // TI ADS1015 on ADC Block (http://www.ti.com.cn/cn/lit/ds/symlink/ads1015.pdf)
 var adc = new mraa.I2c(1);
 adc.address(0x48);
@@ -293,7 +293,7 @@ function writeLed() {
 // setup perdiodic activity for light sensor reading
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
-//server automatic end
+//server automatic end   
 ****************************************************SERVER AUTOMATIC END**************************************************/
 
 /****************************************************CLIENT AUTOMATIC MAIN**************************************************/

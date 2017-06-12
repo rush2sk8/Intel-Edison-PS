@@ -21,7 +21,7 @@ function Server(ip, port, timeout) {
     this.connections = [];
 }
 
-/**
+/**  
  * Starts a server at the specified ip and port and listen for  connections
  * @memberOf Server
  * @example
@@ -169,11 +169,6 @@ Server.prototype.deleteFromLog = function (toRemove) {
  */
 Server.prototype.writeLogToFile = function (filename) {
     var that = this;
-    /*this.log.forEach(function (data) {
-     fs.appendFile(filename, data + '\r\n', function () {
-     that.deleteFromLog(data);
-     })
-     });*/
 
     for (var i = 0; i < this.log.length; i++) {
         const data = this.log[i];
@@ -182,6 +177,5 @@ Server.prototype.writeLogToFile = function (filename) {
         });
     }
 };
-
 
 module.exports = Server;

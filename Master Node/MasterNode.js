@@ -66,7 +66,7 @@ var server = net.createServer(function (socket) {
             }
         }
 
-        console.log(sensors);
+
     });
 
     //ignore errors
@@ -155,16 +155,6 @@ SensorNode.prototype.getSensorsToPubTo = function () {
     });
 
 };
-
-/**
- * Equality between sensor nodes
- * @param node
- * @returns {boolean}
- */
-SensorNode.prototype.equals = function (node) {
-    return (this.ip === node.ip) && (this.hostname === node.hostname)
-        && (this.sensors === node.sensors) && (this.want === node.want);
-}
 
 
 //start listening for connections

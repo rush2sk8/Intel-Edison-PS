@@ -16,25 +16,26 @@ const hostname = require('os').hostname();
  *
  *      //prints received data to the screen
  *      console.log(data);
- * };  
+ * };    
  *
  * //creates a client that will connect to a server running on the localhost
  * var client = new Client('127.0.0.1', 1337, dh);
  */
-function Client(ip, port, dataHandler) {
+function Client(ip, port, dataHandler,/* mnc*/) {
     var n = require('net');
     this.client = new n.Socket();
     this.connHN = '';
     this.ip = ip;
-    this.myIP = getIPAddress();     
-    this.port = port;  
+    this.myIP = getIPAddress();
+    this.port = port;
     this.log = []
     this.dh = dataHandler;
+   // this.mnc = mnc;
 }
 
-/**     
+/**
  * This function will start a connection to the endpoint given the
- * ip and port that the client object was initialized with. 
+ * ip and port that the client object was initialized with.
  * It also logs all recieved data before sending it to the data handler
  * if it was set by the user.
  * @memberOf Client
@@ -44,8 +45,9 @@ function Client(ip, port, dataHandler) {
  */
 Client.prototype.run = function () {
     var that = this;
- 
-    /**
+
+
+    /**  
      * connects to the endpoint
      * @memberOf Client.prototpye
      * */
@@ -94,10 +96,7 @@ Client.prototype.run = function () {
 
             if (command[0] == 'hn') {
                 that.connHN = command[1];
-            } else if (command[0] == 'gni') {
-                that.client.write('ghn-' + hostname + '-' + that.myIP); //deprecated
             }
-
         }
 
     });
@@ -106,17 +105,12 @@ Client.prototype.run = function () {
      *  @memberOf Client.prototpye
      **/
     this.client.on('close', function () {
-        console.log(that.ip + ' closed')
+        console.log(that.ip + ' closed');
         that.client.destroy();
-        that.client.unref();
 
-        setTimeout(function () {
-            that.client.connect(this.port, this.ip, function () {
-                that.client.write('hn');
-            });
-
-        }, 5000);
-
+        //uncomment if you want the master node to know when a connection is dropped
+        //if (that.mnc !== undefined)
+         //   that.mnc.write('cld-' + that.connHN + '-' + that.ip);
 
     });
 
@@ -126,15 +120,6 @@ Client.prototype.run = function () {
      * */
     this.client.on('error', function () {
         console.log('error on: ' + that.ip);
-        /* that.client.destroy(); 
-         that.client.unref();
-
-         setTimeout(function () {
-         that.client.connect(this.port, this.ip, function () {
-         that.client.write('hn');
-         });
-
-         }, 5000);*/
 
     });
 
@@ -193,10 +178,10 @@ Client.prototype.deleteFromLog = function (toRemove) {
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
     /*this.log.forEach(function (data) {
-        fs.appendFile(filename, data + '\r\n', function () {
-            that.deleteFromLog(data);
-        })
-    });*/
+     fs.appendFile(filename, data + '\r\n', function () {
+     that.deleteFromLog(data);
+     })
+     });*/
     for (var i = 0; i < this.log.length; i++) {
         const data = this.log[i];
         fs.appendFile(filename, data + '\r\n', function () {

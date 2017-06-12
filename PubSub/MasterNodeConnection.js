@@ -2,7 +2,6 @@ var Client = require('./Client.js');
 var Server = require('./Server.js');
 var net = require('net');
 
-
 /**
  *
  * @param ip -- ip address of the master node
@@ -24,14 +23,14 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
 }
 
 /**
- * Starts the discorvery and connection service
+ * Starts the discovery and connection service
  */
 MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     const that = this;
     this.server = new Server(this.myIP, 1337, 0);
 
     this.server.start();
-
+  
     //master connection 
     var clientConnToMN = new net.Socket();
 
@@ -39,6 +38,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     clientConnToMN.connect(this.port, this.ip, function () {
         this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
     });
+
 
     //handle the actual pub/sub creation
     clientConnToMN.on('data', function (data) {
@@ -50,13 +50,13 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
             //split the command
             var command = node.split('-');
-            console.log('stringData: ' + stringData);
+            console.log('stringData: ' + command);
 
             //if the command is a new node in the network
             if (command[0] === 'ct') {
-
+ 
                 //create a new client
-                var newClient = new Client(command[2], 1337, that.dh);
+                var newClient = new Client(command[2], 1337, that.dh/*, clientConnToMN*/);
 
                 //run the client connection
                 newClient.run();
@@ -64,12 +64,16 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
                 //keep a track of ongoing connections
                 that.clients.push(newClient);
 
-                console.log('connected to: ' + command[1])
+                console.log('connected to: ' + command[1]);
+            } else if (command[0] == 'ping') {
+                //ping in 2017
+                clientConnToMN.write('pong');
             }
+
         });
     });
 
-    //TODO add automatic reconnect
+    //TODO add automatic reconnect 
     clientConnToMN.on('close', function () {
         console.log(that.ip + ' closed')
     });
