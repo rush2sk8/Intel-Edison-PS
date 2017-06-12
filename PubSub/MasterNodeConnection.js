@@ -9,9 +9,10 @@ var net = require('net');
  * @param port -- port of the master node
  * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
+ * @param dh -- clientside data handler
  * @constructor
  */
-function MasterNodeConnection(ip, port, mysensors, want) {
+function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.ip = ip;
     this.port = port;
     this.mySensors = mysensors;
@@ -19,69 +20,53 @@ function MasterNodeConnection(ip, port, mysensors, want) {
     this.want = want;
     this.clients = [];
     this.server;
-    this.dh;
+    this.dh = dh;
 }
 
 /**
  * Starts the discorvery and connection service
  */
 MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
-    var that = this;
+    const that = this;
     this.server = new Server(this.myIP, 1337, 0);
+
     this.server.start();
 
-    //master connection
+    //master connection 
     var clientConnToMN = new net.Socket();
 
     //connect to master node endpoint
     clientConnToMN.connect(this.port, this.ip, function () {
-        console.log('connected to: ' + that.ip + ' !');
-        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors);
+        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
     });
 
     //handle the actual pub/sub creation
     clientConnToMN.on('data', function (data) {
 
         //put data into a string
-        var stringData = (new Buffer(data)).toString();
+        const stringData = (new Buffer(data)).toString();
 
-        //split the command
-        var command = stringData.split('-');
-        console.log('stringData: ' + stringData);
+        stringData.split('*').forEach(function (node) {
 
-        //if the command is a new node in the network 
-        if (command[0] === 'nl') {
+            //split the command
+            var command = node.split('-');
+            console.log('stringData: ' + stringData);
 
-            //see what the sensors the new node has
-            var sensors = command[3].split(':');
+            //if the command is a new node in the network
+            if (command[0] === 'ct') {
 
-            //see what we want
-            var wants = that.want.split(':');
+                //create a new client
+                var newClient = new Client(command[2], 1337, that.dh);
 
-            //check to see if what they have is something they want
-            for (var s = 0; s < sensors.length; s++) {
-                for (var w = 0; w < wants.length; w++) {
+                //run the client connection
+                newClient.run();
 
-                    //if they have something we want 
-                     if ((wants[w] === sensors[s]) && (wants[w] !== '') && (sensors[s] !== '')) {
+                //keep a track of ongoing connections
+                that.clients.push(newClient);
 
-                        //create a new client
-                        var newClient = new Client(command[2], 1337, this.dh);
-
-                        //run the client connection
-                        newClient.run();
-
-                        //keep a track of ongoing connections
-                        that.clients.push(newClient);
-
-                        //break out of the loop
-                        w = wants.length + 2;
-                        s = sensors.length + 2;
-                        break;
-                    }
-                }
+                console.log('connected to: ' + command[1])
             }
-        }
+        });
     });
 
     //TODO add automatic reconnect
@@ -99,9 +84,6 @@ MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
     this.server.sendUpdate(data);
 };
 
-MasterNodeConnection.prototype.setClientDataHandler = function (func) {
-    this.dh = func;
-};
 
 /**
  * Helper function that returns the ip of THIS device

@@ -26,15 +26,15 @@ function Client(ip, port, dataHandler) {
     this.client = new n.Socket();
     this.connHN = '';
     this.ip = ip;
-    this.myIP = getIPAddress();
-    this.port = port;
+    this.myIP = getIPAddress();     
+    this.port = port;  
     this.log = []
     this.dh = dataHandler;
 }
- 
-/**   
+
+/**     
  * This function will start a connection to the endpoint given the
- * ip and port that the client object was initialized with.
+ * ip and port that the client object was initialized with. 
  * It also logs all recieved data before sending it to the data handler
  * if it was set by the user.
  * @memberOf Client
@@ -44,7 +44,7 @@ function Client(ip, port, dataHandler) {
  */
 Client.prototype.run = function () {
     var that = this;
-
+ 
     /**
      * connects to the endpoint
      * @memberOf Client.prototpye
@@ -78,10 +78,14 @@ Client.prototype.run = function () {
                 'data': dataArray[1]
             };
 
-            console.log(logData);
 
-            //push the data to out log
+            //push the data to out log 
             that.log.push(JSON.stringify(logData));
+
+            //if the user defined a handler function send the string data to the function
+            if (that.dh !== undefined) {
+                that.dh(stringData);
+            }
 
         }
         //otherwise its a command
@@ -95,9 +99,7 @@ Client.prototype.run = function () {
             }
 
         }
-        //if the user defined a handler function send the string data to the function
-        if (that.dh !== undefined)
-            that.dh(stringData);
+
     });
 
     /** Called when the socket has successfully closed
@@ -124,7 +126,7 @@ Client.prototype.run = function () {
      * */
     this.client.on('error', function () {
         console.log('error on: ' + that.ip);
-        /* that.client.destroy();
+        /* that.client.destroy(); 
          that.client.unref();
 
          setTimeout(function () {
@@ -190,11 +192,17 @@ Client.prototype.deleteFromLog = function (toRemove) {
  */
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
-    this.log.forEach(function (data) {
+    /*this.log.forEach(function (data) {
         fs.appendFile(filename, data + '\r\n', function () {
             that.deleteFromLog(data);
         })
-    });
+    });*/
+    for (var i = 0; i < this.log.length; i++) {
+        const data = this.log[i];
+        fs.appendFile(filename, data + '\r\n', function () {
+            that.deleteFromLog(data);
+        });
+    }
 };
 
 
