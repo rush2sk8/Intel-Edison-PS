@@ -30,7 +30,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     this.server = new Server(this.myIP, 1337, 0);
 
     this.server.start();
-  
+
     //master connection 
     var clientConnToMN = new net.Socket();
 
@@ -54,9 +54,9 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
             //if the command is a new node in the network
             if (command[0] === 'ct') {
- 
+
                 //create a new client
-                var newClient = new Client(command[2], 1337, that.dh/*, clientConnToMN*/);
+                var newClient = new Client(command[2], 1337, that.dh, clientConnToMN);
 
                 //run the client connection
                 newClient.run();

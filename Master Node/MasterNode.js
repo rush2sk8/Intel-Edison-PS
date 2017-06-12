@@ -63,6 +63,7 @@ var server = net.createServer(function (socket) {
                 sn.getSensorsToPubTo();
 
                 sensors.push(sn);
+                console.log('added to list')
             }
         }
 
@@ -70,8 +71,7 @@ var server = net.createServer(function (socket) {
     });
 
     //ignore errors
-    socket.on('error', function () {
-    });
+    socket.on('error', function () {});
 
 });
 
@@ -84,8 +84,9 @@ function hasNode(tosee) {
 
     for (var i = 0; i < sensors.length; i++) {
 
-        if (sensors[i].getString() == tosee.getString())
+        if (sensors[i].equals(tosee))
             return true;
+        
     }
     return false;
 }
@@ -144,9 +145,9 @@ SensorNode.prototype.getSensorsToPubTo = function () {
 
     sensors.forEach(function (s) {
 
-        for(var i = 0; i < s.want.length; i ++){
+        for (var i = 0; i < s.want.length; i++) {
 
-            if(that.sensors.indexOf(s.want[i]) > 0){
+            if (that.sensors.indexOf(s.want[i]) > 0) {
                 s.socket.write('ct-' + that.getString() + '*');
                 break;
             }
@@ -155,6 +156,16 @@ SensorNode.prototype.getSensorsToPubTo = function () {
     });
 
 };
+
+/**
+ * Equality between sensor nodes
+ * @param node
+ * @returns {boolean}
+ */
+SensorNode.prototype.equals = function (node) {
+    return (this.ip == node.ip) && (this.hostname == node.hostname)
+        && (this.sensors == node.sensors) && (this.want == node.want);
+}
 
 
 //start listening for connections

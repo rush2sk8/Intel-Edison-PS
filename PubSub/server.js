@@ -60,7 +60,7 @@ Server.prototype.start = function () {
     console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
-/**
+/**   
  * Sends the data to all of the connected clients
  * @param {Object} data  - data to send to all the devices
  * @memberOf Server

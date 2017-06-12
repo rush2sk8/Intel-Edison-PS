@@ -17,8 +17,8 @@
         "name": ".gitignore"
       },
       "Client.js": {
-        "previousModTime": 1497289859415,
-        "modified": 1497289859415,
+        "previousModTime": 1497291017913,
+        "modified": 1497291017913,
         "seen": true,
         "name": "Client.js"
       },
@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1497289660489,
-        "modified": 1497289660489,
+        "previousModTime": 1497290829906,
+        "modified": 1497290829906,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1497289849166,
-        "modified": 1497289849166,
+        "previousModTime": 1497290998656,
+        "modified": 1497290998656,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -65,8 +65,8 @@
         "name": "README.md"
       },
       "Server.js": {
-        "previousModTime": 1497288808047,
-        "modified": 1497288808047,
+        "previousModTime": 1497290829906,
+        "modified": 1497290829906,
         "seen": true,
         "name": "Server.js"
       },
@@ -77,20 +77,20 @@
         "name": "xdk/project-info.json"
       },
       "client.js": {
-        "previousModTime": 1497289859415,
-        "modified": 1497289859415,
+        "previousModTime": 1497291017913,
+        "modified": 1497291017913,
         "seen": true,
         "name": "client.js"
       },
       "MasterNodeConnection.js": {
-        "previousModTime": 1497289660489,
-        "modified": 1497289660489,
+        "previousModTime": 1497291018036,
+        "modified": 1497291018036,
         "seen": true,
         "name": "MasterNodeConnection.js"
       },
       "server.js": {
-        "previousModTime": 1497288808047,
-        "modified": 1497288808047,
+        "previousModTime": 1497290829906,
+        "modified": 1497290829906,
         "seen": true,
         "name": "server.js"
       },
@@ -295,10 +295,13 @@
     },
     "boardFileStatus": {
       "Client.js": {
-        "previousModTime": 1497289859699
+        "previousModTime": 1497291018453
       },
       "client.js": {
-        "previousModTime": 1497289859699
+        "previousModTime": 1497291018453
+      },
+      "MasterNodeConnection.js": {
+        "previousModTime": 1497291018453
       }
     }
   }

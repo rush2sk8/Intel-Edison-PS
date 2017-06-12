@@ -21,7 +21,7 @@ const hostname = require('os').hostname();
  * //creates a client that will connect to a server running on the localhost
  * var client = new Client('127.0.0.1', 1337, dh);
  */
-function Client(ip, port, dataHandler,/* mnc*/) {
+function Client(ip, port, dataHandler , mnc ) {
     var n = require('net');
     this.client = new n.Socket();
     this.connHN = '';
@@ -30,7 +30,7 @@ function Client(ip, port, dataHandler,/* mnc*/) {
     this.port = port;
     this.log = []
     this.dh = dataHandler;
-   // this.mnc = mnc;
+    this.mnc = mnc;
 }
 
 /**
@@ -109,8 +109,8 @@ Client.prototype.run = function () {
         that.client.destroy();
 
         //uncomment if you want the master node to know when a connection is dropped
-        //if (that.mnc !== undefined)
-         //   that.mnc.write('cld-' + that.connHN + '-' + that.ip);
+        if (that.mnc !== undefined)
+           that.mnc.write('cld-' + that.connHN + '-' + that.ip);
 
     });
 

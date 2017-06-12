@@ -308,13 +308,13 @@ var dh = function (data) {
 
 };
 var master = new MasterNodeConnection('10.20.0.128', 9999, '', 'light:', dh);
-
+ 
 master.startAutomaticDiscovery();
 
 // MRAA, as per usual 
 var mraa = require('mraa');
 
-
+  
 // Set up a digital output on MRAA pin 20 (GP12) 
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
