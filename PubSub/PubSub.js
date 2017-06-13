@@ -2,7 +2,6 @@
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var intervalIDLed;
-var val;
 
 var dh = function (data) {
     console.log(data)
@@ -28,17 +27,10 @@ var mraa = require('mraa');
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
 
-
 var BlinkNormalMs = 1000.0 / 5.0;
-var BlinkAlertMs = 1000.0 / 50.0;
-
-var analogIn;
-var lightThreshold = 0.8;
-var lightSensorState = 1; // 1 = above threshold, 0 = below
 
 // global variable for pin state
 var ledState = 0;
-
 
 function writeLed() {
     // toggle state of led
@@ -57,10 +49,8 @@ var bPin = new mraa.Pwm(0);
 gPin.enable(true);
 bPin.enable(true);
 
-
 pwm(gPin, 0.0);
 pwm(bPin, 0.0);
-
 
 function pwm(pin, val) {
     if (val === 0.0) {
@@ -78,9 +68,6 @@ function pwm(pin, val) {
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var dh = function (data) {
-
-
-
 };
 
 var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', '', dh);
@@ -180,7 +167,6 @@ var readLightSensor = function () {
         intervalIDLed = setInterval(writeLed, BlinkAlertMs); // start the periodic read
         master.publishDataToSubscribers('li-' + BlinkAlertMs);
     }
-
 };
 
 // global variable for pin state
@@ -227,7 +213,6 @@ var mraa = require('mraa');
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
 
-
 var BlinkNormalMs = 1000.0 / 5.0;
 var BlinkAlertMs = 1000.0 / 50.0;
 
@@ -264,7 +249,6 @@ function writeLed() {
     ledPin.write(ledState);
     var val = buttonPin.read();
 
-
     if (val == but) {
 
         pwm(gPin, (Math.random() * 255) / 255);
@@ -273,11 +257,9 @@ function writeLed() {
         master.publishDataToSubscribers('but-' + but);
 
     }
-
 }
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
-
 
 function pwm(pin, val) {
     if (val === 0.0) {

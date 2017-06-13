@@ -17,8 +17,8 @@
         "name": ".gitignore"
       },
       "Client.js": {
-        "previousModTime": 1497365343532,
-        "modified": 1497365343532,
+        "previousModTime": 1497378700485,
+        "modified": 1497378700485,
         "seen": true,
         "name": "Client.js"
       },
@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1497366447581,
-        "modified": 1497366447581,
+        "previousModTime": 1497379040576,
+        "modified": 1497379040576,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1497366413858,
-        "modified": 1497366413858,
+        "previousModTime": 1497378955441,
+        "modified": 1497378955441,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -65,8 +65,8 @@
         "name": "README.md"
       },
       "Server.js": {
-        "previousModTime": 1497365653545,
-        "modified": 1497365653545,
+        "previousModTime": 1497378700485,
+        "modified": 1497378700485,
         "seen": true,
         "name": "Server.js"
       },
@@ -77,27 +77,27 @@
         "name": "xdk/project-info.json"
       },
       "client.js": {
-        "previousModTime": 1497365343532,
-        "modified": 1497365343532,
+        "previousModTime": 1497378700485,
+        "modified": 1497378700485,
         "seen": true,
         "name": "client.js"
       },
       "MasterNodeConnection.js": {
-        "previousModTime": 1497365343532,
-        "modified": 1497365343532,
+        "previousModTime": 1497378700485,
+        "modified": 1497378700485,
         "seen": true,
         "name": "MasterNodeConnection.js"
       },
       "server.js": {
-        "previousModTime": 1497365653545,
-        "modified": 1497365653545,
+        "previousModTime": 1497378700485,
+        "modified": 1497378700485,
         "seen": true,
         "name": "server.js"
       }
     },
     "boardFileStatus": {
       "PubSub.js": {
-        "previousModTime": 1497366447817
+        "previousModTime": 1497379040837
       }
     }
   }

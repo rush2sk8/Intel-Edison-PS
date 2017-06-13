@@ -44,7 +44,7 @@ Server.prototype.start = function () {
             if (stringData == 'hn') {
                 socket.write('hn-' + hostname);
             }
-        }); 
+        });
 
 
         //keep every socket to each client
@@ -60,11 +60,11 @@ Server.prototype.start = function () {
     console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
-/**   
+/**    
  * Sends the data to all of the connected clients
  * @param {Object} data  - data to send to all the devices
  * @memberOf Server
- * @example
+ * @example 
  * var server = new Server('127.0.0.1', 1337, 0);
  * server.start();
  *
@@ -129,7 +129,7 @@ Server.prototype.getTXLog = function () {
     return this.log;
 };
 
-/**
+/**    
  * Removes data element from the server log
  * @param {String} toRemove - Element to remove
  * @memberOf Server
@@ -150,7 +150,7 @@ Server.prototype.deleteFromLog = function (toRemove) {
     }
 };
 
-/**
+/** 
  * Writes the server log data to a file
  * @param {string} filename - name of the file to write to
  * @memberOf  Server

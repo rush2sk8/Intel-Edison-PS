@@ -54,7 +54,6 @@ var server = net.createServer(function (socket) {
             var sn = new SensorNode(command[1], command[2], command[3], command[4], socket);
 
             //check to see if the node is already in the list
-            console.log('has node: ' + hasNode(sn))
             if (hasNode(sn) === false) {
 
                 sn.getSensorsToSubTo().forEach(function (s) {
@@ -64,12 +63,8 @@ var server = net.createServer(function (socket) {
                 sn.getSensorsToPubTo();
                 sensors.push(sn);
 
-                console.log('added to list')
             }
-
         }
-
-
     });
 
     //ignore errors
@@ -89,7 +84,6 @@ function hasNode(tosee) {
 
         if (sensors[i].isequal(tosee))
             return true;
-
     }
     return false;
 }
@@ -131,13 +125,12 @@ SensorNode.prototype.getSensorsToSubTo = function () {
     sensors.forEach(function (s) {
 
         for (var w = 0; w < that.want.length; w++) {
-          //  console.log('sub: ' + s.sensors+'^'+that.want[w] +'^'+s.sensors.indexOf(that.want[w]))
+            //  console.log('sub: ' + s.sensors+'^'+that.want[w] +'^'+s.sensors.indexOf(that.want[w]))
             if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0)) {
                 toReturn.push(s);
                 break;
             }
         }
-
     });
 
     return toReturn;
@@ -156,9 +149,7 @@ SensorNode.prototype.getSensorsToPubTo = function () {
                 break;
             }
         }
-
     });
-
 };
 
 /**
@@ -171,13 +162,5 @@ SensorNode.prototype.isequal = function (node) {
     return (this.ip == node.ip) && (this.hostname == node.hostname);
 }
 
-
 //start listening for connections
 server.listen(9999, '10.20.0.128');
-
-
-
-
-
-
-
