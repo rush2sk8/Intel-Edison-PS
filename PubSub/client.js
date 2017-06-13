@@ -30,7 +30,6 @@ function Client(ip, port, dataHandler) {
     this.port = port;
     this.log = []
     this.dh = dataHandler;
-    //   this.mnc = mnc;
 }
 
 /** 
@@ -79,7 +78,7 @@ Client.prototype.run = function () {
                 'data': dataArray[1]
             };
 
-       
+
             //push the data to out log 
             that.log.push(JSON.stringify(logData));
 
@@ -106,10 +105,6 @@ Client.prototype.run = function () {
     this.client.on('close', function () {
         console.log(that.ip + ' closed');
         that.client.destroy();
-
-        //uncomment if you want the master node to know when a connection is dropped
-        // if (that.mnc !== undefined)
-        //    that.mnc.write('cld-' + that.connHN + '-' + that.ip);
 
     });
 
