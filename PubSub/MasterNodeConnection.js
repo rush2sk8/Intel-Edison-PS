@@ -45,7 +45,6 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         //put data into a string
         const stringData = (new Buffer(data)).toString();
 
-        //safeguard against data server side data obfuscation
         stringData.split('*').forEach(function (node) {
 
             //split the command

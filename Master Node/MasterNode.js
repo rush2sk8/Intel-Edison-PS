@@ -55,10 +55,15 @@ var server = net.createServer(function (socket) {
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
-                sensors.push(sn);
-            }
+                /*
+                 sn.getSensorsToSubTo().forEach(function (s) {
+                 socket.write('ct-' + s.getString() + '*');
+                 });
 
-            sensors.forEach(function (p1, p2, p3) { console.log(p1.toString()) })
+                 sn.getSensorsToPubTo();*/
+                sensors.push(sn);
+
+            }
 
             sn.getSensorsToSubTo().forEach(function (s) {
                 socket.write('ct-' + s.getString() + '*');
@@ -138,9 +143,7 @@ SensorNode.prototype.getSensorsToSubTo = function () {
     return toReturn;
 };
 
-/**
- * When a node joins the network it sees which other nodes want what the new one has and will send an update if it satisfies that condition
- */
+
 SensorNode.prototype.getSensorsToPubTo = function () {
     const that = this;
 
@@ -148,7 +151,6 @@ SensorNode.prototype.getSensorsToPubTo = function () {
 
         for (var i = 0; i < s.want.length; i++) {
             //console.log('Pub: ' + s.sensors+'^'+s.want[i] +'^'+that.sensors.indexOf(s.want[i]))
-
             if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 s.socket.write('ct-' + that.getString() + '*');
                 break;
