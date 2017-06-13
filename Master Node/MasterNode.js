@@ -55,14 +55,8 @@ var server = net.createServer(function (socket) {
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
-                /*
-                 sn.getSensorsToSubTo().forEach(function (s) {
-                 socket.write('ct-' + s.getString() + '*');
-                 });
 
-                 sn.getSensorsToPubTo();*/
-                sensors.push(sn);
-
+				sensors.push(sn);
             }
 
             sn.getSensorsToSubTo().forEach(function (s) {

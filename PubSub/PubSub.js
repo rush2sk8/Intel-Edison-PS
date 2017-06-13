@@ -1,4 +1,4 @@
-/****************************************************EDISON 01 4 5 6 START**************************************************/
+/****************************************************EDISON 01 4 5 6 START**************************************************
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var intervalIDLed;
@@ -61,7 +61,7 @@ function pwm(pin, val) {
         pin.write(val);
     }
 }
-/****************************************************EDISON 01 4 5 6 END**************************************************/
+****************************************************EDISON 01 4 5 6 END**************************************************/
 
 /****************************************************EDISON 02 START***********************************************
 
@@ -185,7 +185,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 ****************************************************Edison 02 End**************************************************/
 
-/****************************************************EDISON 03 START**************************************************
+/****************************************************EDISON 03 START**************************************************/
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -247,6 +247,10 @@ function writeLed() {
     ledState = (ledPin.read() ? 0 : 1);
     // set led value 
     ledPin.write(ledState);
+
+}
+
+setInterval(function () {
     var val = buttonPin.read();
 
     if (val == but) {
@@ -257,7 +261,8 @@ function writeLed() {
         master.publishDataToSubscribers('but-' + but);
 
     }
-}
+}, 10);
+
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
@@ -270,4 +275,4 @@ function pwm(pin, val) {
         pin.write(val);
     }
 }
-****************************************************EDISON 03 END**************************************************/
+/****************************************************EDISON 03 END**************************************************/
