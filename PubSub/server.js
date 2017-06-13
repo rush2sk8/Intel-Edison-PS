@@ -44,15 +44,15 @@ Server.prototype.start = function () {
             if (stringData == 'hn') {
                 socket.write('hn-' + hostname);
             }
-        });
+        }); 
 
 
         //keep every socket to each client
         that.connections.push(socket);
-        console.log('pushed socket')
+        console.log('node connected')
     });
 
-    //
+    // 
     this.server.timeout = this.timeout;
 
     //listen for incoming connections
@@ -71,7 +71,7 @@ Server.prototype.start = function () {
  * //sends random data to connected clients every 5 seconds
  * setInterval(function(){
  *      server.sendUpdate(Math.random());
- * },5000);
+ * },5000);  
  */
 Server.prototype.sendUpdate = function (data) {
     var that = this;

@@ -69,8 +69,8 @@ Client.prototype.run = function () {
 
         //if non formatted data or hostname data is received dont log it
         if (dataArray.length == 2) {
-
-            var logData = {
+     
+            var logData = {  
                 'rxnode id': hostname,
                 'rxnode ip': that.myIP,
                 'tx node id': that.connHN,

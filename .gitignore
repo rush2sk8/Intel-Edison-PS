@@ -50,4 +50,5 @@ Temporary Items
 Testing/MasterNode/node_modules/*
 *.xml
 .idea/workspace.xml
-*.xml
+/.idea/*
+

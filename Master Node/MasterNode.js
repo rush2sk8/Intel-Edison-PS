@@ -54,6 +54,7 @@ var server = net.createServer(function (socket) {
             var sn = new SensorNode(command[1], command[2], command[3], command[4], socket);
 
             //check to see if the node is already in the list
+            console.log('has node: ' + hasNode(sn))
             if (hasNode(sn) === false) {
 
                 sn.getSensorsToSubTo().forEach(function (s) {
@@ -61,17 +62,19 @@ var server = net.createServer(function (socket) {
                 });
 
                 sn.getSensorsToPubTo();
-
                 sensors.push(sn);
+
                 console.log('added to list')
             }
+
         }
 
 
     });
 
     //ignore errors
-    socket.on('error', function () {});
+    socket.on('error', function () {
+    });
 
 });
 
@@ -84,7 +87,7 @@ function hasNode(tosee) {
 
     for (var i = 0; i < sensors.length; i++) {
 
-        if (sensors[i].equals(tosee))
+        if (sensors[i].isequal(tosee))
             return true;
 
     }
@@ -113,7 +116,7 @@ function SensorNode(hostname, ip, sensors, want, socket) {
  * @returns {string}
  */
 SensorNode.prototype.getString = function () {
-    return this.hostname + '-' + this.ip + '-' + this.sensors;
+    return this.hostname + '-' + this.ip + '-' + this.sensors + '-' + this.want;
 };
 
 /**
@@ -124,11 +127,12 @@ SensorNode.prototype.getString = function () {
 SensorNode.prototype.getSensorsToSubTo = function () {
     var toReturn = [];
     const that = this;
+
     sensors.forEach(function (s) {
 
         for (var w = 0; w < that.want.length; w++) {
-
-            if (s.sensors.indexOf(that.want[w]) > 0) {
+          //  console.log('sub: ' + s.sensors+'^'+that.want[w] +'^'+s.sensors.indexOf(that.want[w]))
+            if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0)) {
                 toReturn.push(s);
                 break;
             }
@@ -146,8 +150,8 @@ SensorNode.prototype.getSensorsToPubTo = function () {
     sensors.forEach(function (s) {
 
         for (var i = 0; i < s.want.length; i++) {
-
-            if (that.sensors.indexOf(s.want[i]) > 0) {
+            //console.log('Pub: ' + s.sensors+'^'+s.want[i] +'^'+that.sensors.indexOf(s.want[i]))
+            if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0)) {
                 s.socket.write('ct-' + that.getString() + '*');
                 break;
             }
@@ -162,9 +166,9 @@ SensorNode.prototype.getSensorsToPubTo = function () {
  * @param node
  * @returns {boolean}
  */
-SensorNode.prototype.equals = function (node) {
-    return (this.ip == node.ip) && (this.hostname == node.hostname)
-        && (this.sensors == node.sensors) && (this.want == node.want);
+SensorNode.prototype.isequal = function (node) {
+
+    return (this.ip == node.ip) && (this.hostname == node.hostname);
 }
 
 

@@ -3,13 +3,13 @@ var Server = require('./Server.js');
 var net = require('net');
 
 /**
- *
+ * 
  * @param ip -- ip address of the master node
  * @param port -- port of the master node
  * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
  * @param dh -- clientside data handler
- * @constructor
+ * @constructor 
  */
 function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.ip = ip;
@@ -19,7 +19,7 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.want = want;
     this.clients = [];
     this.server;
-    this.dh = dh;
+    this.dh = dh;  
 }
 
 /**
@@ -65,7 +65,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
                 console.log('connected to: ' + command[1]);
             } else if (command[0] == 'ping') {
-                
+
                 //ping in 2017
                 clientConnToMN.write('pong');
             }
@@ -78,6 +78,9 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         console.log(that.ip + ' closed')
     });
 
+    clientConnToMN.on('error', function () {
+        console.log(that.ip + ' error')
+    });
 };
 
 /**
