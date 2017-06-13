@@ -55,15 +55,22 @@ var server = net.createServer(function (socket) {
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
+                /*
+                 sn.getSensorsToSubTo().forEach(function (s) {
+                 socket.write('ct-' + s.getString() + '*');
+                 });
 
-                sn.getSensorsToSubTo().forEach(function (s) {
-                    socket.write('ct-' + s.getString() + '*');
-                });
-
-                sn.getSensorsToPubTo();
+                 sn.getSensorsToPubTo();*/
                 sensors.push(sn);
 
             }
+
+            sn.getSensorsToSubTo().forEach(function (s) {
+                socket.write('ct-' + s.getString() + '*');
+            });
+
+            sn.getSensorsToPubTo();
+
         }
     });
 
@@ -126,7 +133,7 @@ SensorNode.prototype.getSensorsToSubTo = function () {
 
         for (var w = 0; w < that.want.length; w++) {
             //  console.log('sub: ' + s.sensors+'^'+that.want[w] +'^'+s.sensors.indexOf(that.want[w]))
-            if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0)) {
+            if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 toReturn.push(s);
                 break;
             }
@@ -144,7 +151,7 @@ SensorNode.prototype.getSensorsToPubTo = function () {
 
         for (var i = 0; i < s.want.length; i++) {
             //console.log('Pub: ' + s.sensors+'^'+s.want[i] +'^'+that.sensors.indexOf(s.want[i]))
-            if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0)) {
+            if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 s.socket.write('ct-' + that.getString() + '*');
                 break;
             }

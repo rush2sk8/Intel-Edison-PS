@@ -46,8 +46,6 @@ function Client(ip, port, dataHandler) {
 Client.prototype.run = function () {
     var that = this;
 
-    console.log('run');
-
     /**  
      * connects to the endpoint
      * @memberOf Client.prototpye

@@ -49,7 +49,6 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
             //split the command
             var command = node.split('-');
-            console.log('stringData: ' + command);
 
             //if the command is a new node in the network
             if (command[0] === 'ct') {
