@@ -3,7 +3,7 @@
 
 - [X] add automatic reconnect
 
-~~[X] add max array sizecheck so they dont crash~~
+- ~~ [X] add max array sizecheck so they dont crash~~
 
 - [X] add commands that each node can send other nodes
 
