@@ -81,20 +81,10 @@ var server = net.createServer(function (socket) {
                 sensors.push(sn);
             }
 
-<<<<<<< HEAD
-            sensors.forEach(function (p1, p2, p3) { console.log(p1.toString()) })
-
             sn.getSensorsToSubTo().forEach(function (s) {
                 socket.write('ct-' + s.getString() + '*');
             });
 
-=======
-
-            sn.getSensorsToSubTo().forEach(function (s) {
-                socket.write('ct-' + s.getString() + '*');
-            });
-
->>>>>>> Testing
             sn.getSensorsToPubTo();
 
         }
@@ -158,11 +148,8 @@ SensorNode.prototype.getSensorsToSubTo = function () {
     sensors.forEach(function (s) {
 
         for (var w = 0; w < that.want.length; w++) {
-<<<<<<< HEAD
-            //  console.log('sub: ' + s.sensors+'^'+that.want[w] +'^'+s.sensors.indexOf(that.want[w]))
-=======
 
->>>>>>> Testing
+
             if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 toReturn.push(s);
                 break;
@@ -182,10 +169,6 @@ SensorNode.prototype.getSensorsToPubTo = function () {
     sensors.forEach(function (s) {
 
         for (var i = 0; i < s.want.length; i++) {
-<<<<<<< HEAD
-            //console.log('Pub: ' + s.sensors+'^'+s.want[i] +'^'+that.sensors.indexOf(s.want[i]))
-=======
->>>>>>> Testing
 
             if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 s.socket.write('ct-' + that.getString() + '*');
