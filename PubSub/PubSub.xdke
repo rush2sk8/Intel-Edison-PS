@@ -41,8 +41,8 @@
         "name": "package.json"
       },
       "PubSub.js": {
-        "previousModTime": 1497384882508,
-        "modified": 1497384882508,
+        "previousModTime": 1497450635770,
+        "modified": 1497450635770,
         "seen": true,
         "name": "PubSub.js"
       },
@@ -53,8 +53,8 @@
         "name": "PubSub.xdk"
       },
       "PubSub.xdke": {
-        "previousModTime": 1497384875398,
-        "modified": 1497384875398,
+        "previousModTime": 1497450587502,
+        "modified": 1497450587502,
         "seen": true,
         "name": "PubSub.xdke"
       },
@@ -93,20 +93,17 @@
         "modified": 1497378700485,
         "seen": true,
         "name": "server.js"
+      },
+      "MasterNodeConnectionUDP.js": {
+        "previousModTime": 1497450545019,
+        "modified": 1497450545019,
+        "seen": true,
+        "name": "MasterNodeConnectionUDP.js"
       }
     },
     "boardFileStatus": {
-      "Client.js": {
-        "previousModTime": 1497384884188
-      },
       "PubSub.js": {
-        "previousModTime": 1497384884188
-      },
-      "client.js": {
-        "previousModTime": 1497384884188
-      },
-      "MasterNodeConnection.js": {
-        "previousModTime": 1497384884188
+        "previousModTime": 1497450636026
       }
     }
   }
