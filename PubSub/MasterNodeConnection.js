@@ -8,8 +8,8 @@ var net = require('net');
  * @param port -- port of the master node
  * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
- * @param dh -- clientside data handler
- * @constructor 
+ * @param dh -- clientside data handler 
+ * @constructor  
  */
 function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.ip = ip;
@@ -19,7 +19,7 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.want = want;
     this.clients = [];
     this.server;
-    this.dh = dh;  
+    this.dh = dh;
 }
 
 /**
@@ -49,7 +49,6 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
             //split the command
             var command = node.split('-');
-            console.log('stringData: ' + command);
 
             //if the command is a new node in the network
             if (command[0] === 'ct') {
@@ -57,7 +56,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
                 //create a new client
                 var newClient = new Client(command[2], 1337, that.dh, clientConnToMN);
 
-                //run the client connection
+                // the client connection
                 newClient.run();
 
                 //keep a track of ongoing connections
@@ -80,6 +79,19 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     clientConnToMN.on('error', function () {
         console.log(that.ip + ' error')
+    });
+
+
+    process.on('SIGINT', function () {
+        that.server.writeLogToFile('(' + (new Date()) + ')tx.log');
+        that.clients.forEach(function (c) {
+            c.writeLogToFile(c.ip + ' (' + (new Date()) + ') rx.log');
+        });
+        console.log('wrote data to log files');
+        setTimeout(function () {
+            process.exit();
+        }, 1000);
+
     });
 };
 
@@ -110,6 +122,7 @@ function getIPAddress() {
 
     return '0.0.0.0';
 }
+
 
 //NodeJS thing so that i can make this a class
 module.exports = MasterNodeConnection;
