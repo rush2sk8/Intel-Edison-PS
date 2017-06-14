@@ -59,16 +59,20 @@ function pwm(pin, val) {
     } else {
         pin.enable(true);
         pin.write(val);
-    }
+    }  
 }
 /****************************************************EDISON 01 4 5 6 END**************************************************/
 
-/****************************************************EDISON 02 START***********************************************
+/****************************************************EDISON 02 START*****************************************************
 
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
+<<<<<<< HEAD
 var dh = function (data) {
 };
+=======
+var dh = function (data) {};
+>>>>>>> Testing
 
 var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', '', dh);
 master.startAutomaticDiscovery();
@@ -185,7 +189,7 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 ****************************************************Edison 02 End**************************************************/
 
-/****************************************************EDISON 03 START**************************************************
+/****************************************************EDISON 03 START***********************************************
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -235,7 +239,7 @@ bPin.enable(true);
 //pwm(rPin, 0.0);
 pwm(gPin, 0.0);
 pwm(bPin, 0.0);
-
+ 
 // Set up a digital input/output on MRAA pin 36 (GP14)
 var buttonPin = new mraa.Gpio(36);
 

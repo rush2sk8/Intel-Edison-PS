@@ -2,9 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Master Node/MasterNodeUDP.js" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnectionUDP.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Master Node/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Master Node/reboot.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Master Node/template.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/PubSub/icon.png" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Master Node/MasterNode.js" afterPath="$PROJECT_DIR$/Master Node/MasterNode.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" afterPath="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
+>>>>>>> Testing
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.js" afterPath="$PROJECT_DIR$/PubSub/PubSub.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.xdke" afterPath="$PROJECT_DIR$/PubSub/PubSub.xdke" />
     </list>
@@ -20,17 +30,40 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="MasterNodeConnectionUDP.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnectionUDP.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="668">
               <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+=======
+    <leaf>
+      <file leaf-file-name="MasterNode.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="38" />
+              <folding>
+                <marker date="1497468287045" expanded="true" signature="1042:1061" ph="..." />
+                <marker date="1497468287045" expanded="true" signature="1119:1138" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MasterNodeConnection.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="884">
+              <caret line="81" column="7" lean-forward="true" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+>>>>>>> Testing
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="MasterNodeUDP.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Master Node/MasterNodeUDP.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,6 +74,8 @@
           </provider>
         </entry>
       </file>
+=======
+>>>>>>> Testing
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -109,9 +144,15 @@
         <option value="$PROJECT_DIR$/PubSub/client.js" />
         <option value="$PROJECT_DIR$/PubSub/server.js" />
         <option value="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/Master Node/MasterNode.js" />
         <option value="$PROJECT_DIR$/Master Node/MasterNodeUDP.js" />
         <option value="$PROJECT_DIR$/PubSub/MasterNodeConnectionUDP.js" />
+=======
+        <option value="$PROJECT_DIR$/PubSub/server.js" />
+        <option value="$PROJECT_DIR$/PubSub/PubSub.js" />
+        <option value="$PROJECT_DIR$/Master Node/MasterNode.js" />
+>>>>>>> Testing
       </list>
     </option>
   </component>
@@ -122,6 +163,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
+=======
+    <option name="x" value="1280" />
+>>>>>>> Testing
     <option name="width" value="1280" />
     <option name="height" value="1400" />
   </component>
@@ -280,16 +325,29 @@
       <workItem from="1497024650502" duration="4569000" />
       <workItem from="1497272984020" duration="12045000" />
       <workItem from="1497286867129" duration="8442000" />
+<<<<<<< HEAD
       <workItem from="1497359756947" duration="9979000" />
       <workItem from="1497446072231" duration="3697000" />
+=======
+      <workItem from="1497359756947" duration="5617000" />
+      <workItem from="1497464248089" duration="26000" />
+      <workItem from="1497464308586" duration="2384000" />
+>>>>>>> Testing
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="133980000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="128325000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1280" y="0" width="1280" height="1400" extended-state="1" />
+>>>>>>> Testing
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -450,6 +508,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/client.js">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1802">
           <caret line="106" column="17" lean-forward="false" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
@@ -467,28 +526,44 @@
             <element signature="e#4638#4862#0" expanded="false" />
             <marker date="1497378700485" expanded="false" signature="4145:4583" ph="/** Writes the server log data to a file ...*/" />
           </folding>
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="23" column="46" lean-forward="false" selection-start-line="23" selection-start-column="46" selection-end-line="23" selection-end-column="46" />
+>>>>>>> Testing
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-761">
           <caret line="93" column="22" lean-forward="false" selection-start-line="93" selection-start-column="22" selection-end-line="93" selection-end-column="22" />
           <folding>
             <marker date="1497449483550" expanded="true" signature="0:124" ph="/** EDISON 01 4 5 6 START ...*/" />
           </folding>
+=======
+        <state relative-caret-position="890">
+          <caret line="101" column="0" lean-forward="false" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+>>>>>>> Testing
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
+    <entry file="file://$PROJECT_DIR$/PubSub/PubSub.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="187">
           <caret line="49" column="46" lean-forward="true" selection-start-line="49" selection-start-column="46" selection-end-line="49" selection-end-column="46" />
           <folding />
+=======
+        <state relative-caret-position="578">
+          <caret line="34" column="38" lean-forward="true" selection-start-line="34" selection-start-column="38" selection-end-line="34" selection-end-column="38" />
+>>>>>>> Testing
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/MasterNodeConnection.js">
+<<<<<<< HEAD
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="39">
           <caret line="47" column="55" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="113" selection-end-column="38" />
@@ -508,7 +583,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="668">
           <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+=======
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="81" column="7" lean-forward="true" selection-start-line="81" selection-start-column="7" selection-end-line="81" selection-end-column="7" />
+>>>>>>> Testing
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Master Node/MasterNode.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="33" column="38" lean-forward="false" selection-start-line="33" selection-start-column="21" selection-end-line="33" selection-end-column="38" />
+          <folding>
+            <marker date="1497468287045" expanded="true" signature="1042:1061" ph="..." />
+            <marker date="1497468287045" expanded="true" signature="1119:1138" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>

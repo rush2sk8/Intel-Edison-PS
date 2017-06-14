@@ -21,7 +21,11 @@ const hostname = require('os').hostname();
  * //creates a client that will connect to a server running on the localhost
  * var client = new Client('127.0.0.1', 1337, dh);
  */
+<<<<<<< HEAD
 function Client(ip, port, dataHandler) {
+=======
+function Client(ip, port, dataHandler, mnc) {
+>>>>>>> Testing
     var n = require('net');
     this.client = new n.Socket();
     this.connHN = '';
@@ -108,8 +112,13 @@ Client.prototype.run = function () {
         that.client.destroy();
 
         //uncomment if you want the master node to know when a connection is dropped
+<<<<<<< HEAD
         // if (that.mnc !== undefined)
         //    that.mnc.write('cld-' + that.connHN + '-' + that.ip);
+=======
+        if (that.mnc !== undefined)
+            that.mnc.write('cld-' + that.connHN + '-' + that.ip);
+>>>>>>> Testing
 
     });
 
@@ -160,7 +169,7 @@ Client.prototype.deleteFromLog = function (toRemove) {
     }
 }
 
-/**
+/** 
  * Writes the entire log to a file specified by "filename" then clear the log
  * Note this will append the data to that file
  * @param {string} filename  - name of the file you want to append to. if it doesnt exist it will be created
@@ -176,17 +185,11 @@ Client.prototype.deleteFromLog = function (toRemove) {
  */
 Client.prototype.writeLogToFile = function (filename) {
     var that = this;
-    /*this.log.forEach(function (data) {
-     fs.appendFile(filename, data + '\r\n', function () {
-     that.deleteFromLog(data);
-     })
-     });*/
-    for (var i = 0; i < this.log.length; i++) {
-        const data = this.log[i];
+    this.log.forEach(function (data) {
         fs.appendFile(filename, data + '\r\n', function () {
             that.deleteFromLog(data);
-        });
-    }
+        })
+    });
 };
 
 

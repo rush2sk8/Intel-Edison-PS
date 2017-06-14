@@ -1,36 +1,59 @@
-/********************************************Website Code***************************************************
- const express = require('express');
- const app = express();
- const path = require('path');
- const fs = require('fs');
-
- app.use(express.static(__dirname + '/'));
-
- app.get('/', function (req, res) {
-
-    fs.readFile(__dirname + '/template.html','utf8', function(err, data){
-        console.log(data)
-    });
-
- res.sendFile(path.join(__dirname + '/index.html'));
-
-});
-
- app.get('/reboot', function (req, res) {
-    res.sendFile(path.join(__dirname + '/reboot.html'));
-
-});
-
- app.get('/back', function (req, res) {
-    res.sendFile(path.join(__dirname + '/index.html'));
-})
- //app.listen(3000);
- //console.log('website at localhost:3000')
- */
-/*********************************************Node Code*****************************************************/
 var sensors = [];
 const net = require('net');
 
+/********************************************Website Code***************************************************/
+const express = require('express');
+const app = express();
+const path = require('path');
+const fs = require('fs');
+
+app.use(express.static(__dirname + '/'));
+
+app.get('/', function (req, res) {
+
+    var html = '<!DOCTYPE html>' +
+        ' <html>' +
+        ' <head>' +
+        '<title>Edison Control Center</title>' +
+        '<link rel="stylesheet" href="style.css">' +
+        '    </head>' +
+        '  <body>' +
+        '   <header>' +
+        ' <h1>Edison Control Center</h1>' +
+        '</header>' +
+        ' <div class="container">' +
+        '    <div class="main-content">' +
+
+        '  <div id="table">' +
+        '<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50" cellspacing="20" cellpadding="30">';
+    html += '<tr><th>Sensor ID</th><th>Sensor IP</th></tr>';
+
+    sensors.forEach(function (s) {
+
+        html += '<tr>';
+        html += '<th style=\"padding-right: 20px\">' + s.hostname + '</th>';
+        html += '<th style=\"padding-right: 20px\">' + s.ip + '</th>';
+        html += '</tr>';
+        console.log((s.ip) + ':' + s.hostname);
+    });
+
+    html += '</table>' +
+        '</div>' +
+        '</div>' +
+        '</div>' +
+        '<footer>' +
+        '<p>© 2017 Rushad Antia</p>' +
+        '</footer>' +
+        '</body>' +
+        ' </html>';
+
+    res.send(html);
+});
+
+app.listen(3000);
+console.log('website at localhost:3000')
+
+/*********************************************Node Code*****************************************************/
 /**
  * Creates the server that brokers the connections
  */
@@ -58,12 +81,20 @@ var server = net.createServer(function (socket) {
                 sensors.push(sn);
             }
 
+<<<<<<< HEAD
             sensors.forEach(function (p1, p2, p3) { console.log(p1.toString()) })
 
             sn.getSensorsToSubTo().forEach(function (s) {
                 socket.write('ct-' + s.getString() + '*');
             });
 
+=======
+
+            sn.getSensorsToSubTo().forEach(function (s) {
+                socket.write('ct-' + s.getString() + '*');
+            });
+
+>>>>>>> Testing
             sn.getSensorsToPubTo();
 
         }
@@ -127,7 +158,11 @@ SensorNode.prototype.getSensorsToSubTo = function () {
     sensors.forEach(function (s) {
 
         for (var w = 0; w < that.want.length; w++) {
+<<<<<<< HEAD
             //  console.log('sub: ' + s.sensors+'^'+that.want[w] +'^'+s.sensors.indexOf(that.want[w]))
+=======
+
+>>>>>>> Testing
             if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 toReturn.push(s);
                 break;
@@ -147,7 +182,10 @@ SensorNode.prototype.getSensorsToPubTo = function () {
     sensors.forEach(function (s) {
 
         for (var i = 0; i < s.want.length; i++) {
+<<<<<<< HEAD
             //console.log('Pub: ' + s.sensors+'^'+s.want[i] +'^'+that.sensors.indexOf(s.want[i]))
+=======
+>>>>>>> Testing
 
             if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 s.socket.write('ct-' + that.getString() + '*');

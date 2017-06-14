@@ -1,7 +1,7 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
 
-/**
+/**  
  * Creates a server instance. The server is used to accept multiple incoming connections and to send data to those connections
  * @param {string} - ip ip address of server
  * @param {int} port - port to connect to
@@ -60,18 +60,22 @@ Server.prototype.start = function () {
     console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
+<<<<<<< HEAD
 /**    
+=======
+/**     
+>>>>>>> Testing
  * Sends the data to all of the connected clients
  * @param {Object} data  - data to send to all the devices
  * @memberOf Server
  * @example 
  * var server = new Server('127.0.0.1', 1337, 0);
  * server.start();
- *
+ * 
  * //sends random data to connected clients every 5 seconds
  * setInterval(function(){
  *      server.sendUpdate(Math.random());
- * },5000);  
+ * },5000);   
  */
 Server.prototype.sendUpdate = function (data) {
     var that = this;
@@ -98,9 +102,10 @@ Server.prototype.sendUpdate = function (data) {
                 'seqnum': that.seqnum,
                 'tx event time': timetaken
             };
-
+ 
             //store that data in an array
             that.log.push(JSON.stringify(logData));
+
         }
         //if its dead then remove it so we dont keep transmitting to a closed connection
         else {
@@ -169,13 +174,11 @@ Server.prototype.deleteFromLog = function (toRemove) {
  */
 Server.prototype.writeLogToFile = function (filename) {
     var that = this;
-
-    for (var i = 0; i < this.log.length; i++) {
-        const data = this.log[i];
+    this.log.forEach(function (data) {
         fs.appendFile(filename, data + '\r\n', function () {
             that.deleteFromLog(data);
-        });
-    }
+        })
+    });
 };
 
 module.exports = Server;
