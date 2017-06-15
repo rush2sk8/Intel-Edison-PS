@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="da278589-750f-4844-bf22-c474be45f2b5" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Testing/not used/site.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node network.pptx" afterPath="$PROJECT_DIR$/node network.pptx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/PubSub.xdke" afterPath="$PROJECT_DIR$/PubSub/PubSub.xdke" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PubSub/client.js" afterPath="$PROJECT_DIR$/PubSub/client.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,7 +17,18 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="client.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PubSub/client.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3468">
+              <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -84,13 +93,13 @@
         <option value="$PROJECT_DIR$/PubSub/reboot.html" />
         <option value="$PROJECT_DIR$/Master Node/reboot.html" />
         <option value="$PROJECT_DIR$/PubSub/PubSub.js" />
-        <option value="$PROJECT_DIR$/PubSub/client.js" />
         <option value="$PROJECT_DIR$/PubSub/server.js" />
         <option value="$PROJECT_DIR$/PubSub/MasterNodeConnection.js" />
         <option value="$PROJECT_DIR$/Master Node/MasterNode.js" />
         <option value="$PROJECT_DIR$/Master Node/MasterNodeUDP.js" />
         <option value="$PROJECT_DIR$/PubSub/MasterNodeConnectionUDP.js" />
         <option value="$PROJECT_DIR$/Testing/not used/site.js" />
+        <option value="$PROJECT_DIR$/PubSub/client.js" />
       </list>
     </option>
   </component>
@@ -101,7 +110,6 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1280" />
     <option name="width" value="1280" />
     <option name="height" value="1400" />
   </component>
@@ -262,15 +270,16 @@
       <workItem from="1497286867129" duration="8442000" />
       <workItem from="1497359756947" duration="9979000" />
       <workItem from="1497446072231" duration="3697000" />
-      <workItem from="1497539819821" duration="648000" />
+      <workItem from="1497539819821" duration="1612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134628000" />
+    <option name="totallyTimeSpent" value="135592000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1280" y="0" width="1280" height="1400" extended-state="0" />
+    <frame x="0" y="0" width="1280" height="1400" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -335,7 +344,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="13" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -416,13 +425,6 @@
     <entry file="file://$PROJECT_DIR$/PubSub/reboot.html" />
     <entry file="file://$PROJECT_DIR$/Master Node/reboot.html" />
     <entry file="file://$PROJECT_DIR$/Master Node/index.html" />
-    <entry file="file://$PROJECT_DIR$/PubSub/client.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1802">
-          <caret line="106" column="17" lean-forward="false" selection-start-line="106" selection-start-column="17" selection-end-line="106" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PubSub/server.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="867">
@@ -457,6 +459,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="4" lean-forward="false" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PubSub/client.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3468">
+          <caret line="204" column="0" lean-forward="true" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
           <folding />
         </state>
       </provider>

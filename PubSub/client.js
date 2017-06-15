@@ -1,6 +1,3 @@
-var fs = require('fs');
-const hostname = require('os').hostname();
-
 
 /**
  * creates a client object which will make a connection to an endpoint
@@ -16,16 +13,12 @@ const hostname = require('os').hostname();
  *
  *      //prints received data to the screen
  *      console.log(data);
- * };    
+ * };
  *
  * //creates a client that will connect to a server running on the localhost
  * var client = new Client('127.0.0.1', 1337, dh);
  */
-<<<<<<< HEAD
-function Client(ip, port, dataHandler) {
-=======
 function Client(ip, port, dataHandler, mnc) {
->>>>>>> Testing
     var n = require('net');
     this.client = new n.Socket();
     this.connHN = '';
@@ -34,10 +27,10 @@ function Client(ip, port, dataHandler, mnc) {
     this.port = port;
     this.log = []
     this.dh = dataHandler;
-    //   this.mnc = mnc;
+    this.mnc = mnc;
 }
 
-/** 
+/**
  * This function will start a connection to the endpoint given the
  * ip and port that the client object was initialized with.
  * It also logs all recieved data before sending it to the data handler
@@ -50,7 +43,8 @@ function Client(ip, port, dataHandler, mnc) {
 Client.prototype.run = function () {
     var that = this;
 
-    /**  
+
+    /**
      * connects to the endpoint
      * @memberOf Client.prototpye
      * */
@@ -83,8 +77,8 @@ Client.prototype.run = function () {
                 'data': dataArray[1]
             };
 
-       
-            //push the data to out log 
+
+            //push the data to out log
             that.log.push(JSON.stringify(logData));
 
             //if the user defined a handler function send the string data to the function
@@ -112,13 +106,8 @@ Client.prototype.run = function () {
         that.client.destroy();
 
         //uncomment if you want the master node to know when a connection is dropped
-<<<<<<< HEAD
-        // if (that.mnc !== undefined)
-        //    that.mnc.write('cld-' + that.connHN + '-' + that.ip);
-=======
         if (that.mnc !== undefined)
             that.mnc.write('cld-' + that.connHN + '-' + that.ip);
->>>>>>> Testing
 
     });
 
@@ -169,7 +158,7 @@ Client.prototype.deleteFromLog = function (toRemove) {
     }
 }
 
-/** 
+/**
  * Writes the entire log to a file specified by "filename" then clear the log
  * Note this will append the data to that file
  * @param {string} filename  - name of the file you want to append to. if it doesnt exist it will be created
@@ -213,5 +202,3 @@ function getIPAddress() {
 }
 
 module.exports = Client;
-
-/**************************************************END MAIN**************************************************/
