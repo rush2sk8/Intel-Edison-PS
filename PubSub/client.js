@@ -25,7 +25,7 @@ function Client(ip, port, dataHandler, mnc) {
     this.ip = ip;
     this.myIP = getIPAddress();
     this.port = port;
-    this.log = []
+    this.log = [];
     this.dh = dataHandler;
     this.mnc = mnc;
 }
