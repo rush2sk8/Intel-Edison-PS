@@ -1,3 +1,5 @@
+var fs = require('fs');
+const hostname = require('os').hostname();
 
 /**
  * creates a client object which will make a connection to an endpoint
@@ -107,7 +109,7 @@ Client.prototype.run = function () {
 
         //uncomment if you want the master node to know when a connection is dropped
         if (that.mnc !== undefined)
-            that.mnc.write('cld-' + that.connHN + '-' + that.ip);
+            that.mnc.write('cld-' + that.ip);
 
     });
 

@@ -1,4 +1,4 @@
-/****************************************************EDISON 01 4 5 6 START**************************************************/
+/****************************************************EDISON 01 4 5 6 START**************************************************
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var intervalIDLed;
@@ -61,18 +61,13 @@ function pwm(pin, val) {
         pin.write(val);
     }  
 }
-/****************************************************EDISON 01 4 5 6 END**************************************************/
+****************************************************EDISON 01 4 5 6 END**************************************************/
 
-/****************************************************EDISON 02 START*****************************************************
+/****************************************************EDISON 02 START*****************************************************/
 
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
-<<<<<<< HEAD
-var dh = function (data) {
-};
-=======
 var dh = function (data) {};
->>>>>>> Testing
 
 var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', '', dh);
 master.startAutomaticDiscovery();
@@ -187,7 +182,7 @@ function writeLed() {
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-****************************************************Edison 02 End**************************************************/
+/****************************************************Edison 02 End**************************************************/
 
 /****************************************************EDISON 03 START***********************************************
 //client automatic start

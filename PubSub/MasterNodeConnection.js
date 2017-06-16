@@ -1,5 +1,5 @@
-var Client = require('./Client.js');
-var Server = require('./Server.js');
+var Client = require('./client.js');
+var Server = require('./server.js');
 var net = require('net');
 
 /**

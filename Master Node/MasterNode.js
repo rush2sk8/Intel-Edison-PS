@@ -1,7 +1,7 @@
 var sensors = [];
 const net = require('net');
 
-/********************************************Website Code***************************************************/
+/********************************************Website Code***************************************************
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 app.listen(3000);
 console.log('website at localhost:3000')
 
-/*********************************************Node Code*****************************************************/
+*********************************************Node Code*****************************************************/
 /**
  * Creates the server that brokers the connections
  */
@@ -88,6 +88,18 @@ var server = net.createServer(function (socket) {
             sn.getSensorsToPubTo();
 
         }
+		else if(command[0] == 'cld'){
+			
+			for(var i =0 ; i < sensors.length; i++){
+				
+				if(sensors[i].hostname == command[1]){
+                    sensors.splice(i, 1);
+                    break;
+                }
+			}
+			sensors.forEach(function(s){console.log(s.getString())});
+
+		}
     });
 
     //ignore errors
