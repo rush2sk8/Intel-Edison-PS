@@ -84,10 +84,15 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     process.on('SIGINT', function () {
         that.server.writeLogToFile('(' + (new Date()) + ')tx.log');
+
         that.clients.forEach(function (c) {
             c.writeLogToFile(c.ip + ' (' + (new Date()) + ') rx.log');
         });
-        console.log('wrote data to log files');
+
+        clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.ip);
+
+        console.log('\nwrote data to log files');
+
         setTimeout(function () {
             process.exit();
         }, 1000);

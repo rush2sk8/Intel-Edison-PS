@@ -60,11 +60,9 @@ Server.prototype.start = function () {
     console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
-<<<<<<< HEAD
-/**    
-=======
+
 /**     
->>>>>>> Testing
+
  * Sends the data to all of the connected clients
  * @param {Object} data  - data to send to all the devices
  * @memberOf Server
@@ -83,6 +81,7 @@ Server.prototype.sendUpdate = function (data) {
     //write data to each saved socket
     for (var i = 0; i < this.connections.length; i++) {
         var value = this.connections[i];
+
         //check if the socket is still alive
         if (value.address().address !== undefined) {
 
