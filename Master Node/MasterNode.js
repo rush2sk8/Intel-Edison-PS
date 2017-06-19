@@ -57,7 +57,7 @@ console.log('website at localhost:3000')
 *********************************************Node Code*****************************************************/
 
 //read nodes
-reloadList();
+//reloadList();
 
 
 
@@ -105,7 +105,7 @@ var server = net.createServer(function (socket) {
                     break;
                 }
 			}
-			sensors.forEach(function(s){console.log(s.getString())});
+			 
 			writeNodeFile(false);
 		}
     });
@@ -229,25 +229,37 @@ function writeNodeFile(sync){
 server.listen(9999, '10.20.0.128');
 
 
+
+function reloadList(){
+	var fileContents = '';
+	
+	try{
+	fileContents = fs.readFileSync(__dirname+ '/.nodes').toString();
+	}catch(err){}
+	
+	
+	
+	fileContents.split('\n').forEach(function(line){
+		var node  = line.split('-');
+		
+		if(node.length !== 0){
+			sensors.push(new SensorNode())
+			
+		}
+		
+	});
+}
+
+
 process.on("SIGINT", function () {
  
 	fs.unlinkSync(__dirname + '/.nodes', function(error){
-		if(error){ throw error; }
+		if(error){ }
 		
 	});
 	console.log('deleted .nodes');
   process.exit();
 });
-
-
-function reloadList(){
-	
-	fs.readFileSync(__dirname+ '/.nodes')
-	
-	
-}
-
-
 
 
 

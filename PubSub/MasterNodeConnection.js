@@ -74,7 +74,14 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     //TODO add automatic reconnect 
     clientConnToMN.on('close', function () {
-        console.log('mnc closed')
+        
+		clientConnToMN.destroy();
+		clientConnToMN = new net.Socket();
+				clientConnToMN.connect(that.port, that.ip, function () {
+        this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
+		console.log('reconnected to mnc');
+    });
+
     });
 
     clientConnToMN.on('error', function () {
