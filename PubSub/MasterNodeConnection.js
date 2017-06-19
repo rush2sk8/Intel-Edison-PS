@@ -11,7 +11,7 @@ var net = require('net');
  * @param dh -- clientside data handler 
  * @constructor  
  */
-function MasterNodeConnection(ip, port, mysensors, want, dh) {
+ function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.ip = ip;
     this.port = port;
     this.mySensors = mysensors;
@@ -25,7 +25,7 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
 /**
  * Starts the discovery and connection service
  */
-MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
+ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     const that = this;
     this.server = new Server(this.myIP, 1337, 0);
 
@@ -74,15 +74,19 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     //TODO add automatic reconnect 
     clientConnToMN.on('close', function () {
-        
-		clientConnToMN.destroy();
-		clientConnToMN = new net.Socket();
-				clientConnToMN.connect(that.port, that.ip, function () {
+
+      clientConnToMN.destroy();
+      clientConnToMN = new net.Socket();
+      clientConnToMN.connect(that.port, that.ip, function () {
         this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
-		console.log('reconnected to mnc');
+        console.log('reconnected to mnc');
     });
 
-    });
+
+      clientConnToMN.on('error', function(){
+        
+      });
+  });
 
     clientConnToMN.on('error', function () {
         console.log('mnc error')
@@ -111,7 +115,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
  * Push data to all the subscribed connections
  * @param data
  */
-MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
+ MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
     this.server.sendUpdate(data);
 };
 
@@ -120,7 +124,7 @@ MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
  * Helper function that returns the ip of THIS device
  * @returns {String}
  */
-function getIPAddress() {
+ function getIPAddress() {
     var interfaces = require('os').networkInterfaces();
     for (var devName in interfaces) {
         var iface = interfaces[devName];

@@ -11,7 +11,7 @@ const hostname = require('os').hostname();
  * @example
  * var server = new Server('127.0.0.1', 1337, 0);
  */
-function Server(ip, port, timeout) {
+ function Server(ip, port, timeout) {
     this.ip = ip;
     this.port = port;
     this.server;
@@ -28,7 +28,7 @@ function Server(ip, port, timeout) {
  * var server = new Server('127.0.0.1', 1337, 0);
  * server.start();
  */
-Server.prototype.start = function () {
+ Server.prototype.start = function () {
     var net = require('net');
     var that = this;
 
@@ -75,7 +75,7 @@ Server.prototype.start = function () {
  *      server.sendUpdate(Math.random());
  * },5000);   
  */
-Server.prototype.sendUpdate = function (data) {
+ Server.prototype.sendUpdate = function (data) {
     var that = this;
 
     //write data to each saved socket
@@ -101,7 +101,7 @@ Server.prototype.sendUpdate = function (data) {
                 'seqnum': that.seqnum,
                 'tx event time': timetaken
             };
- 
+            
             //store that data in an array
             that.log.push(JSON.stringify(logData));
 
@@ -129,7 +129,7 @@ Server.prototype.sendUpdate = function (data) {
  * var log = server.getTXLog();
  * console.log(log);
  */
-Server.prototype.getTXLog = function () {
+ Server.prototype.getTXLog = function () {
     return this.log;
 };
 
@@ -147,7 +147,7 @@ Server.prototype.getTXLog = function () {
  * server.deleteFromLog(log[0]);
  *
  */
-Server.prototype.deleteFromLog = function (toRemove) {
+ Server.prototype.deleteFromLog = function (toRemove) {
     const i = this.log.indexOf(toRemove);
     if (i != -1) {
         this.log.splice(i, 1);
@@ -171,7 +171,7 @@ Server.prototype.deleteFromLog = function (toRemove) {
  *      server.writeLogToFile('tx.log');
  *}, 5000);
  */
-Server.prototype.writeLogToFile = function (filename) {
+ Server.prototype.writeLogToFile = function (filename) {
     var that = this;
     this.log.forEach(function (data) {
         fs.appendFile(filename, data + '\r\n', function () {

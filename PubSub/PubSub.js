@@ -110,7 +110,7 @@ adc.readADC = function (channel) {
     while (!(this.readWordFlip(0x01) & 0x8000)) {}
 
     // Read value from conversion register and shift by 4 bits
-    var voltage = (adc.readWordFlip(0x00) >> 4);
+var voltage = (adc.readWordFlip(0x00) >> 4);
 
     // Find voltage, which is 2mV per incement
     voltage = 0.002 * voltage;

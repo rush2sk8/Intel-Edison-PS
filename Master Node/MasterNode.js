@@ -56,15 +56,10 @@ console.log('website at localhost:3000')
 
 *********************************************Node Code*****************************************************/
 
-//read nodes
-//reloadList();
-
-
-
 /**
  * Creates the server that brokers the connections
  */
-var server = net.createServer(function (socket) {
+ var server = net.createServer(function (socket) {
     socket.setNoDelay(true);
 
     socket.on('data', function (data) {
@@ -86,7 +81,6 @@ var server = net.createServer(function (socket) {
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
                 sensors.push(sn);
-				writeNodeFile(false);
             }
 
             sn.getSensorsToSubTo().forEach(function (s) {
@@ -96,19 +90,18 @@ var server = net.createServer(function (socket) {
             sn.getSensorsToPubTo();
 
         }
-		else if(command[0] == 'cld'){
-			
-			for(var i =0 ; i < sensors.length; i++){
-				
-				if(sensors[i].hostname == command[1]){
-                    sensors.splice(i, 1);
-                    break;
-                }
-			}
-			 
-			writeNodeFile(false);
-		}
-    });
+        else if(command[0] == 'cld'){
+         
+         for(var i =0 ; i < sensors.length; i++){
+            
+            if(sensors[i].hostname == command[1]){
+                sensors.splice(i, 1);
+                break;
+            }
+        }
+        
+    }
+});
 
     //ignore errors
     socket.on('error', function () {
@@ -121,7 +114,7 @@ var server = net.createServer(function (socket) {
  * @param tosee
  * @returns {boolean}
  */
-function hasNode(tosee) {
+ function hasNode(tosee) {
 
     for (var i = 0; i < sensors.length; i++) {
 
@@ -139,7 +132,7 @@ function hasNode(tosee) {
  * @param sensors
  * @constructor
  */
-function SensorNode(hostname, ip, sensors, want, socket, delim) {
+ function SensorNode(hostname, ip, sensors, want, socket, delim) {
     this.hostname = hostname;
     this.ip = ip;
     this.sensors = want !== undefined ? sensors.split(delim) : [];
@@ -152,7 +145,7 @@ function SensorNode(hostname, ip, sensors, want, socket, delim) {
  * @memberof SensorNode
  * @returns {string}
  */
-SensorNode.prototype.getString = function () {
+ SensorNode.prototype.getString = function () {
     return this.hostname + '-' + this.ip + '-' + (this.sensors.length == 0 ? '' : this.sensors) + '-' + (this.want.length == 0 ? '' : this.want);
 };
 
@@ -161,7 +154,7 @@ SensorNode.prototype.getString = function () {
  * @param node
  * @returns {Array}
  */
-SensorNode.prototype.getSensorsToSubTo = function () {
+ SensorNode.prototype.getSensorsToSubTo = function () {
     var toReturn = [];
     const that = this;
 
@@ -182,7 +175,7 @@ SensorNode.prototype.getSensorsToSubTo = function () {
 /**
  * When a node joins the network it sees which other nodes want what the new one has and will send an update if it satisfies that condition
  */
-SensorNode.prototype.getSensorsToPubTo = function () {
+ SensorNode.prototype.getSensorsToPubTo = function () {
     const that = this;
 
     sensors.forEach(function (s) {
@@ -202,65 +195,13 @@ SensorNode.prototype.getSensorsToPubTo = function () {
  * @param node
  * @returns {boolean}
  */
-SensorNode.prototype.isequal = function (node) {
+ SensorNode.prototype.isequal = function (node) {
 
     return (this.ip == node.ip) && (this.hostname == node.hostname);
 }
 
-function writeNodeFile(sync){
-	
-	var dataToWrite = '';
-	
-	sensors.forEach(function(sensor){
-		dataToWrite += sensor.getString() + '\r\n';
-	});
-	
-	if(sync){
-		fs.writeFileSync(__dirname+'/.nodes', dataToWrite+'');
-	}else{
-		fs.writeFile(__dirname+'/.nodes', dataToWrite, function(err){
-			
-		});
-	}
-	
-}
-
 //start listening for connections
 server.listen(9999, '10.20.0.128');
-
-
-
-function reloadList(){
-	var fileContents = '';
-	
-	try{
-	fileContents = fs.readFileSync(__dirname+ '/.nodes').toString();
-	}catch(err){}
-	
-	
-	
-	fileContents.split('\n').forEach(function(line){
-		var node  = line.split('-');
-		
-		if(node.length !== 0){
-			sensors.push(new SensorNode())
-			
-		}
-		
-	});
-}
-
-
-process.on("SIGINT", function () {
- 
-	fs.unlinkSync(__dirname + '/.nodes', function(error){
-		if(error){ }
-		
-	});
-	console.log('deleted .nodes');
-  process.exit();
-});
-
 
 
 

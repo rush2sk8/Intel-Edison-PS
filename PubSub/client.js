@@ -20,7 +20,7 @@ const hostname = require('os').hostname();
  * //creates a client that will connect to a server running on the localhost
  * var client = new Client('127.0.0.1', 1337, dh);
  */
-function Client(ip, port, dataHandler, mnc) {
+ function Client(ip, port, dataHandler, mnc) {
     var n = require('net');
     this.client = new n.Socket();
     this.connHN = '';
@@ -42,7 +42,7 @@ function Client(ip, port, dataHandler, mnc) {
  * var client = new Client('127.0.0.1', 1337, function(){});
  * client.run();
  */
-Client.prototype.run = function () {
+ Client.prototype.run = function () {
     var that = this;
 
 
@@ -50,7 +50,7 @@ Client.prototype.run = function () {
      * connects to the endpoint
      * @memberOf Client.prototpye
      * */
-    this.client.connect(this.port, this.ip, function () {
+     this.client.connect(this.port, this.ip, function () {
         console.log('connected to: ' + that.ip + ' !');
     });
 
@@ -58,7 +58,7 @@ Client.prototype.run = function () {
      *  Callback when data is received
      *  @memberOf Client.prototpye
      * */
-    this.client.on('data', function (data) {
+     this.client.on('data', function (data) {
 
         //converts TCP stream data to a string
         const stringData = (new Buffer(data)).toString();
@@ -103,7 +103,7 @@ Client.prototype.run = function () {
     /** Called when the socket has successfully closed
      *  @memberOf Client.prototpye
      **/
-    this.client.on('close', function () {
+     this.client.on('close', function () {
         console.log(that.ip + ' closed');
         that.client.destroy();
 
@@ -117,12 +117,12 @@ Client.prototype.run = function () {
      * Notice when this is called the client class is broken
      * @memberOf Client.prototpye
      * */
-    this.client.on('error', function () {
+     this.client.on('error', function () {
         console.log('error on: ' + that.ip);
 
     });
 
-};
+ };
 
 /**
  * Will return the array contaning all of the logged data
@@ -136,7 +136,7 @@ Client.prototype.run = function () {
  * var log = client.getRXLog();
  * console.log(log);
  */
-Client.prototype.getRXLog = function () {
+ Client.prototype.getRXLog = function () {
     return this.log;
 };
 
@@ -153,7 +153,7 @@ Client.prototype.getRXLog = function () {
  * //deletes the first element from the log
  * client.deleteFromLog(log[0]);
  */
-Client.prototype.deleteFromLog = function (toRemove) {
+ Client.prototype.deleteFromLog = function (toRemove) {
     const i = this.log.indexOf(toRemove);
     if (i != -1) {
         this.log.splice(i, 1);
@@ -174,7 +174,7 @@ Client.prototype.deleteFromLog = function (toRemove) {
      client.writeLogToFile('rx.log');
  * }, 5000);
  */
-Client.prototype.writeLogToFile = function (filename) {
+ Client.prototype.writeLogToFile = function (filename) {
     var that = this;
     this.log.forEach(function (data) {
         fs.appendFile(filename, data + '\r\n', function () {
