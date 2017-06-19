@@ -11,6 +11,9 @@ var net = require('net');
  * @param want -- list of sensors i want delimited by a colon
  * @param dh -- clientside data handler 
  * @constructor  
+ * @example
+ * var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', '', dh);
+ * master.startAutomaticDiscovery();
  */
  function MasterNodeConnection(ip, port, mysensors, want, dh) {
     this.ip = ip;
