@@ -1,5 +1,6 @@
 var sensors = [];
 const net = require('net');
+var fs = require('fs');
 
 /********************************************Website Code***************************************************
 const express = require('express');
@@ -54,6 +55,12 @@ app.listen(3000);
 console.log('website at localhost:3000')
 
 *********************************************Node Code*****************************************************/
+
+//read nodes
+reloadList();
+
+
+
 /**
  * Creates the server that brokers the connections
  */
@@ -74,11 +81,12 @@ var server = net.createServer(function (socket) {
         if (command[0] == 'nn') {
 
             //create a new sensor node object
-            var sn = new SensorNode(command[1], command[2], command[3], command[4], socket);
+            var sn = new SensorNode(command[1], command[2], command[3], command[4], socket, ':');
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
                 sensors.push(sn);
+				writeNodeFile(false);
             }
 
             sn.getSensorsToSubTo().forEach(function (s) {
@@ -98,7 +106,7 @@ var server = net.createServer(function (socket) {
                 }
 			}
 			sensors.forEach(function(s){console.log(s.getString())});
-
+			writeNodeFile(false);
 		}
     });
 
@@ -131,21 +139,21 @@ function hasNode(tosee) {
  * @param sensors
  * @constructor
  */
-function SensorNode(hostname, ip, sensors, want, socket) {
+function SensorNode(hostname, ip, sensors, want, socket, delim) {
     this.hostname = hostname;
     this.ip = ip;
-    this.sensors = want !== undefined ? sensors.split(':') : [];
-    this.want = want !== undefined ? want.split(':') : [];
+    this.sensors = want !== undefined ? sensors.split(delim) : [];
+    this.want = want !== undefined ? want.split(delim) : [];
     this.socket = socket
 }
 
-/**
+/**node 
  * ToString for sensor node
  * @memberof SensorNode
  * @returns {string}
  */
 SensorNode.prototype.getString = function () {
-    return this.hostname + '-' + this.ip + '-' + this.sensors + '-' + this.want;
+    return this.hostname + '-' + this.ip + '-' + (this.sensors.length == 0 ? '' : this.sensors) + '-' + (this.want.length == 0 ? '' : this.want);
 };
 
 /**
@@ -160,7 +168,6 @@ SensorNode.prototype.getSensorsToSubTo = function () {
     sensors.forEach(function (s) {
 
         for (var w = 0; w < that.want.length; w++) {
-
 
             if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
                 toReturn.push(s);
@@ -200,5 +207,53 @@ SensorNode.prototype.isequal = function (node) {
     return (this.ip == node.ip) && (this.hostname == node.hostname);
 }
 
+function writeNodeFile(sync){
+	
+	var dataToWrite = '';
+	
+	sensors.forEach(function(sensor){
+		dataToWrite += sensor.getString() + '\r\n';
+	});
+	
+	if(sync){
+		fs.writeFileSync(__dirname+'/.nodes', dataToWrite+'');
+	}else{
+		fs.writeFile(__dirname+'/.nodes', dataToWrite, function(err){
+			
+		});
+	}
+	
+}
+
 //start listening for connections
 server.listen(9999, '10.20.0.128');
+
+
+process.on("SIGINT", function () {
+ 
+	fs.unlinkSync(__dirname + '/.nodes', function(error){
+		if(error){ throw error; }
+		
+	});
+	console.log('deleted .nodes');
+  process.exit();
+});
+
+
+function reloadList(){
+	
+	fs.readFileSync(__dirname+ '/.nodes')
+	
+	
+}
+
+
+
+
+
+
+
+
+
+
+

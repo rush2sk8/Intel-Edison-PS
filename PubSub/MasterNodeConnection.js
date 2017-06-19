@@ -74,16 +74,16 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     //TODO add automatic reconnect 
     clientConnToMN.on('close', function () {
-        console.log(that.ip + ' closed')
+        console.log('mnc closed')
     });
 
     clientConnToMN.on('error', function () {
-        console.log(that.ip + ' error')
+        console.log('mnc error')
     });
 
 
     process.on('SIGINT', function () {
-        that.server.writeLogToFile('(' + (new Date()) + ')tx.log');
+        that.server.writeLogToFile('(' + (new Date()) + ') tx.log');
 
         that.clients.forEach(function (c) {
             c.writeLogToFile(c.ip + ' (' + (new Date()) + ') rx.log');
