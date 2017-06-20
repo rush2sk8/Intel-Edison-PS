@@ -1,6 +1,7 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
 const net = require('net');
+
 /**
 * creates a client object which will make a connection to an endpoint
 * @param {string} - ip ip address of server
@@ -43,8 +44,10 @@ function Client(ip, port, dataHandler, mnc) {
 Client.prototype.run = function () {
   const that = this;
 
+  //client socket
   var client = new net.Socket();
 
+  //put the connect in its own function so that we reconnect if needed
   var clientConn = function(){
 
     client = new net.Socket();
@@ -71,6 +74,7 @@ Client.prototype.run = function () {
       //if non formatted data or hostname data is received dont log it
       if (dataArray.length == 2) {
 
+        //D A T A
         var logData = {
           'rxnode id': hostname,
           'rxnode ip': that.myIP,
@@ -95,6 +99,7 @@ Client.prototype.run = function () {
       else {
         var command = stringData.split('-');
 
+        //save the hostnam
         if (command[0] == 'hn') {
           that.connHN = command[1];
         }
@@ -125,6 +130,7 @@ Client.prototype.run = function () {
 
   }
 
+  //run the initial connection
   clientConn();
 };
 
