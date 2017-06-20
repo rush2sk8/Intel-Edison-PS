@@ -2,15 +2,14 @@ var Client = require('./client.js');
 var Server = require('./server.js');
 var net = require('net');
 
-
 /**
- *      
+ *
  * @param ip -- ip address of the master node
  * @param port -- port of the master node
  * @param mysensors -- list of sensors that  i have delimited my a colon ex- 'light:smoke:co2'
  * @param want -- list of sensors i want delimited by a colon
- * @param dh -- clientside data handler 
- * @constructor  
+ * @param dh -- clientside data handler
+ * @constructor
  * @example
  * var master = new MasterNodeConnection('10.20.0.128', 9999, 'light:', '', dh);
  * master.startAutomaticDiscovery();
@@ -35,7 +34,7 @@ var net = require('net');
 
     this.server.start();
 
-    //master connection 
+    //master connection
     var clientConnToMN = new net.Socket();
 
     //connect to master node endpoint
@@ -76,7 +75,7 @@ var net = require('net');
         });
     });
 
-    //TODO add automatic reconnect 
+    //TODO add automatic reconnect
     clientConnToMN.on('close', function () {
         clientConnToMN.destroy();
       });

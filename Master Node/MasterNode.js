@@ -76,7 +76,7 @@ console.log('website at localhost:3000')
         if (command[0] == 'nn') {
 
             //create a new sensor node object
-            var sn = new SensorNode(command[1], command[2], command[3], command[4], socket, ':');
+            var sn = new SensorNode(command[1], command[2], command[3], command[4], socket);
 
             //check to see if the node is already in the list
             if (hasNode(sn) === false) {
@@ -91,15 +91,15 @@ console.log('website at localhost:3000')
 
         }
         else if(command[0] == 'cld'){
-         
+
          for(var i =0 ; i < sensors.length; i++){
-            
+
             if(sensors[i].hostname == command[1]){
                 sensors.splice(i, 1);
                 break;
             }
         }
-        
+
     }
 });
 
@@ -132,15 +132,15 @@ console.log('website at localhost:3000')
  * @param sensors
  * @constructor
  */
- function SensorNode(hostname, ip, sensors, want, socket, delim) {
+ function SensorNode(hostname, ip, sensors, want, socket) {
     this.hostname = hostname;
     this.ip = ip;
-    this.sensors = want !== undefined ? sensors.split(delim) : [];
-    this.want = want !== undefined ? want.split(delim) : [];
+    this.sensors = want !== undefined ? sensors.split(':') : [];
+    this.want = want !== undefined ? want.split(':') : [];
     this.socket = socket
 }
 
-/**node 
+/**node
  * ToString for sensor node
  * @memberof SensorNode
  * @returns {string}
@@ -202,11 +202,3 @@ console.log('website at localhost:3000')
 
 //start listening for connections
 server.listen(9999, '10.20.0.128');
-
-
-
-
-
-
-
-
