@@ -11,8 +11,6 @@ server.on('listening', function(){
 
 server.on('message', function(message, remote){
 
-  message = message.toString();
-
   console.log(message)
 
   //split it by the delimiter
@@ -31,9 +29,9 @@ server.on('message', function(message, remote){
 
     sn.getSensorsToSubTo().forEach(function (s) {
       var client = dgram.createSocket('udp4')
-      const m = 'ct-' + s.getString() + '*';
+      const message = 'ct-' + s.getString() + '*';
 
-      client.send(m, 0 , m.length, 9999, s.ip, function(err, bytes){
+      client.send(message, 0 , message.length, 9999, s.ip, function(err, bytes){
         if(err)
         console.log('err sending message');
         client.close()
