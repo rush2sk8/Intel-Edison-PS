@@ -87,9 +87,9 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     //if error is thrown this will be called and will handle a reconnect to the MN
     clientConnToMN.on('close', function () {
       clientConnToMN.destroy();
-      console.log('Connection to MN closed');
+
       setTimeout(startClientConn(), 1000);
-      console.log('retrying...')
+      console.log('Connection to MN lost retrying...')
     });
 
   };
@@ -109,7 +109,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     });
 
     //tell the MN that we have closed
-    clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.ip);
+    clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.myIP);
 
     console.log('\nwrote data to log files');
 
