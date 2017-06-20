@@ -11,41 +11,148 @@ server.on('listening', function(){
 
 server.on('message', function(message, remote){
 
-      console.log(message)
+  message = message.toString();
 
-      //split it by the delimiter
-      const command = message.split('-');
+  console.log(message)
 
-      //if the command new node is requested
-      if (command[0] == 'nn') {
+  //split it by the delimiter
+  const command = message.split('-');
 
-          //create a new sensor node object
-          var sn = new SensorNode(command[1], command[2], command[3], command[4], socket);
+  //if the command new node is requested
+  if (command[0] == 'nn') {
 
-          //check to see if the node is already in the list
-          if (hasNode(sn) === false) {
-              sensors.push(sn);
-          }
+    //create a new sensor node object
+    var sn = new SensorNode(command[1], command[2], command[3], command[4]);
 
-          sn.getSensorsToSubTo().forEach(function (s) {
-              socket.write('ct-' + s.getString() + '*');
-          });
+    //check to see if the node is already in the list
+    if (hasNode(sn) === false) {
+      sensors.push(sn);
+    }
 
-          sn.getSensorsToPubTo();
+    sn.getSensorsToSubTo().forEach(function (s) {
+      var client = dgram.createSocket('udp4')
+      const m = 'ct-' + s.getString() + '*';
 
+      client.send(m, 0 , m.length, 9999, s.ip, function(err, bytes){
+        if(err)
+        console.log('err sending message');
+        client.close()
+      });
+
+    });
+
+    sn.getSensorsToPubTo();
+
+  }
+  else if(command[0] == 'cld'){
+
+    for(var i =0 ; i < sensors.length; i++){
+
+      if(sensors[i].hostname == command[1]){
+        sensors.splice(i, 1);
+        break;
       }
-      else if(command[0] == 'cld'){
-
-       for(var i =0 ; i < sensors.length; i++){
-
-          if(sensors[i].hostname == command[1]){
-              sensors.splice(i, 1);
-              break;
-          }
-      }
+    }
 
   }
 });
+
+/**
+* Returns true if we have the node already in out table
+* @param tosee
+* @returns {boolean}
+*/
+function hasNode(tosee) {
+
+  for (var i = 0; i < sensors.length; i++) {
+
+    if (sensors[i].isequal(tosee))
+    return true;
+  }
+  return false;
+}
+
+
+/**
+* Sensor node data type
+* @param hostname
+* @param ip
+* @param sensors
+* @constructor
+*/
+function SensorNode(hostname, ip, sensors, want) {
+  this.hostname = hostname;
+  this.ip = ip;
+  this.sensors = want !== undefined ? sensors.split(':') : [];
+  this.want = want !== undefined ? want.split(':') : [];
+}
+
+/**node
+* ToString for sensor node
+* @memberof SensorNode
+* @returns {string}
+*/
+SensorNode.prototype.getString = function () {
+  return this.hostname + '-' + this.ip + '-' + (this.sensors.length == 0 ? '' : this.sensors) + '-' + (this.want.length == 0 ? '' : this.want);
+};
+
+/**
+* Returns array of sensors that have something it wants
+* @param node
+* @returns {Array}
+*/
+SensorNode.prototype.getSensorsToSubTo = function () {
+  var toReturn = [];
+  const that = this;
+
+  sensors.forEach(function (s) {
+
+    for (var w = 0; w < that.want.length; w++) {
+
+      if (s.sensors.indexOf(that.want[w]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
+        toReturn.push(s);
+        break;
+      }
+    }
+  });
+
+  return toReturn;
+};
+
+/**
+* When a node joins the network it sees which other nodes want what the new one has and will send an update if it satisfies that condition
+*/
+SensorNode.prototype.getSensorsToPubTo = function () {
+  const that = this;
+
+  sensors.forEach(function (s) {
+
+    for (var i = 0; i < s.want.length; i++) {
+
+      if (that.sensors.indexOf(s.want[i]) >= 0 && (s.sensors.length !== 0) && (s.isequal(that) == false)) {
+        var client = dgram.createSocket('udp4')
+        const message = 'ct-' + s.getString() + '*';
+
+        client.send(message, 0 , message.length, 9999, s.ip, function(err, bytes){
+          if(err)
+          console.log('err sending message');
+          client.close()
+        });
+
+        break;
+      }
+    }
+  });
+};
+
+/**
+* Equality between sensor nodes
+* @param node
+* @returns {boolean}
+*/
+SensorNode.prototype.isequal = function (node) {
+  return (this.ip == node.ip) && (this.hostname == node.hostname);
+}
 
 server.on('error', function(){console.log('error')});
 

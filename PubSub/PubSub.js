@@ -59,11 +59,11 @@ function pwm(pin, val) {
     } else {
         pin.enable(true);
         pin.write(val);
-    }  
+    }
 }
 ****************************************************EDISON 01 4 5 6 END**************************************************/
 
-/****************************************************EDISON 02 START*****************************************************/
+/****************************************************EDISON 02 START*****************************************************
 
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -90,7 +90,7 @@ adc.readADC = function (channel) {
         channel = 3;
     }
 
-    // We will use constant settings for the config register 
+    // We will use constant settings for the config register
     var config = 0; // Bits     Description
     config |= 1 << 15; // [15]     Begin a single conversion
     config |= 1 << 14; // [14]     Non-differential ADC
@@ -174,7 +174,7 @@ var ledState = 0;
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
-    // set led value  
+    // set led value
     ledPin.write(ledState);
 }
 
@@ -182,9 +182,9 @@ function writeLed() {
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-/****************************************************Edison 02 End**************************************************/
+****************************************************Edison 02 End**************************************************/
 
-/****************************************************EDISON 03 START***********************************************
+/****************************************************EDISON 03 START***********************************************/
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -219,12 +219,12 @@ var analogIn;
 var lightThreshold = 0.8;
 var lightSensorState = 1; // 1 = above threshold, 0 = below
 
-// global variable for pin state 
+// global variable for pin state
 var ledState = 0;
 
 var but = 0;
 var gPin = new mraa.Pwm(14);
-var bPin = new mraa.Pwm(0); 
+var bPin = new mraa.Pwm(0);
 
 // Enable PWM
 //rPin.enable(true);
@@ -234,7 +234,7 @@ bPin.enable(true);
 //pwm(rPin, 0.0);
 pwm(gPin, 0.0);
 pwm(bPin, 0.0);
- 
+
 // Set up a digital input/output on MRAA pin 36 (GP14)
 var buttonPin = new mraa.Gpio(36);
 
@@ -244,7 +244,7 @@ buttonPin.dir(mraa.DIR_IN);
 function writeLed() {
     // toggle state of led
     ledState = (ledPin.read() ? 0 : 1);
-    // set led value 
+    // set led value
     ledPin.write(ledState);
 
 }
@@ -274,4 +274,4 @@ function pwm(pin, val) {
         pin.write(val);
     }
 }
-****************************************************EDISON 03 END**************************************************/
+/****************************************************EDISON 03 END**************************************************/
