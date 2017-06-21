@@ -77,6 +77,7 @@ function sortTable() {
       x = rows[i].getElementsByTagName("td")[0];
       y = rows[i + 1].getElementsByTagName("td")[0];
 
+
       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
         shouldSwitch= true;
         break;
