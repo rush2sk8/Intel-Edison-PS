@@ -24,6 +24,7 @@ $('#shutdown').click(function() {
 })
 
 $('#refresh').click(function(){
+  $('#refresh').hide();
   socket.emit('message', 'refresh');
 });
 
