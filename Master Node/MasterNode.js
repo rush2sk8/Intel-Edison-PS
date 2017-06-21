@@ -1,60 +1,37 @@
-var sensors = [];
-const net = require('net');
-var fs = require('fs');
 
-/********************************************Website Code***************************************************
+/********************************************Website Code***************************************************/
 const express = require('express');
 const app = express();
 const path = require('path');
 const fs = require('fs');
 
+const expressServer = app.listen(3000);
+
+var io = require('socket.io')(expressServer);
+
 app.use(express.static(__dirname + '/'));
 
 app.get('/', function (req, res) {
+res.sendFile(__dirname + '/index.html')
 
-    var html = '<!DOCTYPE html>' +
-        ' <html>' +
-        ' <head>' +
-        '<title>Edison Control Center</title>' +
-        '<link rel="stylesheet" href="style.css">' +
-        '    </head>' +
-        '  <body>' +
-        '   <header>' +
-        ' <h1>Edison Control Center</h1>' +
-        '</header>' +
-        ' <div class="container">' +
-        '    <div class="main-content">' +
-
-        '  <div id="table">' +
-        '<table border="3" bordercolor="#c86260" bgcolor="#ffffcc" width="50" cellspacing="20" cellpadding="30">';
-    html += '<tr><th>Sensor ID</th><th>Sensor IP</th></tr>';
-
-    sensors.forEach(function (s) {
-
-        html += '<tr>';
-        html += '<th style=\"padding-right: 20px\">' + s.hostname + '</th>';
-        html += '<th style=\"padding-right: 20px\">' + s.ip + '</th>';
-        html += '</tr>';
-        console.log((s.ip) + ':' + s.hostname);
-    });
-
-    html += '</table>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '<footer>' +
-        '<p>© 2017 Rushad Antia</p>' +
-        '</footer>' +
-        '</body>' +
-        ' </html>';
-
-    res.send(html);
 });
 
-app.listen(3000);
+
+
+io.sockets.on('connection', function (socket) {
+
+  socket.on('message', function(message){
+    console.log(message)
+  });
+})
+
 console.log('website at localhost:3000')
 
-*********************************************Node Code*****************************************************/
+/*********************************************Node Code*****************************************************/
+
+var sensors = [];
+const net = require('net');
+//var fs = require('fs');
 
 /**
  * Creates the server that brokers the connections
@@ -202,3 +179,4 @@ console.log('website at localhost:3000')
 
 //start listening for connections
 server.listen(9999, '10.20.0.128');
+/*********************************************Node Code*****************************************************/

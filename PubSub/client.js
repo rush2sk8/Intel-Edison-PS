@@ -85,14 +85,12 @@ Client.prototype.run = function () {
           'data': dataArray[1]
         };
 
-
         //push the data to out log
         that.log.push(JSON.stringify(logData));
 
         //if the user defined a handler function send the string data to the function
-        if (that.dh !== undefined) {
+        if (that.dh !== undefined)
           that.dh(stringData);
-        }
 
       }
       //otherwise its a command
@@ -104,7 +102,6 @@ Client.prototype.run = function () {
           that.connHN = command[1];
         }
       }
-
     });
 
     /** Called when the socket has successfully closed
@@ -127,7 +124,6 @@ Client.prototype.run = function () {
     * */
     client.on('error', function () {
     });
-
   }
 
   //run the initial connection
