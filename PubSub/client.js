@@ -189,6 +189,10 @@ Client.prototype.writeLogToFile = function (filename) {
   });
 };
 
+/**
+ *Returns the IP of the connection
+ *@returns ip
+ */
 Client.prototype.getIP = function () {
   return this.ip;
 }

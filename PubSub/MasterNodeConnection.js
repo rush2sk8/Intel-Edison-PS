@@ -58,28 +58,27 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
       //put data into a string
       const stringData = (new Buffer(data)).toString();
 
-      console.log(stringData)
-
       stringData.split('*').forEach(function (node) {
 
         //split the command
         var command = node.split('-');
-
 
         //if the command is a new node in the network
         if (command[0] === 'ct') {
 
           var isConnected = false;
 
+          //check if we are already connected to this node
           that.clients.forEach(function (c) {
-            console.log('ip: '+c.getIP());
-            if(c.getIP() === command[2]){
-              isConnected = true;
-              console.log('already connected')
-            }
-          })
 
+            if(c.getIP() === command[2])
+            isConnected = true;
+
+          });
+
+          //if we are already connected then dont make another connection to it
           if(!isConnected){
+
             //create a new client
             var newClient = new Client(command[2], 1337, that.dh);
 
@@ -89,28 +88,33 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
             //keep a track of ongoing connections
             that.clients.push(newClient);
           }
+
           console.log('connected to: ' + command[1]);
         }
+
+        //reboot command is requested
         else if (command[0] === 'reboot') {
           closeGracefully();
 
+          //reboot
           setTimeout(function () {
             var exec = require('child_process').exec;
             exec('reboot',function (error, stdout,stderr) {});
           }, 2000);
 
-
         }
+
+        //shutdown command is requested
         else if(command[0] === 'shutdown'){
           closeGracefully();
 
+          //shutdown
           setTimeout(function () {
             var exec = require('child_process').exec;
             exec('shutdown -h now',function (error, stdout,stderr) {});
           }, 2000);
 
         }
-
       });
     });
 
@@ -130,25 +134,8 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
   //start the connection
   startClientConn();
 
-  //handle exits
-  process.on('SIGINT', function () {
-
-    closeGracefully();
-
-    console.log('\nwrote data to log files');
-
-    //wait b4 exiting
-    setTimeout(function () {
-      process.exit();
-    }, 1000);
-
-  });
-
-  clientConnToMN.on('error', function () {
-    console.log('mnc error')
-  });
-
   var closeGracefully = function () {
+
     //write the tx data to a log file
     that.server.writeLogToFile('(' + (new Date()) + ') tx.log');
 
@@ -162,6 +149,21 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
   };
 
+
+  //handle exits
+  process.on('SIGINT', function () {
+
+    //write data to files before exiting
+    closeGracefully();
+
+    console.log('\nwrote data to log files');
+
+    //wait b4 exiting
+    setTimeout(function () {
+      process.exit();
+    }, 1000);
+
+  });
 };
 
 /**
