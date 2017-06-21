@@ -173,8 +173,10 @@ footer {
 .button {
   color: white;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  background:  #fa5b4d
 }
-
-.button {
-  background:  #fa5b4d /* this is a maroon */
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }

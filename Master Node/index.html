@@ -9,8 +9,7 @@
     <h1>Edison Control Center</h1>
   </header>
   <div class="container">
-    <div class="main-content">
-      <p></p><p></p>
+    <div class="main-content" id="main">
 
     </div>
     <div class="sidebar">
@@ -22,20 +21,13 @@
         <p>
           <button class="button" id="reboot">Reboot All Nodes</button>
         </p>
+        <p>
+          <button class="button" id="refresh">Refresh Table</button>
+        </p>
 
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script>
-        var socket = io.connect('http://localhost:3000');
-        $('#reboot').click(function() {
-          socket.emit('message', 'reboot')
-        })
-
-        $('#shutdown').click(function() {
-          socket.emit('message', 'shutdown')
-        })
-        </script>
-
+        <script src="index.js"></script>
 
       </div>
     </div>
@@ -43,8 +35,6 @@
   <footer>
     <p>© 2017 Rushad Antia</p>
   </footer>
-
-
 
 </body>
 </html>

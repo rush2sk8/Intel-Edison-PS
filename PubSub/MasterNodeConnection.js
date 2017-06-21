@@ -58,6 +58,8 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
       //put data into a string
       const stringData = (new Buffer(data)).toString();
 
+      console.log(stringData)
+
       stringData.split('*').forEach(function (node) {
 
         //split the command
@@ -76,6 +78,25 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
           that.clients.push(newClient);
 
           console.log('connected to: ' + command[1]);
+        }
+        else if (command[0] === 'reboot') {
+          closeGracefully();
+
+          setTimeout(function () {
+            var exec = require('child_process').exec;
+            exec('reboot',function (error, stdout,stderr) {});
+          }, 2000);
+
+
+        }
+        else if(command[0] === 'shutdown'){
+          closeGracefully();
+
+          setTimeout(function () {
+            var exec = require('child_process').exec;
+            exec('shutdown -h now',function (error, stdout,stderr) {});
+          }, 2000);
+
         }
 
       });
@@ -100,16 +121,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
   //handle exits
   process.on('SIGINT', function () {
 
-    //write the tx data to a log file
-    that.server.writeLogToFile('(' + (new Date()) + ') tx.log');
-
-    //write all the rx logs to a file
-    that.clients.forEach(function (c) {
-      c.writeLogToFile(c.ip + ' (' + (new Date()) + ') rx.log');
-    });
-
-    //tell the MN that we have closed
-    clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.myIP);
+    closeGracefully();
 
     console.log('\nwrote data to log files');
 
@@ -124,8 +136,21 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     console.log('mnc error')
   });
 
-};
+  var closeGracefully = function () {
+    //write the tx data to a log file
+    that.server.writeLogToFile('(' + (new Date()) + ') tx.log');
 
+    //write all the rx logs to a file
+    that.clients.forEach(function (c) {
+      c.writeLogToFile(c.ip + ' (' + (new Date()) + ') rx.log');
+    });
+
+    //tell the MN that we have closed
+    clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.myIP);
+
+  };
+
+};
 
 /**
 * Push data to all the subscribed connections
@@ -134,7 +159,6 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 MasterNodeConnection.prototype.publishDataToSubscribers = function (data) {
   this.server.sendUpdate(data);
 };
-
 
 /**
 * Helper function that returns the ip of THIS device
