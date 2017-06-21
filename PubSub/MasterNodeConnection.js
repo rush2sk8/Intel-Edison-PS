@@ -65,18 +65,30 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         //split the command
         var command = node.split('-');
 
+
         //if the command is a new node in the network
         if (command[0] === 'ct') {
 
-          //create a new client
-          var newClient = new Client(command[2], 1337, that.dh);
+          var isConnected = false;
 
-          // the client connection
-          newClient.run();
+          that.clients.forEach(function (c) {
+            console.log('ip: '+c.getIP());
+            if(c.getIP() === command[2]){
+              isConnected = true;
+              console.log('already connected')
+            }
+          })
 
-          //keep a track of ongoing connections
-          that.clients.push(newClient);
+          if(!isConnected){
+            //create a new client
+            var newClient = new Client(command[2], 1337, that.dh);
 
+            // the client connection
+            newClient.run();
+
+            //keep a track of ongoing connections
+            that.clients.push(newClient);
+          }
           console.log('connected to: ' + command[1]);
         }
         else if (command[0] === 'reboot') {
@@ -178,7 +190,6 @@ function getIPAddress() {
 
   return '0.0.0.0';
 }
-
 
 //NodeJS thing so that i can make this a class
 module.exports = MasterNodeConnection;

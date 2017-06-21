@@ -48,15 +48,11 @@ socket.on('update-msg', function (msg) {
       + '<td>' + data[3] + '</td>'
       + '</tr>';
       htmlTable += html;
-        console.log(data)
     }
-
   });
 
   htmlTable += '</table>';
-  $('#main').html(htmlTable)
-
-  console.log(htmlTable)
+  $('#main').html(htmlTable);
 });
 
 document.getElementById("refresh").click();

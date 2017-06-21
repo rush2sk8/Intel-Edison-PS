@@ -37,8 +37,6 @@ var server = net.createServer(function (socket) {
 
       sn.getSensorsToPubTo();
 
-
-
     }
     else if(command[0] == 'cld'){
 
@@ -59,6 +57,9 @@ var server = net.createServer(function (socket) {
 
 });
 
+/**
+*Returns string with all the connected nodes
+*/
 function getTableString() {
   var toReturn = '';
 
@@ -196,7 +197,7 @@ io.sockets.on('connection', function (socket) {
       sendCommandToNodes('reboot');
     }
     else if (message === 'refresh') {
-        io.sockets.emit('update-msg', {data: getTableString()});
+      io.sockets.emit('update-msg', {data: getTableString()});
     }
 
   });

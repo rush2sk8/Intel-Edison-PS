@@ -189,6 +189,9 @@ Client.prototype.writeLogToFile = function (filename) {
   });
 };
 
+Client.prototype.getIP = function () {
+  return this.ip;
+}
 
 function getIPAddress() {
   var interfaces = require('os').networkInterfaces();
