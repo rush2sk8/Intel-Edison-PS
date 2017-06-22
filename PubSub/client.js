@@ -29,6 +29,12 @@ function Client(ip, port, dataHandler, mnc) {
   this.log = [];
   this.dh = dataHandler;
   this.mnc = mnc;
+
+  fs.stat('logs/', function (err, stats) {
+    if(err){
+      return fs.mkdirSync('logs/')
+    }
+  });
 }
 
 /**
@@ -182,8 +188,9 @@ client.writeLogToFile('rx.log');
 */
 Client.prototype.writeLogToFile = function (filename) {
   var that = this;
+
   this.log.forEach(function (data) {
-    fs.appendFile(filename, data + '\r\n', function () {
+    fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
       that.deleteFromLog(data);
     })
   });

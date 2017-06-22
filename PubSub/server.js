@@ -1,7 +1,7 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
 
-/**  
+/**
  * Creates a server instance. The server is used to accept multiple incoming connections and to send data to those connections
  * @param {string} - ip ip address of server
  * @param {int} port - port to connect to
@@ -19,9 +19,15 @@ const hostname = require('os').hostname();
     this.log = [];
     this.timeout = timeout;
     this.connections = [];
+
+    fs.stat('logs/', function (err, stats) {
+      if(err){
+        return fs.mkdirSync('logs/')
+      }
+    });
 }
 
-/**  
+/**
  * Starts a server at the specified ip and port and listen for  connections
  * @memberOf Server
  * @example
@@ -34,10 +40,10 @@ const hostname = require('os').hostname();
 
     this.server = net.createServer(function (socket) {
 
-        //ignore random errors 
+        //ignore random errors
         socket.on('error', function () {});
 
-        //get data if any is recieved from the client  
+        //get data if any is recieved from the client
         socket.on('data', function (data) {
             var stringData = new Buffer(data).toString();
 
@@ -52,7 +58,7 @@ const hostname = require('os').hostname();
         console.log('node connected')
     });
 
-    // 
+    //
     this.server.timeout = this.timeout;
 
     //listen for incoming connections
@@ -61,19 +67,19 @@ const hostname = require('os').hostname();
 };
 
 
-/**     
+/**
 
  * Sends the data to all of the connected clients
  * @param {Object} data  - data to send to all the devices
  * @memberOf Server
- * @example 
+ * @example
  * var server = new Server('127.0.0.1', 1337, 0);
  * server.start();
- * 
+ *
  * //sends random data to connected clients every 5 seconds
  * setInterval(function(){
  *      server.sendUpdate(Math.random());
- * },5000);   
+ * },5000);
  */
  Server.prototype.sendUpdate = function (data) {
     var that = this;
@@ -101,7 +107,7 @@ const hostname = require('os').hostname();
                 'seqnum': that.seqnum,
                 'tx event time': timetaken
             };
-            
+
             //store that data in an array
             that.log.push(JSON.stringify(logData));
 
@@ -133,7 +139,7 @@ const hostname = require('os').hostname();
     return this.log;
 };
 
-/**    
+/**
  * Removes data element from the server log
  * @param {String} toRemove - Element to remove
  * @memberOf Server
@@ -154,7 +160,7 @@ const hostname = require('os').hostname();
     }
 };
 
-/** 
+/**
  * Writes the server log data to a file
  * @param {string} filename - name of the file to write to
  * @memberOf  Server
@@ -174,7 +180,7 @@ const hostname = require('os').hostname();
  Server.prototype.writeLogToFile = function (filename) {
     var that = this;
     this.log.forEach(function (data) {
-        fs.appendFile(filename, data + '\r\n', function () {
+        fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
             that.deleteFromLog(data);
         })
     });

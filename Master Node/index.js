@@ -1,31 +1,42 @@
 var socket = io.connect('http://localhost:3000');
+
 $('#reboot').click(function() {
-  socket.emit('message', 'reboot')
-  alert("Reboot command sent to all active nodes")
 
-  document.getElementById("reboot").disabled = true;
+  const r = confirm("Are you sure?")
 
-  setTimeout(function(){
-    document.getElementById("reboot").disabled = false;
+  if(r == true){
+    socket.emit('message', 'reboot')
+    alert("Reboot command sent to all active nodes")
+    document.getElementById("reboot").disabled = true;
 
-  }, 60*1000);
+    setTimeout(function(){
+      document.getElementById("reboot").disabled = false;
 
+    }, 60*1000);
+  }
 })
 
 $('#shutdown').click(function() {
-  socket.emit('message', 'shutdown');
-  alert("shutdown command sent to all active nodes")
 
-  document.getElementById("shutdown").disabled = true;
+  const r = confirm("Are you sure?")
+  if(r == true){
+    alert("shutdown command sent to all active nodes")
+    socket.emit('message', 'shutdown');
+    document.getElementById("shutdown").disabled = true;
 
-  setTimeout(function(){
-    document.getElementById("shutdown").disabled = false;
-  }, 60*1000);
+    setTimeout(function(){
+      document.getElementById("shutdown").disabled = false;
+    }, 60*1000);
+  }
 })
 
 $('#refresh').click(function(){
   $('#refresh').hide();
   socket.emit('message', 'refresh');
+});
+
+$('#logs').click(function () {
+  socket.emit('message', 'logs')
 });
 
 socket.on('update-msg', function (msg) {

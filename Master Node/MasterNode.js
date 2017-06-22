@@ -3,6 +3,7 @@
 var sensors = [];
 const net = require('net');
 const fs = require('fs');
+
 /**
 * Creates the server that brokers the connections
 */
@@ -173,6 +174,7 @@ server.listen(9999, '10.20.0.128');
 const express = require('express');
 const app = express();
 const path = require('path');
+const scpClient = require('scp2');
 const expressServer = app.listen(3000);
 
 var io = require('socket.io')(expressServer);
@@ -183,7 +185,6 @@ app.get('/', function (req, res) {
   res.sendFile(__dirname + '/index.html')
   io.sockets.emit('update-msg', {data: getTableString()});
 });
-
 
 io.sockets.on('connection', function (socket) {
 
@@ -199,8 +200,15 @@ io.sockets.on('connection', function (socket) {
     else if (message === 'refresh') {
       io.sockets.emit('update-msg', {data: getTableString()});
     }
+    else if (message === 'logs') {
+      getLogs();
+    }
 
   });
 })
+
+function getLogs() {
+  console.log('yo')
+}
 
 console.log('website at localhost:3000')
