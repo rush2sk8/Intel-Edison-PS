@@ -172,25 +172,37 @@ server.listen(9999, '10.20.0.128');
 
 /********************************************Website Code***************************************************/
 const express = require('express');
+const favicon = require('serve-favicon');
 const app = express();
 const path = require('path');
 const scpClient = require('scp2');
 const expressServer = app.listen(3000);
 
+//create socket io for website to communicate with node server
 var io = require('socket.io')(expressServer);
 
+//stuff for styles
 app.use(express.static(__dirname + '/'));
+app.use(favicon(require('path').join(__dirname, '', 'favicon.ico')))
 
+//called when the website is loaded
 app.get('/', function (req, res) {
+
+  //send the website code
   res.sendFile(__dirname + '/index.html')
+
+  //update the table on refresh
   io.sockets.emit('update-msg', {data: getTableString()});
 });
 
+//look for a connection to the website socket
 io.sockets.on('connection', function (socket) {
 
   socket.on('message', function(message){
 
     console.log(message);
+
+    //filter commands from website
     if(message === 'shutdown'){
       sendCommandToNodes('shutdown');
     }
@@ -207,8 +219,13 @@ io.sockets.on('connection', function (socket) {
   });
 })
 
+
+//doesnt work :(
 function getLogs() {
-  console.log('yo')
+  sensors.forEach(function (s) {
+    //scpClient.scp('logs/', 'root:cookiemonster@'+s.ip+':/home/root/.node_app_slot/logs/');
+  });
+
 }
 
 console.log('website at localhost:3000')

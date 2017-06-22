@@ -1,3 +1,4 @@
+/*Website code*/
 var socket = io.connect('http://localhost:3000');
 
 $('#reboot').click(function() {
@@ -20,7 +21,7 @@ $('#shutdown').click(function() {
 
   const r = confirm("Are you sure?")
   if(r == true){
-    alert("shutdown command sent to all active nodes")
+    alert("Shutdown command sent to all active nodes")
     socket.emit('message', 'shutdown');
     document.getElementById("shutdown").disabled = true;
 
