@@ -115,6 +115,13 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
           }, 2000);
 
         }
+
+        else if(command[0] === 'logs'){
+        var exec = require('child_process').exec;
+        exec('cd ~/.node_app_slot/logs; ls > files.txt');
+        clientConnToMN.write('logmade')
+        }
+
       });
     });
 

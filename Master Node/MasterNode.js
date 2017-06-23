@@ -50,6 +50,9 @@ var server = net.createServer(function (socket) {
       }
       io.sockets.emit('update-msg', {data: getTableString()});
     }
+    else if(command[0] == 'logmade'){
+      getLogs();
+    }
   });
 
   //ignore errors
@@ -167,6 +170,9 @@ SensorNode.prototype.isequal = function (node) {
   return (this.ip == node.ip) && (this.hostname == node.hostname);
 }
 
+SensorNode.prototype.getIP = function() {
+  return this.ip;
+}
 //start listening for connections
 server.listen(9999, '10.20.0.128');
 
@@ -176,10 +182,13 @@ const favicon = require('serve-favicon');
 const app = express();
 const path = require('path');
 const scpClient = require('scp2');
+const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
+const os = require('os');
 
 //create socket io for website to communicate with node server
 var io = require('socket.io')(expressServer);
+
 
 //stuff for styles
 app.use(express.static(__dirname + '/'));
@@ -213,7 +222,7 @@ io.sockets.on('connection', function (socket) {
       io.sockets.emit('update-msg', {data: getTableString()});
     }
     else if (message === 'logs') {
-      getLogs();
+      sendCommandToNodes('logs')
     }
 
   });
@@ -222,9 +231,26 @@ io.sockets.on('connection', function (socket) {
 
 //doesnt work :(
 function getLogs() {
-  sensors.forEach(function (s) {
-    //scpClient.scp('logs/', 'root:cookiemonster@'+s.ip+':/home/root/.node_app_slot/logs/');
+  console.log('made files.txt')
+
+  sensors.forEach(function (node) {
+
+    fs.mkdir(node.getIP()+'', ()=>{});
+    scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/files.txt', node.getIP()+'/files.txt', function(){});
+console.log('run scp');
+    //rimraf(__dirname+'/'+node.getIP(), ()=>{})
+
   });
+  /*
+
+  setTimeout(function () {
+  sensors.forEach(function (s) {
+  scpClient.scp('root:cookiemonster@'+s.getIP()+':/home/root/.node_app_slot/logs/files.txt', 'tes', function(){});
+});
+},2000);
+*/
+
+
 
 }
 
