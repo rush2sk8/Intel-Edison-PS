@@ -22,6 +22,7 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
   this.clients = [];
   this.server;
   this.dh = dh;
+  this.logging = true;
 }
 
 /**
@@ -117,9 +118,9 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         }
 
         else if(command[0] === 'logs'){
-        var exec = require('child_process').exec;
-        exec('cd ~/.node_app_slot/logs; ls > files.txt');
-        clientConnToMN.write('logmade')
+          var exec = require('child_process').exec;
+          exec('cd ~/.node_app_slot/logs; ls > files.txt');
+          clientConnToMN.write('logmade')
         }
 
       });
@@ -143,14 +144,16 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
   var closeGracefully = function () {
 
-    //write the tx data to a log file
-    that.server.writeLogToFile('(' + (new Date()) + ') tx.log');
+    if(that.logging === true){
+      //write the tx data to a log file
+      that.server.writeLogToFile(that.myIP + '_tx.log');
 
-    //write all the rx logs to a file
-    that.clients.forEach(function (c) {
-      c.writeLogToFile(c.ip + ' (' + (new Date()) + ') rx.log');
-    });
-
+      //write all the rx logs to a file
+      that.clients.forEach(function (c) {
+        c.writeLogToFile(c.ip + '_rx.log');
+      });
+     
+    }
     //tell the MN that we have closed
     clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.myIP);
 
@@ -198,6 +201,15 @@ function getIPAddress() {
   }
 
   return '0.0.0.0';
+}
+
+/*
+ * Enables or disables logging. Set as true by default
+ *
+ * @param logging - true if you want to enable logging
+ */
+MasterNodeConnection.prototype.setLogging = function (logging) {
+  this.logging = logging;
 }
 
 //NodeJS thing so that i can make this a class

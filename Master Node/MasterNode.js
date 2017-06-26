@@ -173,6 +173,7 @@ SensorNode.prototype.isequal = function (node) {
 SensorNode.prototype.getIP = function() {
   return this.ip;
 }
+
 //start listening for connections
 server.listen(9999, '10.20.0.128');
 
@@ -247,7 +248,11 @@ function getLogs() {
           contents.toString().split('\n').forEach(function (line) {
             if(line !== 'files.txt' || line !== ''){
               setTimeout(()=>{
-                  scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line, __dirname  + '/allFiles/t.log', function(){});
+                console.log('*root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line+'*');
+                scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line, __dirname  + '/allFiles/'+line, function(){
+                  if(err) console.log('err');
+                });
+
               },500);
 
             }
