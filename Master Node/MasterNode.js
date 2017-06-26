@@ -231,26 +231,35 @@ io.sockets.on('connection', function (socket) {
 
 //doesnt work :(
 function getLogs() {
-  console.log('made files.txt')
+
+  fs.mkdir('allFiles', ()=>{});
 
   sensors.forEach(function (node) {
 
     fs.mkdir(node.getIP()+'', ()=>{});
     scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/files.txt', node.getIP()+'/files.txt', function(){});
-console.log('run scp');
+
+    setTimeout(function() {
+
+      fs.readFile(__dirname+ '/'+node.getIP()+'/files.txt', function (err, contents) {
+
+        if(!err){
+          contents.toString().split('\n').forEach(function (line) {
+            if(line !== 'files.txt' || line !== ''){
+              setTimeout(()=>{
+                  scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line, __dirname  + '/allFiles/t.log', function(){});
+              },500);
+
+            }
+          });
+        }
+      });
+
+    }, 5000);
+
     //rimraf(__dirname+'/'+node.getIP(), ()=>{})
 
   });
-  /*
-
-  setTimeout(function () {
-  sensors.forEach(function (s) {
-  scpClient.scp('root:cookiemonster@'+s.getIP()+':/home/root/.node_app_slot/logs/files.txt', 'tes', function(){});
-});
-},2000);
-*/
-
-
 
 }
 
