@@ -119,7 +119,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
         else if(command[0] === 'logs'){
           var exec = require('child_process').exec;
-          exec('cd ~/.node_app_slot/logs; ls > files.txt');
+          exec('cd ~/.node_app_slot/logs; ls *.log > files.txt');
           clientConnToMN.write('logmade')
         }
 
@@ -146,13 +146,13 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     if(that.logging === true){
       //write the tx data to a log file
-      that.server.writeLogToFile(that.myIP + '_tx.log');
+      that.server.writeLogToFile(that.myIP+'_'+ new Date().getTime() + '_tx.log');
 
       //write all the rx logs to a file
       that.clients.forEach(function (c) {
-        c.writeLogToFile(c.ip + '_rx.log');
+        c.writeLogToFile(c.ip + '_'+ new Date().getTime()+ '_rx.log');
       });
-     
+
     }
     //tell the MN that we have closed
     clientConnToMN.write('cld-' + require('os').hostname() + '-' + that.myIP);
@@ -165,8 +165,6 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
     //write data to files before exiting
     closeGracefully();
-
-    console.log('\nwrote data to log files');
 
     //wait b4 exiting
     setTimeout(function () {

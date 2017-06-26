@@ -34,11 +34,19 @@ $('#shutdown').click(function() {
 $('#refresh').click(function(){
   $('#refresh').hide();
   socket.emit('message', 'refresh');
+  sortTable();
 });
 
 $('#logs').click(function () {
   socket.emit('message', 'logs')
+
+   var x = document.getElementById("snackbar")
+
+   x.className = "show";
+
+   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 45000);
 });
+
 
 socket.on('update-msg', function (msg) {
   var htmlTable = '<table id="nodeTable">'

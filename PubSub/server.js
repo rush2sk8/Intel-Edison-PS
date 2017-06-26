@@ -183,7 +183,7 @@ Server.prototype.writeLogToFile = function (filename) {
 
   var that = this;
 
-  if(fs.existsSync(__dirname + '/logs/'+filename)){
+  if(!fs.existsSync(__dirname + '/logs/'+filename)){
     fs.appendFile(__dirname + '/logs/'+filename, filename + '_' +new Date() + '\r\n', ()=> {});
   }
 

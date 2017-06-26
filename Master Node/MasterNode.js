@@ -185,6 +185,8 @@ const path = require('path');
 const scpClient = require('scp2');
 const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
+const zipFolder = require('zip-folder');
+
 const os = require('os');
 
 //create socket io for website to communicate with node server
@@ -223,7 +225,7 @@ io.sockets.on('connection', function (socket) {
       io.sockets.emit('update-msg', {data: getTableString()});
     }
     else if (message === 'logs') {
-      sendCommandToNodes('logs')
+      sendCommandToNodes('logs');
     }
 
   });
@@ -237,32 +239,29 @@ function getLogs() {
 
   sensors.forEach(function (node) {
 
-    fs.mkdir(node.getIP()+'', ()=>{});
-    scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/files.txt', node.getIP()+'/files.txt', function(){});
+    fs.mkdir('allFiles/' + node.getIP(), ()=>{});
+    scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/files.txt', 'allFiles/'+ node.getIP()+'/files.txt', ()=>{});
 
     setTimeout(function() {
 
-      fs.readFile(__dirname+ '/'+node.getIP()+'/files.txt', function (err, contents) {
+      fs.readFile( 'allFiles/'+node.getIP()+'/files.txt', function (err, contents) {
 
         if(!err){
           contents.toString().split('\n').forEach(function (line) {
-            if(line !== 'files.txt' || line !== ''){
-              setTimeout(()=>{
-                console.log('*root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line+'*');
-                scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line, __dirname  + '/allFiles/'+line, function(){
-                  if(err) console.log('err');
-                });
+            console.log(line);
 
-              },500);
+            scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line, 'allFiles/' +node.getIP() +'/'+ line, ()=>{});
 
-            }
           });
         }
       });
 
-    }, 5000);
+      setTimeout(()=>{
 
-    //rimraf(__dirname+'/'+node.getIP(), ()=>{})
+        zipFolder(__dirname + '/allFiles', __dirname + '/data.zip', (err)=>{ });
+
+      }, 45*1000);
+    }, 5000);
 
   });
 
