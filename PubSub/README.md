@@ -41,7 +41,7 @@ This is what it looks like after Edison02 has successfully joined the network.
 
 The main file that will broker and negotiate with the master node.
 
-<b>Usage:</b>
+Usage:
 ```JavaScript 
 const MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -99,6 +99,15 @@ var client = new Client('127.0.0.1', 1337, dh);
 
 ### Methods
 
+#### new Client(ip, port, dataHandler)
+
 ```JavaScript
-master.startAutomaticDiscovery()
+var client = new Client('127.0.0.1', 1337, ()=>{});
 ```
+
+#### client.run()
+```JavaScript
+var client = new Client('127.0.0.1', 1337, ()=>{});
+client.run();
+```
+This function will start a connection to the endpoint given the ip and port that the client object was initialized with. It also logs all recieved data before sending it to the data handler if it was set by the user.
