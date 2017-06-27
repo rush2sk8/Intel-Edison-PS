@@ -183,10 +183,6 @@ Server.prototype.writeLogToFile = function (filename) {
 
   var that = this;
 
-  if(!fs.existsSync(__dirname + '/logs/'+filename)){
-    fs.appendFile(__dirname + '/logs/'+filename, filename + '_' +new Date() + '\r\n', ()=> {});
-  }
-
   this.log.forEach(function (data) {
     fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
       that.deleteFromLog(data);

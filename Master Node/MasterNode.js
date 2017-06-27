@@ -50,9 +50,7 @@ var server = net.createServer(function (socket) {
       }
       io.sockets.emit('update-msg', {data: getTableString()});
     }
-    else if(command[0] == 'logmade'){
-      getLogs();
-    }
+
   });
 
   //ignore errors
@@ -182,7 +180,6 @@ const express = require('express');
 const favicon = require('serve-favicon');
 const app = express();
 const path = require('path');
-const scpClient = require('scp2');
 const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
 const zipFolder = require('zip-folder');
@@ -225,7 +222,10 @@ io.sockets.on('connection', function (socket) {
       io.sockets.emit('update-msg', {data: getTableString()});
     }
     else if (message === 'logs') {
-      sendCommandToNodes('logs');
+      getLogs();
+    }
+    else if(message === 'delLogs'){
+      sendCommandToNodes('delLogs');
     }
 
   });
@@ -235,35 +235,33 @@ io.sockets.on('connection', function (socket) {
 //doesnt work :(
 function getLogs() {
 
-  fs.mkdir('allFiles', ()=>{});
+  var i = 0;
 
-  sensors.forEach(function (node) {
+  var runSCP = function () {
+    if(i < sensors.length){
+      const {spawn} = require('child_process')
+      const scp = spawn('pscp', ['-r', '-scp', '-pw' ,'cookiemonster', 'root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs', '.'])
 
-    fs.mkdir('allFiles/' + node.getIP(), ()=>{});
-    scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/files.txt', 'allFiles/'+ node.getIP()+'/files.txt', ()=>{});
-
-    setTimeout(function() {
-
-      fs.readFile( 'allFiles/'+node.getIP()+'/files.txt', function (err, contents) {
-
-        if(!err){
-          contents.toString().split('\n').forEach(function (line) {
-            console.log(line);
-
-            scpClient.scp('root:cookiemonster@'+node.getIP()+':/home/root/.node_app_slot/logs/'+line, 'allFiles/' +node.getIP() +'/'+ line, ()=>{});
-
-          });
-        }
+      scp.stdout.on('data', (data) => {
+        console.log(`stdout: ${data}`);
       });
 
-      setTimeout(()=>{
+      scp.on('close', (code) => {
+        i++;
+        runSCP();
+      });
 
-        zipFolder(__dirname + '/allFiles', __dirname + '/data.zip', (err)=>{ });
+    }else{
+      finish();
+    }
+  }
+  runSCP();
 
-      }, 45*1000);
-    }, 5000);
+  var finish = function() {
 
-  });
+    //rimraf(__dirname+'/logs/', ()=>{})
+    console.log('done');
+  }
 
 }
 

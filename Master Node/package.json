@@ -5,7 +5,6 @@
   "dependencies": {
     "express": "^4.13.3",
     "socket.io" : "^2.0.3",
-    "scp2": "^0.5.0",
     "zip-folder":"1.0.0",
     "serve-favicon":"^2.4.3",
     "rimraf":"^2.6.1"
