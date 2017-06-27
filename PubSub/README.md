@@ -5,7 +5,7 @@ This repo contains all the information necessary to setup and create a publish/s
 
 
 ## Basic Usage
--------------
+
 ```JavaScript 
 const MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -58,21 +58,47 @@ master.startAutomaticDiscovery()
 
 ### Methods
 
+
+#### master.startAutomaticDiscovery()
+
 ```JavaScript
 master.startAutomaticDiscovery()
 ```
+
 Starts the connection to the master node and if it cannot be established it will retry until it makes the connection.
 
 ------
 
-```JavaScript
+#### master.publishDataToSubscribers(data)
+ 
+```JavaScript 
 master.publishDataToSubscribers (data)
 ```
+ 
 Publishes <b>data</b> to every subscriber 
 
+----
 
+## client.js
+ 
 
-client.js
--------------
+Used by ```MasterNodeConnection``` to create clients to subscribe to topics. Not necessary to use unless making custom connections
 
-Used by ```MasterNodeConnection``` to create clients to subscribe to topics.
+<b>Usage:</b>
+```JavaScript 
+//handles the data that the client receives from the server
+var dh = function(data){
+
+     //prints received data to the screen
+     console.log(data);
+};
+
+//creates a client that will connect to a server running on the localhost
+var client = new Client('127.0.0.1', 1337, dh);
+```
+
+### Methods
+
+```JavaScript
+master.startAutomaticDiscovery()
+```
