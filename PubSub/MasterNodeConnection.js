@@ -58,6 +58,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
       //put data into a string
       const stringData = (new Buffer(data)).toString();
+      console.log(stringData);
 
       stringData.split('*').forEach(function (node) {
 
@@ -99,10 +100,8 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
           //reboot
           setTimeout(function () {
-            var exec = require('child_process').exec;
-            exec('reboot',function (error, stdout,stderr) {});
+            require('child_process').exec('reboot');
           }, 2000);
-
         }
 
         //shutdown command is requested
@@ -111,17 +110,18 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
           //shutdown
           setTimeout(function () {
-            var exec = require('child_process').exec;
-            exec('shutdown -h now',function (error, stdout,stderr) {});
+            require('child_process').exec('shutdown -h now');
           }, 2000);
-
         }
 
+        else if(command[0] === 'delLogs'){
+          require('child_process').exec('rm -rf logs');
+        }
       });
     });
 
     //ignore errors
-    clientConnToMN.on('error', function() { });
+    clientConnToMN.on('error', ()=>{});
 
     //if error is thrown this will be called and will handle a reconnect to the MN
     clientConnToMN.on('close', function () {
@@ -139,12 +139,13 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
   var closeGracefully = function () {
 
     if(that.logging === true){
+
       //write the tx data to a log file
       that.server.writeLogToFile(that.myIP+'_'+ new Date().getTime() + '_tx.log');
 
       //write all the rx logs to a file
       that.clients.forEach(function (c) {
-        c.writeLogToFile(c.ip + '_'+ new Date().getTime()+ '_rx.log');
+        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ new Date().getTime()+ '_rx.log');
       });
 
     }
@@ -196,10 +197,10 @@ function getIPAddress() {
 }
 
 /*
- * Enables or disables logging. Set as true by default
- *
- * @param logging - true if you want to enable logging
- */
+* Enables or disables logging. Set as true by default
+*
+* @param logging - true if you want to enable logging
+*/
 MasterNodeConnection.prototype.setLogging = function (logging) {
   this.logging = logging;
 }

@@ -87,7 +87,6 @@ function hasNode(tosee) {
 }
 
 function sendCommandToNodes(command) {
-
   sensors.forEach(function (s) {
     s.socket.write(command);
   });
@@ -160,7 +159,7 @@ SensorNode.prototype.getSensorsToPubTo = function () {
 
 /**
 * Equality between sensor nodes
-* @param node
+* @param {SensorNode} node
 * @returns {boolean}
 */
 SensorNode.prototype.isequal = function (node) {
@@ -168,6 +167,10 @@ SensorNode.prototype.isequal = function (node) {
   return (this.ip == node.ip) && (this.hostname == node.hostname);
 }
 
+/**
+ * Returns the IP of the sensor node
+ * @return {string} the ip address
+ */
 SensorNode.prototype.getIP = function() {
   return this.ip;
 }
@@ -222,46 +225,67 @@ io.sockets.on('connection', function (socket) {
       io.sockets.emit('update-msg', {data: getTableString()});
     }
     else if (message === 'logs') {
+      rimraf(__dirname+'/logs', (err)=>{})
+      rimraf(__dirname+'/logs.zip', (err)=>{})
       getLogs();
     }
     else if(message === 'delLogs'){
       sendCommandToNodes('delLogs');
+      console.log('sent command to delLogs');
     }
 
   });
 })
 
-
-//doesnt work :(
+/**
+* Runs scp commands to get the log folders from all the sensor nodes
+*
+*/
 function getLogs() {
 
   var i = 0;
 
+  //get around way to make synchnonous code
   var runSCP = function () {
+
+    //pseudo for loop
     if(i < sensors.length){
+
+//spawn a child process to scp the logs from a device
       const {spawn} = require('child_process')
       const scp = spawn('pscp', ['-r', '-scp', '-pw' ,'cookiemonster', 'root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs', '.'])
 
+      //log data into console
       scp.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
       });
 
+      //when the command is finished make it scp the next node
       scp.on('close', (code) => {
         i++;
         runSCP();
       });
 
     }else{
-      finish();
+
+      //if we are empty dont zip nothing
+      if(sensors.length !== 0){
+
+        //zip the logs of everyone
+        zipFolder(__dirname + '/logs', __dirname + '/logs.zip', (err) => {
+          //emit the message to pickup what they want
+          if(!err)   io.sockets.emit('d-zip', {data:''});
+        });
+      }else{
+        //otherwise tell the user that there are no logs
+        io.sockets.emit('nologs', {data:''});
+      }
+      console.log('done');
     }
   }
+
+  //start the for loops
   runSCP();
-
-  var finish = function() {
-
-    //rimraf(__dirname+'/logs/', ()=>{})
-    console.log('done');
-  }
 
 }
 

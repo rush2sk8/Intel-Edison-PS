@@ -44,9 +44,18 @@ $('#logs').click(function () {
 
    x.className = "show";
 
-   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 45000);
+   setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
 });
 
+$('#delLogs').click(function(){
+  const r = confirm("Are you sure?")
+  if(r == true){
+    alert("Deleted log files on all Nodes")
+
+     socket.emit('message', 'delLogs');
+  }
+
+});
 
 socket.on('update-msg', function (msg) {
   var htmlTable = '<table id="nodeTable">'
@@ -75,6 +84,15 @@ socket.on('update-msg', function (msg) {
   htmlTable += '</table>';
   $('#main').html(htmlTable);
   sortTable();
+});
+
+
+socket.on('d-zip', (msg)=>{
+  window.location = 'logs.zip'
+});
+
+socket.on('nologs', (msg)=>{
+  alert('No logs are available');
 });
 
 document.getElementById("refresh").click();

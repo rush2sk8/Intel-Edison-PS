@@ -52,7 +52,6 @@ Server.prototype.start = function () {
       }
     });
 
-
     //keep every socket to each client
     that.connections.push(socket);
     console.log('node connected')
