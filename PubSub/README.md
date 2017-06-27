@@ -22,7 +22,7 @@ master.startAutomaticDiscovery()
 Each user will be provisioned with what sensors they have and what they want delimited by a colon. The above snippet initializes a node with the sensors light & temp, while it wants to subscribe to any node with button or light. It will print any incoming data to the console.
 
 ## Communication
-----------------------
+
 
 Nodes use the  [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/tree/master/Master%20Node) to broker connections to each others. In order to have any communications between nodes you need to run the [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/tree/master/Master%20Node).
 
@@ -38,7 +38,7 @@ This is what it looks like after Edison02 has successfully joined the network.
 
 
 ## MasterNodeConnection.js
---------------------------------
+
 The main file that will broker and negotiate with the master node.
 
 <b>Usage:</b>
@@ -59,9 +59,18 @@ master.startAutomaticDiscovery()
 ### Methods
 
 ```JavaScript
+master.startAutomaticDiscovery()
+```
+Starts the connection to the master node and if it cannot be established it will retry until it makes the connection.
+
+------
+
+```JavaScript
 master.publishDataToSubscribers (data)
 ```
 Publishes <b>data</b> to every subscriber 
+
+
 
 client.js
 -------------
