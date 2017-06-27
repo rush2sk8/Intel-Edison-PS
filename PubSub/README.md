@@ -25,10 +25,15 @@ Each user will be provisioned with what sensors they have and what they want del
 Communication
 ----------------------
 
-Nodes use the  [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/Master%20Node/MasterNode.js) to broker connections to each others. In order to have any communications between nodes you need to run the [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/Master%20Node/MasterNode.js)
+Nodes use the  [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/tree/master/Master%20Node) to broker connections to each others. In order to have any communications between nodes you need to run the [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/tree/master/Master%20Node).
 
-```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
-```
+In this example the node "Edison02" want to join the current network.
+
+![Before](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/beforejoining.PNG?raw=true )
+ 
+ Edison02 will send its information (hostname, ip, has, wants) to the master node. The master node will see if any other nodes in the network has anything that Edison02 wants. In this example it sees that Edison03 has something that Edison02 so it will send Edison02 the information of Edison03 so that it can make a connection. After that it will see if the new node to the network has anything that the other nodes want. In this example every node wants the light sensor of Edison02 so the master node will update every other node with the information of this new node so that they all can subscribe to Edison02's topic.
+This is what it looks like after Edison02 has successfully joined the network.
+
+
+![After](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/afterjoining.PNG?raw=true )
+
