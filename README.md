@@ -13,7 +13,7 @@ const MasterNodeConnection = require('./MasterNodeConnection.js')
 var dh = function(data){
 	console.log(data)
 }
-
+ 
 const master = new MasterNodeConnection('ip', port, 'has:these:sensors', 'wants:these:sensors', dh)
 
 master.startAutomaticDiscovery()
