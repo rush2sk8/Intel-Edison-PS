@@ -10,13 +10,7 @@ Usage
 ```JavaScript 
 const MasterNodeConnection = require('./MasterNodeConnection.js')
 
-//handles the data from topics it is subbed to
-//data format: seqnum:data
-var dh = function(data){
-	console.log(data)
-}
-
-const master = new MasterNodeConnection('ip', port, 'light:temp', 'button:light', dh)
+const master = new MasterNodeConnection('ip', port, 'light:temp', 'button:light', ()=>{})
 
 master.startAutomaticDiscovery()
 ```
