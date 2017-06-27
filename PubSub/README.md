@@ -143,6 +143,6 @@ console.log(client.getIP())
 Gets the IP address of what the node is connected to. 
 
 
-## <u><b>server.js</b></u>
+## __**server.js**__
 
 Used by ```MasterNodeConnection``` to create a server on each device that subscribers can connect to so that it can publish to them. <b><u>Not necessary to use unless creating a custom server</b></u>
