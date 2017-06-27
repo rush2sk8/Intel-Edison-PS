@@ -159,7 +159,7 @@ SensorNode.prototype.getSensorsToPubTo = function () {
 
 /**
 * Equality between sensor nodes
-* @param {SensorNode} node
+* @param {SensorNodenode
 * @returns {boolean}
 */
 SensorNode.prototype.isequal = function (node) {
@@ -168,9 +168,9 @@ SensorNode.prototype.isequal = function (node) {
 }
 
 /**
- * Returns the IP of the sensor node
- * @return {string} the ip address
- */
+* Returns the IP of the sensor node
+* @return {string} the ip address
+*/
 SensorNode.prototype.getIP = function() {
   return this.ip;
 }
@@ -251,9 +251,10 @@ function getLogs() {
     //pseudo for loop
     if(i < sensors.length){
 
-//spawn a child process to scp the logs from a device
-      const {spawn} = require('child_process')
-      const scp = spawn('pscp', ['-r', '-scp', '-pw' ,'cookiemonster', 'root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs', '.'])
+      //exec a child process to scp the logs from a device
+
+      const exec = require('child_process').exec;
+      scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
 
       //log data into console
       scp.stdout.on('data', (data) => {
