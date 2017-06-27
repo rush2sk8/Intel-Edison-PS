@@ -89,7 +89,7 @@ Publishes <b>data</b> to every subscriber
 
 Used by ```MasterNodeConnection``` to create clients to subscribe to topics. **Not necessary to use unless making custom connections**
 
-<b>Usage:</b>
+**Usage:**
 ```JavaScript 
 //handles the data that the client receives from the server
 var dh = function(data){
@@ -148,3 +148,43 @@ Gets the IP address of what the node is connected to.
 Used by ```MasterNodeConnection``` to create a server on each device that subscribers can connect to so that it can publish to them. **Not necessary to use unless creating a custom server**
 
 
+### Methods
+
+#### new Server(ip, port, timeout)
+
+```JavaScript 
+var server = new Server('127.0.0.1', 1337, 0);
+```
+Creates a server instance. The server is used to accept multiple incoming connections and to send data to those connections. The ```timeout``` is the number of milliseconds of inactivity before a socket is presumed to have timed out. 0 will disable the timeout behavior.
+
+### server.start()
+```JavaScript 
+var server = new Server('127.0.0.1', 1337, 0);
+server.start()
+```
+Starts a server at the specified ip and port and listen for connections
+
+### server.sendUpdate(data)
+```JavaScript 
+//sends a random number to every subscriber
+server.sendUpdate(Math.random())
+```
+Starts a server at the specified ip and port and listen for connections
+
+#### server.getTXLog() &rarr; {Array}
+```JavaScript
+server.getRxLog()
+```
+Returns an array of all the data that has been sent to all subscribers
+
+#### server.deleteFromLog(toRemove) 
+```JavaScript
+server.deleteFromLog(server.getTXLog()[0])
+```
+Deletes an entry from the internal log.
+
+#### server.writeLogToFile(filename) 
+```JavaScript
+server.writeLogToFile('data.log')
+```
+Writes the log to a file defined by ``` filename ``` and then deletes the log that is in memory.
