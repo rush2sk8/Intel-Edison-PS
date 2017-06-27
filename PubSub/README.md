@@ -37,7 +37,7 @@ This is what it looks like after Edison02 has successfully joined the network.
 ![After](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/afterjoining.PNG?raw=true )
 
 
-## MasterNodeConnection.js
+## <u><b>MasterNodeConnection.js</b></u>
 
 The main file that will broker and negotiate with the master node.
 
@@ -84,10 +84,10 @@ Publishes <b>data</b> to every subscriber
 
 ----
 
-## client.js
+## <u><b>client.js</b></u>
  
 
-Used by ```MasterNodeConnection``` to create clients to subscribe to topics. Not necessary to use unless making custom connections
+Used by ```MasterNodeConnection``` to create clients to subscribe to topics. <b><u>Not necessary to use unless making custom connections</b></u>
 
 <b>Usage:</b>
 ```JavaScript 
@@ -122,3 +122,27 @@ This function will start a connection to the endpoint given the ip and port that
 client.getRxLog()
 ```
 Returns an array of all the data that has been received from subscribed publishers.
+
+#### client.deleteFromLog(toRemove) 
+```JavaScript
+client.deleteFromLog(client.getRxLog()[0])
+```
+Deletes an entry from the internal log.
+
+#### client.writeLogToFile(filename) 
+```JavaScript
+client.writeLogToFile('data.log')
+```
+Writes the log to a file defined by ``` filename ``` and then deletes the log that is in memory.
+
+
+#### client.getIP() &rarr; {String} 
+```JavaScript
+console.log(client.getIP())
+```
+Gets the IP address of what the node is connected to. 
+
+
+## <u><b>server.js</b></u>
+
+Used by ```MasterNodeConnection``` to create a server on each device that subscribers can connect to so that it can publish to them. <b><u>Not necessary to use unless creating a custom server</b></u>
