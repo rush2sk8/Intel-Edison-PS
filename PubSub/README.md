@@ -37,7 +37,7 @@ This is what it looks like after Edison02 has successfully joined the network.
 ![After](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/afterjoining.PNG?raw=true )
 
 
-## <u><b>MasterNodeConnection.js</b></u>
+## **MasterNodeConnection.js**
 
 The main file that will broker and negotiate with the master node.
 
@@ -84,10 +84,10 @@ Publishes <b>data</b> to every subscriber
 
 ----
 
-## <u><b>client.js</b></u>
+## **client.js**
  
 
-Used by ```MasterNodeConnection``` to create clients to subscribe to topics. <b><u>Not necessary to use unless making custom connections</b></u>
+Used by ```MasterNodeConnection``` to create clients to subscribe to topics. **Not necessary to use unless making custom connections**
 
 <b>Usage:</b>
 ```JavaScript 
@@ -143,6 +143,8 @@ console.log(client.getIP())
 Gets the IP address of what the node is connected to. 
 
 
-## __**server.js**__
+## **server.js**
 
-Used by ```MasterNodeConnection``` to create a server on each device that subscribers can connect to so that it can publish to them. <b><u>Not necessary to use unless creating a custom server</b></u>
+Used by ```MasterNodeConnection``` to create a server on each device that subscribers can connect to so that it can publish to them. **Not necessary to use unless creating a custom server**
+
+
