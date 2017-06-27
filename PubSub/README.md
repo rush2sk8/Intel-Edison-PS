@@ -64,6 +64,8 @@ master.startAutomaticDiscovery()
 const master = new MasterNodeConnection('127.0.0.1', 1337, 'light:temp', 'button:light', ()=>{})
 ```
 
+Connects to the master node running at ```ip``` and ```port```
+
 #### master.startAutomaticDiscovery()
 
 ```JavaScript
@@ -188,3 +190,26 @@ Deletes an entry from the internal log.
 server.writeLogToFile('data.log')
 ```
 Writes the log to a file defined by ``` filename ``` and then deletes the log that is in memory.
+
+
+#Example Usage
+
+```JavaScript
+const MasterNodeConnection = require('./MasterNodeConnection.js')
+
+var dh = function (data) {
+   const x = data.split(':')
+   if(x[1] === 'hello')
+	   console.log('hello world')
+};
+
+var master = new MasterNodeConnection('10.20.0.128', 9999, 'numbers', 'words', dh)
+
+master.startAutomaticDiscovery();
+
+setInterval(()=>{
+	master.sendUpdate(Math.random())
+}, 1000);
+```
+
+This is a generic example where the user sends numbers to whoever is subscribed at a one second interval. When the user receives a word from the publisher it checks to see if  the word is ```hello``` if it is then it will print ```hello world ``` to the console.
