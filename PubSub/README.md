@@ -192,7 +192,7 @@ server.writeLogToFile('data.log')
 Writes the log to a file defined by ``` filename ``` and then deletes the log that is in memory.
 
 
-#Example Usage
+# Example Usage
 
 ```JavaScript
 const MasterNodeConnection = require('./MasterNodeConnection.js')
