@@ -1,5 +1,8 @@
 {
   "name": "MasterNode",
+  "author": "Rushad Antia",
+  "license": "MIT",
+  "description":"Master Node for pub/sub creation",
   "version": "1.0.0",
   "main": "MasterNode.js",
   "dependencies": {
