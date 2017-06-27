@@ -54,3 +54,4 @@ Testing/MasterNode/node_modules/*
 /.idea/*
 ./MasterNode/node_modules/*
 node_modules
+*.zip
