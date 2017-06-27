@@ -58,6 +58,11 @@ master.startAutomaticDiscovery()
 
 ### Methods
 
+#### new MasterNodeConnection(ip, port, has, want, datahandler)
+
+```JavaScript
+const master = new MasterNodeConnection('127.0.0.1', 1337, 'light:temp', 'button:light', ()=>{})
+```
 
 #### master.startAutomaticDiscovery()
 
@@ -110,4 +115,10 @@ var client = new Client('127.0.0.1', 1337, ()=>{});
 var client = new Client('127.0.0.1', 1337, ()=>{});
 client.run();
 ```
-This function will start a connection to the endpoint given the ip and port that the client object was initialized with. It also logs all recieved data before sending it to the data handler if it was set by the user.
+This function will start a connection to the endpoint given the ip and port that the client object was initialized with. It also logs all received data before sending it to the data handler if it was set by the user. If the connection fails it will retry the connection every second
+
+#### client.getRxLog() &rarr; {Array}
+```JavaScript
+client.getRxLog()
+```
+Returns an array of all the data that has been received from subscribed publishers.
