@@ -1,4 +1,3 @@
-
 Intel Edison Pub/Sub Network 
 ===================
 
@@ -21,5 +20,15 @@ const master = new MasterNodeConnection('ip', port, 'light:temp', 'button:light'
 
 master.startAutomaticDiscovery()
 ```
-Each user will be provisioned with what sensors they have and what they want delimited by a colon. The above snippet initializes a node with the sensors light & temp, while it wants to subscribe to any node with button or light. 
+Each user will be provisioned with what sensors they have and what they want delimited by a colon. The above snippet initializes a node with the sensors light & temp, while it wants to subscribe to any node with button or light. It will print any incoming data to the console.
 
+Communication
+----------------------
+
+Nodes use the  [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/Master%20Node/MasterNode.js) to broker connections to each others. In order to have any communications between nodes you need to run the [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/Master%20Node/MasterNode.js)
+
+```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+```
