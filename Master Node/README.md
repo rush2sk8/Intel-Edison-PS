@@ -1,7 +1,7 @@
 Master Node
 ===================
 
-The master node is the program that is run on a computer that is meant to broker connections between nodes and it simultaneously acts as a web-server that hosts a node monitoring website. Should be run on windows.
+The master node is the program that is run on a computer that is meant to broker connections between nodes and it simultaneously acts as a web-server that hosts a node monitoring website. 
 
 ## Installation
 
