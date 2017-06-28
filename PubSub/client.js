@@ -35,6 +35,8 @@ function Client(ip, port, dataHandler, mnc) {
       return fs.mkdirSync('logs/')
     }
   });
+
+  this.log.push('rxnode id, rxnode ip, txnode ip, rxtime, seqnum, data')
 }
 
 /**
@@ -80,23 +82,12 @@ Client.prototype.run = function () {
       //if non formatted data or hostname data is received dont log it
       if (dataArray.length == 2) {
 
-        //D A T A
-        var logData = {
-          'rxnode id': hostname,
-          'rxnode ip': that.myIP,
-          'tx node id': that.connHN,
-          'tx node ip': that.ip,
-          'rxtime': (new Date()),
-          'seqnum': dataArray[0],
-          'data': dataArray[1]
-        };
-
         //push the data to out log
-        that.log.push(JSON.stringify(logData));
+        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+(new Date())+ ','+dataArray[0]+ ','+dataArray[1])
 
         //if the user defined a handler function send the string data to the function
         if (that.dh !== undefined)
-          that.dh(stringData);
+        that.dh(stringData);
 
       }
       //otherwise its a command
@@ -189,17 +180,20 @@ client.writeLogToFile('rx.log');
 Client.prototype.writeLogToFile = function (filename) {
   var that = this;
 
-  this.log.forEach(function (data) {
-    fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
-      that.deleteFromLog(data);
-    })
-  });
+  //make sure the aray isnt empty
+  if(this.log.length > 1){
+    this.log.forEach(function (data) {
+      fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
+        that.deleteFromLog(data);
+      })
+    });
+  }
 };
 
 /**
- *Returns the IP of the connection
- *@returns ip
- */
+*Returns the IP of the connection
+*@returns ip
+*/
 Client.prototype.getIP = function () {
   return this.ip;
 }

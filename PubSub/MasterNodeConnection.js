@@ -141,11 +141,11 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     if(that.logging === true){
 
       //write the tx data to a log file
-      that.server.writeLogToFile(that.myIP+'_'+ new Date().getTime() + '_tx.log');
+      that.server.writeLogToFile(that.myIP+'_'+ new Date().getTime() + '_tx.csv');
 
       //write all the rx logs to a file
       that.clients.forEach(function (c) {
-        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ new Date().getTime()+ '_rx.log');
+        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ new Date().getTime()+ '_rx.csv');
       });
 
     }

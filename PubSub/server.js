@@ -25,6 +25,7 @@ function Server(ip, port, timeout) {
       return fs.mkdirSync('logs/')
     }
   });
+  this.log.push('txnode id,sensorid, seqnum,tx event time');
 }
 
 /**
@@ -110,16 +111,9 @@ Server.prototype.sendUpdate = function (data) {
   //calculate tx time
   const timetaken = process.hrtime(start);
 
-  //data to stringify
-  const logData = {
-    'txnode id': hostname,
-    'sensorid': value.address().address,
-    'seqnum': that.seqnum,
-    'tx event time': timetaken
-  };
 
   //store that data in an array
-  that.log.push(JSON.stringify(logData));
+  that.log.push(hostname + ','+value.address().address+ ','+that.seqnum+ ','+timetaken)
 
   this.seqnum++;
 };
@@ -182,11 +176,14 @@ Server.prototype.writeLogToFile = function (filename) {
 
   var that = this;
 
-  this.log.forEach(function (data) {
-    fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
-      that.deleteFromLog(data);
+  //make sure the array isnt empty
+  if(this.log.length > 1){
+    this.log.forEach(function (data) {
+      fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
+        that.deleteFromLog(data);
+      });
     });
-  });
+  }
 };
 
 module.exports = Server;

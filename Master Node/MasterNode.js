@@ -186,8 +186,7 @@ const path = require('path');
 const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
 const zipFolder = require('zip-folder');
-
-const os = require('os');
+const platform = require('os').platform();
 
 //create socket io for website to communicate with node server
 var io = require('socket.io')(expressServer);
@@ -250,11 +249,16 @@ function getLogs() {
 
     //pseudo for loop
     if(i < sensors.length){
-
       //exec a child process to scp the logs from a device
-
       const exec = require('child_process').exec;
-      scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
+
+      //check which version of scp to use
+      if(platform === 'win32'){
+        scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
+      }
+      else {
+        scp = exec('sshpass -p \'cookiemonster\' scp -r  root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .')
+      }
 
       //log data into console
       scp.stdout.on('data', (data) => {
