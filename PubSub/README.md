@@ -74,7 +74,7 @@ master.startAutomaticDiscovery()
 
 Starts the connection to the master node and if it cannot be established it will retry until it makes the connection.
 
-------
+
 
 #### master.publishDataToSubscribers(data)
  
@@ -84,7 +84,13 @@ master.publishDataToSubscribers (data)
  
 Publishes <b>data</b> to every subscriber 
 
-----
+#### master.setLogging(data)
+ 
+```JavaScript 
+master.setLogging(true)
+```
+ 
+Enables/disables whether the devices will log data and write them to a file. Set to true as default
 
 ## **client.js**
  
