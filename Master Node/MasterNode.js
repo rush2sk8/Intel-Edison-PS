@@ -186,7 +186,6 @@ const path = require('path');
 const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
 const zipFolder = require('zip-folder');
-const platform = require('os').platform();
 
 const os = require('os');
 
@@ -255,14 +254,7 @@ function getLogs() {
       //exec a child process to scp the logs from a device
 
       const exec = require('child_process').exec;
-
-      //check which version of scp to use
-      if(platform === 'win32'){
-        scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
-      }
-      else {
-        scp = exec('sshpass -p \'cookiemonster\' scp -r  root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .')
-      }
+      scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
 
       //log data into console
       scp.stdout.on('data', (data) => {
@@ -280,18 +272,12 @@ function getLogs() {
       //if we are empty dont zip nothing
       if(sensors.length !== 0){
 
-      
-
-
-
-
         //zip the logs of everyone
         zipFolder(__dirname + '/logs', __dirname + '/logs.zip', (err) => {
           //emit the message to pickup what they want
           if(!err)   io.sockets.emit('d-zip', {data:''});
         });
       }else{
-
         //otherwise tell the user that there are no logs
         io.sockets.emit('nologs', {data:''});
       }

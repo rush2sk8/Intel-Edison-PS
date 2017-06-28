@@ -19,7 +19,7 @@ function Server(ip, port, timeout) {
   this.log = [];
   this.timeout = timeout;
   this.connections = [];
-  this.log.push('txnode id,sensorid, seqnum,tx event time');
+
   fs.stat('logs/', function (err, stats) {
     if(err){
       return fs.mkdirSync('logs/')
@@ -93,6 +93,7 @@ Server.prototype.sendUpdate = function (data) {
     //check if the socket is still alive
     if (value.address().address !== undefined) {
 
+
       //write data to end device
       value.write(that.seqnum + ':' + data + '');
 
@@ -110,17 +111,16 @@ Server.prototype.sendUpdate = function (data) {
   const timetaken = process.hrtime(start);
 
   //data to stringify
-  /*const logData = {
+  const logData = {
     'txnode id': hostname,
     'sensorid': value.address().address,
     'seqnum': that.seqnum,
     'tx event time': timetaken
   };
-*/
+
   //store that data in an array
-//  that.log.push(JSON.stringify(logData));
-  that.log.push(hostname + ','+value.address().address+ ','+that.seqnum+ ','+timetaken)
-  console.log(that.log)
+  that.log.push(JSON.stringify(logData));
+
   this.seqnum++;
 };
 
