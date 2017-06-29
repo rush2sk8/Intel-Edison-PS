@@ -3,6 +3,11 @@ Intel Edison Pub/Sub Network
 
 This repo contains all the information necessary to setup and create a publish/subscribe network for Intel Edison boards, and monitor them. 
 
+## Installation
+
+```bash
+$ npm install 
+```
 
 ## Basic Usage
 
