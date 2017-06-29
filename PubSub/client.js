@@ -36,6 +36,7 @@ function Client(ip, port, dataHandler, mnc) {
     }
   });
 
+  this.log.push('start time: '+ new Date().now())
   this.log.push('rxnode id, rxnode ip, txnode ip, rxtime, seqnum, data')
 }
 
@@ -181,7 +182,7 @@ Client.prototype.writeLogToFile = function (filename) {
   var that = this;
 
   //make sure the aray isnt empty
-  if(this.log.length > 1){
+  if(this.log.length > 2){
     this.log.forEach(function (data) {
       fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
         that.deleteFromLog(data);

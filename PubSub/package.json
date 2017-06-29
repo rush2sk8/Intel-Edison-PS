@@ -1,7 +1,7 @@
 {
-  "name": "xdk-iot-blank-template",
-  "description": "Intel® XDK IoT Blank Node.js Template",
-  "version": "0.0.0",
+  "name": "PubSub",
+  "description": "Publish Subscribe ",
+  "version": "1.0.0",
   "main": "PubSub.js",
   "engines": {
     "node": ">=0.10.0"
@@ -9,5 +9,6 @@
   "license": "BSD-3-Clause",
   "private": true,
   "dependencies": {
+    "microtime": "2.1.5"
   }
 }
