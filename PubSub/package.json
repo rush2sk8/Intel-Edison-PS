@@ -9,6 +9,6 @@
   "license": "BSD-3-Clause",
   "private": true,
   "dependencies": {
-    "microtime": "2.1.5"
+    "nano-time": "^1.0.0"
   }
 }

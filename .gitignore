@@ -52,6 +52,4 @@ Testing/MasterNode/node_modules/*
 *.xml
 .idea/workspace.xml
 /.idea/*
-./MasterNode/node_modules/*
-node_modules
 *.zip
