@@ -38,7 +38,7 @@ function Client(ip, port, dataHandler, mnc) {
   });
 
   this.log.push('start time: '+ nanotime.micro())
-  this.log.push('rxnode id, rxnode ip, txnode ip, rxtime, seqnum, data')
+  this.log.push('hostname, rxnode ip, txnode ip, rxtime, txtime, seqnum, data')
 }
 
 /**
@@ -82,10 +82,10 @@ Client.prototype.run = function () {
       const dataArray = stringData.split(':');
 
       //if non formatted data or hostname data is received dont log it
-      if (dataArray.length == 2) {
+      if (dataArray.length == 3) {
 
         //push the data to out log
-        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+(new Date())+ ','+dataArray[0]+ ','+dataArray[1])
+        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+nanotime.micro()+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2])
 
         //if the user defined a handler function send the string data to the function
         if (that.dh !== undefined)

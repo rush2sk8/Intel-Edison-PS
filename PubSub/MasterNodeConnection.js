@@ -1,7 +1,7 @@
-var Client = require('./client.js');
-var Server = require('./server.js');
-var net = require('net');
-
+const Client = require('./client.js');
+const Server = require('./server.js');
+const net = require('net');
+const nanotime = require('nano-time');
 /**
 *
 * @param ip -- ip address of the master node
@@ -40,6 +40,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
   //master connection
   var clientConnToMN = new net.Socket();
+
 
   //function to connect to the Master Node
   var startClientConn = function() {
@@ -141,11 +142,11 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     if(that.logging === true){
 
       //write the tx data to a log file
-      that.server.writeLogToFile(that.myIP+'_'+ new Date().getTime() + '_tx.csv');
+      that.server.writeLogToFile(that.myIP+'_'+ nanotime.micro() + '_tx.csv');
 
       //write all the rx logs to a file
       that.clients.forEach(function (c) {
-        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ new Date().getTime()+ '_rx.csv');
+        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ nanotime.micro() + '_rx.csv');
       });
 
     }
@@ -167,6 +168,13 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     }, 1000);
 
   });
+
+
+  setInterval(()=>{
+    //TODO make not hard coded
+    require('child_process').exec('rdate 10.10.0.120');
+  }, 30000)
+
 };
 
 /**

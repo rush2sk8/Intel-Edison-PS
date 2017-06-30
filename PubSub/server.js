@@ -26,7 +26,7 @@ function Server(ip, port, timeout) {
     }
   });
   this.log.push('start time: '+ nanotime.micro())
-  this.log.push('txnode id,sensorid, seqnum,tx event time');
+  this.log.push('txnode id, txnode ip,rxnode ip,seqnum,time');
 }
 
 /**
@@ -95,9 +95,11 @@ Server.prototype.sendUpdate = function (data) {
     //check if the socket is still alive
     if (value.address().address !== undefined) {
 
+      //store that data in an array
+      that.log.push(hostname + ','+ that.myIP + ',' + value.address().address + ',' + this.seqnum + ',' + nanotime.micro());
 
       //write data to end device
-      value.write(that.seqnum + ':' + data + '');
+      value.write(that.seqnum + ':'+ nanotime.micro() +':' + data + '');
 
     }
     //if its dead then remove it so we dont keep transmitting to a closed connection
@@ -112,8 +114,6 @@ Server.prototype.sendUpdate = function (data) {
   //calculate tx time
   const timetaken = process.hrtime(start);
 
-  //store that data in an array
-  that.log.push(hostname + ','+value.address().address+ ','+that.seqnum+ ','+timetaken)
 
   this.seqnum++;
 };

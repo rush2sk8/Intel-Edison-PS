@@ -1,15 +1,17 @@
-/****************************************************EDISON 01 4 5 6 START**************************************************
+/****************************************************EDISON 01 4 5 6 START**************************************************/
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var intervalIDLed;
 
+
 var dh = function (data) {
     console.log(data)
     const x = data.split(':');
-    const d = x[1].split('-')
+    const d = x[2].split('-')
     if (d[0] == 'but') {
         pwm(gPin, (Math.random() * 255) / 255);
         pwm(bPin, (Math.random() * 255) / 255);
+        highPin.write(d[1]==='0' ? 1 : 0);
     } else if (d[0] == 'li') {
         var rate = parseFloat(d[1]);
         clearInterval(intervalIDLed);
@@ -26,6 +28,9 @@ var mraa = require('mraa');
 // Set up a digital output on MRAA pin 20 (GP12)
 var ledPin = new mraa.Gpio(20); // create an object for pin 20
 ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
+
+var highPin = new mraa.Gpio(45);
+highPin.dir(mraa.DIR_OUT);
 
 var BlinkNormalMs = 1000.0 / 5.0;
 
@@ -61,9 +66,9 @@ function pwm(pin, val) {
         pin.write(val);
     }
 }
-****************************************************EDISON 01 4 5 6 END**************************************************/
+/****************************************************EDISON 01 4 5 6 END**************************************************/
 
-/****************************************************EDISON 02 START*****************************************************/
+/****************************************************EDISON 02 START*****************************************************
 
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
@@ -182,7 +187,7 @@ function writeLed() {
 intervalIDLightSensor = setInterval(readLightSensor, 500); // start the periodic read
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-/****************************************************Edison 02 End**************************************************/
+****************************************************Edison 02 End**************************************************/
 
 /****************************************************EDISON 03 START***********************************************
 //client automatic start
@@ -192,7 +197,7 @@ var intervalIDLed;
 var dh = function (data) {
     console.log(data)
     const x = data.split(':')
-    const d = x[1].split('-');
+    const d = x[2].split('-');
     if (d[0] == 'li') {
         var rate = parseFloat(d[1]);
         clearInterval(intervalIDLed);
@@ -238,6 +243,10 @@ pwm(bPin, 0.0);
 // Set up a digital input/output on MRAA pin 36 (GP14)
 var buttonPin = new mraa.Gpio(36);
 
+
+var highPin = new mraa.Gpio(45);
+highPin.dir(mraa.DIR_OUT);
+
 // Set that pin as a digital input (read)
 buttonPin.dir(mraa.DIR_IN);
 
@@ -258,9 +267,9 @@ setInterval(function () {
         pwm(bPin, (Math.random() * 255) / 255);
         but = (val == 0 ? 1 : 0);
         master.publishDataToSubscribers('but-' + but);
-
+        highPin.write(but);
     }
-}, 10);
+}, 1);
 
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
