@@ -29,7 +29,7 @@ Allows you to see which nodes are connected to the MasterNode. If they disconnec
  - **Download Logs** - Gathers all the log files from each node through scp. Then it will zip them and allow the user to download them.
 
 ## Website Demo
-![demo](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/website%20demo.gif?raw=true)
+![demo](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/website%20demo.gif?raw=true)
 
 ## Download Logs Demo
-![logs](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/logscom.gif?raw=true)
+![logs](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/logscom.gif?raw=true)
