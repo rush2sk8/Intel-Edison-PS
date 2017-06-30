@@ -1,6 +1,6 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
-
+const nanotime = require('nano-time');
 /**
 * Creates a server instance. The server is used to accept multiple incoming connections and to send data to those connections
 * @param {string} - ip ip address of server
@@ -25,7 +25,7 @@ function Server(ip, port, timeout) {
       return fs.mkdirSync('logs/')
     }
   });
-  this.log.push('start time: '+ new Date().now())
+  this.log.push('start time: '+ nanotime.micro())
   this.log.push('txnode id,sensorid, seqnum,tx event time');
 }
 

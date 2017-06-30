@@ -1,6 +1,7 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
 const net = require('net');
+const nanotime = require('nano-time');
 
 /**
 * creates a client object which will make a connection to an endpoint
@@ -36,7 +37,7 @@ function Client(ip, port, dataHandler, mnc) {
     }
   });
 
-  this.log.push('start time: '+ new Date().now())
+  this.log.push('start time: '+ nanotime.micro())
   this.log.push('rxnode id, rxnode ip, txnode ip, rxtime, seqnum, data')
 }
 
