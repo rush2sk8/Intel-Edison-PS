@@ -27,3 +27,9 @@ Allows you to see which nodes are connected to the MasterNode. If they disconnec
  - **Reboot All Nodes** - Sends the ```reboot``` command to the nodes. Keep in mind that it might not restart the program at launch depending on how the nodes are configured
  - **Delete Logs on Nodes** - Deletes all the logs stored on the nodes
  - **Download Logs** - Gathers all the log files from each node through scp. Then it will zip them and allow the user to download them.
+
+## Website Demo
+![demo](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/website%20demo.gif?raw=true)
+
+## Download Logs Demo
+![logs](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/logscom.gif?raw=true)
