@@ -54,3 +54,4 @@ Testing/MasterNode/node_modules/*
 /.idea/*
 *.zip
 Master Node/.testnumber
+*.csv
