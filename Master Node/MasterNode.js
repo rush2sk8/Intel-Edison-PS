@@ -3,6 +3,9 @@
 var sensors = [];
 const net = require('net');
 const fs = require('fs');
+var currTestName;
+
+  getTestName();
 
 /**
 * Creates the server that brokers the connections
@@ -29,7 +32,9 @@ var server = net.createServer(function (socket) {
       //check to see if the node is already in the list
       if (hasNode(sn) === false) {
         sensors.push(sn);
+        socket.write('fn-'+currTestName)
         io.sockets.emit('update-msg', {data: getTableString()});
+
       }
 
       sn.getSensorsToSubTo().forEach(function (s) {
@@ -48,9 +53,13 @@ var server = net.createServer(function (socket) {
           break;
         }
       }
-      io.sockets.emit('update-msg', {data: getTableString()});
-    }
 
+      io.sockets.emit('update-msg', {data: getTableString()});
+
+      if(sensors.length == 0){
+        getTestName();
+      }
+    }
   });
 
   //ignore errors
@@ -174,6 +183,35 @@ SensorNode.prototype.isequal = function (node) {
 SensorNode.prototype.getIP = function() {
   return this.ip;
 }
+
+//call to write what test we are on and then writes to a file the number you are on.
+//used to make it easier for filenames
+function getTestName() {
+
+  fs.stat('.testnumber', (err, stat) => {
+    //file exists
+    if(err == null){
+      fs.open('.testnumber', 'r+', (err, fd)=>{
+
+        var buf = new Buffer(stat.size);
+
+        fs.read(fd, buf, 0, buf.length, null, (err, bytesRead, buffer) => {
+          var name = buffer.toString('utf8');
+          currTestName = 'test'+ (Number(name.charAt(0))+1);
+          fs.writeFile('.testnumber', (Number(name.charAt(0))+1), (err)=>{});
+        })
+      });
+    }
+
+    //file doesnt exists
+    else if(err.code == 'ENOENT'){
+      fs.writeFile('.testnumber', '0', (err)=>{});
+      currTestName = 'test0';
+    }
+  })
+
+}
+
 
 //start listening for connections
 server.listen(9999, '10.20.0.128');

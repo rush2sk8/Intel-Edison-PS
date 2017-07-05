@@ -53,3 +53,4 @@ Testing/MasterNode/node_modules/*
 .idea/workspace.xml
 /.idea/*
 *.zip
+Master Node/.testnumber

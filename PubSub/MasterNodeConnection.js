@@ -23,6 +23,8 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
   this.server;
   this.dh = dh;
   this.logging = true;
+  this.filename;
+  this.resynctime = 30000
 }
 
 /**
@@ -118,6 +120,10 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
         else if(command[0] === 'delLogs'){
           require('child_process').exec('rm -rf logs');
         }
+
+        else if(command[0] === 'fn'){
+          that.filename = command[1];
+        }
       });
     });
 
@@ -142,11 +148,11 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     if(that.logging === true){
 
       //write the tx data to a log file
-      that.server.writeLogToFile(that.myIP+'_'+ nanotime.micro() + '_tx.csv');
+      that.server.writeLogToFile(that.myIP+'_'+ that.filename + '_tx.csv');
 
       //write all the rx logs to a file
       that.clients.forEach(function (c) {
-        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ nanotime.micro() + '_rx.csv');
+        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ that.filename + '_rx.csv');
       });
 
     }
@@ -171,9 +177,8 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
 
   setInterval(()=>{
-    //TODO make not hard coded
     require('child_process').exec('rdate 10.10.0.120');
-  }, 30000)
+  }, that.resynctime)
 
 };
 
@@ -211,6 +216,14 @@ function getIPAddress() {
 */
 MasterNodeConnection.prototype.setLogging = function (logging) {
   this.logging = logging;
+}
+
+/**
+* Sets the time interval that the nodes resync to the NTP server: default is 30 sec
+* @param  {int} time in ms to resync to the
+*/
+MasterNodeConnection.prototype.setResyncTime = function(time) {
+  this.resynctime = time;
 }
 
 //NodeJS thing so that i can make this a class
