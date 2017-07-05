@@ -34,7 +34,7 @@ $('#shutdown').click(function() {
 $('#refresh').click(function(){
   $('#refresh').hide();
   socket.emit('message', 'refresh');
-  sortTable();
+
 });
 
 $('#logs').click(function () {
@@ -83,9 +83,14 @@ socket.on('update-msg', function (msg) {
 
   htmlTable += '</table>';
   $('#main').html(htmlTable);
-  sortTable();
+
+
 });
 
+socket.on('test', function (msg) {
+  console.log('Current Test Running: ' + msg.data)
+  $('#test').html('<p>Current Test: ' + msg.data+ '</p>');
+});
 
 socket.on('d-zip', (msg)=>{
   window.location = 'logs.zip'
@@ -96,33 +101,3 @@ socket.on('nologs', (msg)=>{
 });
 
 document.getElementById("refresh").click();
-
-//sort table function from w3schools
-function sortTable() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("nodeTable");
-  switching = true;
-
-  while (switching) {
-
-    switching = false;
-    rows = table.getElementsByTagName("tr");
-
-    for (i = 1; i < (rows.length - 1); i++) {
-
-      shouldSwitch = false;
-
-      x = rows[i].getElementsByTagName("td")[0];
-      y = rows[i + 1].getElementsByTagName("td")[0];
-
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch= true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
-}

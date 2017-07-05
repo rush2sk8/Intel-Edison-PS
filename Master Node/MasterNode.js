@@ -1,11 +1,23 @@
-/*********************************************Node Code*****************************************************/
+const express = require('express');
+const favicon = require('serve-favicon');
+const app = express();
+const path = require('path');
+const rimraf = require('rimraf')
+const expressServer = app.listen(3000);
+const zipFolder = require('zip-folder');
+const platform = require('os').platform();
+
+//create socket io for website to communicate with node server
+var io = require('socket.io')(expressServer);
 
 var sensors = [];
 const net = require('net');
 const fs = require('fs');
 var currTestName;
 
-  getTestName();
+/*********************************************Node Code*****************************************************/
+
+getTestName();
 
 /**
 * Creates the server that brokers the connections
@@ -34,7 +46,7 @@ var server = net.createServer(function (socket) {
         sensors.push(sn);
         socket.write('fn-'+currTestName)
         io.sockets.emit('update-msg', {data: getTableString()});
-
+        io.sockets.emit('test', {data: currTestName+''});
       }
 
       sn.getSensorsToSubTo().forEach(function (s) {
@@ -58,13 +70,13 @@ var server = net.createServer(function (socket) {
 
       if(sensors.length == 0){
         getTestName();
+        io.sockets.emit('test', {data: currTestName+''});
       }
     }
   });
 
   //ignore errors
-  socket.on('error', function () {
-  });
+  socket.on('error', ()=>{});
 
 });
 
@@ -189,6 +201,7 @@ SensorNode.prototype.getIP = function() {
 function getTestName() {
 
   fs.stat('.testnumber', (err, stat) => {
+
     //file exists
     if(err == null){
       fs.open('.testnumber', 'r+', (err, fd)=>{
@@ -208,7 +221,8 @@ function getTestName() {
       fs.writeFile('.testnumber', '0', (err)=>{});
       currTestName = 'test0';
     }
-  })
+  });
+  console.log('test: '+ currTestName+'');
 
 }
 
@@ -217,18 +231,6 @@ function getTestName() {
 server.listen(9999, '10.20.0.128');
 
 /********************************************Website Code***************************************************/
-const express = require('express');
-const favicon = require('serve-favicon');
-const app = express();
-const path = require('path');
-const rimraf = require('rimraf')
-const expressServer = app.listen(3000);
-const zipFolder = require('zip-folder');
-const platform = require('os').platform();
-
-//create socket io for website to communicate with node server
-var io = require('socket.io')(expressServer);
-
 
 //stuff for styles
 app.use(express.static(__dirname + '/'));
@@ -242,6 +244,7 @@ app.get('/', function (req, res) {
 
   //update the table on refresh
   io.sockets.emit('update-msg', {data: getTableString()});
+  io.sockets.emit('test', {data: currTestName+''});
 });
 
 //look for a connection to the website socket
@@ -260,13 +263,14 @@ io.sockets.on('connection', function (socket) {
     }
     else if (message === 'refresh') {
       io.sockets.emit('update-msg', {data: getTableString()});
+      io.sockets.emit('test', {data: currTestName+''});
     }
     else if (message === 'logs') {
       rimraf(__dirname+'/logs', (err)=>{})
       rimraf(__dirname+'/logs.zip', (err)=>{})
       getLogs();
     }
-    else if(message === 'delLogs'){ 
+    else if(message === 'delLogs'){
       sendCommandToNodes('delLogs');
       console.log('sent command to delLogs');
     }
