@@ -96,7 +96,7 @@ Server.prototype.sendUpdate = function (data) {
     if (value.address().address !== undefined) {
 
       //store that data in an array
-      that.log.push(hostname + ','+ that.myIP + ',' + value.address().address + ',' + this.seqnum + ',' + nanotime.micro());
+      that.log.push(hostname + ','+ that.ip + ',' + value.address().address + ',' + this.seqnum + ',' + nanotime.micro());
 
       //write data to end device
       value.write(that.seqnum + ':'+ nanotime.micro() +':' + data + '');

@@ -200,6 +200,7 @@ SensorNode.prototype.getIP = function() {
 //used to make it easier for filenames
 function getTestName() {
 
+  //check if file exists
   fs.stat('.testnumber', (err, stat) => {
 
     //file exists
@@ -293,6 +294,8 @@ function getLogs() {
     if(i < sensors.length){
       //exec a child process to scp the logs from a device
       const exec = require('child_process').exec;
+
+      console.log('scp: '+ sensors[i].getIP());
 
       //check which version of scp to use
       if(platform === 'win32'){
