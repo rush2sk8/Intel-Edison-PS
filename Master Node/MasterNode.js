@@ -266,7 +266,7 @@ io.sockets.on('connection', function (socket) {
       rimraf(__dirname+'/logs.zip', (err)=>{})
       getLogs();
     }
-    else if(message === 'delLogs'){
+    else if(message === 'delLogs'){ 
       sendCommandToNodes('delLogs');
       console.log('sent command to delLogs');
     }
