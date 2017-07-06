@@ -38,7 +38,7 @@ function Client(ip, port, dataHandler, mnc) {
   });
 
   this.log.push('start time: '+ nanotime.micro())
-  this.log.push('hostname, rxnode ip, txnode ip, rxtime, txtime, seqnum, data')
+  this.log.push('hostname, rxnode ip, txnode ip, rxtime, txtime, seqnum, data, bytes recieved')
 }
 
 /**
@@ -75,8 +75,10 @@ Client.prototype.run = function () {
     * */
     client.on('data', function (data) {
 
+      const buf = new Buffer(data);
+
       //converts TCP stream data to a string
-      const stringData = (new Buffer(data)).toString();
+      const stringData = buf.toString();
 
       //splits the data at the :
       const dataArray = stringData.split(':');
@@ -85,7 +87,7 @@ Client.prototype.run = function () {
       if (dataArray.length == 3) {
 
         //push the data to out log
-        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+nanotime.micro()+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2])
+        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+nanotime.micro()+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
 
         //if the user defined a handler function send the string data to the function
         if (that.dh !== undefined)
