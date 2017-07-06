@@ -226,28 +226,6 @@ MasterNodeConnection.prototype.setResyncTime = function(time) {
   this.resynctime = time;
 }
 
-/**
- * starts a daemon where it will log the data exery X seconds
- * @param  {int} time time in milliseconds to write data to log
- */
-MasterNodeConnection.prototype.startLogDaemon = function(time) {
-  const that = this;
-
-  setInterval(()=>{
-
-    if(that.logging === true){
-
-      //write the tx data to a log file
-      that.server.writeLogToFile(that.myIP+'_'+ that.filename + '_tx.csv');
-
-      //write all the rx logs to a file
-      that.clients.forEach(function (c) {
-        c.writeLogToFile(that.myIP+'__'+c.ip + '_'+ that.filename + '_rx.csv');
-      });
-    }
-  }, time)
-}
-
 
 //NodeJS thing so that i can make this a class
 module.exports = MasterNodeConnection;
