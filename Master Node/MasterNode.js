@@ -19,6 +19,7 @@ var currTestName;
 
 getTestName();
 
+
 /**
 * Creates the server that brokers the connections
 */
@@ -214,7 +215,6 @@ function getTestName() {
       currTestName = 'test'+ (Number(name.charAt(0))+1);
       fs.writeFile('.testnumber', (Number(name.charAt(0))+1), (err)=>{});
 
-
     }
 
     //file doesnt exists
@@ -222,10 +222,9 @@ function getTestName() {
       fs.writeFileSync('.testnumber', '0');
       currTestName = 'test0';
     }
+
+      console.log('test: '+ currTestName+'');
   });
-
-
-  console.log('test: '+ currTestName+'');
 
 }
 
