@@ -6,6 +6,8 @@ const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
 const zipFolder = require('zip-folder');
 const platform = require('os').platform();
+const Store =  require('node-user-defaults').default
+
 
 //create socket io for website to communicate with node server
 var io = require('socket.io')(expressServer);
@@ -223,6 +225,8 @@ function getTestName() {
       currTestName = 'test0';
     }
   });
+
+
   console.log('test: '+ currTestName+'');
 
 }

@@ -10,6 +10,7 @@
     "socket.io" : "^2.0.3",
     "zip-folder":"1.0.0",
     "serve-favicon":"^2.4.3",
-    "rimraf":"^2.6.1"
+    "rimraf":"^2.6.1",
+    "node-user-defaults":"3.1.1"
   }
 }
