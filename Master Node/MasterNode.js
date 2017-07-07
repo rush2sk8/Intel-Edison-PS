@@ -19,7 +19,6 @@ var currTestName;
 
 getTestName();
 
-
 /**
 * Creates the server that brokers the connections
 */
@@ -45,7 +44,7 @@ var server = net.createServer(function (socket) {
       //check to see if the node is already in the list
       if (hasNode(sn) === false) {
         sensors.push(sn);
-        socket.write('fn-'+currTestName)
+        socket.write('fn-'+currTestName+'*')
         io.sockets.emit('update-msg', {data: getTableString()});
         io.sockets.emit('test', {data: currTestName+''});
       }

@@ -145,6 +145,8 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
   var closeGracefully = function () {
 
+console.log('fname: ' + that.filename);
+
     if(that.logging === true){
 
       //write the tx data to a log file
