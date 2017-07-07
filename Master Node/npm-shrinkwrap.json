@@ -34,11 +34,6 @@
       "from": "array-flatten@1.1.1",
       "resolved": "https://registry.npmjs.org/array-flatten/-/array-flatten-1.1.1.tgz"
     },
-    "array-uniq": {
-      "version": "1.0.2",
-      "from": "array-uniq@1.0.2",
-      "resolved": "https://registry.npmjs.org/array-uniq/-/array-uniq-1.0.2.tgz"
-    },
     "arraybuffer.slice": {
       "version": "0.0.6",
       "from": "arraybuffer.slice@0.0.6",
@@ -353,11 +348,6 @@
       "from": "negotiator@0.6.1",
       "resolved": "https://registry.npmjs.org/negotiator/-/negotiator-0.6.1.tgz"
     },
-    "node-user-defaults": {
-      "version": "3.1.1",
-      "from": "node-user-defaults@3.1.1",
-      "resolved": "https://registry.npmjs.org/node-user-defaults/-/node-user-defaults-3.1.1.tgz"
-    },
     "object-assign": {
       "version": "4.1.1",
       "from": "object-assign@>=4.1.1 <4.2.0",
@@ -417,11 +407,6 @@
       "version": "6.4.0",
       "from": "qs@6.4.0",
       "resolved": "https://registry.npmjs.org/qs/-/qs-6.4.0.tgz"
-    },
-    "randomstring": {
-      "version": "1.1.5",
-      "from": "randomstring@>=1.1.5 <2.0.0",
-      "resolved": "https://registry.npmjs.org/randomstring/-/randomstring-1.1.5.tgz"
     },
     "range-parser": {
       "version": "1.2.0",
@@ -548,11 +533,6 @@
       "version": "1.0.0",
       "from": "unpipe@>=1.0.0 <1.1.0",
       "resolved": "https://registry.npmjs.org/unpipe/-/unpipe-1.0.0.tgz"
-    },
-    "untildify": {
-      "version": "3.0.2",
-      "from": "untildify@>=3.0.2 <4.0.0",
-      "resolved": "https://registry.npmjs.org/untildify/-/untildify-3.0.2.tgz"
     },
     "utils-merge": {
       "version": "1.0.0",

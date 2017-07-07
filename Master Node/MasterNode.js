@@ -6,8 +6,6 @@ const rimraf = require('rimraf')
 const expressServer = app.listen(3000);
 const zipFolder = require('zip-folder');
 const platform = require('os').platform();
-const Store =  require('node-user-defaults').default
-
 
 //create socket io for website to communicate with node server
 var io = require('socket.io')(expressServer);
@@ -207,21 +205,21 @@ function getTestName() {
 
     //file exists
     if(err == null){
-      fs.open('.testnumber', 'r+', (err, fd)=>{
+      const fd =  fs.openSync('.testnumber', 'r+')
 
-        var buf = new Buffer(stat.size);
+      var buf = new Buffer(stat.size);
 
-        fs.read(fd, buf, 0, buf.length, null, (err, bytesRead, buffer) => {
-          var name = buffer.toString('utf8');
-          currTestName = 'test'+ (Number(name.charAt(0))+1);
-          fs.writeFile('.testnumber', (Number(name.charAt(0))+1), (err)=>{});
-        })
-      });
+      fs.readSync(fd, buf, 0, buf.length, null);
+      var name = buf.toString('utf8');
+      currTestName = 'test'+ (Number(name.charAt(0))+1);
+      fs.writeFile('.testnumber', (Number(name.charAt(0))+1), (err)=>{});
+
+
     }
 
     //file doesnt exists
     else if(err.code == 'ENOENT'){
-      fs.writeFile('.testnumber', '0', (err)=>{});
+      fs.writeFileSync('.testnumber', '0');
       currTestName = 'test0';
     }
   });
