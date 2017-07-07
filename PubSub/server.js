@@ -135,27 +135,6 @@ Server.prototype.getTXLog = function () {
 };
 
 /**
-* Removes data element from the server log
-* @param {String} toRemove - Element to remove
-* @memberOf Server
-* @example
-* var server = new Server('127.0.0.1', 1337,0);
-* server.start();
-* ...
-* var log = server.getTXLog();
-*
-* //deletes the first element from the log
-* server.deleteFromLog(log[0]);
-*
-*/
-Server.prototype.deleteFromLog = function (toRemove) {
-  const i = this.log.indexOf(toRemove);
-  if (i != -1) {
-    this.log.splice(i, 1);
-  }
-};
-
-/**
 * Writes the server log data to a file
 * @param {string} filename - name of the file to write to
 * @memberOf  Server
@@ -180,7 +159,6 @@ Server.prototype.writeLogToFile = function (filename) {
   if(this.log.length > 2){
     this.log.forEach(function (data) {
       fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
-        that.deleteFromLog(data);
       });
     });
   }

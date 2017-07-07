@@ -74,6 +74,7 @@ Client.prototype.run = function () {
     *  @memberOf Client.prototpye
     * */
     client.on('data', function (data) {
+      const t = nanotime.micro();
 
       const buf = new Buffer(data);
 
@@ -87,7 +88,7 @@ Client.prototype.run = function () {
       if (dataArray.length == 3) {
 
         //push the data to out log
-        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+nanotime.micro()+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
+        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+t+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
 
         //if the user defined a handler function send the string data to the function
         if (that.dh !== undefined)
@@ -147,25 +148,6 @@ Client.prototype.getRXLog = function () {
   return this.log;
 };
 
-/**
-* Deletes an entry from the log
-* @param {string} toRemove - entry to remove
-* @memberOf Client
-* @example
-* var client = new Client('127.0.0.1', 1337,function(){});
-* client.start();
-* ...
-* var log = client.getRXLog();
-*
-* //deletes the first element from the log
-* client.deleteFromLog(log[0]);
-*/
-Client.prototype.deleteFromLog = function (toRemove) {
-  const i = this.log.indexOf(toRemove);
-  if (i != -1) {
-    this.log.splice(i, 1);
-  }
-}
 
 /**
 * Writes the entire log to a file specified by "filename" then clear the log
@@ -188,8 +170,7 @@ Client.prototype.writeLogToFile = function (filename) {
   if(this.log.length > 2){
     this.log.forEach(function (data) {
       fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
-        that.deleteFromLog(data);
-      })
+      });
     });
   }
 };
