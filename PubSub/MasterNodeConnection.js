@@ -24,7 +24,6 @@ function MasterNodeConnection(ip, port, mysensors, want, dh) {
   this.dh = dh;
   this.logging = true;
   this.filename;
-  this.resynctime = 30000
 }
 
 /**
@@ -177,11 +176,6 @@ console.log('fname: ' + that.filename);
 
   });
 
-
-  setInterval(()=>{
-    require('child_process').exec('rdate 10.10.0.120');
-  }, that.resynctime)
-
 };
 
 /**
@@ -219,15 +213,6 @@ function getIPAddress() {
 MasterNodeConnection.prototype.setLogging = function (logging) {
   this.logging = logging;
 }
-
-/**
-* Sets the time interval that the nodes resync to the NTP server: default is 30 sec
-* @param  {int} time in ms to resync to the
-*/
-MasterNodeConnection.prototype.setResyncTime = function(time) {
-  this.resynctime = time;
-}
-
 
 //NodeJS thing so that i can make this a class
 module.exports = MasterNodeConnection;

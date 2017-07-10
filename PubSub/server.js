@@ -158,8 +158,7 @@ Server.prototype.writeLogToFile = function (filename) {
   //make sure the array isnt empty
   if(this.log.length > 2){
     this.log.forEach(function (data) {
-      fs.appendFile(__dirname + '/logs/'+filename, data + '\r\n', function () {
-      });
+      fs.appendFileSync(__dirname + '/logs/'+filename, data + '\r\n');
     });
   }
 };
