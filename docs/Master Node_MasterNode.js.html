@@ -26,11 +26,26 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/*********************************************Node Code*****************************************************/
+            <pre class="prettyprint source linenums"><code>const express = require('express');
+const favicon = require('serve-favicon');
+const app = express();
+const path = require('path');
+const rimraf = require('rimraf')
+const expressServer = app.listen(3000);
+const zipFolder = require('zip-folder');
+const platform = require('os').platform();
+
+//create socket io for website to communicate with node server
+var io = require('socket.io')(expressServer);
 
 var sensors = [];
 const net = require('net');
 const fs = require('fs');
+var currTestName;
+
+/*********************************************Node Code*****************************************************/
+
+getTestName();
 
 /**
 * Creates the server that brokers the connections
@@ -57,7 +72,9 @@ var server = net.createServer(function (socket) {
       //check to see if the node is already in the list
       if (hasNode(sn) === false) {
         sensors.push(sn);
+        socket.write('fn-'+currTestName+'*')
         io.sockets.emit('update-msg', {data: getTableString()});
+        io.sockets.emit('test', {data: currTestName+''});
       }
 
       sn.getSensorsToSubTo().forEach(function (s) {
@@ -76,14 +93,18 @@ var server = net.createServer(function (socket) {
           break;
         }
       }
-      io.sockets.emit('update-msg', {data: getTableString()});
-    }
 
+      io.sockets.emit('update-msg', {data: getTableString()});
+
+      if(sensors.length == 0){
+        getTestName();
+        io.sockets.emit('test', {data: currTestName+''});
+      }
+    }
   });
 
   //ignore errors
-  socket.on('error', function () {
-  });
+  socket.on('error', ()=>{});
 
 });
 
@@ -187,7 +208,7 @@ SensorNode.prototype.getSensorsToPubTo = function () {
 
 /**
 * Equality between sensor nodes
-* @param {SensorNode} node
+* @param {SensorNodenode
 * @returns {boolean}
 */
 SensorNode.prototype.isequal = function (node) {
@@ -196,30 +217,49 @@ SensorNode.prototype.isequal = function (node) {
 }
 
 /**
- * Returns the IP of the sensor node
- * @return {string} the ip address
- */
+* Returns the IP of the sensor node
+* @return {string} the ip address
+*/
 SensorNode.prototype.getIP = function() {
   return this.ip;
 }
+
+//call to write what test we are on and then writes to a file the number you are on.
+//used to make it easier for filenames
+function getTestName() {
+
+  //check if file exists
+  fs.stat('.testnumber', (err, stat) => {
+
+    //file exists
+    if(err == null){
+      const fd =  fs.openSync('.testnumber', 'r+')
+
+      var buf = new Buffer(stat.size);
+
+      fs.readSync(fd, buf, 0, buf.length, null);
+      var name = buf.toString('utf8');
+      currTestName = 'test'+ (Number(name.charAt(0))+1);
+      fs.writeFile('.testnumber', (Number(name.charAt(0))+1), (err)=>{});
+
+    }
+
+    //file doesnt exists
+    else if(err.code == 'ENOENT'){
+      fs.writeFileSync('.testnumber', '0');
+      currTestName = 'test0';
+    }
+
+      console.log('test: '+ currTestName+'');
+  });
+
+}
+
 
 //start listening for connections
 server.listen(9999, '10.20.0.128');
 
 /********************************************Website Code***************************************************/
-const express = require('express');
-const favicon = require('serve-favicon');
-const app = express();
-const path = require('path');
-const rimraf = require('rimraf')
-const expressServer = app.listen(3000);
-const zipFolder = require('zip-folder');
-
-const os = require('os');
-
-//create socket io for website to communicate with node server
-var io = require('socket.io')(expressServer);
-
 
 //stuff for styles
 app.use(express.static(__dirname + '/'));
@@ -233,6 +273,7 @@ app.get('/', function (req, res) {
 
   //update the table on refresh
   io.sockets.emit('update-msg', {data: getTableString()});
+  io.sockets.emit('test', {data: currTestName+''});
 });
 
 //look for a connection to the website socket
@@ -251,6 +292,7 @@ io.sockets.on('connection', function (socket) {
     }
     else if (message === 'refresh') {
       io.sockets.emit('update-msg', {data: getTableString()});
+      io.sockets.emit('test', {data: currTestName+''});
     }
     else if (message === 'logs') {
       rimraf(__dirname+'/logs', (err)=>{})
@@ -278,10 +320,18 @@ function getLogs() {
 
     //pseudo for loop
     if(i &lt; sensors.length){
+      //exec a child process to scp the logs from a device
+      const exec = require('child_process').exec;
 
-//spawn a child process to scp the logs from a device
-      const {spawn} = require('child_process')
-      const scp = spawn('pscp', ['-r', '-scp', '-pw' ,'cookiemonster', 'root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs', '.'])
+      console.log('scp: '+ sensors[i].getIP());
+
+      //check which version of scp to use
+      if(platform === 'win32'){
+        scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
+      }
+      else {
+        scp = exec('sshpass -p \'cookiemonster\' scp -r  root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .')
+      }
 
       //log data into console
       scp.stdout.on('data', (data) => {
@@ -334,7 +384,7 @@ console.log('website at localhost:3000')
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Tue Jun 27 2017 15:25:20 GMT-0400 (Eastern Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jul 12 2017 09:38:10 GMT-0400 (Eastern Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
