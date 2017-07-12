@@ -95,8 +95,8 @@ Server.prototype.sendUpdate = function (data) {
     //check if the socket is still alive
     if (value.address().address !== undefined) {
 
-      //store that data in an array
-      that.log.push(hostname + ','+ that.ip + ',' + value.address().address + ',' + this.seqnum + ',' + nanotime.micro());
+      //store that data in an array NOTE uncomment if you want datalogging
+      //that.log.push(hostname + ','+ that.ip + ',' + value.address().address + ',' + this.seqnum + ',' + nanotime.micro());
 
       //write data to end device
       value.write(that.seqnum + ':'+ nanotime.micro() +':' + data + '');

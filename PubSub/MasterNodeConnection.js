@@ -144,7 +144,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
   var closeGracefully = function () {
 
-console.log('fname: ' + that.filename);
+    console.log('fname: ' + that.filename);
 
     if(that.logging === true){
 

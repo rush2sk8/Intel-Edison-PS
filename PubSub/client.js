@@ -74,7 +74,7 @@ Client.prototype.run = function () {
     *  @memberOf Client.prototpye
     * */
     client.on('data', function (data) {
-      const t = nanotime.micro();
+      //const t = nanotime.micro();
 
       const buf = new Buffer(data);
 
@@ -88,7 +88,7 @@ Client.prototype.run = function () {
       if (dataArray.length == 3) {
 
         //push the data to out log
-        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+t+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
+        //that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+t+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
 
         //if the user defined a handler function send the string data to the function
         if (that.dh !== undefined)
