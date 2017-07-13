@@ -11,7 +11,7 @@ function Trace0 = importOscopeCSV(filename)
 
 %% Initialize variables.
 if nargin < 1
-    filename = 'C:\Users\sensor\Documents\Keysight\BenchVue\Oscilloscope\Exports\Trace 0.csv';
+    filename = 'C:\Users\sensor\Documents\Node.jsTesting\Intel-Edison-PS\Stats\Trace 0.csv';
 end
 delimiter = ',';
 startRow = 2;
