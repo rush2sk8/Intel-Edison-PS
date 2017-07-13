@@ -1,5 +1,6 @@
 function stats = computeDelays()
 
+close all;
 tr = importOscopeCSV;
 t = tr(:,2);
 t = t-t(1);
@@ -23,27 +24,38 @@ trdiff = [tr(2:end,2:3), diff(tr(:,4:end))];
 % determine delays
 M = size(trdiff,2);
 statsstr = struct('ID',[],'delays',[],'Tau',[],'Sigma',[],'MAD',[]);
-stats = repmat(statsstr, M, 1);
+stats = repmat(statsstr, M-2, 1);
 for ii = 3:M
+    jj = ii - 2;
     % the column id
-    stats(ii).ID = ii;
+    stats(jj).ID = ii;
     
     % the delays
     idx = (trdiff(:,ii)==1);
     X = trdiff(idx,1);
-    stats(ii).delays = X;
-    plotDelays(X)
-    drawnow
+    stats(jj).delays = X;
     
     % the statistics
-    stats(ii).Tau = mean(X);
-    stats(ii).Sigma = std(X);
-    stats(ii).mad = mad(X);
+    stats(jj).Tau = mean(X);
+    stats(jj).Sigma = std(X);
+    stats(jj).MAD = mad(X);
+
+    % plot the delays
+    plotDelays(X)
+    drawnow
+    fname = sprintf('D%i.png',ii-3);
+    gcf(), print(fname, '-dpng');
     
-    gcf()
+    % plot the histogram of delays
+    plotDelayHistogram(X)
+    drawnow
+    fname = sprintf('D%i_hist.png',ii-3);
+    gcf(), print(fname, '-dpng');
     
-    print(
 end
+
+save('stats.mat','stats');
+close all;
 
 end
 
@@ -53,3 +65,8 @@ function plotDelays(X)
     ylabel('relative delay (ms)')
 end
 
+function plotDelayHistogram(X)
+    h = histogram(X,100, 'Normalization', 'probability');
+    ylabel('Probability')
+    xlabel('Counts')
+end
