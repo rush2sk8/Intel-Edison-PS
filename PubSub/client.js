@@ -66,7 +66,7 @@ Client.prototype.run = function () {
     * @memberOf Client.prototpye
     * */
     client.connect(that.port, that.ip, function () {
-      //console.log('connected to: ' + that.ip + ' !');
+      console.log('connected to: ' + that.ip + ' !');
     });
 
     /**
@@ -85,7 +85,7 @@ Client.prototype.run = function () {
       const dataArray = stringData.split(':');
 
       //if non formatted data or hostname data is received dont log it
-      if (dataArray.length == 3) {
+      if (dataArray.length == 2) {
 
         //push the data to out log
         //that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+t+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
@@ -110,7 +110,7 @@ Client.prototype.run = function () {
     *  @memberOf Client.prototpye
     **/
     client.on('close', function () {
-      //console.log('lost connection to ' + that.ip + ' retrying...');
+      console.log('lost connection to ' + that.ip + ' retrying...');
       client.destroy();
 
       //uncomment if you want the master node to know when a connection is dropped

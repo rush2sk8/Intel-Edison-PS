@@ -56,7 +56,7 @@ Server.prototype.start = function () {
 
     //keep every socket to each client
     that.connections.push(socket);
-    //console.log('node connected')
+    console.log('node connected')
   });
 
   //
@@ -64,7 +64,7 @@ Server.prototype.start = function () {
 
   //listen for incoming connections
   this.server.listen(this.port, this.ip);
-  //console.log('listening on: ' + this.ip + ':' + this.port)
+  console.log('listening on: ' + this.ip + ':' + this.port)
 };
 
 
@@ -86,8 +86,8 @@ Server.prototype.sendUpdate = function (data) {
   var that = this;
 
   //start the tx timer
-  //const start = process.hrtime();
-console.log(data);
+  const start = process.hrtime();
+
   //write data to each saved socket
   for (var i = 0; i < this.connections.length; i++) {
     var value = this.connections[i];
@@ -112,7 +112,7 @@ console.log(data);
   }
 
   //calculate tx time
-  //const timetaken = process.hrtime(start);
+  const timetaken = process.hrtime(start);
 
 
   this.seqnum++;

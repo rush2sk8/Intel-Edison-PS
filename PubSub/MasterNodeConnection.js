@@ -52,7 +52,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
     //make the connection
     clientConnToMN.connect(that.port, that.ip, function () {
       this.write('nn-' + (require('os').hostname()) + '-' + that.myIP + '-' + that.mySensors + '-' + that.want);
-      //console.log('Connected to MN')
+      console.log('Connected to MN')
     });
 
     //handle the actual pub/sub creation
@@ -60,7 +60,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
       //put data into a string
       const stringData = (new Buffer(data)).toString();
-      //console.log(stringData);
+      console.log(stringData);
 
       stringData.split('*').forEach(function (node) {
 
@@ -93,7 +93,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
             that.clients.push(newClient);
           }
 
-          //console.log('connected to: ' + command[1]);
+          console.log('connected to: ' + command[1]);
         }
 
         //reboot command is requested
@@ -134,7 +134,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
       clientConnToMN.destroy();
 
       setTimeout(startClientConn(), 1000);
-      //console.log('Connection to MN lost retrying...')
+      console.log('Connection to MN lost retrying...')
     });
 
   };
@@ -144,7 +144,7 @@ MasterNodeConnection.prototype.startAutomaticDiscovery = function () {
 
   var closeGracefully = function () {
 
-    //console.log('fname: ' + that.filename);
+    console.log('fname: ' + that.filename);
 
     if(that.logging === true){
 
