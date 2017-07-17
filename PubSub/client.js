@@ -66,7 +66,7 @@ Client.prototype.run = function () {
     * @memberOf Client.prototpye
     * */
     client.connect(that.port, that.ip, function () {
-      console.log('connected to: ' + that.ip + ' !');
+      //console.log('connected to: ' + that.ip + ' !');
     });
 
     /**
@@ -110,7 +110,7 @@ Client.prototype.run = function () {
     *  @memberOf Client.prototpye
     **/
     client.on('close', function () {
-      console.log('lost connection to ' + that.ip + ' retrying...');
+      //console.log('lost connection to ' + that.ip + ' retrying...');
       client.destroy();
 
       //uncomment if you want the master node to know when a connection is dropped

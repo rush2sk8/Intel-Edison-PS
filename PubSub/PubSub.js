@@ -1,21 +1,21 @@
-/****************************************************EDISON 01 4 5 6 START*************************************************
+/****************************************************EDISON 01 4 5 6 START*************************************************/
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
 var intervalIDLed;
 
 var dh = function (data) {
-console.log(data)
-const x = data.split(':');
-const d = x[2].split('-')
-if (d[0] == 'but') {
-pwm(gPin, Math.floor(Math.random()*255) / 255);
-pwm(bPin, Math.floor(Math.random()*255) / 255);
-highPin.write(d[1]==='0' ? 1 : 0);
-} else if (d[0] == 'li') {
-var rate = parseFloat(d[1]);
-clearInterval(intervalIDLed);
-intervalIDLed = setInterval(writeLed, rate);
-}
+  console.log(data)
+  const x = data.split(':');
+  const d = x[1].split('-')
+  if (d[0] == 'but') {
+    //pwm(gPin, Math.floor(Math.random()*255) / 255);
+    //pwm(bPin, Math.floor(Math.random()*255) / 255);
+    highPin.write(d[1]==='0' ? 1 : 0);
+  } else if (d[0] == 'li') {
+    //var rate = parseFloat(d[1]);
+    //clearInterval(intervalIDLed);
+    //intervalIDLed = setInterval(writeLed, rate);
+  }
 };
 var master = new MasterNodeConnection('10.20.0.128', 9999, '', 'light:button', dh);
 master.setLogging(false);
@@ -25,46 +25,49 @@ master.startAutomaticDiscovery();
 var mraa = require('mraa');
 
 // Set up a digital output on MRAA pin 20 (GP12)
-var ledPin = new mraa.Gpio(20); // create an object for pin 20
-ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
+//var ledPin = new mraa.Gpio(20); // create an object for pin 20
+//ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
 
 var highPin = new mraa.Gpio(45);
 highPin.dir(mraa.DIR_OUT);
 
-var BlinkNormalMs = 1000.0 / 5.0;
+//var BlinkNormalMs = 1000.0 / 5.0;
 
 // global variable for pin state
-var ledState = 0;
+//var ledState = 0;
 
 function writeLed() {
-// toggle state of led
-ledState = (ledPin.read() ? 0 : 1);
-// set led value
-ledPin.write(ledState);
+  // toggle state of led
+  ledState = (ledPin.read() ? 0 : 1);
+  // set led value
+  ledPin.write(ledState);
 }
 
-intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
+//intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
-var gPin = new mraa.Pwm(14);
-var bPin = new mraa.Pwm(0);
+//var gPin = new mraa.Pwm(14);
+//var bPin = new mraa.Pwm(0);
 
 // Enable PWM
-gPin.enable(true);
-bPin.enable(true);
+//gPin.enable(true);
+//bPin.enable(true);
 
-pwm(gPin, 0.0);
-pwm(bPin, 0.0);
+//pwm(gPin, 0.0);
+//pwm(bPin, 0.0);
+
 
 function pwm(pin, val) {
-if (val === 0.0) {
-pin.write(0.0);
-pin.enable(false);
-} else {
-pin.enable(true);
-pin.write(val);
+
+  if (val === 0.0) {
+    pin.write(0.0);
+    pin.enable(false);
+  } else {
+    pin.enable(true);
+    pin.write(val);
+  }
 }
-}
-****************************************************EDISON 01 4 5 6 END**************************************************/
+
+/****************************************************EDISON 01 4 5 6 END**************************************************/
 
 /****************************************************EDISON 02 START****************************************************
 
@@ -188,20 +191,20 @@ intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 ***************************************************Edison 02 End**************************************************/
 
-/****************************************************EDISON 03 START***********************************************/
+/****************************************************EDISON 03 START***********************************************
 //client automatic start
 var MasterNodeConnection = require('./MasterNodeConnection.js')
 
-var intervalIDLed;
+//var intervalIDLed;
 var dh = function (data) {
-  console.log(data)
-  const x = data.split(':')
-  const d = x[2].split('-');
-  if (d[0] == 'li') {
-    var rate = parseFloat(d[1]);
-    clearInterval(intervalIDLed);
-    intervalIDLed = setInterval(writeLed, rate);
-  }
+//console.log(data)
+const x = data.split(':')
+const d = x[1].split('-');
+if (d[0] == 'li') {
+//  var rate = parseFloat(d[1]);
+//  clearInterval(intervalIDLed);
+//  intervalIDLed = setInterval(writeLed, rate);
+}
 
 };
 var master = new MasterNodeConnection('10.20.0.128', 9999, 'button:', 'light:', dh);
@@ -213,31 +216,31 @@ var mraa = require('mraa');
 
 
 // Set up a digital output on MRAA pin 20 (GP12)
-var ledPin = new mraa.Gpio(20); // create an object for pin 20
-ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
+//var ledPin = new mraa.Gpio(20); // create an object for pin 20
+//ledPin.dir(mraa.DIR_OUT); // set the direction of the pin to OUPUT
 
-var BlinkNormalMs = 1000.0 / 5.0;
-var BlinkAlertMs = 1000.0 / 50.0;
+//var BlinkNormalMs = 1000.0 / 5.0;
+//var BlinkAlertMs = 1000.0 / 50.0;
 
-var analogIn;
-var lightThreshold = 0.8;
-var lightSensorState = 1; // 1 = above threshold, 0 = below
+//var analogIn;
+//var lightThreshold = 0.8;
+//var lightSensorState = 1; // 1 = above threshold, 0 = below
 
 // global variable for pin state
-var ledState = 0;
+//var ledState = 0;
 
 var but = 0;
-var gPin = new mraa.Pwm(14);
-var bPin = new mraa.Pwm(0);
+//var gPin = new mraa.Pwm(14);
+//var bPin = new mraa.Pwm(0);
 
 // Enable PWM
 //rPin.enable(true);
-gPin.enable(true);
-bPin.enable(true);
+//gPin.enable(true);
+//bPin.enable(true);
 
 //pwm(rPin, 0.0);
-pwm(gPin, 0.0);
-pwm(bPin, 0.0);
+//pwm(gPin, 0.0);
+//pwm(bPin, 0.0);
 
 // Set up a digital input/output on MRAA pin 36 (GP14)
 var buttonPin = new mraa.Gpio(36);
@@ -249,37 +252,38 @@ highPin.dir(mraa.DIR_OUT);
 // Set that pin as a digital input (read)
 buttonPin.dir(mraa.DIR_IN);
 
+
 function writeLed() {
-  // toggle state of led
-  ledState = (ledPin.read() ? 0 : 1);
-  // set led value
-  ledPin.write(ledState);
+// toggle state of led
+ledState = (ledPin.read() ? 0 : 1);
+// set led value
+ledPin.write(ledState);
 
 }
 
 setInterval(function () {
-  var val = buttonPin.read();
+var val = buttonPin.read();
 
-  if (val == but) {
+if (val == but) {
 
-    pwm(gPin, (Math.random() * 255) / 255);
-    pwm(bPin, (Math.random() * 255) / 255);
-    but = (val == 0 ? 1 : 0);
-    master.publishDataToSubscribers('but-' + but);
-    highPin.write(val);
-  }
+//  pwm(gPin, (Math.random() * 255) / 255);
+//pwm(bPin, (Math.random() * 255) / 255);
+but = (val == 0 ? 1 : 0);
+master.publishDataToSubscribers('but-' + but);
+highPin.write(val);
+}
 }, 1);
 
 
 intervalIDLed = setInterval(writeLed, BlinkNormalMs); // start the periodic read
 
 function pwm(pin, val) {
-  if (val === 0.0) {
-    pin.write(0);
-    pin.enable(false);
-  } else {
-    pin.enable(true);
-    pin.write(val);
-  }
+if (val === 0.0) {
+pin.write(0);
+pin.enable(false);
+} else {
+pin.enable(true);
+pin.write(val);
 }
-/****************************************************EDISON 03 END**************************************************/
+}
+****************************************************EDISON 03 END**************************************************/
