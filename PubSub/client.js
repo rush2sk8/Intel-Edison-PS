@@ -1,7 +1,7 @@
 var fs = require('fs');
 const hostname = require('os').hostname();
 const net = require('net');
-const nanotime = require('nano-time');
+
 
 /**
 * creates a client object which will make a connection to an endpoint
@@ -37,8 +37,8 @@ function Client(ip, port, dataHandler, mnc) {
     }
   });
 
-  this.log.push('start time: '+ nanotime.micro())
-  this.log.push('hostname, rxnode ip, txnode ip, rxtime, txtime, seqnum, data, bytes recieved')
+
+  this.log.push('hostname, rxnode ip, txnode ip, seqnum,timestamp')
 }
 
 /**
@@ -88,7 +88,7 @@ Client.prototype.run = function () {
       if (dataArray.length == 2) {
 
         //push the data to out log
-        //that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ','+t+ ','+dataArray[1]+ ','+dataArray[0] + ',' + dataArray[2] + ',' + buf.length)
+        that.log.push(hostname + ','+that.myIP+ ','+that.ip+ ',' + dataArray[0]+','+ new Date().getTime())
 
         //if the user defined a handler function send the string data to the function
         if (that.dh !== undefined)
