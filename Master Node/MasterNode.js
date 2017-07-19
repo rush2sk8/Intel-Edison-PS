@@ -299,7 +299,7 @@ function getLogs() {
 
       //check which version of scp to use
       if(platform === 'win32'){
-        scp = exec('pscp -r -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
+        scp = exec('pscp -r -q -scp -pw cookiemonster root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .' )
       }
       else {
         scp = exec('sshpass -p \'cookiemonster\' scp -r  root@'+sensors[i].getIP()+':/home/root/.node_app_slot/logs .')
