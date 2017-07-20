@@ -56,3 +56,4 @@ Testing/MasterNode/node_modules/*
 Master Node/.testnumber
 Tests/*.m
 *.m
+*.m

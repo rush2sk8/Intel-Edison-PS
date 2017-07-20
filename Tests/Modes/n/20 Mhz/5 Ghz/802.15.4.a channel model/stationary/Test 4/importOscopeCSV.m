@@ -11,7 +11,8 @@ function Trace0 = importOscopeCSV(filename)
 
 %% Initialize variables.
 if nargin < 1
-    filename = 'C:\Users\sensor\Documents\Keysight\BenchVue\Oscilloscope\Exports\Trace 0.csv';
+     filename = strcat(pwd , '\test.csv' );
+    sprintf('%s', filename);
 end
 delimiter = ',';
 startRow = 2;
