@@ -1,11 +1,4 @@
-﻿Model: ,Oscilloscope DSO7104A
-Serial Number:,MY48260142
-Address: ,USBInstrument1
-Date: ,2017-07-21 14:07:01
-
-Digital Channels,,,,,,,,,
-Sample Number,Time (s),D0: INPUT SIG,D1: EDISON01,D2: EDISON02,D3: EDISON03,D5: EDISON05,D6: EDISON06,,
-1,-0.499999999,0,1,0,0,0,0,,
+﻿1,-0.499999999,0,1,0,0,0,0,,
 2,-0.499949999,0,1,0,0,0,0,,
 3,-0.499899999,1,1,0,0,0,0,,
 4,-0.499849999,1,1,0,0,0,0,,
