@@ -33,13 +33,13 @@ Nodes use the  [Master Node](https://github.com/rush2sk8/Intel-Edison-PS/tree/ma
 
 In this example the node "Edison02" want to join the current network.
 
-![Before](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/beforejoining.PNG?raw=true )
+![Before](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/Documentation/images/beforejoining.PNG?raw=true )
  
  Edison02 will send its information (hostname, ip, has, wants) to the master node. The master node will see if any other nodes in the network has anything that Edison02 wants. In this example it sees that Edison03 has something that Edison02 so it will send Edison02 the information of Edison03 so that it can make a connection. After that it will see if the new node to the network has anything that the other nodes want. In this example every node wants the light sensor of Edison02 so the master node will update every other node with the information of this new node so that they all can subscribe to Edison02's topic.
 This is what it looks like after Edison02 has successfully joined the network.
 
 
-![After](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/images/afterjoining.PNG?raw=true )
+![After](https://github.com/rush2sk8/Intel-Edison-PS/blob/master/Documentation/images/afterjoining.PNG?raw=true )
 
 
 ## **MasterNodeConnection.js**
