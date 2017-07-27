@@ -19,7 +19,7 @@ Runs the MasterNode broker and allows to access a website that monitors the node
 
 ## Website 
 
-![Site](https://github.com/rush2sk8/Intel-Edison-PS/tree/master/Documentation/images/site.png?raw=true )
+![Site](https://github.com/rush2sk8/Intel-Edison-PS/tree/master/Documentation/images/site.png?raw=true)
 
 Allows you to see which nodes are connected to the MasterNode. If they disconnect you will see the website update automatically without refreshing it. 
 
