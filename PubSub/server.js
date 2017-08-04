@@ -137,7 +137,7 @@ Server.prototype.getTXLog = function () {
 /**
 * Writes the server log data to a file
 * @param {string} filename - name of the file to write to
-* @memberOf  Server
+* @memberOf Server
 * @example
 * var server = new Server('127.0.0.1', 1337,0);
 * server.start();

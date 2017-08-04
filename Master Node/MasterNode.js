@@ -115,7 +115,7 @@ function sendCommandToNodes(command) {
 
 /**
 * Sensor node data type
-* @param hostname
+* @param hostname.
 * @param ip
 * @param sensors
 * @constructor
